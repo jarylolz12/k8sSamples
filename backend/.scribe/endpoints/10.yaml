@@ -1,0 +1,94 @@
+name: 'Custom Supplier'
+description: |-
+
+  APIs to manage the custom supplier resources
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: 'api/custom/suppliers/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'Supplier ID'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":1,"company_name":"Balut VEndor","address":"ad","phone":"+1 365 245 3216","admin_user_id":null,"created_at":null,"updated_at":null,"emails":"[\"balut@gmail.com\"]","connected_customer":0,"connection_generated":null}}'
+        headers: []
+        description: '0'
+      -
+        status: 404
+        content: |-
+          {
+             "message": "Supplier not found"
+          }
+        headers: []
+        description: '404, Supplier not found'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/custom/connected-supplier/{id}'
+    metadata:
+      title: 'Get Connected Supplier'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "results": [
+                   10
+               ]
+           }
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []

@@ -1,0 +1,450 @@
+name: Buyer
+description: |-
+
+  Class BuyerController
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: api/send/invite/buyer
+    metadata:
+      title: 'Invite Buyer'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      company_name:
+        name: company_name
+        description: ''
+        required: true
+        example: nesciunt
+        type: string
+        custom: []
+      buyerId:
+        name: buyerId
+        description: ''
+        required: true
+        example: 9
+        type: integer
+        custom: []
+      defaultCustomerId:
+        name: defaultCustomerId
+        description: ''
+        required: true
+        example: 20
+        type: integer
+        custom: []
+      emailAddress:
+        name: emailAddress
+        description: ''
+        required: true
+        example:
+          - et
+        type: 'string[]'
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "message": "Buyer successfully invited!"
+           }
+        headers: []
+        description: '200'
+      -
+        status: 404
+        content: |-
+          {
+               "buyerId": [
+                   "The buyer id field is required."
+               ],
+               "defaultCustomerId": [
+                   "The default customer id field is required."
+               ],
+               "emailAddress": [
+                   "The email address field is required.",
+                   "This field must be a valid array and has an array length of at least 1."
+               ]
+          }
+        headers: []
+        description: '404'
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/buyers
+    metadata:
+      title: 'Get Buyers'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": [
+                   {
+                       "id": 4,
+                       "company_name": "Yoki shoes",
+                       "address": "Bacayo",
+                       "phone": "09265321825",
+                       "emails": [
+                           "mike@gmail.com",
+                           "suarezandrew@gmail"
+                       ],
+                       "admin_user_id": null,
+                       "created_at": "2022-08-26T14:39:51.000000Z",
+                       "updated_at": "2022-08-26T15:07:03.000000Z",
+                       "connected_customer": 0,
+                       "connection_generated": null,
+                       "supplier_customer_company_name": "SOUND AROUND",
+                       "invitation_status": "not_invited",
+                       "pivot": {
+                           "customer_id": 25,
+                           "buyer_id": 4
+                       }
+                   }
+               ],
+               "links": {
+                   "first": "api/buyers?page=1",
+                   "last": "api/buyers?page=1",
+                   "prev": null,
+                   "next": null
+               },
+               "meta": {
+                   "current_page": 1,
+                   "from": 1,
+                   "last_page": 1,
+                   "path": "api/buyers",
+                   "per_page": 35,
+                   "to": 1,
+                   "total": 1
+               }
+          `*  }
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/buyers
+    metadata:
+      title: 'Create buyer'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      company_name:
+        name: company_name
+        description: ''
+        required: true
+        example: numquam
+        type: string
+        custom: []
+      address:
+        name: address
+        description: ''
+        required: true
+        example: repellat
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: eos
+        type: string
+        custom: []
+      custom_customers_id:
+        name: custom_customers_id
+        description: ''
+        required: true
+        example:
+          - et
+        type: 'string[]'
+        custom: []
+      emails:
+        name: emails
+        description: ''
+        required: false
+        example:
+          - minima
+        type: 'string[]'
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": {
+                   "id": 4,
+                   "company_name": "Yoki shoes",
+                   "address": "Bacayo",
+                   "phone": "09265321825",
+                   "emails": "[\"mike@gmail.com\",\"suarezandrew@gmail\"]",
+                   "admin_user_id": null,
+                   "created_at": "2022-08-26T14:39:51.000000Z",
+                   "updated_at": "2022-08-26T15:07:03.000000Z",
+                   "connected_customer": 0,
+                   "connection_generated": null
+               }
+           }
+        headers: []
+        description: '200'
+      -
+        status: 404
+        content: |-
+          "company_name": [
+                   "The company name field is required."
+               ],
+               "address": [
+                   "The address field is required."
+               ],
+               "phone": [
+                   "The phone field is required."
+               ],
+               "custom_customers_id": [
+                   "The custom customers id field is required.",
+                   "This field must be a valid array and has an array length of at least 1."
+               ]
+          }
+        headers: []
+        description: '404{'
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/buyers/{id}'
+    metadata:
+      title: 'Update Buyer'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the buyer.'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      company_name:
+        name: company_name
+        description: ''
+        required: true
+        example: nisi
+        type: string
+        custom: []
+      address:
+        name: address
+        description: ''
+        required: true
+        example: sit
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: dolore
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": {
+                   "id": 4,
+                   "company_name": "Yoki shoes",
+                   "address": "Iligan City",
+                   "phone": "09265321825",
+                   "emails": "[\"mike@gmail.com\",\"suarezandrew@gmail\"]",
+                   "admin_user_id": null,
+                   "created_at": "2022-08-26T14:39:51.000000Z",
+                   "updated_at": "2022-08-26T14:39:51.000000Z",
+                   "connected_customer": 0,
+                   "connection_generated": null
+               }
+          }
+        headers: []
+        description: '200'
+      -
+        status: 404
+        content: |-
+          "company_name": [
+                   "The company name field is required."
+               ],
+               "address": [
+                   "The address field is required."
+               ],
+               "phone": [
+                   "The phone field is required."
+               ]
+          }
+        headers: []
+        description: '404{'
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/buyers/{id}'
+    metadata:
+      title: 'Delete Buyer'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the buyer.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": true
+           }
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/buyers
+    metadata:
+      title: 'Get Buyers V2'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "current_page": 1,
+               "data": [
+                   {
+                       "id": 4,
+                       "company_name": "Yoki shoes",
+                       "address": "Bacayo",
+                       "phone": "09265321825",
+                       "emails": [
+                           "mike@gmail.com",
+                           "suarezandrew@gmail"
+                       ],
+                       "admin_user_id": null,
+                       "created_at": "2022-08-26T14:39:51.000000Z",
+                       "updated_at": "2022-08-26T15:07:03.000000Z",
+                       "connected_customer": 0,
+                       "connection_generated": null,
+                       "supplier_customer_company_name": "SOUND AROUND",
+                       "invitation_status": "not_invited",
+                       "company_key": null
+                   }
+               ],
+               "first_page_url": "api/v2/buyers?page=1",
+               "from": 1,
+               "last_page": 1,
+               "last_page_url": "api/v2/buyers?page=1",
+               "next_page_url": null,
+               "path": "api/v2/buyers",
+               "per_page": 35,
+               "prev_page_url": null,
+               "to": 1,
+               "total": 1
+          }
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []

@@ -1,0 +1,51 @@
+name: 'Eta Logs'
+description: |-
+
+  APIs to manage the eta logs resource
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: 'api/eta_logs/{mbl_num}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      mbl_num:
+        name: mbl_num
+        description: 'eta_logs String.'
+        required: true
+        example: WHLC031B545167
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[]}'
+        headers: []
+        description: '0'
+      -
+        status: 404
+        content: |-
+          {
+               "data"`: []
+          }
+        headers: []
+        description: '404'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []

@@ -1,0 +1,88 @@
+name: 'Container Size'
+description: |-
+
+  APIs to manage the container size resource
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/container-sizes
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Size per page. Default to 5.'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'Page to view.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":null,"name":null}}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+             "message": "Unauthenticated"
+          }
+        headers: []
+        description: '400'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/container-size/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The container size ID'
+        required: true
+        example: 8
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":null,"name":null},"result":"success"}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+             "message": "Unauthenticated",
+          }
+        headers: []
+        description: '400'
+    responseFields: []

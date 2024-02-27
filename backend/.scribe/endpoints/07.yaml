@@ -1,0 +1,38 @@
+name: 'Custom Admin'
+description: |-
+
+  APIs to manage the custom admin resources
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/custom/customer-admin/suppliers
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []

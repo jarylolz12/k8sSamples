@@ -1,0 +1,164 @@
+name: 'Custom Customer'
+description: |-
+
+  APIs to manage the custom customer resources
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/custom/customers
+    metadata:
+      title: 'Display a listing of the resource.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":117,"company_name":"Alias nulla atque hic velit.","address":"1222 Glover Summit\nLueilwitzland, KY 74110","phone":"+1 (953) 846-4694","created_at":"2022-11-04T11:50:43.000000Z","updated_at":"2022-11-04T11:50:43.000000Z","managers":"cassidy18@example.net","sale_persons":"test@gmail.com"},"result":"success"}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+             "message": "Unauthenticated",
+          }
+        headers: []
+        description: '400'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/custom/customers/{id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'Customer ID'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":118,"company_name":"Ipsum omnis rerum est error.","address":"258 Orlando Oval\nPort Danika, OR 62069","phone":"570.565.2675","created_at":"2022-11-04T11:50:43.000000Z","updated_at":"2022-11-04T11:50:43.000000Z","managers":"justice.graham@example.org","sale_persons":"test@gmail.com"},"result":"success"}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+             "message": "Unauthenticated",
+          }
+        headers: []
+        description: '400'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/custom/customers/{id_id}/suppliers'
+    metadata:
+      title: 'Display customer''s supplier'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id_id:
+        name: id_id
+        description: 'The ID of the id.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      id:
+        name: id
+        description: 'Customer Supplier ID.'
+        required: true
+        example: 15
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":119,"company_name":"Amet unde tenetur et rem.","address":"3938 Weissnat Flat Suite 866\nPearlinefurt, NV 08476","phone":"1-980-612-8443 x71312","created_at":"2022-11-04T11:50:44.000000Z","updated_at":"2022-11-04T11:50:44.000000Z","managers":"mhermann@example.net","sale_persons":"test@gmail.com"},"result":"success"}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+             "message": "Unauthenticated",
+          }
+        headers: []
+        description: '400'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/custom/customers/{id_id}/buyers'
+    metadata:
+      title: 'Display customer''s buyers'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id_id:
+        name: id_id
+        description: 'The ID of the id.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      id:
+        name: id
+        description: 'Customer Supplier ID.'
+        required: true
+        example: 5
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":120,"company_name":"Quia voluptates ut id ex.","address":"84016 Jacobson Wells Apt. 509\nSouth Robynport, TX 31257-3848","phone":"285-646-0821 x5218","created_at":"2022-11-04T11:50:44.000000Z","updated_at":"2022-11-04T11:50:44.000000Z","managers":"frami.erick@example.net","sale_persons":"test@gmail.com"},"result":"success"}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+             "message": "Unauthenticated",
+          }
+        headers: []
+        description: '400'
+    responseFields: []

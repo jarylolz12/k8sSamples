@@ -1,0 +1,405 @@
+name: Supplier
+description: |-
+
+  APIs to manage the supplier resource
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/suppliers
+    metadata:
+      title: 'Display a listing of the supplier'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Size per page.'
+        required: false
+        example: 50
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'Page to view.'
+        required: false
+        example: 1
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":null,"company_name":"In eligendi est est ullam.","address":"8544 Hessel Squares Apt. 421\nGrimesview, MI 60212","phone":"(561) 307-0083","created_at":null,"updated_at":null,"managers":"marvin.arnaldo@example.net","sale_persons":"test@gmail.com"},{"id":null,"company_name":"Architecto ut earum dolor ut.","address":"440 Wyman Terrace Suite 952\nSouth Halieburgh, NJ 31534-6650","phone":"1-275-775-0322 x64067","created_at":null,"updated_at":null,"managers":"grover03@example.com","sale_persons":"test@gmail.com"}]}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/suppliers
+    metadata:
+      title: 'Show the form for creating a new resource.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      company_name:
+        name: company_name
+        description: ''
+        required: true
+        example: minima
+        type: string
+        custom: []
+      address:
+        name: address
+        description: ''
+        required: true
+        example: officiis
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: ''
+        required: true
+        example: eaque
+        type: string
+        custom: []
+      custom_customers_id:
+        name: custom_customers_id
+        description: ''
+        required: false
+        example:
+          - 18
+        type: 'integer[]'
+        custom: []
+      emails:
+        name: emails
+        description: ''
+        required: false
+        example:
+          - laborum
+        type: 'string[]'
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+             "message": "Supplier created successfully"
+          }
+        headers: []
+        description: '200, Supplier created successfully'
+      -
+        status: 422
+        content: |-
+          {
+             "message": "The given data was invalid.",
+             "errors": {
+                 "company_name": [
+                     "The company_name field is required."
+                 ],
+                 "address": [
+                     "The address field is required."
+                 ],
+                 "phone": [
+                     "The phone field is required."
+                 ],
+                 "custom_customers_id": [
+                     "The custom_customers_id field is required."
+                 ],
+                 "emails": [
+                     "The emails field is required."
+                 ]
+             }
+          }
+        headers: []
+        description: '422, Validation error'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/suppliers/{id}'
+    metadata:
+      title: 'Update the specified resource in storage.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The supplier ID.'
+        required: true
+        example: 8
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters:
+      company_name:
+        name: company_name
+        description: ''
+        required: true
+        example: sit
+        type: string
+        custom: []
+      address:
+        name: address
+        description: 'company address of the supplier.'
+        required: true
+        example: USA
+        type: string
+        custom: []
+      phone:
+        name: phone
+        description: 'company phone of the supplier.'
+        required: true
+        example: 855-399-9945
+        type: string
+        custom: []
+      campany_name:
+        name: campany_name
+        description: 'company name of the supplier.'
+        required: true
+        example: Shifl
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":2,"company_name":"FUJIAN MINGTA TOYS CO.,LTD","address":"NO. 6,PERIOD 2, INDUSTRY PARK, PUCHENG CITY, FUJIAN, CHINA","phone":"TBA","emails":null,"admin_user_id":null}}'
+        headers: []
+        description: '0'
+      -
+        status: 200
+        content: |-
+          {
+             "message": "Supplier updated successfully."
+          }
+        headers: []
+        description: '200'
+      -
+        status: 422
+        content: |-
+          {
+             "message": "The given data was invalid.",
+             "errors": {
+                 "company_name": [
+                     "The company_name field is required."
+                 ],
+                  "address": [
+                     "The address field is required."
+                 ],
+                  "phone": [
+                     "The phone field is required."
+                 ]
+             }
+          }
+        headers: []
+        description: '422, Validation error'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/suppliers/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The supplier ID.'
+        required: true
+        example: 16
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "Supplier deleted successfully."
+          }
+        headers: []
+        description: '200'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/shipment-suppliers
+    metadata:
+      title: 'Get Shipment'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      shipment_id:
+        name: shipment_id
+        description: ''
+        required: true
+        example: 16
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "data": []
+          }
+        headers: []
+        description: '200'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/send/invite/vendor
+    metadata:
+      title: Vendor
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      vendorId:
+        name: vendorId
+        description: ''
+        required: false
+        example: 11
+        type: integer
+        custom: []
+      defaultCustomerId:
+        name: defaultCustomerId
+        description: ''
+        required: false
+        example: 19
+        type: integer
+        custom: []
+      emailAddress:
+        name: emailAddress
+        description: ''
+        required: false
+        example: delectus
+        type: string
+        custom: []
+    responses: []
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/suppliers
+    metadata:
+      title: 'Display a listing of the supplier'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Size per page.'
+        required: false
+        example: 50
+        type: integer
+        custom: []
+      page:
+        name: page
+        description: 'Page to view.'
+        required: false
+        example: 1
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":null,"company_name":"Omnis in et et ut neque.","address":"26470 Lela Inlet Apt. 782\nNew Broderickfurt, WI 73601","phone":"1-554-567-0648","created_at":null,"updated_at":null,"managers":"lambert.windler@example.net","sale_persons":"test@gmail.com"},{"id":null,"company_name":"Maiores ut ad iste aliquid.","address":"51011 Eddie Fields\nLouport, NH 44901-8436","phone":"891-877-4707","created_at":null,"updated_at":null,"managers":"kelly23@example.com","sale_persons":"test@gmail.com"}]}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []

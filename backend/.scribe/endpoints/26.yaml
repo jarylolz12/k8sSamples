@@ -1,0 +1,1200 @@
+name: Shipment
+description: |-
+
+  APIs to manage the Shipment resource
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: 'api/shipment-po-details/{po_id}'
+    metadata:
+      title: 'Get Po Shipment'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      po_id:
+        name: po_id
+        description: ''
+        required: true
+        example: 12
+        type: integer
+        custom: []
+    queryParameters:
+      supplier_id:
+        name: supplier_id
+        description: 'Supplier ID'
+        required: true
+        example: 8
+        type: integer
+        custom: []
+      customer_id:
+        name: customer_id
+        description: 'Customer ID'
+        required: true
+        example: 3
+        type: integer
+        custom: []
+      po_number:
+        name: po_number
+        description: 'The shipment PO_NUM.'
+        required: true
+        example: 'NULL'
+        type: string
+        custom: []
+    bodyParameters:
+      supplier_id:
+        name: supplier_id
+        description: 'Supplier ID.'
+        required: false
+        example: null
+        type: integer
+        custom: []
+      customer_id:
+        name: customer_id
+        description: 'Customer ID.'
+        required: false
+        example: null
+        type: integer
+        custom: []
+      po_number:
+        name: po_number
+        description: 'The shipment PO_NUM.'
+        required: false
+        example: null
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"customer_id":1,"shipment_status":"Cancelled","shifl_ref":"60717","origin_country":null,"destination_country":null,"etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z","carrier_id":null,"suppliers_group":"[]","schedules_group":"[{\"id\":1583767324377,\"eta\":\"2020-02-08\",\"etd\":\"2020-01-24\",\"location_from\":\"\",\"location_to\":\"\",\"mode\":\"\",\"etaError\":{},\"etdError\":{}}]","containers_group":"[]","mbl_copy":null,"debit_note":null,"vessel":null,"booking_confirmed":0,"arrival_notice_confirmed":0,"freight_released_processed":0,"customs_processed":0,"DO_confirmed":0,"freight_confirmed":0,"customs_released":0,"pending_refund":0,"delivered":0,"billed":0,"cancelled":1,"shipment_left":0,"terminal_id":null,"arrival_notice":0,"cloned_from":null,"trucker_id":null,"trucker_custom_note":null,"delivery_order_left":0,"custom_content":"","copy_customer":1,"memo_customer":null,"suppliers_group_bookings":"","containers_group_bookings":"","schedules_group_bookings":"[{\"id\":1583767324377,\"eta\":\"2020-02-08\",\"etd\":\"2020-01-24\",\"location_from\":\"\",\"location_to\":\"\",\"mode\":\"\",\"etaError\":{},\"etdError\":{},\"legs\":[],\"type\":\"\",\"carrier_name\":\"\",\"size_id\":0,\"price\":null,\"selling_size_id\":0,\"selling_price\":null,\"sell_rates\":[],\"buy_rates\":[],\"is_confirmed\":0,\"location_from_name\":\"\",\"location_to_name\":\"\",\"size_name\":\"\",\"selling_size_name\":\"\"}]","booking_confirmed_at":null,"mbl_shipper":null,"mbl_shipper_address":null,"mbl_shipper_phone_number":null,"mbl_consignee":null,"mbl_consignee_address":null,"mbl_consignee_phone_number":null,"mbl_notify":null,"mbl_notify_address":null,"mbl_notify_phone_number":null,"mbl_description":null,"mbl_marks":null,"entry_netchb_submitted":0,"entry_netchb_no":null,"entry_netchb_date":null,"entry_data":null,"tracking_request_id":null,"do_sent_at":null,"an_sent_at":null,"retry_tracking_request":0,"suppliers_commercial_docs":null,"services_section":null,"netchb_pdf":null,"netchb_xml":null,"shifl_office_origin_from_id":0,"shifl_office_origin_to_id":0,"rate_confirmed":0,"so_released":0,"released_at_terminal":0,"isf_done":0,"ams_done":0,"is_tracking_shipment":0,"containers_group_untracked":"","untracked_tool_last_updated_at":null,"carrier_arrival_notice_eta":null,"carrier_arrival_notice_firms":null,"tracked_up_to":null,"customs_sent":null,"customs_sent_at":null,"mbl_released_confirmed":0,"mbl_copy_surrendered":null,"is_schedule_requested":0,"customs_broker_id":null,"projected_profit":"No selected schedule","profitt":0,"invoice":[],"bill":[]}}'
+        headers: []
+        description: '0'
+      -
+        status: 422
+        content: |-
+          {
+             "message": "The given data was invalid.",
+             "status": "not ok",
+             "errors": {
+                 "supplier_id": [
+                     "The supplier id is required."
+                 ],
+                  "customer_id": [
+                     "The customer id s required."
+                 ],
+                  "po_number": [
+                     "The po_number field is required."
+                 ]
+             }
+          }
+        headers: []
+        description: '422, Validation error'
+      -
+        status: 404
+        content: |-
+          {
+           "message": "Not found"
+          }
+        headers: []
+        description: '404'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/schedule-options
+    metadata:
+      title: 'Get Schedule Option'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The shipment''s ID'
+        required: true
+        example: 3
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/select-schedule
+    metadata:
+      title: 'Select Schedule App'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The shipments ID'
+        required: true
+        example: 12
+        type: integer
+        custom: []
+      schedule_id:
+        name: schedule_id
+        description: 'The shipment SCHEDULE_ID'
+        required: true
+        example: 13
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"},{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}]}'
+        headers: []
+        description: '0'
+      -
+        status: 200
+        content: |-
+          {
+           "status": "ok"
+          }
+        headers: []
+        description: '200'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/request-new-schedule/{shipment_id}'
+    metadata:
+      title: 'Request New Schedule'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      shipment_id:
+        name: shipment_id
+        description: 'Shipment ID'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/events/{mbl_num}'
+    metadata:
+      title: 'Terminal 49 Shipment'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      mbl_num:
+        name: mbl_num
+        description: ''
+        required: true
+        example: autem
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":1,"mbl_num":"COSU6290946880","tr_id":"41259d1a-3c15-4614-ae51-417f1faa7faf","ts_id":"147e127b-f114-484a-8337-58bd767af346","etd":"2021-03-04","eta":"2021-04-10","attributes":"{\"created_at\":\"2021-04-06T16:05:27Z\",\"ref_numbers\":null,\"tags\":[],\"bill_of_lading_number\":\"COSU6290946880\",\"shipping_line_scac\":\"COSU\",\"shipping_line_name\":\"COSCO\",\"shipping_line_short_name\":\"COSCO\",\"port_of_lading_locode\":\"MYWSP\",\"port_of_lading_name\":\"Port Klang - Westport\",\"port_of_discharge_locode\":\"USLAX\",\"port_of_discharge_name\":\"Los Angeles\",\"pod_vessel_name\":\"APL SENTOSA\",\"pod_vessel_imo\":\"9632040\",\"pod_voyage_number\":\"0TUGFE1MA\",\"destination_locode\":null,\"destination_name\":null,\"destination_timezone\":null,\"destination_ata_at\":null,\"destination_eta_at\":null,\"pol_etd_at\":null,\"pol_atd_at\":\"2021-03-04T04:48:00Z\",\"pol_timezone\":\"Asia\\\/Kuala_Lumpur\",\"pod_eta_at\":\"2021-04-10T15:00:00Z\",\"pod_ata_at\":\"2021-04-10T21:52:00Z\",\"pod_timezone\":\"America\\\/Los_Angeles\",\"line_tracking_last_attempted_at\":\"2021-04-28T08:24:05Z\",\"line_tracking_last_succeeded_at\":\"2021-04-28T08:25:41Z\",\"line_tracking_stopped_at\":\"2021-04-28T08:25:48Z\",\"line_tracking_stopped_reason\":\"all_containers_terminated\"}","relationships":"{\"port_of_lading\":{\"data\":{\"id\":\"487987cb-ad20-4a9c-a074-0c99c274a03b\",\"type\":\"port\"}},\"port_of_discharge\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}},\"pod_terminal\":{\"data\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\"}},\"destination\":{\"data\":null},\"destination_terminal\":{\"data\":null},\"containers\":{\"data\":[{\"id\":\"79dbf4db-f5f8-4729-91bf-c111c39e6cc8\",\"type\":\"container\"},{\"id\":\"6881be2d-5dd3-428c-9db4-6b52c3dfcd77\",\"type\":\"container\"}]}}","containers":"[{\"id\":\"79dbf4db-f5f8-4729-91bf-c111c39e6cc8\",\"type\":\"container\",\"attributes\":{\"number\":\"CSNU1945531\",\"seal_number\":\"17023647\",\"created_at\":\"2021-04-08T03:10:55Z\",\"equipment_type\":\"dry\",\"equipment_length\":20,\"equipment_height\":\"standard\",\"weight_in_lbs\":48546,\"fees_at_pod_terminal\":[],\"holds_at_pod_terminal\":[],\"pickup_lfd\":\"2021-04-21T07:00:00Z\",\"pickup_appointment_at\":null,\"pod_full_out_chassis_number\":null,\"location_at_pod_terminal\":\"T-XP88011-Y (OUT)\",\"availability_known\":true,\"available_for_pickup\":false,\"pod_arrived_at\":\"2021-04-10T21:52:00Z\",\"pod_discharged_at\":\"2021-04-15T22:00:00Z\",\"final_destination_full_out_at\":null,\"pod_full_out_at\":\"2021-04-20T16:44:00Z\",\"empty_terminated_at\":\"2021-04-28T04:59:00Z\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"pod_terminal\":{\"data\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\"}},\"transport_events\":{\"data\":[{\"id\":\"42dff47c-a399-4726-9063-6a9e992b67c8\",\"type\":\"transport_event\"},{\"id\":\"a041b91d-43d0-4407-8079-84b2523c4da8\",\"type\":\"transport_event\"},{\"id\":\"5b539b7b-4645-4462-9473-af17b602e846\",\"type\":\"transport_event\"},{\"id\":\"d17124d7-13c6-43ad-ad69-2cb65b3559bc\",\"type\":\"transport_event\"},{\"id\":\"21da8cbe-96cd-4d7e-8225-a6cd6cc090d7\",\"type\":\"transport_event\"}]},\"raw_events\":{\"data\":[{\"id\":\"1bbf862b-8a4f-4a37-811a-7dd390dcd16f\",\"type\":\"raw_event\"},{\"id\":\"88a9a99a-0545-4dee-8d88-e3815274ae98\",\"type\":\"raw_event\"},{\"id\":\"0ef39349-6eb1-4fd1-95a9-c3356928c23f\",\"type\":\"raw_event\"},{\"id\":\"60b21b05-bae6-4c35-ac6d-336a1fa6e927\",\"type\":\"raw_event\"},{\"id\":\"1bf22654-804d-40d0-af5e-a6b3abd13bb4\",\"type\":\"raw_event\"},{\"id\":\"8966f259-ea79-4c0d-82fa-6409533f1a6a\",\"type\":\"raw_event\"},{\"id\":\"b1e1ca4e-e4d7-4f20-b27d-565692eb9cf8\",\"type\":\"raw_event\"}]}}},{\"id\":\"6881be2d-5dd3-428c-9db4-6b52c3dfcd77\",\"type\":\"container\",\"attributes\":{\"number\":\"CSNU1779153\",\"seal_number\":\"17023646\",\"created_at\":\"2021-04-08T03:10:55Z\",\"equipment_type\":\"dry\",\"equipment_length\":20,\"equipment_height\":\"standard\",\"weight_in_lbs\":49339,\"fees_at_pod_terminal\":[],\"holds_at_pod_terminal\":[],\"pickup_lfd\":\"2021-04-20T07:00:00Z\",\"pickup_appointment_at\":null,\"pod_full_out_chassis_number\":null,\"location_at_pod_terminal\":\"T-9E90541-TIP-Y (OUT)\",\"availability_known\":true,\"available_for_pickup\":false,\"pod_arrived_at\":\"2021-04-10T21:52:00Z\",\"pod_discharged_at\":\"2021-04-14T15:40:00Z\",\"final_destination_full_out_at\":null,\"pod_full_out_at\":\"2021-04-19T23:40:00Z\",\"empty_terminated_at\":\"2021-04-27T18:54:00Z\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"pod_terminal\":{\"data\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\"}},\"transport_events\":{\"data\":[{\"id\":\"ae4e8928-f17b-4bcb-b5d0-d4630276fedc\",\"type\":\"transport_event\"},{\"id\":\"8c9597e1-8770-46d6-864d-0f13079b07ef\",\"type\":\"transport_event\"},{\"id\":\"e01b85f2-0a0f-4559-8350-a890f843fa4e\",\"type\":\"transport_event\"},{\"id\":\"331aaf12-0750-4504-bcfc-d816c48095c4\",\"type\":\"transport_event\"},{\"id\":\"4fb1a265-60c1-4fb7-a82f-4804e4972bc4\",\"type\":\"transport_event\"}]},\"raw_events\":{\"data\":[{\"id\":\"fda4f39b-70f5-40f0-9cbc-c6b1c32472e1\",\"type\":\"raw_event\"},{\"id\":\"a903f17e-3a6a-407c-9c18-8c278f7f9d55\",\"type\":\"raw_event\"},{\"id\":\"62550ee6-9baa-4011-911b-143ddb970928\",\"type\":\"raw_event\"},{\"id\":\"4124bf33-c22f-4b71-9437-10c7541dee92\",\"type\":\"raw_event\"},{\"id\":\"141a298f-26fb-4132-abc6-c0ee74203f3e\",\"type\":\"raw_event\"},{\"id\":\"b2d9288e-7a82-4cc5-84a5-c30ac0d90c7b\",\"type\":\"raw_event\"},{\"id\":\"3f047575-cbbc-42d2-a1e6-bf9c686a1ec6\",\"type\":\"raw_event\"}]}}}]","created_at":"2021-04-07T00:05:30.000000Z","updated_at":"2021-11-03T20:43:57.000000Z","terminals":"{\"79dbf4db-f5f8-4729-91bf-c111c39e6cc8\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\",\"attributes\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"nickname\":\"FMS\",\"name\":\"Fenix Marine Services\",\"firms_code\":\"Y257\"},\"relationships\":{\"port\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}}}},\"6881be2d-5dd3-428c-9db4-6b52c3dfcd77\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\",\"attributes\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"nickname\":\"FMS\",\"name\":\"Fenix Marine Services\",\"firms_code\":\"Y257\"},\"relationships\":{\"port\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}}}}}","transport_events":"{\"79dbf4db-f5f8-4729-91bf-c111c39e6cc8\":{\"data\":[{\"id\":\"42dff47c-a399-4726-9063-6a9e992b67c8\",\"type\":\"transport_event\",\"attributes\":{\"event\":\"container.transport.empty_in\",\"created_at\":\"2021-04-28T08:25:48Z\",\"voyage_number\":null,\"timestamp\":\"2021-04-28T04:59:00Z\",\"location_locode\":\"USLAX\",\"timezone\":\"America\\\/Los_Angeles\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"container\":{\"data\":{\"id\":\"79dbf4db-f5f8-4729-91bf-c111c39e6cc8\",\"type\":\"container\"}},\"vessel\":{\"data\":null},\"location\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}},\"terminal\":{\"data\":null}}},{\"id\":\"a041b91d-43d0-4407-8079-84b2523c4da8\",\"type\":\"transport_event\",\"attributes\":{\"event\":\"container.transport.full_out\",\"created_at\":\"2021-04-20T18:00:51Z\",\"voyage_number\":null,\"timestamp\":\"2021-04-20T16:44:00Z\",\"location_locode\":\"USLAX\",\"timezone\":\"America\\\/Los_Angeles\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"container\":{\"data\":{\"id\":\"79dbf4db-f5f8-4729-91bf-c111c39e6cc8\",\"type\":\"container\"}},\"vessel\":{\"data\":null},\"location\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}},\"terminal\":{\"data\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\"}}}},{\"id\":\"5b539b7b-4645-4462-9473-af17b602e846\",\"type\":\"transport_event\",\"attributes\":{\"event\":\"container.transport.vessel_discharged\",\"created_at\":\"2021-04-16T01:25:28Z\",\"voyage_number\":\"0TUGFE1MA\",\"timestamp\":\"2021-04-15T22:00:00Z\",\"location_locode\":\"USLAX\",\"timezone\":\"America\\\/Los_Angeles\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"container\":{\"data\":{\"id\":\"79dbf4db-f5f8-4729-91bf-c111c39e6cc8\",\"type\":\"container\"}},\"vessel\":{\"data\":{\"id\":\"f21c2066-f4cd-49e8-9da8-ef23b1ad58e7\",\"type\":\"vessel\"}},\"location\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}},\"terminal\":{\"data\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\"}}}},{\"id\":\"d17124d7-13c6-43ad-ad69-2cb65b3559bc\",\"type\":\"transport_event\",\"attributes\":{\"event\":\"container.transport.vessel_arrived\",\"created_at\":\"2021-04-11T08:53:26Z\",\"voyage_number\":\"0TUGFE1MA\",\"timestamp\":\"2021-04-10T21:52:00Z\",\"location_locode\":\"USLAX\",\"timezone\":\"America\\\/Los_Angeles\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"container\":{\"data\":{\"id\":\"79dbf4db-f5f8-4729-91bf-c111c39e6cc8\",\"type\":\"container\"}},\"vessel\":{\"data\":{\"id\":\"f21c2066-f4cd-49e8-9da8-ef23b1ad58e7\",\"type\":\"vessel\"}},\"location\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}},\"terminal\":{\"data\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\"}}}},{\"id\":\"21da8cbe-96cd-4d7e-8225-a6cd6cc090d7\",\"type\":\"transport_event\",\"attributes\":{\"event\":\"container.transport.vessel_loaded\",\"created_at\":\"2021-04-08T03:10:56Z\",\"voyage_number\":\"0TUGFE1MA\",\"timestamp\":\"2021-03-03T22:18:00Z\",\"location_locode\":\"MYWSP\",\"timezone\":\"Asia\\\/Kuala_Lumpur\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"container\":{\"data\":{\"id\":\"79dbf4db-f5f8-4729-91bf-c111c39e6cc8\",\"type\":\"container\"}},\"vessel\":{\"data\":{\"id\":\"f21c2066-f4cd-49e8-9da8-ef23b1ad58e7\",\"type\":\"vessel\"}},\"location\":{\"data\":{\"id\":\"487987cb-ad20-4a9c-a074-0c99c274a03b\",\"type\":\"port\"}},\"terminal\":{\"data\":null}}}],\"links\":{\"self\":\"https:\\\/\\\/api.terminal49.com\\\/v2\\\/containers\\\/79dbf4db-f5f8-4729-91bf-c111c39e6cc8\\\/transport_events\",\"current\":\"https:\\\/\\\/api.terminal49.com\\\/v2\\\/containers\\\/79dbf4db-f5f8-4729-91bf-c111c39e6cc8\\\/transport_events?page[number]=1\"}},\"6881be2d-5dd3-428c-9db4-6b52c3dfcd77\":{\"data\":[{\"id\":\"ae4e8928-f17b-4bcb-b5d0-d4630276fedc\",\"type\":\"transport_event\",\"attributes\":{\"event\":\"container.transport.empty_in\",\"created_at\":\"2021-04-27T19:58:40Z\",\"voyage_number\":null,\"timestamp\":\"2021-04-27T18:54:00Z\",\"location_locode\":\"USLAX\",\"timezone\":\"America\\\/Los_Angeles\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"container\":{\"data\":{\"id\":\"6881be2d-5dd3-428c-9db4-6b52c3dfcd77\",\"type\":\"container\"}},\"vessel\":{\"data\":null},\"location\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}},\"terminal\":{\"data\":null}}},{\"id\":\"8c9597e1-8770-46d6-864d-0f13079b07ef\",\"type\":\"transport_event\",\"attributes\":{\"event\":\"container.transport.full_out\",\"created_at\":\"2021-04-20T00:04:40Z\",\"voyage_number\":null,\"timestamp\":\"2021-04-19T23:40:00Z\",\"location_locode\":\"USLAX\",\"timezone\":\"America\\\/Los_Angeles\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"container\":{\"data\":{\"id\":\"6881be2d-5dd3-428c-9db4-6b52c3dfcd77\",\"type\":\"container\"}},\"vessel\":{\"data\":null},\"location\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}},\"terminal\":{\"data\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\"}}}},{\"id\":\"e01b85f2-0a0f-4559-8350-a890f843fa4e\",\"type\":\"transport_event\",\"attributes\":{\"event\":\"container.transport.vessel_discharged\",\"created_at\":\"2021-04-14T16:34:57Z\",\"voyage_number\":\"0TUGFE1MA\",\"timestamp\":\"2021-04-14T15:40:00Z\",\"location_locode\":\"USLAX\",\"timezone\":\"America\\\/Los_Angeles\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"container\":{\"data\":{\"id\":\"6881be2d-5dd3-428c-9db4-6b52c3dfcd77\",\"type\":\"container\"}},\"vessel\":{\"data\":{\"id\":\"f21c2066-f4cd-49e8-9da8-ef23b1ad58e7\",\"type\":\"vessel\"}},\"location\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}},\"terminal\":{\"data\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\"}}}},{\"id\":\"331aaf12-0750-4504-bcfc-d816c48095c4\",\"type\":\"transport_event\",\"attributes\":{\"event\":\"container.transport.vessel_arrived\",\"created_at\":\"2021-04-11T08:53:26Z\",\"voyage_number\":\"0TUGFE1MA\",\"timestamp\":\"2021-04-10T21:52:00Z\",\"location_locode\":\"USLAX\",\"timezone\":\"America\\\/Los_Angeles\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"container\":{\"data\":{\"id\":\"6881be2d-5dd3-428c-9db4-6b52c3dfcd77\",\"type\":\"container\"}},\"vessel\":{\"data\":{\"id\":\"f21c2066-f4cd-49e8-9da8-ef23b1ad58e7\",\"type\":\"vessel\"}},\"location\":{\"data\":{\"id\":\"47b27584-4ec9-4e2f-95e1-7a42928cc40c\",\"type\":\"port\"}},\"terminal\":{\"data\":{\"id\":\"eaa2580c-5f5b-4198-85e4-821145d62098\",\"type\":\"terminal\"}}}},{\"id\":\"4fb1a265-60c1-4fb7-a82f-4804e4972bc4\",\"type\":\"transport_event\",\"attributes\":{\"event\":\"container.transport.vessel_loaded\",\"created_at\":\"2021-04-08T03:10:56Z\",\"voyage_number\":\"0TUGFE1MA\",\"timestamp\":\"2021-03-03T15:41:00Z\",\"location_locode\":\"MYWSP\",\"timezone\":\"Asia\\\/Kuala_Lumpur\"},\"relationships\":{\"shipment\":{\"data\":{\"id\":\"147e127b-f114-484a-8337-58bd767af346\",\"type\":\"shipment\"}},\"container\":{\"data\":{\"id\":\"6881be2d-5dd3-428c-9db4-6b52c3dfcd77\",\"type\":\"container\"}},\"vessel\":{\"data\":{\"id\":\"f21c2066-f4cd-49e8-9da8-ef23b1ad58e7\",\"type\":\"vessel\"}},\"location\":{\"data\":{\"id\":\"487987cb-ad20-4a9c-a074-0c99c274a03b\",\"type\":\"port\"}},\"terminal\":{\"data\":null}}}],\"links\":{\"self\":\"https:\\\/\\\/api.terminal49.com\\\/v2\\\/containers\\\/6881be2d-5dd3-428c-9db4-6b52c3dfcd77\\\/transport_events\",\"current\":\"https:\\\/\\\/api.terminal49.com\\\/v2\\\/containers\\\/6881be2d-5dd3-428c-9db4-6b52c3dfcd77\\\/transport_events?page[number]=1\"}}}","ignore_demurrage":null,"lfd_daily_review_status":null,"lfd_notes":null}}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/shipment/{id}'
+    metadata:
+      title: 'Get Shipment Details'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'Shipment ID'
+        required: true
+        example: 10
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/snooze-shipment
+    metadata:
+      title: 'Snooze Shipment'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      shipment_id:
+        name: shipment_id
+        description: required.
+        required: false
+        example: 2
+        type: integer
+        custom: []
+      snooze_date:
+        name: snooze_date
+        description: required.
+        required: false
+        example: '2022-08-29T13:49:22'
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "status": "ok",
+               "snooze_date_at": "2022-08-29",
+               "pass": "2022-08-29T13:16:58"
+          }
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/unsnooze-shipment
+    metadata:
+      title: UnSnoozeShipment
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      shipment_id:
+        name: shipment_id
+        description: ''
+        required: true
+        example: 6
+        type: integer
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "status": "ok"
+          }
+        headers: []
+        description: '200'
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/shipment/create
+    metadata:
+      title: 'Create Shipment'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      eta:
+        name: eta
+        description: ''
+        required: true
+        example: '2020-02-08'
+        type: string
+        custom: []
+      etd:
+        name: etd
+        description: ''
+        required: true
+        example: '2020-01-24'
+        type: string
+        custom: []
+      date_id:
+        name: date_id
+        description: ''
+        required: true
+        example: distinctio
+        type: string
+        custom: []
+      mbl_num:
+        name: mbl_num
+        description: ''
+        required: true
+        example: YMLUE236243273
+        type: string
+        custom: []
+      booking_num:
+        name: booking_num
+        description: ''
+        required: true
+        example: ipsa
+        type: string
+        custom: []
+      vessel:
+        name: vessel
+        description: ''
+        required: true
+        example: voluptate
+        type: string
+        custom: []
+      voyage_number:
+        name: voyage_number
+        description: ''
+        required: true
+        example: enim
+        type: string
+        custom: []
+      terminal:
+        name: terminal
+        description: ''
+        required: true
+        example: modi
+        type: string
+        custom: []
+      purchase_orders:
+        name: purchase_orders
+        description: ''
+        required: false
+        example: []
+        type: object
+        custom: []
+      purchase_orders.supplier_id:
+        name: purchase_orders.supplier_id
+        description: ''
+        required: true
+        example: necessitatibus
+        type: string
+        custom: []
+      supplier_timestamps:
+        name: supplier_timestamps
+        description: ''
+        required: false
+        example: '2020-01-24'
+        type: string
+        custom: []
+      carrier_id:
+        name: carrier_id
+        description: ''
+        required: true
+        example: '81'
+        type: string
+        custom: []
+      containers:
+        name: containers
+        description: ''
+        required: true
+        example: TEMU7006557
+        type: string
+        custom: []
+    responses:
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v2/shipment/edit
+    metadata:
+      title: 'Edit Shipment'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters:
+      eta:
+        name: eta
+        description: ''
+        required: true
+        example: '2020-02-08'
+        type: string
+        custom: []
+      etd:
+        name: etd
+        description: ''
+        required: true
+        example: '2020-01-24'
+        type: string
+        custom: []
+      date_id:
+        name: date_id
+        description: ''
+        required: true
+        example: consequatur
+        type: string
+        custom: []
+      mbl_num:
+        name: mbl_num
+        description: ''
+        required: true
+        example: YMLUE236243273
+        type: string
+        custom: []
+      id:
+        name: id
+        description: ''
+        required: true
+        example: 6
+        type: integer
+        custom: []
+    responses:
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '401'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/shipments-completed-merge
+    metadata:
+      title: Transit/Completed
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: ''
+        required: false
+        example: 5
+        type: integer
+        custom: []
+      sort:
+        name: sort
+        description: ''
+        required: false
+        example: veritatis
+        type: string
+        custom: []
+      order:
+        name: order
+        description: ''
+        required: false
+        example: debitis
+        type: string
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"},{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"path":"\/","per_page":"30","to":2,"total":2}}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/shipments
+    metadata:
+      title: Transit
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"},{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"path":"\/","per_page":"30","to":2,"total":2}}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/expired-shipments
+    metadata:
+      title: Expired
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Size per page. Default to 30.'
+        required: false
+        example: 30
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"},{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}]}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/pending-shipments
+    metadata:
+      title: Pending
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Size per page. Default to 30.'
+        required: false
+        example: 30
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"},{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}]}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/completed-shipments
+    metadata:
+      title: Completed
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Size per page. Default to 30.'
+        required: false
+        example: 30
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"},{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}]}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/pending-quote-shipments
+    metadata:
+      title: 'Pending quote shipment'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: ''
+        required: true
+        example: 18
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/snooze-shipments
+    metadata:
+      title: 'Snooze Shipment v2'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: ''
+        required: false
+        example: 8
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 401
+        content: '{"message":"Unauthenticated."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+        description: null
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/shipments/search
+    metadata:
+      title: 'Search customer order'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      q:
+        name: q
+        description: ''
+        required: false
+        example: nostrum
+        type: string
+        custom: []
+      tab:
+        name: tab
+        description: 'Tab can be expired, pending, completed, shipments.'
+        required: false
+        example: completed
+        type: string
+        custom: []
+      order:
+        name: order
+        description: 'desc or asc.'
+        required: true
+        example: desc
+        type: string
+        custom: []
+      sort:
+        name: sort
+        description: 'desc or asc.'
+        required: true
+        example: eta
+        type: string
+        custom: []
+      per_page:
+        name: per_page
+        description: ''
+        required: true
+        example: 30
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"name":"Miss Kaya Aufderhar","email":"turcotte.cole@example.org","updated_at":"2022-09-09T16:24:53.000000Z","created_at":"2022-09-09T16:24:53.000000Z","id":548,"customers_api":[]},{"name":"Karson Toy II","email":"maryse63@example.org","updated_at":"2022-09-09T16:24:53.000000Z","created_at":"2022-09-09T16:24:53.000000Z","id":549,"customers_api":[]}]}'
+        headers: []
+        description: '0'
+      -
+        status: 404
+        content: |-
+          {
+             "status":"Abort"
+          }
+        headers: []
+        description: '404'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v2/shipment/{id}'
+    metadata:
+      title: 'Get Shipment Details'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'Shipment ID'
+        required: true
+        example: 12
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v2/shipment-po
+    metadata:
+      title: 'Find By Reference Number'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      po_number:
+        name: po_number
+        description: required.
+        required: false
+        example: 483324
+        type: integer
+        custom: []
+    bodyParameters:
+      po_number:
+        name: po_number
+        description: ''
+        required: true
+        example: veniam
+        type: string
+        custom: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "status": "ok"
+          }
+        headers: []
+        description: '200'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/client/shipment/do/download/{id}'
+    metadata:
+      title: 'Downloadable File DO'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: ''
+        required: true
+        example: 15
+        type: integer
+        custom: []
+      shifl_ref:
+        name: shifl_ref
+        description: 'Pdf file name'
+        required: true
+        example: quas
+        type: string
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+               "success": ""
+          }
+        headers: []
+        description: '200'
+      -
+        status: 404
+        content: |-
+          "message": "File does not exist."
+          }
+        headers: []
+        description: '404{'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/main/shipments/{shipment_id}'
+    metadata:
+      title: 'Get shipment'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      shipment_id:
+        name: shipment_id
+        description: 'The shipment ID'
+        required: true
+        example: 10
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"},{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}]}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v4/pending-quote-shipments
+    metadata:
+      title: 'Pending Quote'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Size per page. Default to 30.'
+        required: false
+        example: 30
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"},{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}]}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v4/pending-shipments
+    metadata:
+      title: Pending
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters:
+      per_page:
+        name: per_page
+        description: 'Size per page. Default to 30.'
+        required: false
+        example: 30
+        type: integer
+        custom: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"},{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}]}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v4/shipments
+    metadata:
+      title: Transit
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":[{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"},{"id":2,"po_num":null,"mbl_num":null,"type":null,"term":null,"shipment_status":"Cancelled","shifl_ref":"60717","etd":"2020-01-24T00:00:00.000000Z","eta":"2020-02-08T00:00:00.000000Z","custom_notes":"SHIPMENT CANCELLED","total_cbm":null,"total_kg":null,"total_cartons":null,"suppliers_group":"[]","created_at":"2020-01-08T00:35:22.000000Z","updated_at":"2020-03-09T23:23:22.000000Z"}],"links":{"first":"\/?page=1","last":"\/?page=1","prev":null,"next":null},"meta":{"current_page":1,"from":1,"last_page":1,"path":"\/","per_page":"30","to":2,"total":2}}'
+        headers: []
+        description: '0'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []

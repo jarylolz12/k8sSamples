@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "kubernetes://schema/v1%40service": "file:///home/zje-arr/shifl/shifl_staging_new/k8s/maildev_deployment.yml"
+    }
+}

@@ -1,0 +1,192 @@
+name: 'Customer Admin'
+description: |-
+
+  APIs to manage the customer admin resource
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: 'api/customer-admins/{customer_id}'
+    metadata:
+      title: 'Display the specified resource.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      customer_id:
+        name: customer_id
+        description: 'Customer ID'
+        required: true
+        example: 8
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":1,"name":"Anthony Abadicio","email":"anthony@shifl.com","created_at":null,"updated_at":null,"forgot_password_verification_code":null,"forgot_password_verification_code_created_at":null,"is_forgot_password_requested":0,"report_recipients":null,"shifl_office_id":null,"phone":null,"has_access_to_central_app":1,"has_access_to_trucking_app":0,"default_customer_id":null,"notification_token":null,"ach_report_recipients":null},"success":"true","message":"Customer admin fetched successfully"}'
+        headers: []
+        description: '0'
+      -
+        status: 500
+        content: |-
+          {
+             "message": "Something went wrong"
+          }
+        headers: []
+        description: '500, Something went wrong'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: 'api/customer-admins-delete/{id}'
+    metadata:
+      title: 'Remove the specified resource from storage.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'Customer Admin ID'
+        required: true
+        example: 8
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+            "message": "User Deleted Successfully"
+          }
+        headers: []
+        description: '200'
+      -
+        status: 404
+        content: |-
+          {
+            "message": "User Doesn't exists"
+          }
+        headers: []
+        description: '404, User Doesn''t exists'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: '400, Unauthenticated'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/customer/invite-user-confirm
+    metadata:
+      title: 'User invitation confirm.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      companyId:
+        name: companyId
+        description: 'Customer ID'
+        required: true
+        example: 3
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":1,"name":"Anthony Abadicio","email":"anthony@shifl.com","created_at":null,"updated_at":null,"forgot_password_verification_code":null,"forgot_password_verification_code_created_at":null,"is_forgot_password_requested":0,"report_recipients":null,"shifl_office_id":null,"phone":null,"has_access_to_central_app":1,"has_access_to_trucking_app":0,"default_customer_id":null,"notification_token":null,"ach_report_recipients":null},"success":"true","message":"Invitation has been confirm."}'
+        headers: []
+        description: '0'
+      -
+        status: 500
+        content: |-
+          {
+             "message": "Something went wrong"
+          }
+        headers: []
+        description: '500, Something went wrong'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Invited user not found"
+          }
+        headers: []
+        description: '400, UserNotFound'
+    responseFields: []
+  -
+    httpMethods:
+      - POST
+    uri: api/customer/inviteUser
+    metadata:
+      title: 'Send user invitation for company.'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      companyId:
+        name: companyId
+        description: 'Customer ID'
+        required: true
+        example: 18
+        type: integer
+        custom: []
+    queryParameters: []
+    bodyParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"data":{"id":1,"name":"Anthony Abadicio","email":"anthony@shifl.com","created_at":null,"updated_at":null,"forgot_password_verification_code":null,"forgot_password_verification_code_created_at":null,"is_forgot_password_requested":0,"report_recipients":null,"shifl_office_id":null,"phone":null,"has_access_to_central_app":1,"has_access_to_trucking_app":0,"default_customer_id":null,"notification_token":null,"ach_report_recipients":null},"success":"true","message":"Invitation has been sent."}'
+        headers: []
+        description: '0'
+      -
+        status: 500
+        content: |-
+          {
+             "message": "Something went wrong"
+          }
+        headers: []
+        description: '500, Something went wrong'
+      -
+        status: 400
+        content: |-
+          {
+              "message": "Invited by user not found."
+          }
+        headers: []
+        description: '400, UserNotFound'
+    responseFields: []
