@@ -1,0 +1,212 @@
+@import '../../colors.scss';
+
+.add-user-dialog {
+    .v-card {
+        .v-card__text {
+            min-height: 100px;
+            padding: 24px;
+
+            .add-user-wrapper {
+                .add-user-info {
+                    .card-name {
+                        .card-title {
+                            color: $grey;
+                            font-size: 10px;
+                            text-transform: uppercase;
+                            font-family: 'Inter-SemiBold', sans-serif;
+                            margin-bottom: 3px;
+
+                            span {
+                                text-transform: capitalize !important;
+                            }
+                        }
+                    }
+                    
+                    .col {
+                        padding-bottom: 0 !important;
+                        padding-top: 5px;
+                    }
+                    .mark-as-warehouse-employee .v-input {
+                        margin-bottom: 4px;
+                    
+                        i {
+                            &.mdi-checkbox-blank-outline {
+                                width: 26px !important;
+                                // height: 26px !important;
+                                // padding: 3px !important;
+                    
+                                &::before {
+                                    content: '' !important;
+                                    background-image: url('/checkbox-empty-icon-1.svg') !important;
+                                    background-position: center !important;
+                                    background-repeat: no-repeat !important;
+                                    background-size: cover !important;
+                                    width: 16px !important;
+                                    height: 16px !important;
+                                }
+                            }
+                    
+                            &.mdi-checkbox-marked {
+                                width: 26px !important;
+                                // height: 26px !important;
+                                // padding: 3px !important;
+                    
+                                &::before {
+                                    content: '' !important;
+                                    background-image: url('/checkbox-filled-icon-1.svg') !important;
+                                    background-position: center !important;
+                                    background-repeat: no-repeat !important;
+                                    background-size: cover !important;
+                                    width: 16px !important;
+                                    height: 16px !important;
+                                }
+                            }
+                        }
+                    
+                        &.v-input--is-disabled {
+                            i {
+                                &.mdi-checkbox-marked {
+                                    &::before {
+                                        content: '' !important;
+                                        background-image: url('/checkbox-checked-disabled.svg') !important;
+                                        background-position: center !important;
+                                        background-repeat: no-repeat !important;
+                                        background-size: cover !important;
+                                        width: 16px !important;
+                                        height: 16px !important;
+                                    }
+                                }
+                            }
+                        }
+                        .v-input__control {
+                            background-color: white !important;
+
+                            .v-input__slot {
+                                min-height: 40px;
+                                // height: 40px;
+                                // max-width: 500px;
+                                min-width: 500px;
+                                flex-wrap: nowrap;
+                                background-color: white;
+
+                                fieldset {
+                                    border: 1px solid #B3CFE0;
+                                }
+
+                                .v-input--selection-controls__input {
+                                    margin-right: 6px;
+                                }
+
+                                .v-select__slot {
+                                    .v-select__selections {
+                                        min-height: 48px;
+                                        font-size: 14px;
+
+                                        .v-chip {
+                                            background: #f7f7f7;
+                                            background-color: #f7f7f7;
+                                            height: 24px;
+                                            border-radius: 4px;
+                                            border: 1px solid #EBF2F5;
+                                            padding: 0 8px;
+                                            font-size: 12px;
+                                            margin: 2px 4px 4px 0;
+
+                                            .v-chip__content {
+                                                color: #4a4a4a;
+
+                                                .name {
+                                                    white-space: nowrap;
+                                                    overflow: hidden;
+                                                    text-overflow: ellipsis;
+                                                    max-width: 275px;
+                                                }
+                                            }
+                                        }
+
+                                        .mdi-close-circle::before {
+                                            content: "\F0156";
+                                            color: #0171A1;
+                                            font-size: 16px;
+                                        }
+                                    }
+
+                                    .v-input__append-inner {
+                                        .v-icon {
+                                            &.mdi-close {
+                                                font-size: 20px;
+                                                color: #F93131 !important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        // &.v-autocomplete:not(.v-input--is-disabled).v-select.v-text-field input {
+                        //     display: none;
+                        // }
+
+                    }
+                    
+                }
+
+                .v-input {       
+                    font-size: 14px;
+                    color: $default-text-color;
+
+                    .v-input__control {
+                        background-color: $white;
+                    }
+
+                    .v-text-field__details {
+                        display: block;
+                        margin-bottom: 0;
+                        margin-top: 3px;
+                    }
+                }                
+            }
+        }
+
+        .v-card__actions {
+            button {
+                margin-right: 8px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .add-user-dialog {
+        margin: 0 !important;
+        height: 100%;
+        max-height: 100% !important;
+        background-color: #fff;
+
+        .v-card {
+            box-shadow: none !important;
+            
+            .v-card__text {
+                margin-bottom: 20px !important;
+                padding-top: 30px;
+
+                .add-user-wrapper {
+                    .add-user-info {
+                        .card-name {
+                            .card-title {
+                                font-size: 12px;
+                            }
+                        }
+                    }              
+                }
+            }
+
+            .v-card__actions {
+                position: relative !important;
+                width: 100%;
+                bottom: -1px;
+                padding: 8px;
+            }
+        }
+    }
+}

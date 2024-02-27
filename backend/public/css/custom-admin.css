@@ -1,0 +1,7 @@
+.nova-button-shipment {
+    border-block: aqua;
+    border: var(--primary);
+    border-style: solid;
+    border-bottom-style: inherit;
+    padding: 5px;
+}

@@ -1,0 +1,30 @@
+/** @format */
+
+@import "../../colors.scss";
+.mark-as-paid-notes-div {
+    .note-title {
+        margin-top: 24px;
+        margin-bottom: 6px !important;
+        text-transform: uppercase;
+        color: #819fb2;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 14px;
+    }
+    .note-textarea-field {
+        width: 657px;
+        height: 76px;
+        background: #ffffff;
+        border: 1px solid #b4cfe0;
+        border-radius: 4px;
+        .v-input__control {
+            height: 76px;
+        }
+    }
+}
+
+.file-selected-for-marked-as-payment {
+    margin-top: 24px;
+}

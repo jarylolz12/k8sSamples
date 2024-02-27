@@ -1,0 +1,41 @@
+@import '../../../assets/scss/colors.scss';
+
+.items-and-account-based-wrapper {
+    height: 100%;
+    box-shadow: none !important;
+
+    h3 {
+        font-size: 24px;
+        margin-bottom: 0;
+        color: #4a4a4a;
+    }
+
+    .v-sheet {
+        box-shadow: none !important;
+    }
+
+    .v-card {
+        border: 1px solid #EBF2F5;
+        border-bottom: none;
+        box-shadow: none !important;
+
+        .v-tabs {
+            .v-tab {
+                letter-spacing: 0;
+                text-transform: capitalize;
+                font-family: 'Inter-SemiBold', sans-serif;
+                color: $default-text-color !important;
+                font-size: 14px;
+                padding: 6px 24px;
+
+                &.v-tab--active {
+                    color: $dark-blue !important;
+                }
+            }
+        }
+
+        .v-divider {
+            border: 1px solid #EBF2F5;
+        }
+    }
+}

@@ -1,0 +1,58 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+$darkBlue: #0171A1;
+
+//font style mixin
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+.generic-table-wrapper {
+    .v-data-table__empty-wrapper {
+        display: table-row !important;
+    }
+    th {
+        @include fontStyles(600, 12);
+        padding-left: 12px !important;
+
+        &:nth-child(2) {
+            padding-left: 12px !important;
+        }
+    }
+    td {
+        &:first-child {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+        }
+        padding-left: 12px !important;
+        padding-right: 0px !important;
+        box-shadow: none !important;
+        border-bottom: 1px solid #EBF2F5 !important;
+        border-right: 1px solid #EBF2F5 !important;
+
+        &:last-child {
+            padding-right: 12px !important;
+        }
+
+    }
+
+    tr:hover {
+        background-color: transparent !important;
+    }
+    .pom-upload-document {
+        span {
+            @include fontStyles(500, 14);
+            color: $darkBlue;
+        }
+    }
+
+    .upload-document-bottom-wrapper {
+        padding: 12px !important;
+        border-bottom: 1px solid #EBF2F5 !important;
+        border-right: 1px solid #EBF2F5 !important;
+        border-left: 1px solid #EBF2F5 !important;
+    }
+
+}

@@ -1,0 +1,55 @@
+[{
+    "text": "Container #",
+    "align": "start",
+    "sortable": false,
+    "value": "container_num",
+    "fixed": true,
+    "textAlign": "left",
+    "width": "28.73%"
+},
+{
+    "text": "Size",
+    "align": "start",
+    "sortable": false,
+    "value": "size",
+    "fixed": true,
+    "textAlign": "left",
+    "width": "11.19%"
+},
+{
+    "text": "Volume",
+    "align": "start",
+    "sortable": false,
+    "textAlign": "right",
+    "value": "cbm",
+    "fixed": true,
+    "width": "18.65%"
+},
+{
+    "text": "Weight",
+    "align": "start",
+    "sortable": false,
+    "value": "kg",
+    "fixed": true,
+    "textAlign": "right",
+    "width": "18.65%"
+},
+{
+    "text": "Carton",
+    "align": "start",
+    "sortable": false,
+    "value": "cartons",
+    "textAlign": "right",
+    "fixed": true,
+    "width": "18.65%"
+},
+{
+    "text": "",
+    "align": "start",
+    "textAlign": "left",
+    "sortable": false,
+    "value": "action",
+    "fixed": true,
+    "width": "4.10%"
+}
+]

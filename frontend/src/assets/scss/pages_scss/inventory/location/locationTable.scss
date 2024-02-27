@@ -1,0 +1,109 @@
+.locations-desktop-wrapper {
+    position: relative;
+
+    .overlay {
+        &.show {
+            position: absolute;
+            top: 61px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff !important;
+            z-index: 200;
+            cursor: auto;
+
+            .preloader {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 3%;
+            }
+        }
+    }
+
+    .v-data-table {
+        &.inventory-table {
+            &.locations-table {
+                .v-data-table__wrapper {
+                    // height: calc(100vh - 338px);
+                    overflow-y: auto;
+                    overflow-x: hidden;
+
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    &:nth-child(2) {
+                                        padding-left: 0;
+                                    }
+                                }
+                            }
+                        }
+
+                        tbody {
+                            tr {
+                                td {
+                                    &:nth-child(2) {
+                                        padding-left: 0;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .state-for-tabs {
+                    .v-input {
+                        .v-input__control {
+                            .v-input__slot {
+                                
+                                min-height: 40px;
+                                height: 40px;
+                                width: min-content;
+                                background-color: white;
+                                .v-select__slot {
+                                    .v-select__selections {
+                                        min-height: 48px;
+                                        background-color: transparent;
+                                    }
+                
+                                    // .v-input__append-inner {
+                                    //     display: none;
+                                    // }
+                                }
+                            }
+                        }
+                    }
+                }
+        
+                // &.no-data-table {
+                //     .v-data-table__wrapper {
+                //         // height: calc(100vh - 300px) !important;
+                //         height: calc(100vh - 283px) !important;
+                //     }
+                // }
+        
+                // &.no-current-pagination {
+                //     .v-data-table__wrapper {
+                //         // height: calc(100vh - 300px) !important;
+                //         height: calc(100vh - 283px) !important;
+                //     }
+                // }
+            }
+        }        
+    }
+}
+.v-menu__content {
+    &.outbound-lists-menu {
+        .v-list {
+            .v-list-item {
+                &.warehouse-3pl-hidden {
+                    display: none;
+                }
+            }
+
+            // .lists-separator {
+            //     display: none;
+            // }
+        }
+    }
+}

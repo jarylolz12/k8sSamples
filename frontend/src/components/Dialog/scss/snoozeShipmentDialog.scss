@@ -1,0 +1,46 @@
+
+.snooze-shipment-dialog {
+	.body-text {
+		& > {
+		
+			div:first-child {
+				font-family: 'Inter', sans-serif !important;
+				font-size: 14px;
+				font-weight: 400;
+				color: $dark-grey;
+				padding-top: 24px;
+				padding-bottom: 24px;
+			}
+			div:nth-child(2) {
+				color: $grey;
+				font-family: 'Inter', sans-serif !important;
+				font-size: 14px;
+				font-weight: 400;
+				text-transform: uppercase;
+			}
+
+		}		
+	}
+
+	.headline {
+		.snooze-shipment-title {
+			font-family: 'Inter', sans-serif !important;
+			font-size: 20px;
+			font-weight:  600;
+			color: $default-text-color;
+		}
+	}
+
+	.snooze-shipment-action-wrapper-mobile {
+		position: sticky !important;
+		padding: 8px 24px !important;
+	}
+
+	.date-picker-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding-top: 12px;
+		padding-bottom: 12px;
+	}
+}

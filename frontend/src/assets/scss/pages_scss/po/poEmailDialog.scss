@@ -1,0 +1,118 @@
+@import '../../colors.scss';
+
+.email-dialog {
+    .email-dialog-card {
+        .v-card__text {
+            padding: 20px;
+
+            .email-title {
+                font-size: 10px;
+                color: #819FB2;
+                text-transform: uppercase;
+                font-family: 'Inter-SemiBold', sans-serif;
+                margin-bottom: 0 !important;
+            }
+
+            .email-data {
+                margin-bottom: 0px;
+            }
+
+            .separate-info {
+                color: #819FB2;
+                font-size: 12px;
+            }
+
+            .tags-email-wrapper {                
+                .vue-tags-input {
+                    max-width: 100% !important;
+                    width: 100%;
+
+                    .ti-input {
+                        border: 1px solid $light-grey !important;
+                        border-radius: 4px;
+                        min-height: 45px;
+                        font-size: 14px;
+
+                        &::placeholder {
+                            color: $light-grey !important;
+                        }
+
+                        .ti-tags {
+                            .ti-tag {
+                                border-radius: 4px !important;
+                                font-family: 'Inter-Medium', sans-serif;
+                                padding: 3px 10px !important;
+                                line-height: 1;
+                                height: 30px;
+                                background-color: $table-hover-background !important;
+                                border: 1px solid $light-border;
+                                color: $dark-grey !important;
+                                // margin: 6px 2px 2px 2px;
+                                min-width: 75px;
+                                justify-content: space-between;
+                                align-items: center;
+                                font-size: 12px;
+                            }                      
+                        
+                            .ti-new-tag-input-wrapper {
+                                margin: 0;
+                                padding: 0 5px;
+
+                                input {
+                                    font-size: 14px !important;
+
+                                    &.ti-new-tag-input {
+                                        flex: 1 1 auto;
+                                        line-height: 20px;
+                                        padding: 8px 0 8px;
+                                        max-width: 100%;
+                                        min-width: 0px;
+                                        width: 100%;
+
+                                        &::placeholder {
+                                            color: $light-grey !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }                        
+                
+                        &.ti-new-tag-input-error {
+                            border: 1px solid $red !important;
+                        }
+
+                        .t-new-tag-input-text-error {
+                            color: $red !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .v-card__actions {
+            button {
+                margin-right: 8px;
+            }
+        }
+    }
+
+    .v-autocomplete__content.v-menu__content {
+        border-radius: 4px !important;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .email-dialog {
+        margin: 16px;
+        
+        .email-dialog-card {
+            .v-card__text {
+                margin-bottom: 5px !important;
+            }
+
+            .v-card__actions {
+                position: unset !important;
+            }
+        }
+    }
+}

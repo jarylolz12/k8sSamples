@@ -1,0 +1,284 @@
+
+.report-details-wrapper {    
+    height: 100%;
+    background-color: #fff !important;
+    border: none !important;
+    border-radius: 4px;
+
+    &.is-loading-wrapper {
+        background-color: transparent !important;
+
+        .loading-wrapper {
+            width: 100%;
+            min-height: 200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .report-main-header {
+        background-color: #F1F6FA !important;
+        padding-bottom: 24px;
+
+        .v-breadcrumbs {
+            li {
+                &.v-breadcrumbs__divider {
+                    padding: 0 6px;
+                }
+    
+                a {
+                    color: #4a4a4a;
+                    font-size: 12px;
+                    text-decoration: none;
+                    font-family: "Inter-Medium", sans-serif;
+    
+                    &.v-breadcrumbs__item--disabled {
+                        color: #6d858f!important;
+                    }
+                }
+            }
+        }
+
+        .report-details-header {
+            .report-title {
+                height: 40px;
+                margin-right: 8px;
+                color: #4a4a4a;
+                line-height: 0;
+                letter-spacing: 0;
+                font-family: 'Inter-Medium', sans-serif !important;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+    
+                .report-title {
+                    font-family: 'Inter-Medium', sans-serif !important;
+                    font-size: 24px !important;
+                }
+    
+                .v-chip {
+                    font-size: 12px;
+                    height: 28px;
+                    text-transform: capitalize !important;
+    
+                    .v-chip__content {					
+                        font-family: 'Inter-Regular', sans-serif;
+                    }
+    
+                    &.draft {
+                        background-color: #fff !important;
+                        border: 1px solid #EBF2F5;
+                        color: #819FB2 !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .v-card {
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+
+        .v-card__text {
+            padding-bottom: 24px;
+            color: #4a4a4a;
+
+            .form-label {
+                font-size: 12px !important;
+                color: #819fb2 !important;
+                font-family: "Inter-SemiBold", sans-serif !important;
+                text-transform: uppercase;
+                margin-bottom: 5px;
+                letter-spacing: 0 !important;
+                line-height: 18px;
+            }
+
+            .subtitle-1 {
+                font-family: "Inter-Regular", sans-serif !important;
+                color: #4a4a4a;
+                font-size: 14px !important;
+            }
+        }
+
+        .v-toolbar {
+            border: 1px solid #EBF2F5;
+            border-left: none;
+            border-right: none;
+            font-family: 'Inter-Regular', sans-serif;
+            height: 56px !important;
+
+            .v-toolbar__content {
+                height: 56px !important;
+
+                .v-tabs {
+                    .v-tab {
+                        letter-spacing: 0;
+                        text-transform: capitalize;
+                        font-family: "Inter-SemiBold" ,sans-serif;
+                        color: #4a4a4a;
+                        font-size: 14px;
+    
+                        &.v-tab--active {
+                            color: #0171a1;
+                        }
+                    }
+                }
+            }            
+        }
+        .header-text{
+            font-size: 16px !important;
+        }
+        .table-body-common::after{
+            content: '';
+            display: table-row;
+            height: 24px;
+        }
+        .table-body-common::before{
+            content: '';
+            display: table-row;
+            height: 24px;
+        }
+    }
+
+    &.balance-sheet {      
+        .v-data-table {
+            .v-data-table__wrapper {
+                table {
+                    tbody {
+                        padding: 16px;
+
+                        tr {
+                            &:hover {
+                                background-color: #fff !important;
+                                cursor: pointer;
+                            }
+
+                            &.v-data-table__expanded__content {
+                                box-shadow: none !important;
+
+                                td {                                    
+                                    padding: 0;
+                                }
+                            }
+
+                            td {
+                                .v-data-table__expand-icon {
+                                    margin-left: 24px;
+                                    color: #0171A1;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.balance-sheet-table-content,
+            &.balance-sheet-table-inner-content {
+                .v-data-table__wrapper {
+                    table {
+                        thead {
+                            visibility: collapse;
+                        }
+
+                        tbody {
+                            tr {
+                                &.v-data-table__expanded__content {
+                                    box-shadow: none !important;
+                                    padding: 0;
+                                }                                                             
+
+                                &:last-child {
+                                    td {
+                                        border: none !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.balance-sheet-table-inner-content {
+                .v-data-table__wrapper {
+                    table {
+                        tbody {
+                            tr {
+                                td {
+                                    &.has-value {
+                                        border-bottom: 1px solid #EBF2F5 !important;
+                                    }
+                                }
+
+                                &:last-child {
+                                    td {
+                                        border: none !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.general-ledger {      
+        .v-data-table {
+            .v-data-table__wrapper {
+                table {
+                    thead {
+                        tr {
+                            th {
+                                font-size: 12px;
+                                text-transform: uppercase;
+                                color: #6D858F;
+                                border-bottom: none !important;
+                                background-color: #F7F7F7;
+                                padding: 8px 12px;
+                                font-family: 'Inter-Regular', sans-serif;
+                                box-shadow: none !important;
+                                height: 40px;
+
+                                &:first-child {
+                                    padding-left: 18px;
+                                }
+
+                                &:last-child {
+                                    padding-right: 18px;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            td {
+                                padding: 8px 12px !important;
+                                height: 38px;
+
+                                &:first-child {
+                                    padding-left: 18px !important;
+                                }
+
+                                &:last-child {
+                                    padding-right: 18px !important;
+                                }
+
+                                &.opening-balance-header {
+                                    text-transform: uppercase;
+                                    font-size: 12px;
+                                    color: #6D858F;
+                                }
+
+                                &.font-12 {
+                                    font-size: 12px !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

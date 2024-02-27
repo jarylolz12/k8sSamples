@@ -1,0 +1,325 @@
+/** @format */
+
+@import "../../colors.scss";
+.manage-payment-methods-wrapper {
+    font-family: "Inter-Regular", sans-serif;
+    background-color: #fff;
+    // padding: 24px;
+
+    .v-data-table {
+        &.methods-table {
+            border-radius: 0;
+            box-shadow: none !important;
+            .tab-name {
+                border-bottom: 2px solid #ebf2f5;
+                .tab-method {
+                    padding: 20px 24px;
+                    color: $default-text-color;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+            .v-data-table__wrapper {
+                // height: calc(100vh - 150px);
+                // height: calc(100vh - 245px);
+                // padding: 0;
+                padding: 0 24px;
+                table {
+                    border-bottom: none !important;
+                    border-top: none !important;
+                    box-shadow: none !important;
+                    thead {
+                        tr {
+                            th {
+                                padding: 11px 20px !important;
+                                color: $grey !important;
+                                text-transform: uppercase;
+                                font-size: 12px;
+                                border-bottom: 2px solid $divider-bg !important;
+                                // border-top: 2px solid $divider-bg !important;
+                                box-shadow: none;
+                            }
+                        }
+                    }
+                    tbody {
+                        tr {
+                            td {
+                                padding: 16px 20px 16px 25px !important;
+                                color: $default-text-color;
+                                border-bottom: 1px solid $divider-bg !important;
+                                small {
+                                    color: $dark-grey !important;
+                                    font-size: 14px;
+                                }
+                                .manage-action-buttons {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    align-items: center;
+                                    .icons {
+                                        padding: 10px 12px !important;
+                                        min-width: 30px !important;
+                                        margin-left: 8px;
+                                    }
+                                }
+                                .card-number-wrapper {
+                                    display: flex;
+                                    justify-content: flex-start;
+                                    align-items: flex-start;
+                                    img {
+                                        margin-right: 8px;
+                                    }
+                                    .name {
+                                        color: $dark-grey;
+                                    }
+                                }
+                            }
+                            // &:last-child {
+                            //     td {
+                            //         border-bottom: none !important;
+                            //     }
+                            // }
+                            &:hover {
+                                background-color: $table-hover-background !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.no-data-table {
+            .v-data-table__wrapper {
+                // max-height: calc(100vh);
+                height: calc(100vh - 246px);
+                overflow-y: auto;
+                overflow-x: hidden;
+                table {
+                    thead {
+                        display: none;
+                    }
+                    tbody {
+                        tr {
+                            &:hover {
+                                background-color: $white !important;
+                            }
+                            td {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                height: 100%;
+                                border-bottom: none !important;
+                                .no-data-wrapper,
+                                .no-data-preloader {
+                                    // height: calc(100vh - 300px);
+                                    overflow: hidden;
+                                    padding: 15px;
+                                }
+                                .no-data-wrapper {
+                                    .no-data-heading {
+                                        margin-top: 20px;
+                                        h3 {
+                                            margin: 10px 0;
+                                            font-size: 20px;
+                                            color: $default-text-color;
+                                        }
+                                        p {
+                                            font-size: 14px;
+                                            color: $dark-grey;
+                                            width: 480px;
+                                            margin: 0 auto;
+                                        }
+                                        .payment-btn {
+                                            margin-left: 150px;
+                                            margin-top: 15px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .v-tabs {
+        &.payment-method-tabs {
+            border-bottom: none !important;
+            border-top-left-radius: 4px !important;
+            border-top-right-radius: 4px !important;
+            .v-tabs-bar {
+                height: 80px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 24px;
+                border-bottom: 2px solid #EBF2F5 !important;
+                .v-slide-group__wrapper {
+                    border-right: 1px solid #ebf2f5;
+                    // margin-bottom: 13px;
+                    margin-bottom: 0;
+                    .v-slide-group__content {
+                        align-items: center;
+                        .v-tabs-slider-wrapper {
+                            display: none;
+                        }
+                        .v-tab {
+                            font-size: 12px !important;
+                            padding: 6px 12px;
+                            text-transform: capitalize !important;
+                            letter-spacing: 0;
+                            font-family: "Inter-Regular", sans-serif;
+                            color: $default-text-color !important;
+                            border: 1px solid #b4cfe0;
+                            height: 40px;
+                            font-weight: 600;
+                            &.v-tab--active {
+                                background-color: #ebf2f5 !important;
+                                color: $dark-blue !important;
+                                // font-weight: 600;
+                            }
+                            &.tab-pm-cc {
+                                border-radius: 4px 0px 0px 4px;
+                            }
+                            &.tab-pm-ach {
+                                border-radius: 0px 4px 4px 0px;
+                                border-left: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+    .manage-payment-methods-wrapper {
+        font-family: "Inter-Regular", sans-serif;
+        .v-data-table {
+            &.methods-table {
+                .tab-name {
+                    border-bottom: 2px solid $divider-bg;
+                    .tab-method {
+                        padding: 16px;
+                        h3 {
+                            font-size: 18px;
+                        }
+                    }
+                }
+                .v-data-table__wrapper {
+                    height: calc(100vh - 287px);
+                    padding: 0;
+                    table {
+                        thead {
+                            display: none;
+                        }
+                        tbody {
+                            tr {
+                                td {
+                                    border-bottom: none !important;
+                                    padding: 14px 12px 0 !important;
+                                    .v-data-table__mobile-row__header {
+                                        display: none;
+                                    }
+                                    .v-data-table__mobile-row__cell {
+                                        text-align: left;
+                                        width: 100%;
+                                        span {
+                                            color: $dark-grey;
+                                        }
+                                        .card-number-wrapper {
+                                            justify-content: space-between;
+                                            .card-number-content {
+                                                display: flex;
+                                                justify-content: flex-start;
+                                                align-items: center;
+                                                width: 95%;
+                                                .card-type {
+                                                    width: 74px;
+                                                }
+                                                .card {
+                                                    font-size: 14px;
+                                                    font-family: "Inter-SemiBold", sans-serif;
+                                                }
+                                            }
+                                        }
+                                        .date-wrapper-mobile {
+                                            width: 100%;
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: center;
+                                            padding-left: 61px;
+                                            .content-wrapper {
+                                                width: 43%;
+                                                span {
+                                                    font-size: 12px;
+                                                }
+                                                p {
+                                                    font-size: 14px;
+                                                    margin-bottom: 0;
+                                                }
+                                            }
+                                        }
+                                        .manage-action-buttons {
+                                            padding-left: 61px;
+                                            justify-content: flex-start;
+                                            button {
+                                                margin-right: 8px;
+                                                margin-left: 0;
+                                            }
+                                        }
+                                    }
+                                    &:nth-child(1n + 2) {
+                                        padding: 5px 25px 6px !important;
+                                    }
+                                    &:nth-child(1n + 4) {
+                                        display: none;
+                                    }
+                                    &:nth-child(3) {
+                                        border-bottom: 1px solid $divider-bg !important;
+                                        padding-bottom: 18px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.no-data-table {
+                    .v-data-table__wrapper {
+                        table {
+                            tbody {
+                                tr {
+                                    td {
+                                        .no-data-wrapper {
+                                            .no-data-heading {
+                                                margin-top: 20px;
+                                                h3 {
+                                                    font-size: 18px;
+                                                }
+                                                p {
+                                                    width: 100% !important;
+                                                }
+                                                button {
+                                                    margin-top: 20px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .v-tabs {
+            &.payment-method-tabs {
+                .v-tabs-bar {
+                    margin: 0 !important;
+                    padding: 0 16px !important;
+                }
+            }
+        }
+    }
+}

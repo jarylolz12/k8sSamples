@@ -1,0 +1,51 @@
+@import '../../../../../assets/scss/colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+$fontFamilyRegular: 'Inter', sans-serif !important;
+.confirm-role-dialog-success {
+	
+	.v-card__text {
+		border-bottom: 0px solid $white;
+		h2 {
+			font-family: $fontFamilyRegular;
+			font-weight: 600;
+			font-size: 20px;
+			padding-top: 8px;
+            line-height: 30px;
+			padding-bottom: 8px;
+			color: $default-text-color;
+		}
+
+		p {
+			font-family: $fontFamilyRegular;
+			font-weight: 400;
+			font-size: 14px;
+			padding-bottom: 8px;
+			color: $default-text-color;
+		}	
+	}
+	.v-card__actions {
+		.footer {
+			button {
+				margin-right: 8px;
+			}
+		}
+
+        border-top: 0px solid transparent !important;
+
+        //mobile
+        @media (min-width: 100px) {
+            position: relative !important;
+        }
+        //desktop and larger devices
+        @media (min-width: 769px) {
+            position: sticky !important;
+        }
+	}
+
+    #confirm-role-dialog-title {
+        padding: 24px 24px 8px 24px !important;
+        border-bottom: 0px solid transparent !important;
+    }
+
+}

@@ -1,0 +1,113 @@
+@import '../../colors.scss';
+
+.track-shipment-dialog {
+    .track-shipment-card {
+        .v-card__text {
+            padding: 24px !important;
+
+            .track-shipment-information {
+                p {
+                    color: $dark-grey;
+                    font-size: 14px;
+                    margin-bottom: 5px;
+                }
+            }
+
+            .track-shipment-content {
+                margin-bottom: 10px;
+
+                .contents {
+                    .content-title {
+                        font-size: 10px;
+                        text-transform: uppercase;
+                        margin-bottom: 3px;
+                        font-family: 'Inter-SemiBold', sans-serif;
+                        color: $grey;
+
+                        span {
+                            text-transform: capitalize !important;
+                        }
+                    }
+
+                    .v-input {
+                        .v-input__control {
+                            .v-text-field__details {
+                                display: block !important;
+                            }
+                        }
+                    }
+
+                    .vue-tags-input {
+                        max-width: 100% !important;
+                        width: 100%;
+    
+                        .ti-input {
+                            border: 1px solid $light-grey !important;
+                            border-radius: 4px;
+                            min-height: 45px;
+                            font-size: 14px;
+    
+                            &::placeholder {
+                                color: $light-grey !important;
+                            }
+    
+                            .ti-tags {
+                                padding-left: 2px !important;
+
+                                .ti-tag {
+                                    border-radius: 4px !important;
+                                    font-family: 'Inter-Medium', sans-serif;
+                                    padding: 3px 10px !important;
+                                    line-height: 1;
+                                    height: 30px;
+                                    background-color: $table-hover-background !important;
+                                    border: 1px solid $light-border;
+                                    color: $dark-grey !important;
+                                    min-width: 75px;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    font-size: 12px;
+                                }                      
+                            
+                                .ti-new-tag-input-wrapper {
+                                    margin: 0;
+                                    padding: 0 5px;
+    
+                                    input {
+                                        font-size: 14px !important;
+    
+                                        &.ti-new-tag-input {
+                                            flex: 1 1 auto;
+                                            line-height: 20px;
+                                            padding: 8px 0 8px;
+                                            max-width: 100%;
+                                            min-width: 0px;
+                                            width: 100%;
+    
+                                            &::placeholder {
+                                                color: $light-grey !important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) { 
+    .track-shipment-dialog {
+        margin: 0 !important;
+        height: 100%;
+        max-height: 100% !important;
+        background-color: $white;
+        
+        .track-shipment-card {
+            box-shadow: none !important;
+        }
+    }
+}

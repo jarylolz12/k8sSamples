@@ -1,0 +1,140 @@
+/** @format */
+
+@import "../../colors.scss";
+.sales-orders-wrapper {
+    padding: 24px;
+    font-family: "Inter-Regular", sans-serif;
+    height: 100%;
+    .loading-wrapper {
+        width: 100%;
+        height: calc(100vh - 330px);
+        padding-top: 50px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    /* Dialog */
+    .v-dialog {
+        &.po-dialog {
+            margin: 0;
+            height: 100%;
+            max-height: 100% !important;
+            background-color: $white;
+            .po-dialog-card {
+                box-shadow: none !important;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1023px) {
+    .sales-orders-wrapper {
+        padding: 0;
+        .v-data-table {
+            &.pos-table-mobile {
+                box-shadow: none !important;
+                background-color: $light-white !important;
+                .v-toolbar {
+                    background-color: $light-white !important;
+                    height: 72px !important;
+                    .v-toolbar__content {
+                        height: 72px !important;
+                        .v-toolbar__title {
+                            font-size: 20px;
+                            font-family: "Inter-SemiBold", sans-serif;
+                            color: $default-text-color;
+                        }
+                    }
+                }
+                .search-component {
+                    width: 100%;
+                    padding: 16px;
+                    border-bottom: 2px solid $light-white;
+                    background-color: $white !important;
+                    .v-input {
+                        .v-input__control {
+                            .v-input__slot {
+                                width: 100% !important;
+                            }
+                        }
+                    }
+                }
+                .v-data-table__wrapper {
+                    max-height: calc(100vh - 270px);
+                    table {
+                        background-color: $white;
+                        margin-bottom: 5px;
+                        thead {
+                            display: none;
+                        }
+                        tbody {
+                            .v-data-table__mobile-row__header {
+                                display: none;
+                            }
+                            .v-data-table__mobile-row {
+                                border: none !important;
+                                min-height: auto;
+                                &:nth-child(1),
+                                &:nth-child(3) {
+                                    padding: 16px 16px 4px 16px;
+                                }
+                                &:nth-child(4) {
+                                    padding-bottom: 20px;
+                                }
+                                &:nth-child(1n + 4) {
+                                    border-bottom: 2px solid $light-white !important;
+                                }
+                                &:nth-child(1n + 5) {
+                                    display: none;
+                                }
+                                .v-data-table__mobile-row__cell {
+                                    width: 100%;
+                                    text-align: start;
+                                    .po-row {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+                                        .p-gray {
+                                            font-family: "Inter-SemiBold", sans-serif;
+                                            color: $default-text-color;
+                                        }
+                                        .p-light-gray {
+                                            color: $dark-grey;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.no-data-table {
+                box-shadow: none !important;
+                .v-data-table__wrapper {
+                    table {
+                        tbody {
+                            tr {
+                                td {
+                                    .no-data-wrapper {
+                                        height: calc(100vh - 300px);
+                                        .no-data-heading {
+                                            padding-top: 30px;
+                                            h3 {
+                                                margin: 10px 0;
+                                                color: #4a4a4a;
+                                            }
+                                            p {
+                                                width: 100% !important;
+                                                color: #6d858f;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

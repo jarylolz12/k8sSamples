@@ -1,0 +1,32 @@
+[{
+    "text": "Size",
+    "align": "start",
+    "sortable": false,
+    "value": "size",
+    "fixed": true,
+    "width": "50%"
+},
+{
+    "text": "",
+    "align": "start",
+    "sortable": false,
+    "value": "minus",
+    "fixed": true,
+    "width": "9.75%"
+},
+{
+    "text": "How Many",
+    "align": "start",
+    "sortable": false,
+    "value": "how_many",
+    "fixed": true,
+    "width": "30.48%"
+},
+{
+    "text": "",
+    "align": "start",
+    "sortable": false,
+    "value": "plus",
+    "fixed": true,
+    "width": "9.75%"
+}]

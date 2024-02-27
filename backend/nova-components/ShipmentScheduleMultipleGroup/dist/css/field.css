@@ -1,0 +1,39 @@
+.shipment-schedule-multiple-group {
+  padding-top: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid black;
+}
+
+.shipment-schedule-multiple-group > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 15px;
+}
+
+.shipment-schedule-multiple-group > div > label {
+  width: 40%;
+  padding-top: 5px;
+}
+
+.shipment-schedule-multiple-group > div > div {
+  width: 60%;
+}
+
+#shipment-schedule-multiple-group-submit-group ~ .text-danger {
+  display: none !important;
+}
+
+.shipment-error-group {
+  border: 1px solid red;
+}
+
+.customErrorMessages {
+  padding-top: 10px;
+}
+
+.customErrorMessages > div {
+  color: var(--danger);
+  padding-bottom: 10px;
+}
+

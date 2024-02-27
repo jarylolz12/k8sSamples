@@ -1,0 +1,136 @@
+@import '../../colors.scss';
+
+.pending-dropdown-container {
+	width: 185px;
+
+	.v-list {
+		padding: 8px 0;
+
+		.v-list-item {
+			width: 100%;
+			padding: 0 18px;
+			min-height: 40px;
+	
+			.v-list-item__title {
+				cursor: pointer;
+				font-family: 'Inter-Medium', sans-serif;
+			}
+	
+			// &:hover::before {
+			// 	opacity: 0.04;
+			// }
+
+			&:hover {
+				background-color: #f7f7f7;
+			}
+		}
+	}	
+	
+	.cancel-request-wrapper {
+		& > div {
+			color: $dark-red;	
+		}		
+	}
+
+	&.pending-quote {
+		width: 220px;
+	}
+}
+.shipment-tabs-pending-main-wrapper {
+	.mode-wrapper {
+		width: 70%;
+		justify-content: normal;
+		padding-left:  6px;
+	}
+
+	.snooze-items {
+	    color: $orange;
+	}
+
+	.pending-quote-actions-btn {
+	    color: #0171A1 !important; 
+	    text-transform: none; 
+		font-family: 'Inter-Medium', sans-serif !important; 
+	    font-size: 12px !important;
+	    border-radius: 4px !important;
+		border: 1px solid #B4CFE0 !important;
+		height: 36px !important;
+		min-width: 40px !important;
+		padding: 0 10px !important;
+
+		&.unsnooze {
+			.v-btn__content {
+				padding-left: 0;
+			}
+		}
+
+		.v-btn__content {
+			padding-left: 2px;
+			font-family: 'Inter-Medium', sans-serif !important; 
+
+			span {				
+				font-family: 'Inter-Medium', sans-serif !important; 
+			}
+		}
+
+		&.view {
+			.v-btn__content {
+				padding-left: 0;
+			}
+		}
+
+		&.edit {
+			padding: 0 8px;
+		}
+	}
+
+	.three-dots-container {
+	    width: 36px;
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    height: 36px;
+	    border: 1px solid #b4cfe0;
+	    background-color: #fff;
+	    border-radius: 4px;
+	    position: relative;
+		margin-left: 8px;
+
+		svg {
+			width: 20px;
+			height: 4px;
+		}
+	}
+
+	.pending-quote-actions-wrapper {
+	    display: flex;
+	    justify-content: flex-end;
+
+		.shipment-mode-type{
+			align-items: center;
+			gap: 4px;
+		}
+		.v-tooltip {
+	    	display: block;
+		}
+		
+		& > {
+			button {
+			    width:  1px;
+			    height:  1px;
+			    background-color: transparent;
+			}
+		}
+	}	
+}
+
+@media screen and (max-width: 768px) {
+	.shipment-tabs-pending-main-wrapper {
+		.three-dots-container {
+			width: 30px !important;
+			height: 28px !important;
+		}
+	}
+}
+
+

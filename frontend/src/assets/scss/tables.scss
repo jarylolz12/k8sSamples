@@ -1,0 +1,169 @@
+@import './colors.scss';
+
+body {
+    .v-application {
+        .v-data-table {
+            .v-data-table__wrapper {
+                table {
+                    thead {
+                        i {
+                            &.mdi-checkbox-blank-outline {
+                                width: 26px !important;
+                                // height: 26px !important;
+                                padding: 3px !important;
+    
+                                &::before {
+                                    content: '' !important;
+                                    background-image: url('/checkbox-empty-icon-1.svg') !important;
+                                    background-position: center !important;
+                                    background-repeat: no-repeat !important;
+                                    background-size: cover !important;
+                                    width: 16px !important;
+                                    height: 16px !important;
+                                }
+                            }
+    
+                            &.mdi-minus-box {
+                                width: 26px !important;
+                                // height: 26px !important;  
+                                padding: 3px !important;
+    
+                                &::before {
+                                    content: '' !important;
+                                    background-image: url('/checkbox-minus-filled-1.svg') !important;
+                                    background-position: center !important;
+                                    background-repeat: no-repeat !important;
+                                    background-size: cover;
+                                    width: 16px !important;
+                                    height: 16px !important;
+                                }
+                            }
+    
+                            &.mdi-checkbox-marked {
+                                width: 26px !important;
+                                // height: 26px !important;
+                                padding: 3px !important;
+    
+                                &::before {
+                                    content: '' !important;
+                                    background-image: url('/checkbox-filled-icon-1.svg') !important;
+                                    background-position: center !important;
+                                    background-repeat: no-repeat !important;
+                                    background-size: cover !important;
+                                    width: 16px !important;
+                                    height: 16px !important;
+                                }
+                            }
+                        }
+
+                        tr {
+                            th {
+                                font-size: 12px;
+                                text-transform: uppercase;
+                                color: $dark-grey;
+                                border-bottom: 1px solid $divider-bg !important;
+                                padding: 8px;
+                                font-family: 'Inter-Regular', sans-serif;
+                                box-shadow: none !important;
+                                height: 40px;
+                            }
+                        }
+                    }
+
+                    tbody {
+                        i {
+                            &.mdi-checkbox-blank-outline {
+                                width: 26px !important;
+                                // height: 26px !important;
+                                padding: 3px !important;
+        
+                                &::before {
+                                    content: '' !important;
+                                    background-image: url('/checkbox-empty-icon-1.svg') !important;
+                                    background-position: center !important;
+                                    background-repeat: no-repeat !important;
+                                    background-size: cover !important;
+                                    width: 16px !important;
+                                    height: 16px !important;
+                                }
+                            }
+        
+                            &.mdi-checkbox-marked {
+                                width: 26px !important;
+                                // height: 26px !important;
+                                padding: 3px !important;
+        
+                                &::before {
+                                    content: '' !important;
+                                    background-image: url('/checkbox-filled-icon-1.svg') !important;
+                                    background-position: center !important;
+                                    background-repeat: no-repeat !important;
+                                    background-size: cover !important;
+                                    width: 16px !important;
+                                    height: 16px !important;
+                                }
+                            }
+                        }
+
+                        tr {
+                            &:hover {
+                                background: $table-hover-background;
+                            }
+                            
+                            td {
+                                font-size: 14px;
+                                color: $default-text-color;
+                                font-weight: 400;
+                                padding: 10px 8px;
+                                border-bottom: 1px solid $divider-bg !important;
+                                font-family: 'Inter-Regular', sans-serif;
+                            }
+                        }
+                    }
+                }
+
+                &::-webkit-scrollbar {
+                    width: 10px;
+                }
+                
+                /* Track */
+                &::-webkit-scrollbar-track {
+                    background-color: #f1f1f1; 
+                }
+                
+                /* Handle */
+                &::-webkit-scrollbar-thumb {
+                    background-color: #e2e2e2;
+                }
+                
+                /* Handle on hover */
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: #e2e2e2;
+                }
+            }
+
+            &.no-data__table,
+            &.no-data-table {
+                .v-data-table__wrapper {
+                    table {
+                        thead {
+                            display: none;
+                        }
+                
+                        tbody {
+                            tr {
+                                &:hover {
+                                    background-color: transparent !important;
+                                }
+
+                                td {
+                                    border-bottom: none !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }       
+}

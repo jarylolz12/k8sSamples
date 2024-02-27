@@ -1,0 +1,489 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The Laravel Framework.",
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
+    "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./nova-components/ProfitMonitor"
+        },
+        {
+            "type": "composer",
+            "url": "https://nova.laravel.com"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AccountManagerSpecialSelect"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SaleAgentSelect"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentSupplierGroup"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentScheduleGroup"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentContainerGroup"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomFileField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentDeliverySaveDeliveryOrder"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentArrivalNoticeSave"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentDepartureNoticeSave"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/InfoSaveButton"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.org"
+        },
+        {
+            "packagist": false
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CruxContainersDetail"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/PoItemField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ChargesTab"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/BookingsTabSaveGroup"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentContainerLimitedGroup"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomResourceToolBtn"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/MultipleSelectField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/EntryNetchbField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Terminal49ShipmentDetailsTab"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AccountManagerOfficeField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/OfficeManagersField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AccountManagerOldField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomersField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomerField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentServicesSectionField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomerQuickbooksField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/BillPaylist"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomerAccountRepSort"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/AchReport"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/VendorPaymentAccounts"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SelectJsonValueField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomButton"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/LfdTool"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/LinkToBrexAccount"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/MblCopySurrendered"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentMilestoneComponent"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ContainerBuyRates"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SearchableLocation"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SelectCountry"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SelectCity"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomerDefaultRequirementsField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/OurAutomatedTrackingTab"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomCarriersTitle"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentCustomerDocuments"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/QuickbooksAudits"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/UntrackedShipments"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomerImportName"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomerAdminCustomers"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/BuyerConnect"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SupplierConnect"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentNotes"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/PriceCheck"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ManualTrackingTab"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/InvoiceTool"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ConnectedTruckers"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentOperations"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ScheduleTime"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SufficientCommercialDocs"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/SoTabContent"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentCancelMblRemoved"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CancelShipmentCheckbox"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentSoReceivedCheckbox"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentContainersLoadedCheckbox"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/BookingSentStatusMilestone"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomerStatement"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/Announcement"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/ShipmentRefLink"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/OfficeEmailGroup"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CountryStateCityField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomerBillingSection"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/OfficeEmailGroup"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomerTermField"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomsApprovalAddition"
+        },
+        {
+            "type": "path",
+            "url": "./nova-components/CustomerTelex"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "barryvdh/laravel-dompdf": "^0.8.6",
+        "dillingham/nova-button": "^1.0",
+        "doctrine/dbal": "^2.10",
+        "eminiarts/nova-tabs": "^1.2",
+        "epartment/nova-dependency-container": "^1.2",
+        "fideloper/proxy": "^4.0",
+        "fourstacks/nova-repeatable-fields": "^1.3",
+        "gregoriohc/laravel-nova-theme-responsive": "^0.8.0",
+        "guzzlehttp/guzzle": "^6.5",
+        "kenetashi/account-manager-special-select": "*",
+        "kenetashi/sale-agent-select": "*",
+        "kenetashi/shipment-arrival-notice-save": "*",
+        "kenetashi/shipment-container-group": "*",
+        "kenetashi/shipment-delivery-save-delivery-order": "*",
+        "kenetashi/shipment-departure-notice-save": "*",
+        "kenetashi/shipment-schedule-group": "*",
+        "kenetashi/shipment-supplier-group": "*",
+        "kenetashi/shipment-container-limited-group": "*",
+        "kenetashi/bookings-tab-save-group": "*",
+        "laravel/framework": "^7.0",
+        "laravel/nova": "^3.5",
+        "laravel/passport": "9.0",
+        "laravel/scout": "^8.0",
+        "laravel/tinker": "^2.0",
+        "orlyapps/nova-belongsto-depend": "^2.0",
+        "sbine/route-viewer": "^0.0.7",
+        "sloveniangooner/searchable-select": "^1.3",
+        "spatie/laravel-permission": "^3.4",
+        "spinen/laravel-quickbooks-client": "^4.0",
+        "tanvirofficials/copy-clone": "^2.3",
+        "tanvirofficials/custom-file-field": "*",
+        "thond1st/charges-tab": "*",
+        "thond1st/info-save-button": "*",
+        "titasgailius/search-relations": "^1.0",
+        "vyuldashev/nova-permission": "^2.4",
+        "whitecube/nova-flexible-content": "^0.1.13",
+        "wildbit/swiftmailer-postmark": "^3.1",
+        "tanvirofficials/crux-containers-detail": "*",
+        "maatwebsite/excel": "^3.1",
+        "digital-creative/conditional-container": "^1.2",
+        "michielfb/laravel-nova-time-field": "^1.2",
+        "lcobucci/jwt": "3.3.3",
+        "ezea/po-item-field": "*",
+        "laravel/ui": "^2.4",
+        "cyrus/custom-resource-tool-btn": "*",
+        "kenetashi/multiple-select-field": "*",
+        "spatie/laravel-webhook-client": "^2.7",
+        "cyrus/entry-netchb-field": "*",
+        "tanvirofficials/terminal49-shipment-details-tab": "*",
+        "kenetashi/account-manager-office-field": "*",
+        "kenetashi/office-managers-field": "*",
+        "kenetashi/account-manager-old-field": "*",
+        "cyrus/customers-field": "*",
+        "cyrus/customer-field": "*",
+        "kenetashi/shipment-services-section-field": "*",
+        "smalot/pdfparser": "^1.0",
+        "shifl/customer-quickbooks-field": "dev-master",
+        "kenetashi/bill-paylist": "*",
+        "firebase/php-jwt": "^5.5",
+        "kenetashi/customer-account-rep-sort": "*",
+        "mwo/ach-report": "*",
+        "beyondcode/laravel-mailbox": "^2.2",
+        "kenetashi/vendor-payment-accounts": "dev-master",
+        "kenetashi/select-json-value-field": "*",
+        "kenetashi/custom-button": "dev-master",
+        "tanvirofficials/lfd-tool": "*",
+        "kenetashi/link-to-brex-account": "*",
+        "kenetashi/mbl-copy-surrendered": "*",
+        "kenetashi/customer-admin-customers": "dev-master",
+        "cyrus/shipment-milestone-component": "dev-master",
+        "ezea/profit-monitor": "dev-master",
+        "juliverdevshifl/container-buy-rates": "*",
+        "juliverdevshifl/searchable-location": "*",
+        "juliverdevshifl/select-country": "*",
+        "juliverdevshifl/select-city": "*",
+        "ext-json": "*",
+        "vic/customer-default-requirements-field": "*",
+        "tanvirofficials/our-automated-tracking-tab": "dev-master",
+        "laravel/sanctum": "^2.15",
+        "pancake/custom-carriers-title": "*",
+        "kenetashi/shipment-customer-documents": "*",
+        "shifl/quickbooks-audits": "dev-master",
+        "tanvirofficials/untracked-shipments": "dev-master",
+        "gale/customer-import-name": "*",
+        "vishalmarakana/buyer-connect": "*",
+        "imbhavin95/supplier-connect": "*",
+        "vishalmarakana/shipment-notes": "*",
+        "vishalmarakana/price-check": "*",
+        "tanvirofficials/manual-tracking-tab": "*",
+        "juliverdevshifl/invoice-tool": "*",
+        "tanvirofficials/connected-truckers": "*",
+        "vishalmarakana/shipment-operations": "*",
+        "gale/schedule-time": "*",
+        "vishalmarakana/sufficient-commercial-docs": "*",
+        "arcanedev/log-viewer": "~7.0.0",
+        "imbhavin95/so-tab-content": "dev-master",
+        "vishalmarakana/shipment-cancel-mbl-removed": "*",
+        "vishalmarakana/cancel-shipment-checkbox": "*",
+        "vishalmarakana/shipment-so-received-checkbox": "*",
+        "vishalmarakana/shipment-containers-loaded-checkbox": "*",
+        "vishalmarakana/booking-sent-status-milestone": "*",
+        "juliverdevshifl/customer-statement": "*",
+        "akaunting/laravel-money": "^1.2",
+        "kenetashi/announcement": "*",
+        "sixlive/nova-text-copy-field": "^1.5",
+        "juliverdevshifl/shipment-ref-link": "*",
+        "kenetashi/office-email-group": "*",
+        "outl1ne/nova-multiselect-filter": "^2.0",
+        "pos-lifestyle/laravel-nova-date-range-filter": "^1.3",
+        "kenetashi/customer-billing-section": "*",
+        "noor/country-state-city-field": "*",
+        "pragmarx/countries": "^0.8.2",
+        "juliverdevshifl/customer-term-field": "*",
+        "kenetashi/customs-approval-addition": "*",
+        "telex/customer-telex": "*"
+    },
+    "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.2",
+        "facade/ignition": "^2.0",
+        "fzaninotto/faker": "^1.4",
+        "mockery/mockery": "1.3.1",
+        "nunomaduro/collision": "^4.1",
+        "phpunit/phpunit": "^8.5",
+        "squizlabs/php_codesniffer": "*",
+        "knuckleswtf/scribe": "^3.37"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": false
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "classmap": [
+            "database/seeds",
+            "database/factories"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    }
+}

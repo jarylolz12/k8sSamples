@@ -1,0 +1,85 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+
+//font style mixin
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+@mixin textFieldStyles() {
+    max-height: none !important;
+    min-height: 0px !important;
+}
+
+.input-general-select-wrapper {
+    .autocomplete-wrapper {
+        .v-input {
+            @include textFieldStyles();
+            .v-input__control {
+                @include textFieldStyles();
+                background-color: transparent !important;
+                .v-input__slot {
+                    @include textFieldStyles();
+                    height: 36px;
+                    padding-left: 0px !important;
+                    .v-select__slot {
+                        height: 36px;
+                        @include textFieldStyles();
+                        input {
+                            @include textFieldStyles();
+                        }
+
+                        .v-input__append-inner {
+                            .v-input__icon--append {
+                                .v-icon {
+                                    &.mdi-menu-down {
+                                        &::before {
+                                            content: '' !important;
+                                        }
+                                        &::after {
+                                            content: '' !important;
+                                            display: inline-flex !important;
+                                            background-image: url('/assets/icons/chevron-down-dark.svg') !important;
+                                            background-size: 14px 14px !important;
+                                            background-repeat: no-repeat;
+                                            height: 14px !important;
+                                            width: 14px !important;
+                                            top: -7px;
+                                            left: -7px;
+                                            opacity: 1;
+                                            background-color: transparent !important;
+                                            cursor: pointer !important;
+                                        }	
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                    fieldset {
+                        height: 40px;
+                        @include textFieldStyles();
+                    }
+                    
+                }
+            }
+        }
+    }
+    &.no-border {
+        .select-purchase-order {
+            .v-input__control {
+                & > .v-input__slot {
+                    & > fieldset {
+                        border: 0px solid transparent !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .document-type-item-wrapper {
+        width: 60% !important;
+    }
+}

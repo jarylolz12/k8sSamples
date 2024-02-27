@@ -1,0 +1,280 @@
+@import '@/assets/scss/colors.scss';
+
+.outbound-view-products {
+    .v-data-table__wrapper {
+        table {
+            tbody {
+                tr {
+                    td {
+                        padding: 12px !important;
+
+                        .item-information {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            
+                            &.counts {
+                                justify-content: flex-end;
+
+                                .item {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    
+                                    img {
+                                        margin-left: 8px;
+                                    }
+                                }
+                            }
+
+                            .item-information-images {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
+
+                        .actions-wrapper {
+                            button {
+                                margin-left: 8px;
+                                padding: 8px 10px !important;
+                                font-size: 12px;
+                                margin-left: 8px;
+                                padding: 8px 10px !important;
+                                font-size: 12px;
+                                height: 34px !important;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                min-width: 35px;
+
+                                .btn-content {
+                                    span {
+                                        font-family: 'Inter-Medium', sans-serif;
+                                    }
+                                }
+
+                                &.recieved {
+                                    background-color: #EBFAEF !important;
+                                    color: #16B442 !important;
+                                    border: none !important;
+                                    cursor: auto !important;
+                                }
+                            }
+                        }
+
+                        .name-wrapper {
+                            p {
+                                span {
+                                    font-family: 'Inter-Regular', sans-serif;
+                                    font-size: 14px;
+                                    color: #4a4a4a !important;
+                                }
+
+                                &.unit-weight {
+                                    color: #6D858F !important;
+                                }
+                            }
+                        }
+
+                        .v-data-table__expand-icon {
+                            border: none !important;
+                            padding: 0;
+                            background-color: transparent !important;
+                            color: #0171a1 !important;
+                        }
+                    }
+
+                    &:hover {
+                        background-color: $table-hover-background !important;
+                    }
+
+                    &.v-data-table__selected {
+                        background-color: #F0FBFF !important;
+                    }
+
+                    &.v-data-table__expanded.v-data-table__expanded__row {
+                        background-color: #F0FBFF !important;
+
+                        td {                                    
+                            border-bottom: none !important;
+                        }
+                    }
+
+                    &.v-data-table__expanded__content {
+                        box-shadow: none !important;
+                        background-color: #F0FBFF;
+                        width: 100%;
+
+                        &:hover {
+                            background-color: #F0FBFF !important;
+                        }
+
+                        td {
+                            padding-top: 0 !important;
+
+                            .expanded-item-info {
+                                background-color: $white;
+                                width: 90%;
+
+                                .expanded-header-wrapper {
+                                    border-bottom: 1px solid #EBF2F5;
+                                    padding: 8px 20px;
+
+                                    .expanded-header-content {                                            
+                                        display: flex;
+                                        justify-content: flex-start;
+                                        align-items: center;
+                                        width: 100%;
+
+                                        .w-80 {
+                                            width: 80%;
+                                        }
+
+                                        .w-10 {
+                                            width: 10%;
+                                            text-align: right;
+                                        }
+
+                                        .header-title {
+                                            font-size: 12px;
+                                            color: $dark-grey;
+                                            font-family: 'Inter-Medium', sans-serif;
+                                        }
+                                    }
+                                }
+
+                                .expanded-body-wrapper {
+                                    border-bottom: 1px solid #EBF2F5;
+                                    padding: 8px 20px;
+
+                                    .expanded-body-content {                                            
+                                        display: flex;
+                                        justify-content: flex-start;
+                                        align-items: center;
+                                        width: 100%;
+                                        padding: 5px 0px;
+
+                                        .w-80 {
+                                            width: 80%;
+                                        }
+
+                                        .w-10 {
+                                            width: 10%;
+                                            text-align: right;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.no-data-table {
+        .v-data-table__wrapper {
+            table {
+                thead {
+                    display: none;
+                }
+
+                tbody {
+                    tr.v-data-table__empty-wrapper {
+                        &:hover {
+                            background-color: $white !important;
+                        }
+
+                        td {
+                            border-bottom: none !important;
+
+                            .no-data-wrapper {
+                                min-height: 200px;
+                                padding-top: 25px;
+
+                                h3 {
+                                    font-size: 20px;
+                                    color: $default-text-color !important;
+                                    margin-bottom: 8px;
+                                }
+
+                                p {
+                                    width: 40%;
+                                    margin: 0 auto !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .actions-wrapper {
+        .completed {
+            background-color: #EBFAEF !important;
+            border-color: #EBFAEF !important;
+            span {
+                color: #16B442 !important;
+                span {
+                    display: flex;
+                    grid-gap: 5px;
+                }
+            }
+        }
+    } 
+}
+
+.outbound-dialog-pick {
+    font-family: 'Inter-Regular', sans-serif;
+
+    h2 {
+        color: $default-text-color; 
+        font-size: 20px; 
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-bottom: 0; 
+        font-size: 14px; 
+        color: $default-text-color;
+        
+        span {
+            color: #0171A1;
+        }
+    }
+
+    .v-card__title {
+        border: none !important;
+
+        .headline {
+            border: none !important;
+        }
+    }
+
+    .v-card__text {
+        margin-bottom: 0 !important;
+
+        .color-blue-default {
+            color: $dark-blue;
+        }
+    }
+
+    .v-card__actions {
+        position: unset !important;
+        border: none !important;
+
+        button {
+            text-transform: capitalize;
+            letter-spacing: 0;
+            font-size: 14px;
+            min-width: 76px;
+            margin-bottom: 10px;
+            height: 40px;
+            box-shadow: none;
+            margin-right: 8px;
+        }
+    }
+}
+

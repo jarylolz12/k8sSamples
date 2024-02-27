@@ -1,0 +1,47 @@
+// Nova Tool CSS
+.shipment-supplier-limited-group {
+
+	padding-top: 15px;
+	margin-bottom: 15px;
+	border-bottom:1px solid black;
+
+	& > div {
+		display: flex;
+		padding-bottom: 15px;
+
+		& > label {
+		    width: 40%;
+    		padding-top: 5px;
+		}
+		& > div {
+			width: 60%;
+		}
+
+	}
+	& .border-danger-supplier {
+		& > div {
+			border: 1px solid red;
+		}
+
+	}
+
+}
+#shipment-supplier-limited-group-submit-group ~.text-danger {
+	display: none !important;
+}
+.shipment-error-group {
+	border: 1px solid red;
+}
+
+.shipment-add-group {
+
+}
+.customErrorMessages {
+	padding-top: 10px;
+
+	& > div {
+		color: var(--danger);
+		padding-bottom: 10px;
+	}
+
+}

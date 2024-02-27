@@ -1,0 +1,425 @@
+/** @format */
+
+@import "../../colors.scss";
+.make-payment-dialog {
+	.v-card {
+		.v-card__text {
+			padding: 0px;
+			.make-payment-wrapper {
+				.make-payment-info {
+					display: flex;
+					flex-direction: row-reverse;
+					.payment-details {
+						width: 50%;
+						.row {
+							margin: 0;
+							height: 100%;
+							.payment-title {
+								padding: 16px 20px 16px 24px !important;
+								border-bottom: 1px solid #d8e7f0;
+
+								.headline {
+									font-family: "Inter" !important;
+									font-weight: 600;
+									font-size: 20px !important;
+									line-height: 30px;
+									color: #4a4a4a;
+								}
+							}
+
+							.payment-info-details {
+								padding: 24px !important;
+							}
+
+							.action-button {
+								padding: 16px 24px !important;
+								border-top: 1px solid #d8e7f0;
+								gap: 8px;
+							}
+						}
+					}
+					.invoice-details {
+						width: 50%;
+						background: #f7f7f7;
+						padding: 24px;
+						h2 {
+							font-size: 20px;
+							line-height: 30px;
+							color: #4a4a4a;
+							.count-invoice {
+								font-weight: 400;
+								font-size: 16px;
+								line-height: 24px;
+							}
+						}
+						.row-inline {
+							.card-section {
+								display: flex;
+								gap: 50px;
+								align-items: center;
+								padding: 16px 0 16px 2px;
+								.card-name {
+									display: flex;
+									flex-direction: column;
+
+									.card-title {
+										margin-bottom: 0;
+										text-transform: capitalize;
+										font-size: 14px;
+										font-family: "Inter";
+									}
+									.card-title.multiple {
+										width: 20%;
+									}
+									span {
+										font-size: 12px;
+										color: $default-text-color;
+										font-weight: 500;
+										line-height: 18px;
+										font-family: "Inter";
+									}
+								}
+							}
+
+							.multiple-invoice {
+								.card-name {
+									.chips {
+										.v-chip {
+											background: #ebf2f5;
+											.v-chip__content {
+												gap: 4px;
+												font-size: 12px;
+												.v-icon {
+													font-size: 12px;
+													color: #4a4a4a;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						.invoice-items-wrapper {
+							.invoice-table-details-wrapper {
+								.invoice-details-wrapper {
+									.v-data-table__wrapper {
+										table {
+											thead {
+												tr {
+													background: #ebf2f5;
+													th {
+														font-family: "Inter";
+														font-size: 14px;
+														line-height: 20px;
+														&.text-header {
+															text-transform: capitalize;
+														}
+														&.text-start {
+															padding: 10px 20px;
+															width: 70%;
+														}
+														&.text-end {
+															padding: 10px 20px;
+															width: 30%;
+														}
+														span {
+															color: #6d858f;
+															font-family: "Inter";
+															font-size: 10px;
+														}
+													}
+												}
+											}
+											tbody {
+												tr {
+													:nth-child(2) {
+														text-align: right;
+													}
+													td {
+														padding: 6px 8px;
+														line-height: 20px;
+
+														.processing-fee {
+															display: block;
+															font-weight: 400;
+															font-size: 12px;
+															line-height: 18px;
+															color: #819fb2;
+														}
+
+														&.subtotal {
+															font-weight: 500;
+															font-family: "Inter";
+														}
+
+														.duty-fees {
+															.container {
+																.v-input {
+																	margin-top: 0;
+																	padding-top: 0;
+																	.v-input__slot {
+																		.v-label {
+																			font-size: 14px;
+																			color: #4a4a4a;
+																		}
+																		.v-icon {
+																			font-size: 20px;
+																		}
+																	}
+																}
+															}
+														}
+														.processing-fee-tooltip {
+															.v-icon {
+																font-size: 14px;
+																color: #4a4a4a;
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+
+							.total-payments {
+								display: flex;
+								justify-content: space-between;
+								padding: 16px;
+								p {
+									font-weight: 600;
+									font-size: 20px;
+									line-height: 30px;
+								}
+
+								:nth-child(2) {
+									font-family: "Inter";
+									color: #0b6085;
+								}
+							}
+						}
+					}
+					.card-name {
+						p {
+							margin-bottom: 2px;
+							font-weight: 500;
+							font-size: 14px;
+							line-height: 20px;
+							font-family: "Inter", sans-serif;
+							color: $table-header-text-color;
+						}
+						.v-input {
+							.v-input__control {
+								.v-radio {
+									margin: 0;
+									padding: 8px 16px;
+									border: 1px solid #b4cfe0;
+									.v-input--selection-controls__input {
+										width: 0;
+										height: 0;
+										display: none;
+									}
+									.v-label {
+										font-family: "Inter", sans-serif;
+										font-size: 14px;
+										text-transform: capitalize;
+										color: $default-text-color;
+									}
+								}
+								.v-item--active {
+									background: #ebf2f5;
+									.v-label {
+										color: $dark-blue;
+										font-weight: 600;
+									}
+								}
+								.tab-pm-cc {
+									border-radius: 4px 0px 0px 4px;
+								}
+								.tab-pm-ach {
+									border-radius: 0px 4px 4px 0px;
+									border-left: none;
+								}
+							}
+						}
+						.card-title {
+							color: $grey;
+							font-size: 10px;
+							text-transform: uppercase;
+							font-family: "Inter-SemiBold", sans-serif;
+							margin-bottom: 3px;
+						}
+						.payment-method-select-title {
+							color: $table-header-text-color;
+							font-size: 14px;
+							text-transform: capitalize;
+							font-family: "Inter", sans-serif;
+							margin-bottom: 6px;
+							line-height: 20px;
+						}
+						.v-radio-payment-method-label {
+							.v-label {
+								color: #819fb2;
+								font-size: 10px;
+								text-transform: uppercase;
+								font-family: "Inter-SemiBold", sans-serif;
+							}
+							.v-icon {
+								font-size: 20px !important;
+							}
+						}
+					}
+					// .row-inline {
+					// 	.card-name {
+					// 		display: flex;
+					// 		justify-content: flex-start;
+					// 		align-items: center;
+					// 		.card-title {
+					// 			width: 35%;
+					// 			margin-bottom: 0;
+					// 		}
+					// 		.card-title.multiple {
+					// 			width: 20%;
+					// 		}
+					// 		span {
+					// 			font-size: 12px;
+					// 			color: $default-text-color;
+					// 			&.amount {
+					// 				font-size: 16px;
+					// 				font-family: "Inter-SemiBold", sans-serif;
+					// 			}
+					// 		}
+					// 	}
+					// }
+					.col {
+						padding-bottom: 0 !important;
+						padding-top: 5px;
+					}
+					.divider {
+						height: 1px;
+						background-color: $divider-bg;
+						width: 100%;
+						margin: 20px 0;
+					}
+				}
+				.v-input {
+					font-size: 14px;
+					color: $default-text-color;
+					background-color: #fff !important;
+					.v-input__control {
+						background-color: $white;
+					}
+					.v-text-field__details {
+						display: block;
+						margin-bottom: 0;
+					}
+				}
+			}
+		}
+		.v-card__actions {
+			button {
+				margin-right: 8px;
+			}
+		}
+	}
+}
+
+div.v-list {
+	padding: 0;
+}
+
+.ach-pm-selection {
+	.account-holder-name {
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 20px;
+		color: #4a4a4a;
+	}
+	.account-details {
+		font-weight: 400;
+		font-size: 12px;
+		line-height: 18px;
+		color: #6d858f;
+	}
+}
+
+.v-tooltip__content {
+	background: #4a4a4a !important;
+	border-radius: 4px !important;
+	padding: 6px 12px !important;
+	max-width: 164px !important;
+	font-size: 10px !important;
+	line-height: 14px !important;
+}
+
+@media screen and (max-width: 767px) {
+	.make-payment-dialog {
+		margin: 0 !important;
+		height: 100% !important;
+		max-height: 100% !important;
+		background-color: #fff;
+		.v-card {
+			box-shadow: none !important;
+			.v-card__text {
+				margin-bottom: 20px !important;
+				.make-payment-wrapper {
+					.make-payment-info {
+						flex-direction: column;
+						gap: 0;
+						height: auto;
+						.invoice-details {
+							width: 100%;
+							padding-top: 12px;
+							padding-bottom: 0;
+
+							.card-section {
+								gap: 4px !important;
+								flex-direction: column;
+								.card-name {
+									width: 100%;
+									flex-direction: row !important;
+								}
+							}
+						}
+						.payment-details {
+							.payment-info-details {
+								padding-bottom: 0 !important;
+							}
+							width: 100%;
+							.action-button {
+								border-top: none !important;
+								padding-top: 0 !important;
+								.payments-button {
+									width: 100% !important;
+									justify-content: space-between;
+								}
+							}
+						}
+						.card-name {
+							.card-title {
+								font-size: 12px;
+							}
+						}
+						.row-inline {
+							.card-name {
+								.card-title {
+									width: 30%;
+								}
+								span {
+									font-size: 14px;
+								}
+							}
+						}
+					}
+				}
+			}
+			.v-card__actions {
+				position: fixed;
+				width: 100%;
+				bottom: -1px;
+				padding: 8px;
+			}
+		}
+	}
+}

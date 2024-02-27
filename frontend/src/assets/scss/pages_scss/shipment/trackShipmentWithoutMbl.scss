@@ -1,0 +1,184 @@
+/** @format */
+
+@import "../../colors.scss";
+
+.track-shipment-without-mbl-dialog {
+	.track-shipment-without-mbl-card {
+		.v-card__title {
+			span {
+				font-weight: 600;
+				font-size: 20px;
+				font-family: "Inter";
+			}
+		}
+
+		.v-card__text {
+			padding: 24px !important;
+
+			.track-shipment-without-mbl-information {
+				.content-details {
+					font-weight: 400;
+					font-size: 16px;
+					line-height: 24px;
+					color: #6d858f;
+				}
+			}
+
+			.track-shipment-without-mbl-content {
+				.contents {
+					.content-title {
+						font-weight: 600;
+						font-size: 12px;
+						line-height: 18px;
+						color: #819fb2;
+						font-family: "Inter";
+						text-transform: uppercase;
+
+						.content-sub-title {
+							font-weight: 400;
+							font-size: 12px;
+							line-height: 18px;
+							text-transform: capitalize;
+						}
+					}
+					.v-input {
+						.v-input__control {
+							.v-input__slot {
+								.v-input--radio-group__input {
+									display: flex;
+									gap: 8px;
+
+									.v-radio {
+										border: 1px solid #b4cfe0;
+										border-radius: 4px;
+										background: #ffffff;
+										padding: 10px 12px;
+										width: 151px;
+										height: 40px;
+										margin-right: 0;
+										label {
+											font-size: 14px;
+											color: $default-text-color;
+										}
+
+										&.incoterm-radio {
+											width: auto;
+										}
+
+										&.v-item--active {
+											border: 1px solid #0171a1;
+										}
+									}
+								}
+							}
+						}
+					}
+
+					.radio-group-wrapper {
+						margin-bottom: 8px;
+						max-height: 40px;
+						padding-bottom: 0px;
+
+						&.incoterms-mobile-wrapper {
+							display: grid !important;
+							grid-template-columns: repeat(4, 1fr);
+
+							.radio-item {
+								min-width: 70px;
+
+								.radio-label-wrapper {
+									padding-left: 22px;
+								}
+							}
+						}
+
+						.radio-item {
+							border: 1px solid $light-grey;
+							border-radius: 4px;
+							min-width: 100px;
+							height: 40px;
+							padding-left: 12px;
+							padding-right: 12px;
+							margin-bottom: 8px !important;
+							width: auto;
+
+							label {
+								font-family: "Inter";
+								font-weight: 400;
+								font-size: 14px;
+								color: $default-text-color;
+
+								&.radio-label-wrapper {
+									position: relative;
+									padding-left: 24px;
+
+									span {
+										position: absolute;
+										top: 3px;
+										left: 0px;
+										height: 16px;
+										width: 16px;
+										background-color: $white;
+										border-radius: 50%;
+										content: "";
+										border: 1px solid $dark-blue;
+										display: block;
+										cursor: pointer;
+
+										&::after {
+											position: absolute;
+											top: 3px;
+											left: 3px;
+											// left: 27%;
+											width: 8px;
+											height: 8px;
+											border-radius: 14px;
+											background: $white;
+											content: "";
+											display: block;
+										}
+									}
+								}
+							}
+
+							input {
+								margin-right: 8px;
+								&.custom-radio {
+									&:checked ~ span {
+										background-color: $dark-blue !important;
+									}
+								}
+							}
+							.v-input--radio-group {
+								.v-input__control {
+									margin-top: 0px;
+									background-color: transparent;
+
+									.v-input__slot {
+										margin-bottom: 0px;
+									}
+								}
+								margin-top: 12px !important;
+							}
+
+							& > div {
+								&:nth-child(3) {
+									margin-right: 8px !important;
+									font-family: "Inter";
+									font-weight: 400;
+									font-size: 14px;
+									color: $default-text-color;
+								}
+							}
+
+							&.selected {
+								border: 1px solid $dark-blue;
+							}
+							margin-right: 8px;
+						}
+					}
+				}
+			}
+		}
+	}
+}

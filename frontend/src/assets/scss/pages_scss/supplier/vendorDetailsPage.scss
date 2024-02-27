@@ -1,0 +1,399 @@
+
+.supplier-and-customer-detail-wrapper {
+    padding: 24px;
+    
+    .supplier-and-customer-detail-content {
+        .details-breadcrumbs {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            margin-bottom: 12px;
+
+            .page-name {
+                color: #4a4a4a;
+                font-size: 12px;
+                text-decoration: none;
+                font-family: 'Inter-Medium', sans-serif;
+            }
+
+            .right-chevron {
+                padding: 3px 10px 0;
+            }
+
+            p {
+                margin-bottom: 0;
+                color: #4A4A4A;
+                font-size: 12px;
+                font-family: 'Inter-Medium', sans-serif;
+
+                &.details {
+                    color: #6D858F !important;
+                }
+            }
+        }
+
+        .detail-content-header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .detail-content-info {
+                .info-wrapper {
+                    .contact-information {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin-bottom: 8px;
+                        text-transform: capitalize; 
+
+                        h2 {
+                            margin-right: 8px;
+                            color: #4a4a4a;
+                            font-size: 20px;
+                        }
+
+                        .status {
+                            font-size: 12px;
+                            padding: 6px 12px;
+                            border-radius: 90px;
+                            border: 1px solid #EBF2F5;
+                            font-family: 'Inter-Medium', sans-serif;
+
+                            &.pending {
+                                background-color: #FFF9F0;
+                                color: #EB9B26;
+                            }
+
+                            &.connected {
+                                background-color: #F0FBFF;
+                                color: #0171A1;
+                            }
+                        }
+                    }
+
+                    .contact-address-info {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        
+                        .address {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            
+                            img {
+                                margin-top: 1px;
+                            }
+
+                            span {
+                                font-size: 12px;
+                                font-family: 'Inter-Medium', sans-serif;
+                                color: #6D858F;
+                                text-transform: uppercase;
+                            }
+                        }
+
+                        .phone {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            margin-left: 10px;
+                            
+                            span {
+                                font-size: 12px;
+                                font-family: 'Inter-Medium', sans-serif;
+                                color: #6D858F;
+                                text-transform: uppercase;
+                                padding-right: 5px;
+                            }
+
+                            small {
+                                font-size: 12px;
+                                color: #4a4a4a;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .detail-table-wrapper {
+            margin-top: 20px;
+            border: 1px solid #EBF2F5;
+            border-radius: 4px;
+
+            .detail-table-contents {
+                .v-tabs {
+                    border-top-left-radius: 4px;
+                    border-top-right-radius: 4px;
+                    border-bottom: 2px solid #EBF2F5;
+                    
+                    .v-tab {
+                        color: #4a4a4a !important;
+                        font-size: 14px !important;
+                        letter-spacing: 0;
+                        text-transform: capitalize;
+                        padding: 18px 20px !important;
+        
+                        .tab-name {
+                            margin-right: 6px;
+                            font-family: 'Inter-SemiBold', sans-serif;
+                        }
+        
+                        .v-badge {
+                            &.customBadge {
+                                .v-badge__wrapper {
+                                    position: unset;
+        
+                                    .v-badge__badge  {
+                                        position: unset;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        height: 25px;
+                                        min-width: 25px;
+                                        border-radius: 25px;
+                                        padding: 5px 6px 6px;
+                                        font-weight: 600;
+                                    }
+                                }
+                            }
+                        }
+        
+                        &.v-tab--active {
+                            color: #0171A1 !important;
+        
+                            .v-badge {
+                                &.customBadge {
+                                    .v-badge__wrapper {    
+                                        .v-badge__badge  {
+                                            background-color: #0171A1 !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .v-data-table {
+                    box-shadow: none !important;
+
+                    .v-toolbar__content {
+                        border-bottom: 2px solid #EBF2F5;
+
+                        .search-component-wrapper {
+                            .v-input {
+                                .v-input__control {
+                                    .v-input__slot {
+                                        width: 400px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .v-data-table__wrapper {
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        padding: 10px 16px;
+                                        color: #6D858F;
+                                        text-transform: uppercase;
+                                        font-size: 12px;
+                                        border-bottom: 2px solid #EBF2F5 !important;
+                                        box-shadow: none !important;
+                                    }
+                                }
+                            }
+
+                            tbody {
+                                tr {
+                                    td {
+                                        padding: 16px;
+                                        color: #4a4a4a;
+                                        border-bottom: 1px solid #EBF2F5 !important;
+
+                                        .item-details {
+                                            span {
+                                                color: #6D858F;
+                                            }
+                                        }
+
+                                        .item-status {
+                                            button {
+                                                .v-btn__content {
+                                                    span {                                                        
+                                                        font-family: "Inter-Medium", sans-serif;
+                                                    }
+
+                                                    i {
+                                                        font-size: 18px;
+                                                    }
+                                                }
+                                            }
+
+                                            .status {
+                                                font-size: 12px;
+                                                padding: 6px 10px;
+                                                border-radius: 90px;
+                                                font-family: "Inter-Medium", sans-serif;
+                                                text-transform: capitalize;
+                                                letter-spacing: 0;
+                                                width: auto;
+                                                height: 30px;
+
+                                                &.pending {
+                                                    background-color: #FFF9F0;
+                                                    color: #D68A1A;
+                                                }
+
+                                                &.accepted {
+                                                    background-color: #F0FBFF;
+                                                    color: #0171A1;
+                                                }
+
+                                                &.rejected {
+                                                    background-color: #FFF2F2;
+                                                    color: #F93131;
+                                                }
+
+                                                &.change {
+                                                    background-color: #EBFAEF;
+                                                    color: #16B442;
+                                                }
+
+                                                &.customer {
+                                                    &.change {
+                                                        background-color: #F7F7F7 !important;
+                                                        color: #4A4A4A !important;
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                        .item-button {
+                                            display: flex;
+                                            justify-content: flex-end;
+                                            align-items: center;
+                                            color: #0171A1;
+                                            cursor: pointer;
+
+                                            button {
+                                                margin: 0 5px;
+                                                padding: 10px 12px !important;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                min-width: 170px;
+
+                                                p {
+                                                    margin-bottom: 0;
+                                                    font-family: 'Inter-Medium', sans-serif !important;
+                                                }
+
+                                                &.connected {
+                                                    background-color: #EBFAEF !important;
+                                                    border-color: #EBFAEF !important;
+
+                                                    p {
+                                                        color: #16B442 !important;
+                                                        font-family: 'Inter-Medium', sans-serif !important;
+                                                    }
+                                                }
+                                                
+                                                &.pending {
+                                                    background-color: #FFF9F0 !important;
+                                                    border-color: #FFF9F0 !important;
+
+                                                    p {
+                                                        color: #EB9B26 !important;
+                                                        font-family: 'Inter-Medium', sans-serif !important;
+                                                    }
+                                                }
+                                            }
+        
+                                            img {
+                                                margin-right: 8px;
+                                                margin-top: 2px;
+                                            }
+
+                                            &.methods {
+                                                button {
+                                                    min-width: auto !important;
+
+                                                    p {
+                                                        text-transform: none;
+                                                    }
+                                                }
+
+                                                img {
+                                                    margin: 0 !important;
+                                                }
+                                            }
+                                        } 
+
+                                        .details-payment-methods {
+                                            display: flex;
+                                            justify-content: flex-start;
+                                            align-items: center;
+
+                                            img {
+                                                margin-right: 8px;
+                                                border: 1px solid #EBF2F5;
+                                                border-radius: 4px;
+                                            }
+
+                                            .card-info {
+                                                p {
+                                                    margin-bottom: 0;
+                                                }
+
+                                                span {
+                                                    color: #6D858F;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.no-data-table {
+                        box-shadow: none !important;
+                        
+                        .v-data-table__wrapper {
+                            table {
+                                tbody {
+                                    tr {
+                                        td {
+                                            .no-data-wrapper {
+                                                height: calc(100vh - 300px);
+
+                                                .no-data-heading {
+                                                    padding-top: 30px;
+
+                                                    h3 {
+                                                        margin: 10px 0;
+                                                        color: #4a4a4a;
+                                                    }
+
+                                                    p {
+                                                        width: 100% !important;
+                                                        color: #6D858F;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

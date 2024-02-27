@@ -1,0 +1,695 @@
+@import '../../colors.scss';
+
+.supplier-container {
+    position: relative;
+    padding: 24px;
+    font-family: 'Inter-Regular', sans-serif;
+    height: 100%;
+    
+	.overlay {
+        &.show {
+            position: absolute;
+            top: 115px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff !important;
+            z-index: 100;
+            cursor: auto;
+            border: 1px solid #EBF2F5 !important;
+			border-bottom: none !important;
+
+            .preloader {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 20px;
+                padding-top: 20px;
+            }
+        }
+    }
+
+    .supplier-container-contents {
+        background-color: #ffffff;
+        border: 1px solid $divider-bg;
+        position: relative;
+
+        .v-tabs {
+            .v-slide-group__prev {
+                display: none !important;
+            }
+
+            &.supplier-custom-tabs {
+                .v-tab {
+                    color: $default-text-color !important;
+                    font-size: 14px !important;
+                    letter-spacing: 0;
+                    text-transform: capitalize;
+                    padding: 8px 20px !important;
+    
+                    .tab-name {
+                        margin-right: 6px;                    
+                        font-family: 'Inter-SemiBold', sans-serif;
+                    }
+    
+                    .v-badge {
+                        &.customBadge {
+                            .v-badge__wrapper {
+                                position: unset;
+    
+                                .v-badge__badge  {
+                                    position: unset;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    height: 25px;
+                                    min-width: 25px;
+                                    border-radius: 25px;
+                                    padding: 5px 6px 6px;
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+    
+                    &.v-tab--active {
+                        color: $dark-blue !important;
+    
+                        .v-badge {
+                            &.customBadge {
+                                .v-badge__wrapper {    
+                                    .v-badge__badge  {
+                                        background-color: $dark-blue !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .supplier-content-search {
+            border-top: 1px solid $divider-bg;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 20px;
+        }
+    
+        .supplier-content-wrapper {
+            height: 100%;
+    
+            .v-data-table {
+                .v-toolbar {
+                    border-top-left-radius: 4px;
+                    border-top-right-radius: 4px;
+        
+                    .v-toolbar__content {
+                        border-bottom: 2px solid $divider-bg;
+                        padding: 4px 20px;
+        
+                        .v-toolbar__title {
+                            font-size: 20px;
+                            font-family: 'Inter-SemiBold', sans-serif;
+                            color: $default-text-color;
+                        }
+        
+                        .search-component-wrapper {
+                            margin-right: 8px;
+                        }
+                    }
+                }
+        
+                &.suppliers-page-table {
+                    border-top: 2px solid $divider-bg;
+                    border-radius: 0;
+                    // border-top-right-radius: 4px;
+                    // border-top-left-radius: 4px;
+                    border-bottom: none !important;;
+                    box-shadow: none !important;
+        
+                    .v-data-table__wrapper {
+                        // max-height: calc(100vh - 295px) !important;
+                        height: calc(100vh - 285px) !important;
+                        overflow-y: auto;
+                        overflow-x: hidden;
+        
+                        table {
+                            table-layout: fixed;
+        
+                            thead  {
+                                tr {
+                                    th {
+                                        color: $grey;
+                                        font-size: 12px;
+                                        text-transform: uppercase;
+                                        font-family: 'Inter-Regular', sans-serif;
+                                        padding: 12px 8px;
+                                        box-shadow: none;
+                                        border-bottom: 2px solid $divider-bg !important;
+
+                                        &:first-child {
+                                            padding: 12px 8px 12px 18px;
+                                        }
+                                    }
+                                }
+                            }
+        
+                            tbody {
+                                tr {
+                                    &:hover {
+                                        background-color: $table-hover-background !important;
+                                    }
+        
+                                    td {
+                                        padding: 12px 8px;
+                                        color: $default-text-color;
+                                        cursor: auto;
+                                        border-bottom: 1px solid $divider-bg !important;
+                                        font-size: 14px !important;
+
+                                        &:first-child {
+                                            padding: 12px 8px 12px 18px;
+                                        }
+        
+                                        p {
+                                            font-size: 14px !important;
+                                        }
+        
+                                        .email-wrapper {
+                                            .email-container {
+                                                flex: 1 1 100%;
+                                                min-width: 0;
+        
+                                                p {
+                                                    text-overflow: ellipsis;
+                                                    white-space: nowrap;
+                                                    overflow: hidden;
+                                                }
+                                            }
+                                        }
+        
+                                        .item-button {
+                                            display: flex;
+                                            justify-content: flex-end;
+                                            align-items: center;
+                                            color: $dark-blue;
+                                            cursor: pointer;
+
+                                            button {
+                                                margin: 0 3px;
+                                                padding: 8px 12px !important;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                min-width: 38px;
+                                                text-transform: unset;
+                                                height: 38px !important;
+                                                width: 38px;
+
+                                                i {
+                                                    font-size: 20px;
+                                                }
+
+                                                &.invite {                                                    
+                                                    padding: 6px 16px !important;
+                                                    width: unset;
+
+                                                    p {
+                                                        margin-bottom: 0;
+                                                        font-family: 'Inter-Medium', sans-serif !important;
+                                                    }
+                                                }
+
+                                                &.connected {
+                                                    background-color: #EBFAEF !important;
+                                                    border-color: #EBFAEF !important;
+
+                                                    p {
+                                                        color: #16B442 !important;
+                                                        font-family: 'Inter-Medium', sans-serif !important;
+                                                    }
+                                                }
+                                            }
+        
+                                            img {
+                                                margin-right: 6px;
+                                                margin-top: 2px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+        
+                        /* Scrollbar */
+                        &::-webkit-scrollbar {
+                            width: 10px;
+                        }
+                        
+                        /* Track */
+                        &::-webkit-scrollbar-track {
+                            background-color: #f1f1f1; 
+                        }
+                        
+                        /* Handle */
+                        &::-webkit-scrollbar-thumb {
+                            background-color: #e2e2e2;
+                        }
+                        
+                        /* Handle on hover */
+                        &::-webkit-scrollbar-thumb:hover {
+                            background-color: #e2e2e2;
+                        }
+                    }
+        
+                    &.no-data-table {
+                        .v-data-table__wrapper {
+                            height: calc(100vh - 230px) !important;
+
+                            table {
+                                thead {
+                                    display: none;
+                                }
+        
+                                tbody {
+                                    tr {
+                                        &:hover {
+                                            background-color: $white !important;
+                                        }
+
+                                        td {
+                                            border-bottom: none !important;
+
+                                            // .no-data-wrapper,
+                                            // .no-data-preloader {
+                                            //     height: calc(100vh - 350px);
+                                            // }
+
+                                            .no-data-preloader {
+                                                padding-top: 20px;
+                                            }
+                
+                                            .no-data-wrapper {
+                                                .no-data-heading {
+                                                    padding-top: 30px;
+                                                }
+                
+                                                img {
+                                                    margin-bottom: 10px;
+                                                }
+                
+                                                h3 {
+                                                    font-size: 20px;
+                                                    margin-bottom: 8px;
+                                                }
+                                                
+                                                p {
+                                                    font-size: 14px;
+                                                    margin-bottom: 0;
+                                                    color: #6d858f;
+                                                    width: 440px;
+                                                    margin: 0 auto;
+                                                }
+            
+                                                .supplier-button-action-wrapper {
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    margin-top: 20px;
+            
+                                                    button {
+                                                        padding-bottom: 12px;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.no-current-pagination {
+                        .v-data-table__wrapper {
+                            height: calc(100vh - 230px) !important;
+                        }
+                    }
+                }
+            }
+
+            .pagination-wrapper {
+                border: none !important;
+                border-top: 1px solid $divider-bg !important;
+            }
+        }
+    }    
+}
+
+@media screen and (max-width: 767px) {
+    /* Dialog */
+    .v-dialog {
+        &.add-supplier-dialog {
+            margin: 0;
+            height: 100%;
+            max-height: 100%;
+            background-color: $white;
+            max-width: 100% !important;
+
+            .add-supplier-card {
+                box-shadow: none;
+
+                .v-card__text {
+                    padding: 16px;
+                }
+            }
+        }
+    }
+}           
+
+@media screen and (max-width: 768px) {
+    .supplier-container {
+        padding: 0;
+
+        .overlay {
+            &.show {
+                top: 194px;
+            }
+        }
+
+        .supplier-container-contents {
+            position: unset;
+
+            .v-data-table {
+                &.suppliers-table-mobile {
+                    box-shadow: none !important;        
+                    background-color: $light-white !important;
+    
+                    .v-toolbar {
+                        background-color: $light-white !important;
+                        height: 72px !important;
+    
+                        .v-toolbar__content {
+                            height: 72px !important;
+                            padding: 4px 18px;
+    
+                            .v-toolbar__title {
+                                font-family: 'Inter-SemiBold', sans-serif;
+                                color: $default-text-color;
+                            }
+                        }
+                    }
+    
+                    .search-component {
+                        width: 100%;
+                        padding: 16px;        
+                        border-bottom: 2px solid $light-white;
+                        background-color: $white !important;
+    
+                        .search-component-wrapper {
+                            .v-input {
+                                .v-input__control {
+                                    .v-input__slot {
+                                        width: 100% !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+    
+                    .v-data-table__wrapper {
+                        // height: calc(100vh - 325px);
+                        height: calc(100vh - 315px);
+                        overflow-y: auto;
+                        overflow-x: hidden;
+    
+                        table {
+                            background-color: $white;
+                            margin-bottom: 0;
+    
+                            thead {
+                                display: none;
+                            }
+    
+                            tbody {
+                                .v-data-table__mobile-row {
+                                    border: none !important;
+                                }
+    
+                                td {
+                                    &.v-data-table__mobile-row {
+                                        &:nth-child(1n+3) {
+                                            border-bottom: 2px solid $light-white !important;
+                                        }
+    
+                                        &:nth-child(1n+4) {
+                                            display: none;
+                                        }
+                                    }
+    
+                                    .v-data-table__mobile-row__header {
+                                        display: none;
+                                    }
+    
+                                    .v-data-table__mobile-row__cell {
+                                        width: 100%;
+    
+                                        .supplier-row {
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: center;
+    
+                                            .p-gray {
+                                                text-align: start !important;
+                                                color: $dark-grey !important;
+                                            }
+                                        }
+    
+                                        .email-mobile {
+                                            display: flex;
+                                            justify-content: flex-start;
+                                            align-items: flex-start;
+    
+                                            .p-gray {
+                                                text-align: start !important;
+                                                color: $dark-grey !important;
+                                            }
+                                        }
+    
+                                        .item-button {
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            color: $dark-blue;
+                                            cursor: pointer;
+    
+                                            img {
+                                                margin: 2px 6px 0 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+    
+                        /* Scrollbar */
+                        &::-webkit-scrollbar {
+                            width: 10px;
+                        }
+                        
+                        /* Track */
+                        &::-webkit-scrollbar-track {
+                            background-color: #f1f1f1; 
+                        }
+                        
+                        /* Handle */
+                        &::-webkit-scrollbar-thumb {
+                            background-color: #e2e2e2;
+                        }
+                        
+                        /* Handle on hover */
+                        &::-webkit-scrollbar-thumb:hover {
+                            background-color: #e2e2e2;
+                        }
+                    }
+                }
+    
+                &.no-data-table {
+                    .v-data-table__wrapper {
+                        table {
+                            thead {
+                                display: none;
+                            }
+    
+                            tbody {
+                                tr {
+                                    &:hover {
+                                        background-color: $white !important;
+                                    }
+                                }
+
+                                .no-data-wrapper,
+                                .no-data-preloader {
+                                    height: calc(100vh - 300px);
+                                }
+
+                                .no-data-preloader {
+                                    padding-top: 20px;
+                                }
+    
+                                .no-data-wrapper {
+                                    .no-data-heading {
+                                        padding-top: 30px;
+                                    }
+    
+                                    img {
+                                        margin-bottom: 10px;
+                                    }
+    
+                                    h3 {
+                                        font-size: 20px;
+                                        margin-bottom: 10px;
+                                    }
+                                    
+                                    p {
+                                        font-size: 14px;
+                                        margin-bottom: 0;
+                                        color: #6d858f;
+                                        margin-top: 15px;
+                                        width: 100%;
+                                    }
+    
+                                    .supplier-button-action-wrapper {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        margin-top: 30px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+    
+                &.no-current-pagination {
+                    .v-data-table__wrapper {
+                        height: calc(100vh - 265px) !important;
+                    }
+                }
+            }
+
+        }
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1290px) {
+    .supplier-container {
+        .supplier-container-contents {
+            .supplier-content-wrapper {
+                .v-data-table {
+                    .v-toolbar__title {
+                        width: 75%;
+                        font-size: 18px !important;
+                    }
+
+                    &.suppliers-page-table {
+                        .v-data-table__wrapper {
+                            table {
+                                thead {
+                                    tr {
+                                        th {
+                                            &:nth-child(2) {
+                                                min-width: 10% !important;
+                                                width: 10% !important;
+                                            }
+
+                                            &:last-child {
+                                                min-width: 15% !important;
+                                                width: 15% !important;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                tbody {
+                                    tr {
+                                        td {
+                                            .item-button {
+                                                button {            
+                                                    padding: 10px 14px !important;
+                                                    min-width: 30px;
+                                                    height: 36px !important;
+
+                                                    &.invite {
+                                                        padding: 10px 12px !important;
+
+                                                        p {
+                                                            display: none;
+                                                        }
+                                                    }
+                                                }
+                
+                                                img {
+                                                    margin: 0 !important;
+                                                }
+                                            }                                
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &.customer {
+                            .v-data-table__wrapper {
+                                table {
+                                    thead {
+                                        tr {
+                                            th {
+                                                &:nth-child(2) {
+                                                    min-width: 15% !important;
+                                                    width: 15% !important;
+                                                }
+    
+                                                &:last-child {
+                                                    min-width: 15% !important;
+                                                    width: 15% !important;
+                                                }
+                                            }
+                                        }
+                                    }
+    
+                                    tbody {
+                                        tr {
+                                            td {
+                                                .item-button {
+                                                    button {            
+                                                        padding: 10px 14px !important;
+                                                        min-width: 30px;
+                                                        height: 36px !important;
+    
+                                                        &.invite {
+                                                            padding: 10px 12px !important;
+    
+                                                            p {
+                                                                display: none;
+                                                            }
+                                                        }
+                                                    }
+                    
+                                                    img {
+                                                        margin: 0 !important;
+                                                    }
+                                                }                                
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

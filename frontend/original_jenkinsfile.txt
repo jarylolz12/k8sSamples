@@ -1,0 +1,53 @@
+pipeline {
+  agent any 
+  stages {
+    stage('build') {
+      steps {
+        sh 'docker build -t shifl-app-frontend --build-arg NODE_VERSION=16 \
+--build-arg VUE_APP_BASE_URL=https://staging.shifl.com/api \
+--build-arg VUE_APP_PO_URL=https://postaging.shifl.com/api \
+--build-arg VUE_APP_ACCOUNTING_URL=https://accountingms.shifl.capital/api \
+--build-arg VUE_APP_ACCOUNTING_SERVICE_ORIGIN=central_system \
+--build-arg VUE_APP_ACCOUNTING_SERVICE_KEY=9W7892R4yXFxjwKnwxgAIArth2E1JC4ySPdrMQE3 \
+--build-arg VUE_APP_TRUCKING_URL=https://truckingmstest.shifl.com/apidocker \
+--build-arg VUE_APP_PUSHER_HOST=postaging.shifl.com \
+--build-arg VUE_APP_PUSHER_ENC=true \
+--build-arg VUE_APP_PUSHER_PORT=6001 \
+--build-arg VUE_APP_PUSHER_KEY=91628382b01c1141860d \
+--build-arg VUE_APP_PUSHER_CLUSTER=ap1 \
+--build-arg VUE_APP_PO_NOTIFICATION_CHANNEL=po.broadcast.notification.users. .'
+      }
+    }
+    // Below are not the final steps since we do not have access to cloud to test.
+    // Commands below are based on the digital ocean's documentation.
+    // Documentation reference: https://docs.digitalocean.com/products/container-registry/quickstart/
+    stage('docker-login') {
+      steps {
+        sh 'doctl registry login'
+      }
+    }
+    stage('docker-tag') {
+      steps {
+        sh 'docker tag shifl-app-frontend registry.digitalocean.com/shifl-frontend/shifl-app-frontend:${BUILD_NUMBER} && \
+        docker tag shifl-app-frontend registry.digitalocean.com/shifl-frontend/shifl-app-frontend:latest' 
+      }
+    }
+    stage('docker-push') {
+      steps {
+        sh 'docker push registry.digitalocean.com/shifl-frontend/shifl-app-frontend:${BUILD_NUMBER} && \
+        docker push registry.digitalocean.com/shifl-frontend/shifl-app-frontend:latest' 
+      }
+    }
+    // for kubernetes cluster we also need an access to cloud before we can deploy the docker image to the cluster.
+    // Docmentation reference: https://docs.digitalocean.com/products/kubernetes/how-to/connect-to-cluster/#connect-to-the-cluster
+    stage('kubernetes-connect') {
+      sh '' // nneded to create a certificate(Revocable OAuth token)
+    }
+    stage('kubernetes-deploy') {
+      sh 'kubectl apply -f ./k8s/deployment.yml'
+    }
+    stage('kubernetes-load-balancer') {
+      sh 'kubectl apply -f ./k8s/service.yml'
+    }
+  }
+}

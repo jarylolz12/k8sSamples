@@ -1,0 +1,18 @@
+.holds-at-pod-terminal {
+  padding-top: 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid black;
+}
+
+.holds-at-pod-terminal > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-bottom: 15px;
+}
+
+.holds-at-pod-terminal > div > label {
+  width: 50%;
+  padding-top: 5px;
+}
+

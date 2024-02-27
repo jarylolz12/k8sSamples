@@ -1,0 +1,2047 @@
+@import '../../colors.scss';
+
+.containerMain {
+    font-family: 'Inter-Regular', sans-serif;
+
+    #shipments_header {
+        background-color: $white;
+        font-family: 'Inter-Regular', sans-serif;
+        border-top-right-radius: 4px;
+        border-top-left-radius: 4px;
+
+        #shipments_root {
+            display: flex;
+            align-items: center;
+            border: 1px solid $divider-bg;
+            border-bottom-width: 2px;
+            border-top-right-radius: 4px;
+            border-top-left-radius: 4px;
+            font-family: 'Inter-Regular', sans-serif;
+
+            .v-tabs {
+                &.customTab {
+                    .v-tab {
+                        font-family: 'Inter-SemiBold', sans-serif;
+                        color: $default-text-color !important;
+                        font-size: 14px !important;
+                        letter-spacing: 0;
+                        text-transform: capitalize;
+                        padding: 18px 24px 16px !important;
+
+                        .tab-name {
+                            margin-right: 6px;
+                            font-weight: 600;
+                        }
+
+                        .tab-name-completed {
+                            margin-right: 0;
+                            font-weight: 600;
+                        }
+
+                        .v-badge {
+                            &.customBadge {
+                                .v-badge__wrapper {
+                                    position: unset;
+
+                                    .v-badge__badge  {
+                                        position: unset;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        height: 25px;
+                                        min-width: 25px;
+                                        border-radius: 25px;
+                                        padding: 5px 6px 6px;
+                                        font-weight: 600;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.v-tab--active {
+                            color: $dark-blue !important;
+
+                            .v-badge {
+                                &.customBadge {
+                                    .v-badge__wrapper {    
+                                        .v-badge__badge  {
+                                            background-color: $dark-blue !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .filters-wrapper {
+            border-left: 1px solid #EBF2F5;
+            border-right: 1px solid #EBF2F5;
+            border-bottom: 2px solid #EBF2F5;
+            border-top: none;
+            padding: 12px 16px;
+
+            .search-wrapper {
+                position: relative;
+
+                img {
+                    position: absolute;
+                    width: 18px;
+                    top: 12px;
+                    left: 12px;
+                    z-index: 1;
+                }
+
+                input {
+                    border: 1px solid #B3CFE0;
+                    height: 40px;
+                    width: 300px;
+                    padding: 8px 12px 8px 38px;
+                    border-radius: 4px;
+                    font-size: 14px;
+                    background-color: $white;
+
+                    &:focus {
+                        outline: 0;
+                    }
+    
+                    &::placeholder {
+                        color: #B4CFE0 !important;
+                    }
+                }
+            }
+
+            .shipments-tabs-search-wrapper {
+                // border-left: 1px solid $divider-bg;
+                // border-right: 1px solid $divider-bg;
+                // border-bottom: 2px solid $divider-bg;
+                // border-top: none;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+            .pending-approval-tab {
+                // border: 1px solid $divider-bg;
+                // border-bottom-width: 2px;
+                // border-top: none;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-right: 10px;
+
+                .v-tabs {
+                    height: 40px;
+
+                    .v-tabs-bar {
+                        .v-slide-group__prev,
+                        .v-slide-group__next {
+                            display: none;
+                        }
+                        
+                        .v-slide-group__content.v-tabs-bar__content {
+                            height: 40px;
+    
+                            .v-tab {
+                                text-transform: capitalize;
+                                color: #4A4A4A !important;
+                                font-family: 'Inter-Medium', sans-serif;
+                                letter-spacing: 0;
+                                border: 1px solid #B4CFE0;
+                                font-size: 12px;
+                                padding: 6px 12px !important;
+                                height: 40px;
+                                min-width: auto;
+        
+                                &.v-tab--active {
+                                    color: #0171A1 !important;
+                                    background-color: #EBF2F5;
+                                }
+
+                                &.pending-quote {
+                                    border-right: none;
+                                    border-top-left-radius: 4px;
+                                    border-bottom-left-radius: 4px;
+                                }
+        
+                                &.snooze {
+                                    border-left: none;
+                                }
+
+                                &.expired {
+                                    border-left: none;
+                                    // border-top-right-radius: 4px;
+                                    min-width: 0px !important;
+                                }
+
+                                &.draft {
+                                    border-left: none;
+                                    border-top-right-radius: 4px;
+                                    border-bottom-right-radius: 4px;
+                                }
+                            }
+                        }
+                    }
+                    
+                    &.pending-inner-tab-desktop {
+                        // width: 15%;
+                        width: 30%;
+                    }
+
+                    &.pending-inner-tab-mobile {
+                        .v-tabs-bar__content {
+                            width: 100%;
+                            .v-tab {
+                                width: 25% !important;
+                            }
+                            .v-tab.pending-tabs {
+                                border: 0px solid transparent !important;
+                                background-color: transparent !important;
+                            }
+                        }
+                        
+                    }
+                }
+            }
+
+            #filters {
+                height: 40px;
+                box-shadow: none;
+                border: 1px solid $custom-border;
+                background-color: $white;
+                text-transform: capitalize;
+                letter-spacing: 0;
+                font-size: 14px;
+                width: 110px;
+                color: $custom-dark-blue !important;
+                font-weight: 600;
+                margin-right: 10px;
+            }
+
+            .shipments-view-lists {
+                .select-view-tabs-wrapper {
+                    height: 40px;
+            
+                    .select-view-tabs {
+                        .v-tabs-bar {
+                            height: 40px;
+                        }
+            
+                        .v-tabs-slider-wrapper {
+                            display: none;
+                        }
+            
+                        .v-tab {
+                            font-size: 12px !important;
+                            text-transform: capitalize!important;
+                            letter-spacing: 0 !important;
+                            border: 1px solid #b4cfe0;
+                            padding: 0 10px;
+                            font-weight: unset !important;
+                            min-width: 36px !important;
+                            
+                            span {
+                                color: #4a4a4a;
+                                font-family: 'Inter-Medium', sans-serif !important;
+                            }
+            
+                            &.v-tab--active {
+                                background-color: #EBF2F5 !important;
+            
+                                span {
+                                    color: #0171A1;					
+                                }
+                            }
+            
+                            &:nth-child(2) {
+                                border-right: none !important;
+                                border-top-left-radius: 4px;
+                                border-bottom-left-radius: 4px;
+                            }
+    
+                            &:nth-child(3),
+                            &:nth-child(4) {
+                                border-right: none !important;
+                            }
+            
+                            &:last-child {
+                                border-top-right-radius: 4px;
+                                border-bottom-right-radius: 4px;
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+    }
+
+    .shipment-table-wrapper {
+        position: relative;
+
+        .shipments-tabs-search-wrapper {
+            border: 1px solid $divider-bg;
+            border-top: none;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 18px 20px;
+            background-color: $white;
+            
+            .search-wrapper {
+                position: relative;
+
+                img {
+                    position: absolute;
+                    width: 18px;
+                    top: 12px;
+                    left: 12px;
+                    z-index: 10;
+                }
+
+                input {
+                    border: 1px solid #B3CFE0;
+                    height: 40px;
+                    width: 400px;
+                    padding: 8px 12px 8px 38px;
+                    border-radius: 4px;
+                    font-size: 14px;
+
+                    &:focus {
+                        outline: 0;
+                    }
+    
+                    &::placeholder {
+                        color: #B4CFE0 !important;
+                    }
+                }
+            }
+        }
+
+        .overlay {
+            &.show {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #fff !important;
+                border: 1px solid $divider-bg;
+                border-top: none;
+                border-bottom: none;
+                z-index: 1000;
+                cursor: auto;
+
+                .preloader {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 10%;
+                }
+            }
+        }
+
+        .v-data-table {
+            box-shadow: none !important;
+            border-radius: 0;
+            border: 1px solid $divider-bg;
+            border-top: none;
+            border-bottom: none;
+
+            .v-data-table__wrapper {
+                // max-height: calc(100vh - 308px);
+                height: calc(100vh - 295px);
+                overflow-y: auto;
+                overflow-x: hidden;
+
+                /* Scrollbar */
+                &::-webkit-scrollbar {
+                    width: 10px;
+                }
+                
+                /* Track */
+                &::-webkit-scrollbar-track {
+                    background-color: #f1f1f1; 
+                }
+                
+                /* Handle */
+                &::-webkit-scrollbar-thumb {
+                    background-color: #D6D9DC;
+                }
+                
+                /* Handle on hover */
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: #D6D9DC;
+                }
+                
+                p {
+                    margin-bottom: 0 !important;
+                    font-size: 14px !important;
+                }
+
+                table {
+                    thead {
+                        tr {
+                            th {
+                                font-size: 14px;
+                                text-transform: capitalize;
+                                color: $grey;
+                                border-bottom: 2px solid $divider-bg !important;
+                                padding: 8px;
+                                box-shadow: none !important;
+                                height: 42px;
+
+                                &:first-child {
+                                    padding-left: 14px;
+                                }
+                                
+                                // &.pending-quote-table-header {
+                                //     text-transform: none;
+                                //     color: #6D858F;
+                                //     font-family: 'Inter', sans-serif;
+                                //     font-weight: 600;
+                                //     font-size: 14px;
+                                //     padding: 8px 20px;
+                                // }
+
+                                i {
+                                    cursor: pointer;
+
+                                    &.mdi-arrow-up {
+                                        width: 16px !important;
+                                        padding-bottom: 1px;
+                                        padding-left: 4px;
+            
+                                        &::before {
+                                            content: '' !important;
+                                            background: url("../assets/icons/sort-ascending.svg") no-repeat !important;
+                                            background-position: center !important;
+                                            background-size: cover !important;
+                                            width: 16px !important;
+                                            height: 16px !important;
+                                        }
+                                    }
+
+                                    &.mdi-arrow-down {
+                                        width: 16px !important;
+                                        padding-bottom: 1px;
+                                        padding-left: 4px;
+            
+                                        &::before {
+                                            content: '' !important;
+                                            background: url("../assets/icons/sort-descending.svg") no-repeat !important;
+                                            background-position: center !important;
+                                            background-size: cover !important;
+                                            width: 16px !important;
+                                            height: 16px !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            cursor: pointer;
+
+                            &:hover {
+                                background-color: $table-hover-background !important;
+
+                                .status {
+                                    .v-chip {
+                                        // background-color: $white !important;
+                                        background-color: transparent !important;
+                                    }
+                                }
+                                
+                            }
+
+                            td {
+                                font-size: 14px !important;
+                                color: $default-text-color;
+                                font-weight: 400;
+                                padding: 8px;
+                                border-bottom: 1px solid $divider-bg !important;
+
+                                &:first-child {
+                                    padding-left: 14px;
+                                }
+
+                                .shipment-type {
+                                    width: 40px;
+                                    display: flex;
+                                    grid-gap: 5px;
+                                    align-items: center;
+                                }
+
+                                .no-shipment-type {
+                                    width: 40px;
+                                    text-align: start;
+                                }
+
+                                .po-num-desktop p { 
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    max-width: 130px;
+                                }
+
+                                .supplier-desktop {
+                                    overflow: hidden;
+                                    display: -webkit-box;
+                                    -webkit-line-clamp: 2;
+                                    -webkit-box-orient: vertical;
+                                }
+
+                                .request-schedules {
+                                    button {
+                                        padding: 6px 8px !important;
+                                        font-size: 12px !important;
+                                        height: 33px !important;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        font-family: 'Inter-Medium', sans-serif;
+                                    }
+                                }
+
+                                .status {
+                                    height: 26px;
+                                    
+                                    .v-chip {
+                                        background-color: transparent !important;
+                                        height: auto;
+                                        .chip-text {
+                                            text-transform: capitalize;
+                                            font-family: 'Inter-Medium', sans-serif !important;
+                                            padding: 3px 8px !important;
+                                            border-radius: 99px !important;
+                                            font-size: 12px !important;
+                                            background-color: $light-white;
+                                            color: $default-text-color !important;
+                                            margin-bottom: 0 !important;
+
+                                            span {
+                                                font-family: 'Inter-Medium', sans-serif !important;
+                                            }
+
+                                            &.green--text {
+                                                color: #16B442 !important;
+                                            }
+
+                                            &.red--text {
+                                                color: $red !important;
+                                            }
+                                        }
+                                        
+                                        .v-chip__content {
+                                            font-family: 'Inter-Medium', sans-serif !important;
+                                            text-transform: capitalize;
+
+                                            span {
+                                                margin-left: 2px !important;
+                                            }
+                                        }
+                                    }                                    
+                                    
+                                    // &.Discharged,
+                                    &.Completed,
+                                    &.Empty-in,
+                                    &.Discharged-released {
+                                        .v-chip {
+                                            .chip-text {
+                                                background-color: #EBFAEF !important;
+                                            }
+                                        }
+                                    }
+
+                                    &.Past-day {
+                                        .v-chip {
+                                            .chip-text {
+                                                background-color: $white !important;
+                                            }
+                                        }
+
+                                        .t-shipment-status-wrapper {
+                                            > div {
+                                                background-color: $white !important;
+                                                color: #F93131;
+                                            }
+                                        }
+                                    }
+
+                                    &.Discharged-hold {
+                                        .v-chip {
+                                            .chip-text {
+                                                background-color: #FFF2F2 !important;
+                                            }
+                                        }
+                                    }
+
+                                    &.Expired {
+                                        .v-chip {
+                                            .chip-text {
+                                                color: $red !important;
+                                                background-color: #FFF2F2 !important;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                .is-tracking-shipment {
+                                    height: 22px;
+
+                                    span {
+                                        background-color: #F0FBFF;
+                                        padding: 3px 8px;
+                                        font-size: 12px;
+                                        color: $dark-blue;
+                                        border-radius: 99px;
+                                        font-family: 'Inter-Medium', sans-serif;
+                                        
+                                        &.t-desktop {
+                                            width: auto;
+                                            display: inline-block;
+                                        }
+
+                                        &.t-mobile {
+                                            display: flex;
+                                        }
+                                    }
+                                }
+                                .is-not-tracking-shipment {
+                                    height: 22px;
+
+                                    span {
+                                        background-color: $light-red;
+                                        font-size: 12px;
+                                        color: $dark-red;
+                                        padding: 3px 8px;
+                                        border-radius: 99px;
+                                        font-family: 'Inter', sans-serif;
+                                        font-weight: 400;
+
+                                        &.t-desktop {
+                                            width: auto;
+                                            display: inline-block;
+                                        }
+
+                                        &.t-mobile {
+                                            width: 114%;
+                                            display: flex;
+                                        }
+                                        
+
+                                    }
+                                }
+
+                                .shipment-action-button {
+                                    button {
+                                        width: 34px !important;
+                                        height: 34px !important;
+                                    }
+                                }
+                            }
+
+                            &.light-red {
+                                background-color: #FFF2F2;
+
+                                &:hover {
+                                    background-color: #FFF5F5 !important;
+                                }
+                            }
+
+                            &.v-data-table__empty-wrapper {
+                                cursor: unset;
+
+                                &:hover {
+                                    background-color: $white !important;
+                                }
+
+                                td {
+                                    .no-data-preloader,
+                                    .no-data-wrapper {
+                                        // height: calc(100vh - 380px);
+                                        min-height: 200px;
+                                        padding-top: 35px;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        flex-direction: column;
+
+                                        .no-data-heading {
+                                            margin-top: 10px;
+
+                                            p {
+                                                font-size: 20px;
+                                                color: $default-text-color;
+                                                font-family: 'Inter-Regular', sans-serif;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            /* No data */
+            &#table-no-data {
+                border-bottom: 1px solid $divider-bg;
+                border-bottom: none;
+                
+                .v-data-table__wrapper {
+                    max-height: 100%;
+
+                    table {
+                        thead {
+                            display: none;
+                        }
+
+                        tbody {
+                            tr {
+                                &.v-data-table__empty-wrapper {
+                                    cursor: unset;
+
+                                    &:hover {
+                                        background-color: $white !important;
+                                    }
+
+                                    td {
+                                        border-bottom: none !important;
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        height: 100%;
+
+                                        .no-data-preloader,
+                                        .no-data-wrapper {
+                                            // height: calc(100vh - 300px);
+                                            min-height: 200px;
+                                            padding-top: 35px;
+                                            display: flex;
+                                            justify-content: center;
+                                            align-items: center;
+                                            flex-direction: column;
+
+                                            .no-data-heading {
+                                                margin-top: 15px;
+
+                                                p {
+                                                    font-size: 20px;
+                                                    color: $default-text-color;
+                                                    font-family: 'Inter-Regular', sans-serif;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                &.red.lighten-5:hover {
+                                    background-color: #FFCDD2 !important;
+                                    border-color: #FFCDD2 !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.no-data-table {
+                .v-data-table__wrapper {
+                    table {
+                        thead {
+                            display: none;
+                        }
+
+                        tbody {
+                            tr {
+                                td {
+                                    border-bottom: none !important;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.no-current-pagination {
+                    .v-data-table__wrapper {
+                        // height: calc(100vh - 172px);
+                        height: calc(100vh - 237px); // with views
+                    }
+                }
+
+                &.has-searched-data {
+                    .v-data-table__wrapper {
+                        // height: calc(100vh - 250px);
+                        height: calc(100vh - 237px);
+                    }
+                }
+            }
+
+            &.no-current-pagination {
+                .v-data-table__wrapper {
+                    // height: calc(100vh - 250px);
+                    height: calc(100vh - 237px);
+                }
+            }
+
+            &.pending-header {
+                &.no-data-table {
+                    &.no-current-pagination {
+                        .v-data-table__wrapper {
+                            // height: calc(100vh - 250px);
+                            height: calc(100vh - 237px);
+                        }
+                    }
+                }
+            }
+        }
+
+        .pagination-wrapper {
+            border: 1px solid $divider-bg !important;
+        }
+
+        // compact view
+        .compact-view {
+            #gridContainer {
+                height: calc(100vh - 240px);
+                font-family: 'Inter-Regular', sans-serif;
+                width: 100% !important;
+                max-width: 100% !important;
+                border: 1px solid #EBF2F5;
+                border-top: none;
+
+                &.has-multiple-pages {
+                    height: calc(100vh - 338px);
+                    border-bottom: none !important;
+                }
+    
+                .dx-datagrid {
+                    .dx-datagrid-headers {
+                        border: none;
+    
+                        .dx-texteditor-input {
+                            font-family: 'Inter-Regular', sans-serif !important;
+                            caret-color: #4a4a4a !important;
+                            text-align: start !important;
+                            font-size: 14px;
+                        }
+    
+                        table {
+                            border-bottom: none;
+    
+                            tbody {
+                                tr {
+                                    &.dx-header-row {
+                                        color: #6D858F;
+    
+                                        td {
+                                            vertical-align: middle;
+                                            border: 1px solid #EBF2F5;
+                                            border-top: none;
+                                            border-right: none !important;
+                                            border-left: none !important;
+                                            text-align: start !important;
+                                            padding: 8px 14px !important;
+    
+                                            &:first-child {
+                                                border-left: none !important;
+                                            }
+    
+                                            &:last-child {
+                                                border-right: none !important;
+                                            }									
+    
+                                            .dx-datagrid-text-content,
+                                            &.dx-command-edit  {
+                                                font-size: 14px !important;
+                                                font-family: 'Inter-SemiBold', sans-serif;
+                                                vertical-align: middle;
+                                            }
+    
+                                            &.dx-command-edit {
+                                                text-align: center !important;
+                                            }
+    
+                                            .dx-datagrid-text-content {
+                                                width: 100%;
+    
+                                                .header-template-wrapper-customized {
+                                                    display: flex;
+                                                    justify-content: flex-start;
+                                                    align-items: center;
+    
+                                                    > div {
+                                                        width: 35px;
+                                                        display: flex;
+                                                        justify-content: flex-start;
+                                                        align-items: center;
+                                                    }
+                                                }
+                                            }
+    
+                                            // .dx-header-filter {
+                                            //     background-repeat: no-repeat;
+                                            //     background-position: 0px 0px;
+                                            //     width: 14px;
+                                            //     height: 12px;
+                                            //     background-image: url("../../../../../assets/icons/filter-icon.svg") !important;
+                                            //     margin-top: 5px;
+    
+                                            //     &::before {
+                                            //         content: "";
+                                            //     }
+                                            // }
+                                        }
+                                    }
+    
+                                    &.dx-datagrid-filter-row {
+                                        .dx-editor-with-menu {
+                                            .dx-editor-container {
+                                                .dx-texteditor-container {
+                                                    .dx-texteditor-input-container {
+                                                        input {
+                                                            font-family: 'Inter-Regular', sans-serif !important;
+                                                            caret-color: #4a4a4a !important;
+                                                            text-align: start !important;
+                                                            font-size: 14px;
+                                                            min-height: unset;
+                                                        }
+                                                    }													
+                                                }
+                                            }
+                                        }	
+                                    }
+                                }
+                            }
+                        }
+    
+                        .dx-datagrid-table {
+                            .dx-row {
+                                > td {
+                                    border-bottom: 1px solid #EBF2F5;
+                                }
+                            }
+                        }
+    
+                        .dx-datagrid-focus-overlay {
+                            border: 1px solid #0171A1 !important;
+                            height: 33px !important;
+                        }
+                    }
+    
+                    .dx-datagrid-rowsview {
+                        border: none !important;
+    
+                        .dx-datagrid-content {
+                            table {
+                                tr {
+                                    // display: table-row;
+                                    // position: relative;
+    
+                                    &.dx-state-hover {
+                                        background-color: #f7f7f70f !important;
+                                    }
+    
+                                    &.dx-data-row {
+                                        td {
+                                            border: 1px solid #EBF2F5;
+                                            font-size: 14px !important;
+                                            text-align: start !important;
+                                            vertical-align: middle;
+                                            color: #4a4a4a;
+                                            height: 35px !important;
+                                            overflow: hidden;
+                                            text-overflow: ellipsis;
+                                            padding: 6px 14px !important;
+    
+                                            &:first-child {
+                                                border-left: none !important;
+                                            }
+    
+                                            &:last-child {
+                                                border-right: none !important;
+                                            }
+    
+                                            .text-ellipsis-overflow {
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                            }
+    
+                                            .dx-texteditor-container {
+                                                .dx-texteditor-input-container {
+                                                    input {
+                                                        font-family: 'Inter-Regular', sans-serif;
+                                                        caret-color: #4a4a4a !important;
+                                                        text-align: start !important;
+                                                        font-size: 14px;
+                                                        min-height: unset;
+                                                        overflow: hidden;
+                                                        text-overflow: ellipsis;
+                                                    }
+    
+                                                    .dx-placeholder {
+                                                        font-size: 14px;
+                                                    }
+                                                }
+                                            }
+    
+                                            &.dx-focused {
+                                                // background-color: #F0FBFF;
+                                                vertical-align: middle;
+    
+                                                &.dx-editor-cell {
+                                                    input {
+                                                        // background-color: #F0FBFF;
+                                                        background-color: transparent;
+                                                        caret-color: #4a4a4a;
+                                                    }
+    
+                                                    &.dx-editor-inline-block {
+                                                        border: none;
+                                                    }
+                                                }
+                                            }
+    
+                                            &.checkboxes-td {
+                                                border-right: 1px solid transparent;
+    
+                                                &.gate {
+                                                    border-right: 1px solid #EBF2F5;
+                                                }
+                                            }
+    
+                                            &.dx-command-edit {
+                                                text-align: center !important;
+    
+                                                img {
+                                                    width: 16px;
+                                                    height: 16px;
+                                                }
+                                            }
+    
+                                            .dx-dropdowneditor {
+                                                position: unset;
+                                            }
+    
+                                            &.hovered {
+                                                .button-copy-container {
+                                                    img {
+                                                        visibility: visible;
+                                                    }
+                                                }											
+                                            }
+    
+                                            .button-copy-container {
+                                                img {
+                                                    visibility: hidden;
+                                                }
+                                            }
+    
+                                            .custom-checkbox-class {
+                                                width: 100%;
+                                                padding: 0 8px;
+    
+                                                .dx-checkbox-icon {
+                                                    border-radius: 4px;
+                                                    border: 1px solid #B4CFE0;
+                                                }
+    
+                                                &.dx-checkbox-checked {
+                                                    .dx-checkbox-icon {
+                                                        border: 1px solid #16B442;
+                                                        color: #16B442;
+                                                    }
+                                                }
+                                            }
+    
+                                            &.not-scheduled {
+                                                color: #6D858F;
+                                            }
+    
+                                            .pickup_on_data,
+                                            .overflow-hidden-ellipsis {
+                                                margin-bottom: 0 !important;
+                                                text-overflow: ellipsis;
+                                                overflow: hidden;
+    
+                                                &.non-tooltip {
+                                                    // width: 235px;
+                                                    text-overflow: ellipsis;
+                                                    overflow: hidden;
+                                                    white-space: nowrap;												
+                                                }
+                                            }
+    
+                                            .assigned-status,
+                                            .status {
+                                                padding: 4px 8px;
+                                                border-radius: 99px;
+                                                font-size: 12px;
+                                                text-align: center;
+                                                font-family: 'Inter-Medium', sans-serif;
+                                                // color: #D68A1A;
+                                                // background-color: #FFF9F0;
+                                                height: 23px !important;
+    
+                                                &.Accepted-Status,
+                                                &.green-bg-status {
+                                                    color: #16B442 !important;
+                                                    background-color: #EBFAEF !important;
+                                                }
+    
+                                                &.Declined,
+                                                &.red-bg-status {
+                                                    color: #f93131 !important;
+                                                    background-color: #fff2f2 !important;
+                                                }
+    
+                                                &.yellow-bg-status {
+                                                    color: #D68A1A !important;
+                                                    background-color: #FFF9F0 !important;
+                                                }
+    
+                                                &.blue-bg-status {
+                                                    color: #0171a1 !important;
+                                                    background-color: #f0fbff !important;
+                                                }
+    
+                                                &.gray-bg-status {
+                                                    background-color: #f5f9fc !important;
+                                                }
+                                            }
+    
+                                            .action-cell-wrapper {
+                                                .dx-icon-customicon {
+                                                    background-repeat: no-repeat;
+                                                    background-position: 0px 0px;
+                                                    width: 16px;
+                                                    height: 16px;
+    
+                                                    // &.view {													
+                                                    //     background-image: url("../../../../../assets/icons/visibility.svg") !important;
+                                                    // }												
+    
+                                                    // &.dots {
+                                                    //     background-image: url("../../../../../assets/icons/dots.svg") !important;
+                                                    // }
+                                                }
+                                            }
+                                        }
+                                    }
+    
+                                    &.dx-freespace-row {
+                                        display: none;
+    
+                                        td {
+                                            border: none !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+    
+                        // for scrollbar
+                        .dx-scrollable-wrapper {
+                            .dx-scrollable-container {
+                                // .dx-scrollable-scrollbar {
+                                //     &.dx-scrollbar-horizontal {
+                                //         height: 10px !important;
+                    
+                                //         .dx-scrollable-scroll {
+                                //             height: 10px !important;
+                                //         }
+                                //     }
+                                // }
+    
+                                .dx-scrollable-content {
+                                    padding-bottom: 10px;
+                                    top: 1px !important;
+                                }
+                            }
+                        }
+    
+                        &.dx-empty {
+                            width: 100%;
+    
+                            .dx-scrollable-wrapper {
+                                .dx-scrollable-container {
+                                    .dx-scrollable-content {
+                                        .dx-datagrid-content {
+                                            width: 100%;
+                                        }
+                                    }
+    
+                                    .dx-scrollable-scrollbar {
+                                        &.dx-scrollbar-horizontal {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+    
+                    .dx-datagrid-pager {
+                        display: none;
+                    }
+    
+                    .dx-datagrid-focus-overlay {
+                        border: 1px solid #0171A1 !important;
+    
+                        // &:after {
+                        // 	border: 1px solid #0171A1 !important;
+                        // }
+                    }
+    
+                    .dx-column-lines {
+                        > td {
+                            border-right: 1px solid #EBF2F5;
+                            border-left: 1px solid #EBF2F5;
+                        }
+                    }
+                }           
+                
+                .dx-datagrid-nodata {
+                    top: 12%;
+                    font-size: 14px;
+                    color: #4a4a4a;
+                }
+            }
+        }
+    }
+
+    // .pending-header-quote {
+    //     table {
+    //         tbody {
+    //             tr {
+    //                 td {
+    //                     padding: 8px 14px !important;
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+}
+
+.v-tooltip__content.tooltip-wrapper {
+    &.menuable__content__active {
+        background-color: #4a4a4a !important;
+        border-color: #4a4a4a !important;
+        opacity: 1 !important;
+    }
+
+    &.tooltip-bottom {
+        &::before{
+            border-right: solid 8px transparent;
+            border-left: solid 8px transparent;
+            transform: translateX(-50%);
+            position: absolute;
+            z-index: -21;
+            content: '';
+            bottom: 100%;
+            left: 50%;
+            height: 0;
+            width: 0;
+            border-bottom: solid 8px #4a4a4a;
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .containerMain {
+        background-color: #EBF2F5;
+
+        #shipments_root {
+            flex-direction: column-reverse;            
+
+            .v-tabs {
+                &.customTab {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .v-tab {
+                        padding: 0 15px !important;
+                    }
+                }
+            }
+
+            .shipment-header-buttons {
+                width: 100%;
+                padding: 12px 16px;
+                border-bottom: 2px solid #EBF2F5;
+
+                .track-shipment {
+                    width: 100%;
+                }
+            }
+
+            .create-shipment-button {
+                width: 100%;
+                padding: 16px 16px 8px;
+
+                .custom-button {
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .containerMain {
+        padding: 0;
+        background-color: #EBF2F5;
+
+        #shipments_header {
+            #shipments_root {
+                .v-tabs {
+                    &.customTab {
+                        .v-slide-group__prev,
+                        .v-slide-group__next {
+                            display: none !important;
+                        }
+    
+                        .v-tab {
+                            font-size: 14px;
+                        }
+                    }
+
+                    /* mobile tab style */
+                    &.customTab.custom-tab-mobile-special {
+                        justify-content: inherit;
+
+                        .v-tab {   
+                            min-width: 130px;
+                            padding: 0px 10px !important;
+                            font-family: 'Inter-Medium', sans-serif;
+                            color: $dark-grey !important;
+                            
+                            .tab-name {
+                                margin-right: 0;
+                            }
+
+                            &.v-tab-special {
+                                width: 25%;
+                            }
+
+                            &.v-tab--active {
+                                color: $dark-blue !important;
+                            }
+
+                            &.Snoozed,
+                            &.Expired {
+                                min-width: 105px !important;
+                            }
+
+                            &.Pending {
+                                min-width: 150px !important;
+
+                                &.Quote {
+                                    min-width: 130px !important;
+                                }
+                            }
+                        }
+
+                        .v-tabs-bar--is-mobile {
+                            width: 100%;
+
+                            .v-slide-group__wrapper {
+                                .v-tabs-bar__content {
+                                    // width: 200%;
+                                    width: auto;
+                                }
+                                .v-slide-group__content {
+                                    .v-tabs-slider-wrapper {
+                                        width: 100%;
+                                    }
+                                }
+                                .v-tab--active {
+                                    &::before {
+                                        opacity: 0;
+                                    }
+                                }
+                            }
+                        }
+
+                        &.custom-tab-mobile-special-wrapper {
+                            .v-tabs-bar__content {
+                                // width: 200% !important;
+                                width: auto;
+                            }
+                            .v-tabs-slider-wrapper {
+                                //width: 133px !important;
+                            }
+                        }
+                    }
+
+                }
+
+                .shipment-header-buttons {
+                    width: 100%;
+                    padding: 12px 16px;
+                    border-bottom: 2px solid #EBF2F5;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+    
+                    .track-shipment {
+                        width: 100%;
+                        margin: 0 !important;
+                    }
+                }
+            }
+    
+            .filters-wrapper {
+                // background-color: $light-white !important;
+                background-color: #EBF2F5 !important;
+
+                .pending-approval-tab {
+                    flex-direction: column;
+                    padding: 12px 18px;
+                    border: none;
+
+                    .pending-tabs-search-wrapper {
+                        width: 100%;
+                        .search-wrapper {
+                            width: 100%;
+                            input {
+                                width: 100% !important;
+                            }
+                        }
+                    }                    
+
+
+                    .v-tabs {
+                        margin-bottom: 15px;
+                        height: 45px;
+    
+                        .v-tabs-bar {
+                            background-color: #F1F6FA !important;
+                            
+                            .v-slide-group__content.v-tabs-bar__content {   
+                                height: 45px;
+
+                                .v-tab {    
+                                    width: 50%;
+                                    font-size: 14px;
+                                    height: 45px;
+                                    background-color: $white;
+
+                                    &.v-tab--active {
+                                        color: #0171A1 !important;
+                                        background-color: #EBF2F5;
+                                    }
+                                }
+                            }
+                        }                                        
+                    }
+                }
+
+                .shipments-tabs-search-wrapper {
+                    width: 100%;
+                    padding: 12px 18px;
+                    border: none;
+
+                    .search-wrapper {
+                        width: 100%;
+
+                        input {
+                            width: 100% !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .shipment-table-wrapper {
+            .shipments-tabs-search-wrapper {
+                width: 100%;
+                padding: 12px 18px;
+                border: none;
+                background-color: transparent !important;
+            }
+
+            .overlay {
+                &.show {
+                    position: fixed;
+                    top: 195px;
+
+                    &.pending {
+                        top: 308px;
+                    }
+                }
+            }
+
+            &.pending {
+                .overlay {
+                    &.show {
+                        top: 240px;
+                    }
+                }
+            }
+
+            .v-data-table {
+                &.table-mobile {
+                    background-color: #EBF2F5 !important;
+
+                    .v-data-table__wrapper {
+                        height: calc(100vh - 255px);
+
+                        table {
+                            // margin-bottom: 15px;
+                            padding: 0 10px;
+
+                            thead {
+                                display: none !important;
+                            }
+
+                            tbody {
+                                tr {
+                                    &.v-data-table__mobile-table-row {
+                                        td {
+                                            &.v-data-table__mobile-row {
+                                                padding: 10px 16px 12px;
+
+                                                .v-data-table__mobile-row__header {
+                                                    display: none !important;
+                                                }
+    
+                                                .v-data-table__mobile-row__cell {
+                                                    width: 100%;
+    
+                                                    .table-mobile-data {
+                                                        width: 100%;
+                                                        display: flex;
+                                                        justify-content: space-between;
+                                                        align-items: flex-start;
+
+                                                        .flag-wrapper {
+                                                            p {
+                                                                width: 215px;
+                                                                text-align: right;
+                                                            }
+                                                        }
+
+                                                        &.mobile-reference {
+                                                            align-items: center !important;
+                                                        }
+                                                    }                                                    
+    
+                                                    .mobile-reference {
+                                                        .mobile-reference-content {                                                            
+                                                            display: flex;
+                                                            justify-content: flex-start;
+                                                            align-items: center;
+                                                            justify-content: space-between;
+                                                            text-align: start;
+
+                                                            & > span:first-child {
+                                                                font-size: 16px;
+                                                                font-family: 'Inter', sans-serif;
+                                                                font-weight: 600;
+                                                                color: $default-text-color;
+                                                                white-space: nowrap;
+                                                                text-overflow: ellipsis;
+                                                                overflow: hidden;
+                                                                // max-width: 130px;
+                                                                // display: inline-block;
+                                                                display: flex;
+                                                                align-items: center !important;
+                                                            }
+
+                                                            &.snooze {
+                                                                & > span:first-child {
+                                                                    max-width: 100px;
+                                                                }
+                                                            }
+                                                            
+                                                            .is-tracking-shipment,
+                                                            .is-not-tracking-shipment {
+                                                                margin-left: 6px;
+                                                                display: flex;
+                                                                justify-content: flex-start;
+                                                                align-items: flex-start;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    .status-mobile {
+                                                        display: flex;
+                                                        flex-direction: row;
+                                                        align-items: center;
+                                                        height: 24px;
+
+                                                        .is-not-tracking-shipment {
+                                                            margin-right: 8px;
+                                                        }
+                                                        
+                                                        .v-chip {
+                                                            // display: block;
+                                                            display: flex;
+                                                            align-items: center;
+                                                            // height: 22px;
+                                                            padding: 0px !important;
+                                                            margin-bottom: 0 !important;
+                                                            background: transparent !important;
+
+                                                            .chip-text {
+                                                                padding: 3px 8px !important;
+                                                                font-family: 'Inter', sans-serif;
+                                                                font-weight: 500;
+                                                                font-size: 12px !important;
+                                                                border-radius: 99px !important;
+                                                                background-color: $light-white !important;
+                                                                text-transform: capitalize;
+                                                                color: $default-text-color;
+                                                                // height: auto;
+                                                                height: 24px;
+                                                                display: flex;
+                                                                justify-content: center;
+                                                                align-items: center;
+                                                                
+                                                                &.green--text {
+                                                                    color: #16B442 !important;
+                                                                }
+                                                            }
+                                                        }
+
+                                                        // &.Discharged,
+                                                        &.Completed,
+                                                        &.Empty-in,
+                                                        &.Discharged-released {
+                                                            .v-chip {
+                                                                .chip-text {
+                                                                    background-color: #EBFAEF !important;
+                                                                }
+                                                            }
+                                                        }
+
+                                                        &.Past-day {
+                                                            .v-chip {
+                                                                .chip-text {
+                                                                    background-color: $white !important;
+                                                                }
+                                                            }
+
+                                                            .t-shipment-status-wrapper {
+                                                                > div {
+                                                                    background-color: $white !important;
+                                                                    color: #F93131;
+                                                                }
+                                                            }
+                                                        }
+
+                                                        &.Discharged-hold {
+                                                            .v-chip {
+                                                                .chip-text {
+                                                                    background-color: #FFF2F2 !important;
+                                                                }
+                                                            }
+                                                        }
+
+                                                        &.Expired {
+                                                            .v-chip {
+                                                                .chip-text {
+                                                                    background-color: #FFF2F2 !important;
+                                                                    color: $red;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+                                                    .mobile-supplier {
+                                                        display: flex;
+                                                        justify-content: flex-start;
+                                                        align-items: flex-start;
+                                                        padding-bottom: 0;
+
+                                                        .mobile-supplier-content {
+                                                            width: 100%;
+
+                                                            p {
+                                                                font-size: 12px;
+                                                                color: $default-text-color !important;
+                                                                text-align: left !important;
+                                                                max-width: 70vw;
+                                                                white-space: nowrap;
+                                                                overflow: hidden;
+                                                                text-overflow: ellipsis;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    .mobile-pos {
+                                                        display: flex;
+                                                        justify-content: space-between;
+                                                        align-items: center;
+
+                                                        p {
+                                                            margin: 0 !important;
+                                                            font-size: 12px;
+                                                            color: $grey !important;
+                                                            text-align: left;
+                                                            max-width: 75vw;
+                                                            white-space: nowrap;
+                                                            overflow: hidden;
+                                                            text-overflow: ellipsis;
+
+                                                            span {
+                                                                color: $default-text-color !important;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    .mobile-cargo-date {
+                                                        display: flex;
+                                                        justify-content: flex-start;
+                                                        align-items: center;
+
+                                                        p {
+                                                            color: #819fb2 !important;
+                                                            margin-bottom: 0;
+
+                                                            span {
+                                                                color: #4A4A4A !important;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    .request-schedules {
+                                                        margin-top: 10px;
+                                                    }
+
+                                                    .is-not-tracking-shipment,
+                                                    .is-tracking-shipment {
+                                                        span {
+                                                            font-size: 12px;
+                                                        }
+                                                    }                                                    
+
+                                                    .t-shipment-status-wrapper {
+                                                        font-size: 12px;
+                                                        border-radius: 99px;
+                                                        height: 24px;
+                                                    }
+                                                }
+
+                                                &:nth-child(1) {
+                                                    border-top-left-radius: 8px;
+                                                    border-top-right-radius: 8px;
+                                                    border: 1px solid $divider-bg !important;
+                                                    //border-bottom: none !important;
+                                                    border-bottom: 1px solid #e5e5e5;
+                                                    padding-bottom: 8px;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    &.light-red {
+                                        td {
+                                            background-color: #FFF2F2 !important;
+                                        }
+                                    }
+
+                                    td {
+                                        background-color: $white !important;
+                                        border: none !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    /* For Shipments and Completed Tab */
+                    &.shipments-table-mobile {
+                        table {
+                            tbody {
+                                td {
+                                    &.v-data-table__mobile-row {
+                                        // &:nth-child(2),
+                                        &:nth-child(2) {
+                                            border: 1px solid $divider-bg !important;
+                                            // border-bottom: none !important;
+                                            border-top: none !important;
+                                            padding-bottom: 0 !important;
+                                            // padding-top: 12px !important;
+                                            padding: 12px 16px 0 !important;
+                                        }
+
+                                        &:nth-child(3) {
+                                            margin-bottom: 10px;
+                                            border-bottom-left-radius: 8px;
+                                            border-bottom-right-radius: 8px;
+                                            border: 1px solid $divider-bg !important;
+                                            border-top: none !important;
+                                            padding: 0 16px !important;
+                                        }
+
+                                        /* Hide 5 onwards td's in mobile */
+                                        &:nth-child(1n+4) {
+                                            display: none;
+                                        }
+                                    } 
+                                }
+                            }
+                        }
+                    }
+
+                    /* For Pending Tab */
+                    &.pending-header-mobile {
+                        .v-data-table__wrapper {
+                            height: calc(100vh - 298px);
+
+                            table {
+                                height: 100%;
+
+                                tbody {
+                                    tr {
+                                        td {
+                                            &:nth-child(1n+5) {
+                                                display: none;
+                                            }
+
+                                            &:nth-child(2),
+                                            &:nth-child(3) {
+                                                border: 1px solid $divider-bg !important;
+                                                border-bottom: none !important;
+                                                border-top: none !important;
+                                                padding-bottom: 0 !important;
+                                                min-height: 30px;
+                                            } 
+    
+                                            &:nth-child(4) {
+                                                margin-bottom: 10px;
+                                                border-bottom-left-radius: 8px;
+                                                border-bottom-right-radius: 8px;
+                                                border: 1px solid $divider-bg !important;
+                                                border-top: none !important;
+                                            }
+
+                                            .no-data-wrapper {
+                                                // height: calc(100vh - 415px);
+                                                padding-top: 0;
+                                                justify-content: flex-start;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &.no-data-table {
+                            &.no-current-pagination {
+                                .v-data-table__wrapper {
+                                    // height: calc(100vh - 250px);
+                                    height: calc(100vh - 265px);
+                                }
+                            }
+                        }
+    
+                        &.no-current-pagination {
+                            .v-data-table__wrapper {
+                                height: calc(100vh - 245px);
+                            }
+                        }
+                    }
+                }
+    
+                /* No data */
+                &#table-no-data {
+                    border-bottom: none;
+
+                    &.pending-header-mobile {
+                        .v-data-table__wrapper {
+                            table {        
+                                tbody {
+                                    tr {
+                                        &.v-data-table__empty-wrapper {
+                                            td {    
+                                                align-items: flex-start;
+                                                
+                                                .no-data-preloader,
+                                                .no-data-wrapper {
+                                                    // height: calc(100vh - 380px) !important;
+                                                    min-height: 200px;
+                                                    height: 75%;
+                                                    padding-top: 0;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .v-data-table__wrapper {
+                        table {
+                            padding: 0 !important;
+                            margin-bottom: 0 !important;
+                            height: 100%;
+    
+                            tbody {
+                                tr {
+                                    &.v-data-table__empty-wrapper {
+                                        td {    
+                                            align-items: flex-start;
+
+                                            .no-data-preloader,
+                                            .no-data-wrapper {
+                                                min-height: 200px;
+                                                height: 75%;
+                                                padding-top: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.no-data-table {
+                    .v-data-table__wrapper {
+                        table {
+                            thead {
+                                display: none;
+                            }
+    
+                            tbody {
+                                tr {
+                                    td {
+                                        border-bottom: none !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+    
+                    &.no-current-pagination {
+                        .v-data-table__wrapper {
+                            height: calc(100vh - 172px);
+                        }
+                    }
+    
+                    &.has-searched-data {
+                        .v-data-table__wrapper {
+                            height: calc(100vh - 250px);
+                        }
+                    }
+                }
+    
+                &.no-current-pagination {
+                    .v-data-table__wrapper {
+                        height: calc(100vh - 200px);
+                    }
+                }
+            }
+        }
+
+        .pagination-wrapper {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1200px) {
+    .containerMain {
+        .shipment-table-wrapper {
+            .v-data-table {
+                .v-data-table__wrapper {
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    padding: 8px 10px;
+                                }
+                            }
+                        }
+                        tbody {
+                            tr {
+                                td {
+                                    padding: 8px 10px;
+
+                                    // .supplier-desktop {
+                                    //     max-width: 160px;
+                                    // }
+
+                                    .po-num-desktop p {
+                                        max-width: 70px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1201px) and (max-width: 1360px) {
+    .containerMain {
+        .shipment-table-wrapper {
+            .v-data-table {    
+                .v-data-table__wrapper {    
+                    table {    
+                        tbody {
+                            tr {    
+                                td {
+                                    // .shipment-type {
+                                    //     width: 40px;
+                                    //     display: flex;
+                                    //     grid-gap: 4px;
+                                    // }
+
+                                    // .no-shipment-type {
+                                    //     width: 40px;
+                                    // }
+    
+                                    // .supplier-desktop {                                    
+                                    //     max-width: 130px;
+
+                                    //     &.active-tab {
+                                    //         max-width: 250px;
+                                    //     }
+                                    // }
+    
+                                    .po-num-desktop p { 
+                                        max-width: 90px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#shipments_root .three-dots-container {
+    width: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+    border: 1px solid #b4cfe0;
+    background-color: #fff;
+    border-radius: 4px;
+    position: relative;
+    margin-left: 0px;
+    margin-right: 15px;
+    svg {
+        width: 20px;
+        height: 4px;
+    }
+}

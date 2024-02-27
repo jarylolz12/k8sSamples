@@ -1,0 +1,71 @@
+/** @format */
+
+@import "../../colors.scss";
+.add-payment-dialog {
+    .v-card {
+        .v-card__text {
+            .add-payment-wrapper {
+                .mdi-checkbox-blank-outline::before {
+                    content: "\F14FC";
+                    color: #B4CFE0;
+                }
+                
+                .v-input--selection-controls {
+                    margin: 0;
+                    padding: 0;
+                }
+                /*Credit card form design changes */
+                .vue-credit-card .card-form-and-image .credit-card-form {
+                    .field-group .field:first-child {
+                        margin-right: 16px;
+                    }
+                    max-width: 100% !important;
+                    padding: 0px !important;
+                    .field {
+                        margin-bottom: 16px;
+                        margin-top: 0;
+                        label {
+                            color: #819fb2;
+                            font-size: 10px;
+                            text-transform: uppercase;
+                            font-family: "Inter-SemiBold", sans-serif;
+                            margin-bottom: 6px;
+                            padding: 0;
+                        }
+                        input {
+                            padding: 10px 12px;
+                            font-size: 14px;
+                            font-family: "Inter";
+                            font-weight: 400;
+                            margin-top: 0;
+                            border: 1px solid #b4cfe0;
+                            border-radius: 4px;
+
+                            &::placeholder {
+                                color: $light-grey !important;
+                            }
+                        }
+                        input:focus {
+                            outline: 0;
+                            border-color: #0171a1;
+                        }
+                        .ccicon {
+                            right: 18px;
+                            top: calc(50% - 7px);
+                            width: 33px;
+                        }
+                    }
+                }
+            }
+        }
+        .v-card__actions {
+            max-width: 560px;
+        }
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .vue-credit-card .card-form-and-image .credit-card-form .field-group {
+        display: block;
+    }
+}

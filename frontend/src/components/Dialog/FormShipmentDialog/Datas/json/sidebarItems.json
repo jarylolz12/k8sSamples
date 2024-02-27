@@ -1,0 +1,30 @@
+[{
+    "icon": "general",
+    "label": "General Information",
+    "width": 20,
+    "selected": true,
+    "id": "generalInformationSection",
+    "reference": "generalInformationSection",
+    "referenceMobile": "generalInformationSectionMobile",
+    "height": 20
+},
+{
+    "icon": "po-icon",
+    "label": "Orders",
+    "width": 20,
+    "selected": false,
+    "id": "purchaseOrderSection",
+    "reference": "purchaseOrderSection",
+    "referenceMobile": "purchaseOrderSectionMobile",
+    "height": 20
+},
+{
+    "icon": "container-icon",
+    "label": "Container & Others",
+    "width": 20,
+    "selected": false,
+    "reference": "containerSection",
+    "referenceMobile": "containerSectionMobile",
+    "height": 20
+}
+]

@@ -1,0 +1,414 @@
+@import '../../colors.scss';
+
+.po-details-wrapper-table {
+    &.history {
+        .v-data-table {
+            .v-data-table__wrapper {
+                table {
+                    thead {
+                        tr {
+                            th {
+                                &:last-child {
+                                    padding-right: 16px !important;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            td {
+                                vertical-align: middle !important;
+                                height: 40px;
+
+                                .po-history-button-wrapper {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    padding-right: 4px;
+                                    
+                                    button {
+                                        padding: 0 !important;
+                                        height: unset !important;
+                                        border: none !important;
+                                        font-family: 'Inter-Medium', sans-serif !important;
+                                        margin: 0 !important;
+                                    }
+                                }
+                            }
+
+                            &:hover {
+                                background: $table-hover-background !important;
+
+                                td {
+                                    button {
+                                        background-color: transparent !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.no-data-table {
+                .v-data-table__wrapper {
+                    table {
+                        thead {
+                            display: none;
+                        }
+                
+                        tbody {
+                            tr {
+                                &:hover {
+                                    background-color: transparent !important;
+                                }
+
+                                td {
+                                    border-bottom: none !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.v-dialog {
+    &.po-history-dialog {
+        .v-card {
+            .v-card__title {
+                span {
+                    &.headline-wrapper {
+                        display: flex;
+                        justify-content: start;
+                        align-items: center;
+
+                        .headline {
+                            padding-right: 20px;
+                        }
+
+                        .headline-title {
+                            font-size: 14px;
+                            color: $grey;
+                            padding-right: 20px;
+                            font-family: 'Inter-Regular', sans-serif !important;
+
+                            .headline-data {
+                                color: $default-text-color;
+                                padding-left: 2px;
+                                font-family: 'Inter-Regular', sans-serif !important;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .v-card__text {
+                padding: 20px 24px 24px;
+
+                .history-preview-body {
+                    .history-info {
+                        .history-title {
+                            color: $grey;
+                            font-size: 14px;
+                            margin-bottom: 4px;
+
+                            .is-user {
+                                font-family: "Inter-Medium", sans-serif;
+                                margin-left: 6px;
+                                color: #0171a1;
+                                background: #f0fbff;
+                                border-radius: 99px;
+                                padding: 4px 8px;
+                                font-size: 12px;
+                            }
+                        }
+
+                        .history-data {
+                            margin-bottom: 0;
+                            color: $default-text-color;
+
+                            &.warehouse-name {
+                                width: 45%;
+                            }
+                        }
+
+                        &.history-method {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            margin-bottom: 5px;
+
+                            .history-title { 
+                                padding-right: 5px;
+                                margin-bottom: 0;
+                                width: 35%;
+                            }
+                        }
+                    }
+
+                    .history-table-wrapper {
+                        padding-top: 20px;
+
+                        .v-data-table {
+                            .v-data-table__wrapper {
+                                table {
+                                    thead {
+                                        tr {
+                                            th {
+                                                font-size: 14px;
+                                                text-transform: capitalize !important;
+                                                color: $dark-grey;
+                                                background-color: $table-hover-background;
+                                                height: 40px;
+
+                                                &:first-child {
+                                                    padding-left: 16px;
+                                                }
+
+                                                &:last-child {
+                                                    padding-right: 16px;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    tbody {
+                                        tr {
+                                            td {
+                                                vertical-align: top;
+
+                                                &:first-child {
+                                                    padding-left: 16px;
+                                                }
+
+                                                &:last-child {
+                                                    padding-right: 16px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        &.history-logs {
+                            padding-bottom: 24px;
+
+                            .v-data-table {
+                                .v-data-table__wrapper {
+                                    table {    
+                                        tbody {
+                                            tr {
+                                                &:hover {
+                                                    background-color: #fff;
+                                                }
+
+                                                td {
+                                                    height: 30px;
+                                                    padding: 0;                                                    
+                                                    border-bottom: none !important;
+
+                                                    &:nth-child(1n+1) {
+                                                        border-right: 2px solid #EBF2F5;
+                                                    }
+
+                                                    &:last-child {
+                                                        border-right: none;
+                                                    }
+
+                                                    .pad-16 {
+                                                        padding: 6px 16px !important;
+                                                    }
+
+                                                    .pad-other-item {
+                                                        padding: 6px 0 !important;
+                                                    }
+
+                                                    .w-100 {
+                                                        width: 100%;
+                                                    }
+
+                                                    .po-previous-data {
+                                                        display: flex;
+                                                        justify-content: flex-end;
+                                                        align-items: flex-end;
+                                                        height: 100%;
+
+                                                        &.update-status {
+                                                            justify-content: flex-start;
+                                                            align-items: flex-end;
+                                                            flex-direction: column;
+                                                        }
+
+                                                        .c-white {
+                                                            color: #fff !important;
+                                                        }
+                                                    }
+
+                                                    .not-equal {
+                                                        background-color: #FFF2F2;
+                                                        color: #F93131;
+                                                    }
+
+                                                    .updated-data {
+                                                        height: 30px;
+                                                        display: flex;
+                                                        justify-content: flex-end;
+                                                        align-items: center;
+                                                    }
+
+                                                    .h-30 {
+                                                        height: 30px;
+                                                        display: flex;
+                                                        justify-content: flex-start;
+                                                        align-items: center;
+                                                        padding: 6px 0;
+                                                    }
+                                                }
+
+                                                &.notes,
+                                                &.committed_cargo_ready_date {
+                                                    td {
+                                                        border-bottom: 2px solid #EBF2F5 !important;
+                                                    }
+                                                }
+
+                                                &.products {
+                                                    td {
+                                                        border-bottom: 2px solid #EBF2F5 !important;
+                                                        padding: 8px 16px 0;
+
+                                                        &:nth-child(2),
+                                                        &:nth-child(3) {
+                                                            padding: 8px 0 0;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .total-and-notes-wrapper {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+                        padding-bottom: 24px;
+
+                        .history-totals-wrapper {
+                            width: 20%;
+
+                            .history-totals {
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+                                padding: 8px 16px 8px 0;
+                                border-bottom: 1px solid #EBF2F5;
+
+                                &.second-item {
+                                    border-bottom: 2px solid #EBF2F5;
+                                }
+
+                                &.last-item {
+                                    border: none !important;
+                                }
+    
+                                .history-totals-title,
+                                .history-totals-data {
+                                    color: #4a4a4a;
+                                }
+    
+                                .history-totals-data {
+                                    width: 55%;
+                                    text-align: right;
+                                }
+                            }
+                        }
+
+                        .history-notes-wrapper {
+                            width: 70%;
+                            border: 1px solid #EBF2F5;
+                            padding: 16px;
+                            border-radius: 4px;
+                            margin-top: 24px;
+
+                            .history-title {
+                                color: $grey;
+                                font-size: 14px;
+                                margin-bottom: 4px; 
+                            }
+
+                            p {
+                                margin-bottom: 0;
+                                color: #4a4a4a;
+                                line-height: 20px;
+                            }
+                        }
+                    }
+
+                    .signed-by{
+                        .sign-details{
+                            gap: 20px;
+                            .signature-box{
+                                border: 1px solid #EBF2F5;
+                                border-radius: 4px;
+                                padding: 16px;
+
+                                .sign-title{
+                                    line-height: 20px;
+                                    font-weight: 500;
+                                    font-family: 'Inter';
+                                    color: #6D858F;
+                                }
+                                div{
+                                    margin-top: 4px;
+                                    .sign-text{
+                                        color: #4A4A4A;
+                                        line-height: 20px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .history-signature-wrapper {
+                    width: 20%;
+                    border: 1px solid #EBF2F5;
+                    padding: 16px;
+                    border-radius: 4px;
+                    margin-top: 24px;
+                
+                    .history-title {
+                        color: #6D858F;
+                        font-size: 14px;
+                        margin-bottom: 4px;
+                        font-size: 500;
+                    }
+                
+                    p {
+                        margin-bottom: 0;
+                        color: #4a4a4a;
+                        line-height: 20px;
+                    }
+                }
+
+                .loading-wrapper {
+                    width: 100%;
+
+                    .loading-content {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        min-height: 250px;
+                    }
+                }
+            }
+        }
+    }
+}

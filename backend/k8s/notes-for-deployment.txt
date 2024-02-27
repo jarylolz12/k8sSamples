@@ -1,0 +1,118 @@
+kubectl delete deployment shifl-admin nginx maildev && \
+kubectl delete svc shifl-admin nginx maildev && \
+kubectl delete configmap nginx-config && \
+kubectl delete svc mysql && \
+kubectl delete secret mysql-secret && \
+kubectl delete deployment mysql && \
+kubectl delete pvc mysql-pv-claim && \
+kubectl delete pv mysql-pv-volume
+
+kubectl apply -f k8s/sql_deployment.yml \
+-f k8s/shifl_admin_deployment.yml \
+-f k8s/nginx_deployment.yml \
+-f k8s/maildev_deployment.yml
+
+kubectl apply -f k8s/shifl_admin_deployment.yml \
+-f k8s/nginx_deployment.yml \
+-f k8s/maildev_deployment.yml
+
+eval $(minikube -p minikube docker-env)
+
+kubectl delete deployment shifl-admin nginx && \
+kubectl delete svc shifl-admin nginx && \
+kubectl delete configmap nginx-config && \
+kubectl delete svc mysql && \
+kubectl delete secret mysql-secret && \
+kubectl delete deployment mysql && \
+kubectl delete pvc mysql-pv-claim && \
+kubectl delete pv mysql-pv-volume
+
+kubectl apply -f k8s/shifl_admin_deployment.yml
+kubectl apply -f k8s/nginx_deployment.yml
+kubectl apply -f k8s/sql_deployment.yml
+kubectl apply -f k8s/maildev_deployment.yml
+
+MAXMIND CONFIG:
+# install these dependency/libraries
+apk add build-base pcre pcre-dev zlib zlib-dev perl vim automake autoconf libtool
+
+git geoip(maxmind) -> dapat sila 2
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Th2wsvW3FPkBoEOCx6u441TT4nu960mn' -O maxmind-github.zip
+unzip maxmind-github.zip
+
+./configure
+
+# download and install the libmaxmind libraries
+cd /home && wget https://github.com/maxmind/libmaxminddb/releases/download/1.7.1/libmaxminddb-1.7.1.tar.gz && \
+tar zxvf libmaxminddb-1.7.1.tar.gz && cd libmaxminddb-1.7.1
+
+./configure && make && make check && make install && ldconfig
+
+# download the needed files for geolitedb
+cd .. && mkdir ngx_http_geoip2_module && cd ngx_http_geoip2_module && \
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1wsXETgdMAJsbDpEvXMSB2yngfllAGJTk' -O GeoLite2-City.mmdb && \
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Me59s1yHqiPoTN2QiIU-sc0EPqJ_pabS' -O GeoLite2-Country.mmdb && \
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1WYnS8L1P0Q7CTUXZWOZ3ZkpptLZcb-oV' -O config && \
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=17DpSlDBbLZBw9HTMeY-cJ6dpUGjWWQTz' -O ngx_http_geoip2_module.c && \
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1YqwSzDctATDKrjucOkCh4GGAPMRRRvGv' -O ngx_stream_geoip2_module.c
+
+# download the nginx and install the dynamic module pointing to the ngx_http_geoip2_module directory.
+cd .. && wget http://nginx.org/download/nginx-1.24.0.tar.gz && \
+tar zxvf nginx-1.24.0.tar.gz && cd nginx-1.24.0
+
+./configure --add-dynamic-module=../ngx_http_geoip2_module --with-compat && make && make install
+./configure --add-module=../ngx_http_geoip2_module --with-compat && make && make install
+
+# update the nginx.conf to load the module
+cd /etc/nginx
+vim nginx.conf
+
+# add the line below in the top of the file inside /etc/nginx.conf
+load_module modules/ngx_http_geoip_module.so;
+
+# copy the created ngx_stream_geoip2_module.so in /etc/nginx/modules
+cd /home/nginx-1.24.0/objs
+cp ngx_http_geoip2_module.so /etc/nginx/modules
+
+# test if mmdblookup works
+mmdblookup --file ./GeoLite2-Country.mmdb --ip 8.8.8.8 country names en
+
+# test if the configuration in nginx works
+nginx -t
+
+upstream US_upstream {
+        server 10.106.166.143 max_fails=3 fail_timeout=600s;
+        server 10.106.166.143 backup max_fails=3 fail_timeout=600s;
+}
+
+TODO:
+tan-awa tung naa sa youtube para ma kuha nimo ang output sa nginx via headers
+pag ma success ni, himuan siya ug script para dili na muinteract sa sulod sa image
+
+Steps sa nginx:
+deployment
+configure script
+service
+configmap
+
+apk add build-base pcre pcre-dev zlib zlib-dev perl vim automake autoconf libtool && \
+cd /home && wget https://github.com/maxmind/libmaxminddb/releases/download/1.7.1/libmaxminddb-1.7.1.tar.gz && \
+tar zxvf libmaxminddb-1.7.1.tar.gz && cd libmaxminddb-1.7.1 && \
+./configure && make && make check && make install && ldconfig
+
+cd .. && mkdir ngx_http_geoip2_module && cd ngx_http_geoip2_module && \
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1wsXETgdMAJsbDpEvXMSB2yngfllAGJTk' -O GeoLite2-City.mmdb && \
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1Me59s1yHqiPoTN2QiIU-sc0EPqJ_pabS' -O GeoLite2-Country.mmdb && \
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1WYnS8L1P0Q7CTUXZWOZ3ZkpptLZcb-oV' -O config && \
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=17DpSlDBbLZBw9HTMeY-cJ6dpUGjWWQTz' -O ngx_http_geoip2_module.c && \
+wget --no-check-certificate 'https://docs.google.com/uc?export=download&id=1YqwSzDctATDKrjucOkCh4GGAPMRRRvGv' -O ngx_stream_geoip2_module.c && \
+cd .. && wget http://nginx.org/download/nginx-1.22.1.tar.gz && \
+tar zxvf nginx-1.22.1.tar.gz && cd nginx-1.22.1 && \
+./configure --add-dynamic-module=../ngx_http_geoip2_module --with-compat && make && make install
+
+cd objs && cp ngx_http_geoip2_module.so /etc/nginx/modules && \
+cp /home/ngx_http_geoip2_module/GeoLite2-Country.mmdb /etc/nginx
+
+copy the contents of the shifl-admin.conf in /etc/nginx/nginx.conf
+
+update the configmap of nginx then apply

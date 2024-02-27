@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shifl-admin
+  labels:
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shifl-admin
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: shifl-admin
+        tier: backend
+    spec:
+      volumes:
+      - name: code
+        hostPath:
+          path: /code
+      containers:
+      - name: shifl-admin
+        image: shifl-orig:latest
+        imagePullPolicy: Never
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "1"
+        volumeMounts:
+        - name: code
+          mountPath: /code

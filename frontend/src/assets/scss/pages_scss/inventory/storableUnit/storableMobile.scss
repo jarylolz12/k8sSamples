@@ -1,0 +1,223 @@
+.storable-unit-wrapper-mobile {
+    position: relative;    
+
+    .overlay {
+        &.show {
+            position: absolute;
+            top: 65px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #ffffffb0 !important;
+            z-index: 200;
+            cursor: auto;
+
+            .preloader {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 3%;
+            }
+        }
+    }  
+
+    .v-data-table {
+        .inventory-search-wrapper {
+            flex-direction: unset !important;
+    
+            .v-tabs {
+                &.inventory-inner-tab {
+                    .v-tab {
+                        &:last-child {
+                            margin-right: 10px !important;
+                        }
+                    }
+                }
+            }
+            
+            .search-and-filter {
+                margin-top: 0 !important;
+                
+                .search-wrapper {
+                    position: relative;
+        
+                    img {
+                        position: absolute;
+                        width: 18px;
+                        top: 12px;
+                        left: 12px;
+                        z-index: 1;
+                    }
+        
+                    input {
+                        border: 1px solid #B3CFE0;
+                        height: 40px;
+                        width: 100%;
+                        padding: 8px 12px 8px 38px;
+                        border-radius: 4px;
+                        font-size: 14px;
+                        background-color: #fff;
+        
+                        &:focus {
+                            outline: 0;
+                        }
+        
+                        &::placeholder {
+                            color: #B4CFE0 !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.storable-mobile-table {
+            .v-data-table__wrapper {
+                height: calc(100vh - 358px) !important;
+
+                table {
+                    tbody {
+                        tr {
+                            td {
+                                &.v-data-table__mobile-row {
+                                    width: 100%;    
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                    padding: 8px 14px 0;
+                                    border-bottom: none !important;
+                                    min-height: 30px;
+
+                                    .v-data-table__mobile-row__header {
+                                        display: none;
+                                    }
+
+                                    .v-data-table__mobile-row__cell {
+                                        width: 100%;
+
+                                        .inventory-wrapper {
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: center;
+                                            width: 100%;
+
+                                            .storable-label {
+                                                display: flex;
+                                                justify-content: flex-start;
+                                                align-items: center;
+
+                                                .inventory-blue-text {
+                                                    font-family: 'Inter-SemiBold', sans-serif;
+                                                }
+                                            }
+
+                                            .storable-type {
+                                                text-transform: capitalize;
+                                                font-family: 'Inter-Medium', sans-serif;
+                                            }
+
+                                            .storable-location {                                                
+                                                font-family: 'Inter-Medium', sans-serif;
+                                                max-width: 45vw;
+                                                overflow: hidden;
+                                                text-overflow: ellipsis;
+                                                white-space: nowrap;
+                                            }
+
+                                            &.specs {
+                                                flex-direction: column;
+                                                align-items: flex-start;
+                                            }
+                                        }
+
+                                        .items-info {
+                                            display: flex;
+                                            justify-content: flex-start;
+                                            align-items: center;
+                                            width: 100%;
+
+                                            .separator {
+                                                width: 6px;
+                                                height: 6px;
+                                                background-color: #B4CFE0;
+                                                border-radius: 50%;
+                                                margin: 0 6px;
+                                            }
+
+                                            p {
+                                                font-size: 12px;
+                                                margin-bottom: 0;
+                                                color: #4a4a4a;
+                                            }
+
+                                            .name {
+                                                color: #819FB2;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &:nth-child(1n+6) {
+                                    border-bottom: 1px solid #E1ECF0 !important;
+                                    padding-bottom: 16px;
+                                }
+                                
+                                &:nth-child(2) {
+                                    display: none !important;
+                                }
+
+                                &:nth-child(1n+7) {
+                                    display: none;
+                                }
+                            }
+
+                            &.v-data-table__expanded {
+                                &.v-data-table__expanded__content {
+                                    td {
+                                        display: table-cell !important;
+                                        padding-top: 12px !important;
+
+                                        .expanded-item-info {
+                                            width: 100%;
+
+                                            .expanded-header-content {
+                                                .header-title {
+                                                    &.w-80 {
+                                                        width: 60%;
+                                                    }
+
+                                                    &.w-10 {
+                                                        width: 20%;
+                                                    }
+                                                }
+                                            }
+
+                                            .expanded-body-wrapper {
+                                                .expanded-body-content {
+                                                    .header-data {
+                                                        &.w-80 {
+                                                            width: 60%;
+                                                        }
+    
+                                                        &.w-10 {
+                                                            width: 20%;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.no-current-pagination {
+                .v-data-table__wrapper {
+                    height: calc(100vh - 305px) !important;
+                }
+            }
+        } 
+    }
+}

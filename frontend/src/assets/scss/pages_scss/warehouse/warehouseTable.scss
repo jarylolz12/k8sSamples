@@ -1,0 +1,1143 @@
+@import '../../colors.scss';
+
+.warehouse-table-wrapper {
+    width: 100%;
+    border-top-right-radius: 4px;
+    height: 100%;
+
+    .loading-wrapper {
+        height: calc(100vh - 400px);
+        display: flex;
+        justify-content: center;
+        padding-top: 50px;
+    }
+    
+    .v-toolbar {
+        border-bottom: 1px solid $divider-bg;
+
+        .v-toolbar__content {
+            padding: 4px 12px;
+        }
+    }
+
+    .v-tabs {
+        border-bottom: 2px solid $divider-bg;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+
+        .v-tab {
+            text-transform: capitalize;
+            color: #4A4A4A !important;
+            font-weight: 600;
+            letter-spacing: 0;
+            padding: 0 20px;
+        }
+
+        .v-tab.v-tab--active {
+            color: #0171A1 !important;
+        }
+    }
+
+    &.warehouse-3pl-wrapper {
+        .v-tabs {
+            &.warehouse-tabs-wrapper {
+                .v-item-group {
+                    .v-slide-group__wrapper {
+                        .v-tab {
+                            &.Storable,
+                            &.Locations {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .inventory-search-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 16px;
+        border-bottom: 1px solid $divider-bg;
+        min-height: 57px;
+        font-family: 'Inter-Regular', sans-serif;
+
+        &.outbound-search {
+            justify-content: flex-start;
+        }
+
+        p {
+            margin-bottom: 0;
+            font-size: 14px;
+            color: $dark-grey;
+
+            .inventory-count {
+                color: $default-text-color !important;
+                font-family: 'Inter-Medium', sans-serif;
+            }
+            
+        }
+    }
+
+    .v-data-table {
+        &.inventory-table  {
+            box-shadow: none !important;
+            border: none !important;
+            height: 100%;
+
+            .v-toolbar {
+                border-bottom: 1px solid $divider-bg;
+
+                .v-toolbar__title {
+                    color: $default-text-color;
+                    font-family: 'Inter-Medium', sans-serif;
+
+                    .warehouse-name-wrapper {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+
+                        .p-name {
+                            margin-bottom: 0;
+                            font-size: 20px;
+                            white-space: nowrap;
+                            max-width: 447px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            font-family: 'Inter-Medium', sans-serif;
+                        }
+
+                        span {
+                            font-size: 12px;
+                            font-family: 'Inter-Medium', sans-serif;
+                            background-color: #F9F9F9;
+                            min-width: 1px;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            text-transform: capitalize;
+                            border: 1px solid $divider-bg;
+                            border-radius: 20px;
+                            height: 26px;
+                            padding: 3px 12px;
+                            margin-left: 8px;
+                            color: $default-text-color !important;
+                        }
+                    }
+                }
+
+                .btn-white {
+                    margin-right: 8px;
+                    padding: 10px !important;
+                    min-width: auto !important;
+                }
+
+                .btn-blue {
+                    min-width: 130px !important;
+                }
+            }
+
+            .v-data-table__wrapper {
+                // height: calc(100vh - 340px);
+                height: calc(100vh - 342px);
+                overflow-y: auto;
+                overflow-x: hidden;
+
+                table {
+                    // thead {
+                    //     tr {
+                    //         th {
+                    //             font-size: 12px;
+                    //             text-transform: uppercase;
+                    //             color: $dark-grey;
+                    //             border-bottom: 1px solid $divider-bg !important;
+                    //             padding: 8px;
+                    //             font-family: 'Inter-Regular', sans-serif;
+                    //             box-shadow: none !important;
+                    //         }
+                    //     }
+                    // }
+
+                    tbody {
+                        tr {
+                            &:hover {
+                                background: $table-hover-background !important;
+                            }
+
+                            &.v-data-table__selected {
+                                background-color: #F0FBFF !important;
+        
+                                &:hover {
+                                    background-color: #F0FBFF !important;
+                                }
+                            }
+                            
+                            td {
+                                padding: 8px;
+
+                                // font-size: 14px !important;
+                                // color: $default-text-color;
+                                // font-weight: 400;
+                                // padding: 12px 8px;
+                                // border-bottom: 1px solid $divider-bg !important;
+                                // font-family: 'Inter-Regular', sans-serif;
+
+                                button {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    border: 1px solid $light-grey;
+                                    border-radius: 4px;
+                                    height: 34px;
+                                    min-width: 34px;
+                                    padding: 6px 8px;
+                                    font-family: 'Inter-Medium', sans-serif;
+                                    background-color: $white;
+
+                                    &.btn-delete {
+                                        &.has-inventory-count {
+                                            opacity: 0.4;
+                                            cursor: auto;
+                                        }
+                                    }
+
+                                    &.v-data-table__expand-icon {
+                                        border: none !important;
+                                        padding: 0;
+                                        background-color: transparent !important;
+                                        color: $dark-blue !important;
+                                    }
+
+                                    &.btn-accept {
+                                        color: $green;
+                                        border-color: $green !important;
+                                    }
+                                }
+
+                                .inventory-wrapper {
+                                    display: flex;
+                                    justify-content: flex-start;
+                                    align-items: center;
+
+                                    .inventory-img {
+                                        margin-right: 8px;
+
+                                        img {
+                                            border-radius: 4px;
+                                        }
+                                    }                                    
+
+                                    .type {
+                                        text-transform: capitalize;
+                                    }
+
+                                    &.collapse-button-wrapper {
+                                        display: flex;
+
+                                        .button-collapse {
+                                            border: none !important;
+                                            padding: 0;
+                                            height: 25px;
+                                            box-shadow: none !important;
+                                            background-color: transparent !important;
+                                            margin-left: 5px;
+                                        }
+                                    }
+                                }
+
+                                .info-wrapper {
+                                    .inventory-info {
+                                        color: $default-text-color;
+                                        margin-bottom: 0;
+                                        font-size: 14px !important;
+                                        white-space: nowrap;
+                                        max-width: 190px;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+
+                                        &.service-provider {
+                                            max-width: 170px;
+                                        }
+                                    }
+
+                                    .inventory-category {
+                                        color: $dark-grey;
+                                        margin-bottom: 0;
+                                        text-align: start;
+                                        font-size: 12px !important;
+                                    }
+                                }
+
+                                .actions {
+                                    display: flex;
+                                    justify-content: flex-end;
+                                    align-items: center;
+
+                                    i {
+                                        font-size: 18px;
+                                        color: $dark-blue;
+                                    }
+
+                                    .btn-print {
+                                        img {
+                                            width: 12px;
+                                        }
+                                    }
+
+                                    .btn-more {
+                                        img {
+                                            width: 12px;
+                                        }
+                                    }
+                                }
+
+                                .status {
+                                    span {
+                                        padding: 7px 10px;
+                                        background-color: #F1F6FA;
+                                        color: $default-text-color;
+                                        font-size: 12px;
+                                        border-radius: 99px;
+                                        font-family: 'Inter-Medium', sans-serif;
+                                        text-transform: capitalize;
+                                        margin-bottom: 3px;
+
+                                        &.partial,
+                                        &.floor,
+                                        &.receive-pending {
+                                            color: #EB9B26;
+                                            background-color: #FFF9F0;
+                                        }
+
+                                        &.completed,
+                                        &.recieved {
+                                            color: #16B442;
+                                            background-color: #EBFAEF;
+                                        }
+
+                                        &.ready,
+                                        &.open {
+                                            color: $dark-blue;
+                                            background-color: #F0FBFF;
+                                        }
+
+                                        &.cancelled,
+                                        &.rejected {
+                                            background-color: #FFF2F2;
+                                            color: #F93131;
+                                        }
+                                        &.picked,
+                                        &.pending-pick {
+                                            background-color: #FFF9F0;
+                                            color: #D68A1A;
+                                        }
+                                    }
+
+                                    &.inbound {
+                                        span {
+                                            &.cancelled,
+                                            &.rejected {
+                                                background-color: #FFF2F2 !important;
+                                                color: #F93131 !important;                                                
+                                                padding: 7px 10px !important;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                span {
+                                    &.light-red {
+                                        color: $dark-red !important;
+                                    }
+    
+                                    &.custom-green {
+                                        color: $green !important;
+                                    }
+    
+                                    &.custom-warning {
+                                        color: #D68A1A !important;
+                                    }
+                                }
+                            }
+
+                            &.background-light-blue {
+                                background-color: #F0FBFF;
+
+                                &:hover {
+                                    background-color: #F0FBFF !important;
+                                }
+                            }
+
+                            &.v-data-table__expanded.v-data-table__expanded__row {
+                                background-color: #F0FBFF !important;
+
+                                td {                                    
+                                    border-bottom: none !important;
+                                }
+                            }
+
+                            &.v-data-table__expanded__content {
+                                box-shadow: none !important;
+                                background-color: #F0FBFF;
+                                width: 100%;
+
+                                &:hover {
+                                    background-color: #F0FBFF !important;
+                                }
+
+                                td {
+                                    padding-top: 0 !important;
+
+                                    .expanded-item-info {
+                                        background-color: $white;
+                                        width: 90%;
+    
+                                        .expanded-header-wrapper {
+                                            border-bottom: 1px solid #EBF2F5;
+                                            padding: 8px 20px;
+    
+                                            .expanded-header-content {                                            
+                                                display: flex;
+                                                justify-content: flex-start;
+                                                align-items: center;
+                                                width: 100%;
+    
+                                                .w-80 {
+                                                    width: 80%;
+                                                }
+    
+                                                .w-10 {
+                                                    width: 10%;
+                                                    text-align: right;
+                                                }
+    
+                                                .header-title {
+                                                    font-size: 12px;
+                                                    color: $dark-grey;
+                                                    font-family: 'Inter-Medium', sans-serif;
+                                                }
+                                            }
+                                        }
+    
+                                        .expanded-body-wrapper {
+                                            border-bottom: 1px solid #EBF2F5;
+                                            padding: 8px 20px;
+    
+                                            .expanded-body-content {                                            
+                                                display: flex;
+                                                justify-content: flex-start;
+                                                align-items: center;
+                                                width: 100%;
+                                                padding: 5px 0px;
+    
+                                                .w-80 {
+                                                    width: 80%;
+                                                }
+    
+                                                .w-10 {
+                                                    width: 10%;
+                                                    text-align: right;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            &.light-red {
+                                background-color: #FFF2F2 !important;
+                            }
+
+                            // &:last-child {
+                            //     td {
+                            //         border-bottom: none !important;
+                            //     }
+                            // }
+                        }
+                    }
+                }
+                
+                /* Scrollbar */
+                &::-webkit-scrollbar {
+                    width: 10px;
+                }
+                
+                /* Track */
+                &::-webkit-scrollbar-track {
+                    background-color: #f1f1f1; 
+                }
+                
+                /* Handle */
+                &::-webkit-scrollbar-thumb {
+                    background-color: #e2e2e2;
+                }
+                
+                /* Handle on hover */
+                &::-webkit-scrollbar-thumb:hover {
+                    background-color: #e2e2e2;
+                }
+            }
+
+            &.no-data-table {
+                .inventory-search-wrapper {
+                    .search-component-wrapper {
+                        display: none;
+                    }
+                }
+
+                .v-data-table__wrapper {
+                    // max-height: unset;
+
+                    table {
+                        thead {
+                            display: none;
+                        }
+
+                        tbody {
+                            tr {
+                                &:hover {
+                                    background: $white !important;
+                                }
+                                
+                                td {
+                                    border-bottom: none !important;
+                                    cursor: auto !important;
+
+                                    .no-data-preloader,
+                                    .no-data-wrapper {
+                                        // min-height: 300px;
+                                        height: calc(100vh - 490px);
+                                        padding: 45px 30px;
+                                        background: $white !important;
+                                    }
+
+                                    .no-data-wrapper {
+                                        p {
+                                            font-size: 14px !important;
+                                        }
+
+                                        img {
+                                            margin-bottom: 10px;
+                                        }
+
+                                        h3 {
+                                            font-size: 20px;
+                                            margin-bottom: 10px;
+                                        }                                        
+                                    }
+
+                                    .btn-blue {
+                                        min-width: 130px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.no-current-pagination {
+                .v-data-table__wrapper {
+                    height: calc(100vh - 287px);
+                    // height: calc(100vh - 300px);
+                    // padding-bottom: 10px;
+                }
+            }
+
+            .search-and-filter {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: unset !important;
+        
+                .search-wrapper-global-component {
+                    margin-left: 8px;
+                }
+        
+                .search-wrapper {
+                    position: relative;
+        
+                    img {
+                        position: absolute;
+                        width: 18px;
+                        top: 12px;
+                        left: 12px;
+                        z-index: 1;
+                    }
+        
+                    input {
+                        border: 1px solid #B3CFE0;
+                        height: 40px;
+                        width: 100%;
+                        padding: 8px 12px 8px 38px;
+                        border-radius: 4px;
+                        font-size: 14px;
+                        background-color: #fff;
+        
+                        &:focus {
+                            outline: 0;
+                        }
+        
+                        &::placeholder {
+                            color: #B4CFE0 !important;
+                        }
+                    }
+        
+                    button {
+                        img {               
+                            &.img-clear-searched {
+                                right: 12px;
+                                left: unset;
+                            }
+                        }
+                    }
+                }
+        
+                .filter-tags-input {
+                    // width: 280px;
+                    min-width: 40px;
+        
+                    button {
+                        &.filters {
+                            // width: 100%;
+                            // text-align: left;
+                            // justify-content: flex-start;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-size: 14px;
+                            padding: 8px 10px !important;
+                            min-width: 40px;
+                            margin-right: 0;
+        
+                            .v-btn__content {
+                                // width: 90% !important;
+
+                                img {
+                                    margin-right: 1px;
+                                }
+                            }
+        
+                            &::before {
+                                display: none;
+                            }
+                        }
+                    }
+        
+                    .caption {
+                        font-family: 'Inter-Medium', sans-serif !important;
+                        font-size: 10px !important;
+                        letter-spacing: 0 !important;
+                    }
+        
+                    .v-chip {
+                        background-color: #f7f7f7;
+                        height: 24px;
+                        border-radius: 4px;
+                        border: 1px solid #EBF2F5;
+                        padding: 0 8px;
+                        margin: 4px;
+        
+                        .v-chip__content {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            
+                            span {
+                                font-size: 12px;
+                                color: #4a4a4a;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                                max-width: 100%;
+                            }
+                        }
+        
+                        &.single-item {
+                            max-width: 75%;
+                        }
+        
+                        &.multiple-item {
+                            max-width: 62%;
+                        }
+                    }
+        
+                    .other-count {
+                        font-size: 12px;
+        
+                        .v-chip {
+                            border-radius: 12px;
+        
+                            &.count {
+                                background-color: #6D858F;
+                                color: #fff;
+                                margin: 0;
+                                padding: 0 6px;
+                            }
+        
+                            .v-chip__content {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                            }
+                        }
+                    }
+                    
+                    .btn-icon-wrapper {
+                        height: auto;
+                        width: auto;
+                        min-width: unset;
+                        box-shadow: none;
+                        padding: 0;
+                        padding-left: 6px;
+                        background-color: transparent !important;
+                        position: absolute;
+                        top: 7px;
+                        right: 0;
+        
+                        i {
+                            font-size: 18px;
+                            color: #819FB2;
+                        }
+        
+                        &:focus,
+                        &:active,
+                        &:hover {
+                            background-color: transparent !important;
+                            color: #f7f7f7;
+                        }
+                    }
+        
+                    .v-input {
+                        &.select-items {
+                            .v-input__control {
+                                .v-input__slot {
+                                    height: 40px;
+                                    min-height: 40px !important;
+                                    margin-bottom: 0;
+                                    padding: 0 4px 0 10px;
+        
+                                    fieldset {
+                                        border: 1px solid #B4CFE0;
+                                        background-color: #fff !important;
+                                    }
+                                    
+                                    input {
+                                        &::placeholder {
+                                            color: #B4CFE0;
+                                        }
+                                    }
+        
+                                    .v-select__slot {
+                                        .v-select__selections {
+                                            padding: 0px 25px 0 4px;
+        
+                                            .caption {
+                                                font-family: 'Inter-Medium', sans-serif !important;
+                                                font-size: 10px !important;
+                                                letter-spacing: 0 !important;
+                                            }
+        
+                                            .v-chip {
+                                                background-color: #f7f7f7;
+                                                height: 24px;
+                                                border-radius: 4px;
+                                                border: 1px solid #EBF2F5;
+                                                padding: 0 8px;
+        
+                                                .v-chip__content {
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                    
+                                                    span {
+                                                        font-size: 12px;
+                                                        color: #4a4a4a;
+                                                        overflow: hidden;
+                                                        white-space: nowrap;
+                                                        text-overflow: ellipsis;
+                                                        max-width: 100%;
+                                                    }
+                                                }
+        
+                                                &.single-item {
+                                                    max-width: 75%;
+                                                }
+        
+                                                &.multiple-item {
+                                                    max-width: 62%;
+                                                }
+                                            }
+        
+                                            .other-count {
+                                                font-size: 12px;
+        
+                                                .v-chip {
+                                                    border-radius: 12px;
+        
+                                                    &.count {
+                                                        background-color: #6D858F;
+                                                        color: #fff;
+                                                        margin: 0;
+                                                        padding: 0 6px;
+                                                    }
+        
+                                                    .v-chip__content {
+                                                        display: flex;
+                                                        justify-content: center;
+                                                        align-items: center;
+                                                    }
+                                                }
+                                            }
+                                            
+                                            .btn-icon-wrapper {
+                                                height: auto;
+                                                width: auto;
+                                                min-width: unset;
+                                                box-shadow: none;
+                                                padding: 0;
+                                                padding-left: 6px;
+                                                background-color: transparent !important;
+                                                position: absolute;
+                                                top: 10px;
+                                                right: 5px;
+            
+                                                i {
+                                                    font-size: 18px;
+                                                    color: #819FB2;
+                                                }
+            
+                                                &:focus,
+                                                &:active,
+                                                &:hover {
+                                                    background-color: transparent !important;
+                                                    color: #f7f7f7;
+                                                }
+                                            }
+                                        }
+        
+                                        .v-input__append-inner {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // if warehouse is connected and not owned
+            &.warehouse-connected {
+                .v-data-table__wrapper {
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    &:first-child {
+                                        display: none !important;
+                                    }
+
+                                    &:nth-child(2) {
+                                        padding-left: 16px !important;
+                                    }
+                                }
+                            }
+                        }
+    
+                        tbody {
+                            tr {
+                                td {
+                                    &:first-child {
+                                        display: none !important;
+                                    }
+
+                                    &:nth-child(2) {
+                                        padding-left: 16px !important;
+                                    }
+                                }
+
+                                &.v-data-table__expanded {
+                                    &.v-data-table__expanded__content {
+                                        td {
+                                            &:first-child {
+                                                display: table-cell !important;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }   
+
+    .pagination-wrapper {
+        border: none;
+        border-top: 1px solid $divider-bg !important;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 768px) {
+    .warehouse-table-wrapper {
+        .v-tabs {
+            .v-item-group {
+                .v-slide-group__prev,
+                .v-slide-group__next {
+                    display: none !important;
+                }
+            }
+        } 
+
+        .v-data-table {
+            &.inventory-table {
+                .inventory-search-wrapper {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding: 10px 12px;
+        
+                    .search-and-filter {
+                        margin-top: 10px;
+                        display: grid;
+                        grid-template-columns: auto auto;
+                        width: 100%;
+                        justify-content: unset;
+                        align-items: center;
+
+                        .search {
+                            &.custom-search {
+                                .v-input__slot {
+                                    width: 100% !important;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                .v-data-table__wrapper {
+                    height: calc(100vh - 410px);
+
+                    table {
+                        thead {
+                            display: none;
+                        }
+
+                        tbody {
+                            tr {
+                                td {
+                                    &:first-child {
+                                        display: none !important;
+                                    }
+
+                                    button {
+                                        min-width: unset;
+                                        width: 34px;
+                                    }
+                                }
+
+                                &.v-data-table__empty-wrapper {
+                                    td {
+                                        display: block !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.no-data-table {
+                    .inventory-search-wrapper {
+                        flex-direction: column;
+                        align-items: flex-start;
+                        padding: 10px 12px;
+            
+                        .search-and-filter {
+                            display: flex !important;
+                            grid-template-columns: unset;
+
+                            button {
+                                margin: 0 !important;
+                            }
+    
+                            .search {
+                                &.custom-search {
+                                    .v-input__slot {
+                                        width: 100% !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .v-data-table__wrapper {
+                        height: calc(100vh - 350px);
+                        padding: 0 20px;
+
+                        table {
+                            tbody {
+                                tr {
+                                    td {
+                                        .no-data-preloader,
+                                        .no-data-wrapper {
+                                            // height: calc(100vh - 490px);
+                                            padding: 30px 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .pagination-wrapper {
+            position: fixed;
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    .warehouse-table-wrapper {
+        .v-tabs {
+            .v-item-group {
+                .v-slide-group__prev,
+                .v-slide-group__next {
+                    display: none !important;
+                }
+            }
+
+            &.inventory-inner-tab {
+                .v-tab {
+                    &:last-child {
+                        margin-right: 8px !important;
+                    }
+                }
+            }
+        } 
+
+        .v-data-table {
+            &.inventory-table {                
+                .v-data-table__wrapper {
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    padding: 14px 5px;
+                                    font-size: 11px !important;
+                                }
+                            }
+                        }
+
+                        tbody {
+                            tr {
+                                td {
+                                    padding: 14px 5px;
+                                    font-size: 12px !important;
+
+                                    span {
+                                        font-size: 12px;
+                                    }
+
+                                    .inventory-wrapper {
+                                        font-size: 12px;
+
+                                        p {
+                                            font-size: 12px;
+                                        }
+
+                                        .inventory-img {
+                                            img {
+                                                width: 45px !important;
+                                                height: 45px !important;
+                                            }
+                                        }
+
+                                        .info-wrapper {
+                                            p {
+                                                font-size: 12px !important;
+
+                                                &.inventory-info {
+                                                    max-width: 125px;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .actions {
+                                        button {
+                                            min-width: unset;
+                                            width: 34px;
+                                        }
+                                    }
+                                }
+
+                                &.v-data-table__empty-wrapper {
+                                    td {
+                                        display: block !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.no-data-table {
+                    .v-data-table__wrapper {
+                        height: calc(100vh - 350px);
+                        padding: 0 20px;
+
+                        table {
+                            tbody {
+                                tr {
+                                    td {
+                                        .no-data-preloader,
+                                        .no-data-wrapper {
+                                            padding: 30px 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1360px) {
+    
+}
+
+@media screen and (min-width: 1361px) and (max-width: 1440px) {
+    
+}
+
+/* TABLET */
+@media screen and (min-width: 1201px) and (max-width: 1264px) {
+    .warehouse-table-wrapper {
+        .v-data-table {
+            &.inventory-table {
+                .v-data-table__wrapper {
+                    tbody {
+                        tr {
+                            td {
+                                .info-wrapper {
+                                    .inventory-info {
+                                        max-width: 150px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

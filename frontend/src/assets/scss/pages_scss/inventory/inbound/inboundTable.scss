@@ -1,0 +1,410 @@
+@import '../../../colors.scss';
+
+.inbounds-desktop-wrapper {
+    position: relative;
+
+    .overlay {
+        &.show {
+            position: absolute;
+            top: 61px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff !important;
+            z-index: 200;
+            cursor: auto;
+
+            .preloader {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 3%;
+            }
+        }
+    }
+
+    .inventory-table {
+        &.inbound-table {
+            .inventory-search-wrapper {
+                &.inbound-search {
+                    .inventory-inner-tab {
+                        .v-item-group {
+                            height: 40px;
+        
+                            .v-tab {
+                                font-size: 12px;
+                                letter-spacing: 0;
+                                font-family: 'Inter-Regular', sans-serif !important;
+                                padding: 6px 10px;
+        
+                                small {
+                                    min-width: 22px;
+                                    height: 22px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-content: center;
+                                    padding: 3px 6px;
+                                    font-family: 'Inter-Regular', sans-serif !important;
+                                }
+                
+                                &:nth-child(4) {
+                                    border-right: none;
+                                    border-radius: 0;
+                                    margin-right: 0;
+                                }
+        
+                                &:nth-child(5) {
+                                    margin-right: 8px;
+                                }
+        
+                                .v-input {
+                                    caret-color: none !important;
+        
+                                    .v-input__control {
+                                        .v-input__slot {
+                                            &:focus-visible,
+                                            &:focus,
+                                            &:active {
+                                                outline: 0;
+                                                border: none;
+                                            }
+        
+                                            fieldset {
+                                                &:focus-visible,
+                                                &:focus,
+                                                &:active {
+                                                    outline: 0;
+                                                    border: none;
+                                                }
+                                            }
+                                        }
+                                    }
+        
+                                    &:focus-visible,
+                                    &:focus,
+                                    &:active {
+                                        outline: 0;
+                                        border: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .search-and-filter {
+                    button {
+                        &.btn-white {
+                            .v-btn__content {
+                                font-size: 14px !important;
+                                font-family: 'Inter-Medium', sans-serif !important;
+                            }
+
+                            &.btn-duplicate-m {
+                                .v-btn__content {
+                                    color: #0171A1 !important;
+                                }
+                            }
+
+                            &.btn-print-order-m {
+                                margin-right: 0 !important;
+                            }
+                        }
+                    }
+                }
+
+                .inbound-orders-selected {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+
+                    button {
+                        &.order-clear-selection {
+                            border: none !important;
+                            height: 36px !important;
+                            margin-right: 0;
+                            padding: 8px !important;
+
+                            .v-btn__content {                                
+                                font-size: 14px;
+                                color: #0171A1;
+                                font-family: 'Inter-Medium', sans-serif;
+                            }
+                        }
+                    }
+                }
+            }
+        
+            &.v-data-table {
+                .v-data-table__wrapper {
+                    // height: calc(100vh - 338px);
+                    overflow-y: auto;
+                    overflow-x: hidden;
+
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    &:nth-child(2) {
+                                        padding-left: 0;
+                                    }
+
+                                    &.warehouse-status-col {
+                                        color: #fff;
+                                    }
+
+                                    &.status-own-wh {
+                                        padding-left: 12px;
+                                    }
+                                }
+                            }
+                        }
+
+                        tbody {
+                            tr {
+                                cursor: pointer;
+    
+                                .undershipped {
+                                    color: $dark-red;
+                                    font-size: 12px;
+                                    font-family: 'Inter-Medium', sans-serif;
+                                    margin-top: 5px;
+                                    margin-bottom: 0;
+                                    padding-top: 3px;
+                                }
+
+                                .undershipped-status {
+                                    color: $dark-red;
+                                    font-size: 12px;
+                                    font-family: 'Inter-Medium', sans-serif;
+                                    margin-top: 5px;
+                                    margin-bottom: 0;
+                                    background-color: #FFF2F2;
+                                    padding: 7px 10px;
+                                    border-radius: 99px;
+                                    text-transform: capitalize;
+                                    margin-bottom: 3px;
+                                }
+
+                                .warehouse-transfer {
+                                    background: #EBFAEF;
+                                    border-radius: 4px;
+                                    padding: 3px 4px;
+                                    color: #16B442;
+                                    font-weight: 600;
+                                    font-size: 12px;
+                                    margin-left: 3px;
+                                }
+            
+                                &.v-data-table__selected {
+                                    background-color: #F0FBFF !important;
+            
+                                    &:hover {
+                                        background-color: #F0FBFF !important;
+                                    }
+                                }
+    
+                                &.v-data-table__empty-wrapper {
+                                    &:hover {
+                                        background-color: $white !important;
+                                    }
+    
+                                    td {
+                                        border-bottom: none !important;
+                                    }
+                                }
+
+                                td {                                   
+                                    &:nth-child(2) {
+                                        padding-left: 0;
+                                    }
+
+                                    .unassigned {
+                                        color: #4a4a4a !important;
+                                        background-color: #EBF2F5 !important;
+                                    }
+
+                                    .assigned {
+                                        color: #16B442 !important;
+                                        background-color: #EBFAEF !important;
+                                    }
+
+                                    &.warehouse-status-col {
+                                        .warehouse-status {
+                                            .v-chip {
+                                                height: 30px;
+                                                padding: 6px 10px;
+                                                font-size: 12px;
+
+                                                .v-chip__content {
+                                                    font-family: 'Inter-Medium', sans-serif;
+                                                    text-transform: capitalize;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    &.status-own-wh {
+                                        .own-warehouse {
+                                            display: flex;
+                                            align-items: center;
+                                            justify-content: flex-start;
+
+                                            .undershipped {
+                                                margin-top: 0;
+                                                padding-left: 6px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.no-data-table {
+                    .v-data-table__wrapper {
+                        table {
+                            tbody {
+                                tr {
+                                    td {                                        
+                                        &:hover {
+                                            cursor: auto;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+    
+                &.no-searched-data {
+                    .v-data-table__wrapper {
+                        table {
+                            thead {
+                                display: none;
+                            }
+    
+                            tbody {
+                                tr {
+                                    td {
+                                        .no-data-wrapper {
+                                            padding-top: 20px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // &.no-current-pagination {
+                //     .v-data-table__wrapper {
+                //         height: calc(100vh - 283px) !important;
+                //     }
+                // }
+                
+                &.type-3pl {
+                    .inbound-search {
+                        .v-tabs {
+                            .v-slide-group__wrapper {
+                                .v-tab {
+                                    &.Floor {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.no-checkbox {
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    &:first-child {
+                                        padding-left: 18px !important;
+                                    }
+                                }
+                            }
+                        }
+    
+                        tbody {
+                            tr {
+                                td {
+                                    &:first-child {
+                                        padding-left: 18px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.v-menu__content {
+    &.outbound-lists-menu {
+        .v-list {
+            .v-list-item {
+                &.warehouse-3pl-hidden {
+                    display: none;
+                }
+            }
+
+            // .lists-separator {
+            //     display: none;
+            // }
+        }
+    }
+}
+
+.v-tooltip__content.menuable__content__active {
+    background-color: #4A4A4A !important;
+    line-height: 30px;
+    &.top-arrow {
+        overflow: inherit !important;
+        z-index: 20;
+        opacity: 1 !important;
+        background: #4A4A4A !important;
+
+        &::before {
+            transform: rotate(275deg);
+            content: " ";
+            position: absolute;
+            top: -20%;
+            left: 45%;
+            margin-top: -10px;
+            border-width: 10px;
+            border-style: solid;
+            border-top: solid 10px transparent;
+            border-bottom: solid 10px transparent;
+            border-left: solid 10px transparent;
+            border-left-color: #4A4A4A !important;
+        }
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    .inbounds-desktop-wrapper {
+        .v-data-table {
+            .v-data-table__wrapper {
+                table {
+                    thead {
+                        tr {
+                            th {
+                                &:nth-child(2) {
+                                    width: 10% !important;
+                                    min-width: 10% !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

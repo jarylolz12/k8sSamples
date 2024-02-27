@@ -1,0 +1,233 @@
+@import '../../../colors.scss';
+
+.warehouse-table-wrapper {
+    .product-inventory-mobile-wrapper {
+        position: relative;
+    
+        .overlay {
+            &.show {
+                position: absolute;
+                top: 65px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #ffffff !important;
+                z-index: 200;
+                cursor: auto;
+    
+                .preloader {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 25px;
+                }
+            }
+        }
+
+        .inventory-search-wrapper {
+            flex-direction: row !important;
+
+            .search-and-filter {
+                margin-top: 0 !important;
+                display: flex !important;
+                justify-content: flex-end !important;
+                align-items: center !important;
+    
+                .search-wrapper {
+                    position: relative;
+                    width: 100%;
+            
+                    img {
+                        position: absolute;
+                        width: 18px;
+                        top: 12px;
+                        left: 12px;
+                        z-index: 1;
+                    }
+            
+                    input {
+                        border: 1px solid #B3CFE0;
+                        height: 40px;
+                        width: 100%;
+                        padding: 8px 12px 8px 38px;
+                        border-radius: 4px;
+                        font-size: 14px;
+                        background-color: #fff;
+            
+                        &:focus {
+                            outline: 0;
+                        }
+            
+                        &::placeholder {
+                            color: #B4CFE0 !important;
+                        }
+                    }
+
+                    button {
+                        img {               
+                            &.img-clear-searched {
+                                right: 12px;
+                                left: unset;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .btn-white {
+                margin-left: 6px !important;
+                width: 45%;
+                padding: 10px 8px !important;
+            }
+        }        
+
+        .v-data-table {
+            &.mobile-table {
+                .v-data-table__wrapper {
+                    height: calc(100vh - 356px) !important;
+    
+                    table {
+                        tbody {
+                            tr {
+                                &.v-data-table__mobile-table-row {
+                                    td {
+                                        border-bottom: none !important;
+                                        padding-bottom: 0;
+                                        padding: 8px 14px;
+    
+                                        .v-data-table__mobile-row__header {
+                                            display: none;
+                                        }
+    
+                                        .v-data-table__mobile-row__cell {
+                                            width: 100%;
+    
+                                            .inventory-wrapper {
+                                                font-size: 16px;
+                                                font-family: 'Inter-Medium', sans-serif;
+                                                width: 100%;
+                                                justify-content: space-between;
+    
+                                                span {
+                                                    font-family: 'Inter-SemiBold', sans-serif;
+                                                }
+                                            }
+    
+                                            .inventory-product {
+                                                display: flex;
+                                                justify-content: space-between;
+                                                align-items: flex-end;
+    
+                                                .info-wrapper {
+                                                    p {
+                                                        font-size: 14px !important;
+                                                        text-align: left !important;
+                                                        margin-bottom: 0;
+
+                                                        &.inventory-info {
+                                                            margin-bottom: 3px;
+                                                            font-family: "Inter-SemiBold", sans-serif;
+                                                            max-width: 100%;
+                                                        }
+
+                                                        &.inventory-category {
+                                                            font-size: 12px !important;
+                                                            color: #6D858F;
+                                                            max-width: 68vw;
+                                                            white-space: nowrap;
+                                                            overflow: hidden;
+                                                            text-overflow: ellipsis;
+                                                            margin-bottom: 3px;
+
+                                                            // span {                                                                
+                                                            //     font-family: 'Inter-Medium', sans-serif;
+                                                            // }
+                                                        }
+                                                    }
+    
+                                                    .cartons-separator {
+                                                        display: flex;
+                                                        justify-content: flex-start;
+                                                        align-items: center;
+                                                        margin-bottom: 5px;
+    
+                                                        p {
+                                                            text-align: left !important;
+                                                            font-size: 12px !important;
+                                                            color: #6D858F;
+                                                        }
+    
+                                                        .separator {
+                                                            width: 6px;
+                                                            height: 6px;
+                                                            background-color: #b4cfe0;
+                                                            border-radius: 50%;
+                                                            margin: 0 6px;
+                                                        }
+                                                    }
+                                                }
+
+                                                .inventory-img {
+                                                    img {
+                                                        height: 68px!important;
+                                                        width: 68px!important;
+                                                        border-radius: 4px;
+                                                        border: 1px solid #ebf2f5;
+                                                        margin-left: 10px;
+                                                    }
+                                                }
+                                            }
+                                        }  
+                                        
+                                        &:nth-child(1n+3) {
+                                            border-bottom: 1px solid #E1ECF0 !important;
+                                            padding-top: 0 !important;
+                                            padding-bottom: 10px;
+                                        }
+    
+                                        &:nth-child(1n+4) {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.no-data-table {
+                    table {
+                        tbody {
+                            tr {
+                                td {
+                                    .button-wrapper-3pl-products {
+                                        display: flex;
+                                        justify-content: center;
+                                        align-items: center;
+                                        flex-direction: column;
+
+                                        .btn-blue {
+                                            border: none !important;
+                                            width: auto !important;
+                                            margin-bottom: 10px;
+                                        }
+
+                                        .btn-white {
+                                            width: auto !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.no-current-pagination {
+                    .v-data-table__wrapper {
+                        height: calc(100vh - 305px) !important;
+                    }
+                }
+            }
+        }    
+    }    
+}

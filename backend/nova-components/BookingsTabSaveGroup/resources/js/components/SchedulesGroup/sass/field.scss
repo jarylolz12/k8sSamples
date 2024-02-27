@@ -1,0 +1,116 @@
+.shipment-supplier-limited-group {
+
+	padding-top: 15px;
+	margin-bottom: 15px;
+	border-bottom:1px solid #eef1f4;
+	flex-direction: column;
+	width: 100% !important;
+
+	& > div {
+		display: flex;
+		padding-bottom: 15px;
+		width: 100% !important;
+
+		& > label {
+		    width: 40%;
+    		padding-top: 5px;
+		}
+		& > div {
+			width: 60%;
+		}
+
+	}
+	& .border-danger-supplier {
+		& > div {
+			border: 1px solid red;
+		}
+
+	}
+
+}
+
+.schedule-leg-group {
+	
+	display: flex;
+	width: 100% !important;
+	flex-direction: column;
+	& > div {
+		display: flex;
+		padding-bottom: 15px;
+		width: 100% !important;
+
+		& > label {
+		    width: 40%;
+    		padding-top: 5px;
+		}
+		& > div {
+			width: 60%;
+		}
+
+	}
+}
+
+.bookings-sizes-group {
+	display: flex;
+	width: 100% !important;
+}
+
+.booking-sizes-input-group {
+	display: flex;
+	flex-direction: row;
+
+	& > div {
+		width: 48%;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+}
+
+.sell-rates-group {
+	display: block !important;
+	& > div {
+		padding-bottom: 15px;
+		display: flex;
+		width: 100% !important;
+		& > label {
+			width: 40%;
+		}
+
+		& > div {
+			width: 60%;
+		}
+
+	}
+	
+}
+
+.buy-rates-group {
+	display: block !important;
+	& > div {
+		display: flex;
+		padding-bottom: 15px;
+		width: 100% !important;
+		& > label {
+			width: 40%;
+		}
+
+		& > div {
+			width: 60%;
+		}
+
+	}
+	
+}
+
+.shipment-schedule-group {
+	& > div {
+		& > label {
+			padding-top: 5px;
+		}
+
+		& > span {
+			padding-top: 5px;
+		}
+	}
+}

@@ -1,0 +1,162 @@
+@import '../../../colors.scss';
+
+.storable-outbound-dialog {
+    .v-card__title {
+        font-weight: bold !important;
+        font-size: 20px !important;
+        border-bottom: 2px solid #EBF2F5 !important;
+    }
+
+    .v-card__text {
+        padding: 20px 24px 20px !important;
+
+        .storableDialog-header {
+            display: flex;
+            grid-gap: 10px;
+
+            .v-text-field__details {
+                display: none;
+            }
+        }
+    }
+
+    .v-card__actions {
+        border-top: 1px solid #EBF2F5 !important;
+    }
+
+    .storable-outbound-table {
+        margin-top: 20px;
+
+        .v-data-table__wrapper {
+            border-top: 2px solid #EBF2F5 !important;
+
+            table {
+                .v-data-table-header {
+                    th {
+                        border-bottom: 1px solid #EBF2F5 !important;
+                        padding: 8px 12px;
+
+                        span {
+                            text-transform: uppercase;
+                            color: #6D858F;
+                            white-space: nowrap;
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                tbody {
+                    tr {
+                        td {
+                            border-bottom: 1px solid #EBF2F5 !important;
+                            padding: 8px 12px;
+
+                            .name-wrapper {
+                                p {
+                                    color: $dark-blue;
+                                }
+                            }
+
+                            button {
+                                &.v-icon {
+                                    color: $dark-blue;
+                                }
+                            }
+
+                            p {
+                                margin: 0;
+                                color: #4A4A4A;
+                                font-size: 14px;
+                            }
+
+                            .storable-spec-wrapper {
+                                .weight {
+                                    color: #6D858F;
+                                    padding-top: 4px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .v-data-table__expanded {
+            background-color: #F0FBFF;
+            box-shadow: none !important;
+
+            td {
+                border: none !important;
+            }
+
+            .expanded-item-info {
+                background-color: #fff;
+            }
+
+            .expanded-header-content {
+                display: grid;
+                grid-template-columns: 8fr 1fr 1fr;
+                border-bottom: 1px solid #EBF2F5;
+
+                div {
+                    font-size: 10px;
+                    color: #6D858F;
+                    font-weight: 600;
+
+                    &:first-child {
+                        padding: 8px 20px;
+                    }
+
+                    &.w-10 {
+                        padding: 8px;
+                    }
+                }
+            }
+
+            .expanded-body-content {
+                display: grid;
+                grid-template-columns: 8fr 1fr 1fr;
+
+                div {
+                    font-size: 12px;
+                    color: #4A4A4A;
+
+                    &:first-child {
+                        padding: 8px 20px;
+                    }
+
+                    &.w-10 {
+                        padding: 8px;
+                    }
+                }
+            }
+        }
+
+        .v-data-table__expanded__content td {
+            padding-right: 15px !important;
+            padding-bottom: 10px;
+        }
+
+        &.no-data-table {
+            .v-data-table__wrapper {
+                table {                    
+                    tbody {
+                        tr {
+                            td {
+                                .no-data-wrapper,
+                                .no-data-preloader {
+                                    min-height: 150px;
+                                    padding-top: 25px;
+
+                                    p {
+                                        font-size: 16px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

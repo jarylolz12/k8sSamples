@@ -1,0 +1,60 @@
+[
+	{
+	  "text": "MBL",
+	  "align": "start",
+	  "sortable": false,
+	  "value": "mbl_num",
+	  "fixed": true,
+	  "class": "pending-quote-table-header",
+	  "width": "17%"
+	},
+	{
+	  "text": "Booking Number",
+	  "align": "start",
+	  "sortable": false,
+	  "value": "booking_number",
+	  "fixed": true,
+	  "class": "pending-quote-table-header",
+	  "width": "16%"
+	},
+	{
+	  "text": "Customer Reference",
+	  "value": "customer_reference",
+	  "sortable": false,
+	  "fixed": true,
+	  "class": "pending-quote-table-header",
+	  "width": "16%"
+	},
+	{
+	  "text": "Total Carton",
+	  "value": "total_carton",
+	  "sortable": false,
+	  "fixed": true,
+	  "class": "pending-quote-table-header",
+	  "width": "16%"
+	},
+	{
+	  "text": "Total Volume",
+	  "value": "total_volume",
+	  "sortable": false,
+	  "fixed": true,
+	  "class": "pending-quote-table-header",
+	  "width": "16%"
+	},
+	{
+	  "text": "Total Weight",
+	  "value": "total_weight",
+	  "sortable": false,
+	  "fixed": true,
+	  "class": "pending-quote-table-header",
+	  "width": "16%"
+	},
+	{
+	  "text": "",
+	  "align": "center",
+	  "sortable": false,
+	  "value": "actions",
+	  "width": "3%",
+	  "fixed": true
+	}
+  ]

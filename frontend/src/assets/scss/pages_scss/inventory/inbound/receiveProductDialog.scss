@@ -1,0 +1,240 @@
+.v-dialog {
+    &.receive-dialog {
+        .v-card__text {
+            padding: 24px;
+
+            .receive-products-section-wrapper {
+                .receive-products-tables-wrapper {
+                    .receive-products-table {
+                        box-shadow: none !important;
+                        border-radius: 0;
+
+                        .v-data-table__wrapper {
+                            table {
+                                thead {
+                                    background-color: #F7F7F7;
+
+                                    tr {
+                                        th {
+                                            border: none;
+                                            color: #6D858F;
+                                            font-size: 12px;
+                                            padding: 10px 8px 10px 16px;
+                                        }
+                                    }
+                                }
+
+                                tbody {
+                                    tr {
+                                        td {
+                                            padding: 8px 8px 8px 0;
+                                            border-bottom: none !important;
+                                            // border-bottom: 1px solid #EBF2F5;
+
+                                            .v-input {
+                                                .v-input__control {
+                                                    background-color: transparent !important;
+
+                                                    .v-input__slot {
+                                                        min-height: 0;
+                                                        height: 45px;
+                                                        font-size: 14px;
+                                                        margin-bottom: 0;
+
+                                                        fieldset {
+                                                            border: 1px solid #B4CFE0;
+                                                            background-color: #fff !important;
+                                                        }
+                                                        
+                                                        input {
+                                                            text-align: right;
+
+                                                            &::placeholder {
+                                                                color: #B4CFE0;
+                                                            }
+                                                        }
+                                                    }
+
+                                                    .v-text-field__details {
+                                                        display: none;
+                                                    }
+                                                }
+
+                                                &.v-input--is-disabled {
+                                                    .v-input__control {
+                                                        .v-input__slot {
+                                                            fieldset {
+                                                                background-color: #F0FBFF !important;
+                                                                border: 1px solid #F0FBFF !important;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                &.has-error {
+                                                    .v-input--is-focused {
+                                                        fieldset {
+                                                            border: 1px solid #F93131 !important;
+                                                            background-color: #fff !important;
+                                                        }
+                                                    }
+
+                                                    .v-input__control {
+                                                        background-color: transparent !important;
+    
+                                                        .v-input__slot {    
+                                                            fieldset {
+                                                                border: 1px solid #F93131 !important;
+                                                                background-color: #fff !important;
+                                                            }
+                                                            
+                                                            input {
+                                                                text-align: right;
+    
+                                                                &::placeholder {
+                                                                    color: #B4CFE0;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                &.input-notes {
+                                                    .v-input__slot {                                                        
+                                                        input {
+                                                            text-align: start !important;
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            &:nth-child(1),
+                                            &:nth-child(2) {
+                                                padding-left: 16px;
+                                            }
+                                        }
+
+                                        &:hover {
+                                            background-color: #fff !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .v-card__actions {
+            button {
+                margin-right: 8px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .v-dialog {
+        &.receive-dialog {
+            margin: 0;
+            height: 100%;
+            max-height: 100% !important;
+            background-color: #ffffff;
+            max-width: 100% !important;
+
+            .v-card {
+                box-shadow: none !important;
+
+                .v-card__title {
+                    padding: 14px 16px !important;
+                }
+
+                .v-card__text {
+                    padding: 14px 16px;
+                    // margin-bottom: 0;
+        
+                    .receive-products-section-wrapper {
+                        .receive-products-tables-wrapper {
+                            .receive-products-table {        
+                                .v-data-table__wrapper {
+                                    table {
+                                        thead {
+                                            display: none;
+                                        }
+        
+                                        tbody {
+                                            tr {
+                                                display: grid;
+
+                                                td {
+                                                    padding: 5px 0;
+                                                    border-bottom: none !important;
+                                                    height: auto !important;
+
+                                                    .receive-products-col-inside {
+                                                        display: flex;
+                                                        flex: 1;
+                                                    }
+
+                                                    .product-selection-mobile {
+                                                        p {
+                                                            font-size: 10px;
+                                                            color: #819FB2;
+                                                            font-family: "Inter-SemiBold", sans-serif;
+                                                            text-transform: uppercase;
+                                                            margin-bottom: 3px;
+                                                        }
+
+                                                        .v-input {
+                                                            .v-input__control {
+                                                                .v-select__selection--comma {
+                                                                    width: 100% !important;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+                                                    &.receive-products-col {                                                      
+                                                        &:last-child {
+                                                            padding-bottom: 15px;
+                                                            border-bottom: 1px solid #EBF2F5 !important;
+                                                            margin-bottom: 10px;
+                                                        }
+                                                    }
+                                                    
+
+                                                    // &.v-data-table__mobile-row {
+                                                    //     padding-left: 0;
+
+                                                    //     .v-data-table__mobile-row__header {
+                                                    //         color: #6D858F;
+                                                    //         text-transform: uppercase;
+                                                    //         font-size: 12px;
+                                                    //         font-family: "Inter-SemiBold", sans-serif;
+                                                    //         font-weight: unset;
+                                                    //         width: 35%;
+                                                    //     }
+                                                    // }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+        
+                .v-card__actions {
+                    // position: unset !important;
+                    padding: 8px 16px !important;
+    
+                    button {
+                        padding: 10px !important;
+                    }
+                }
+            }            
+        }
+    }
+}

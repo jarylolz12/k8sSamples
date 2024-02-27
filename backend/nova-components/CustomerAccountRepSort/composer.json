@@ -1,0 +1,29 @@
+{
+    "name": "kenetashi/customer-account-rep-sort",
+    "description": "A Laravel Nova filter.",
+    "keywords": [
+        "laravel",
+        "nova"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Kenetashi\\CustomerAccountRepSort\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Kenetashi\\CustomerAccountRepSort\\FilterServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

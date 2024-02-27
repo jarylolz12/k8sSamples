@@ -1,0 +1,134 @@
+@import '../../../assets/scss/colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+$fontFamilyRegular: 'Inter', sans-serif !important;
+
+/* helper mixin for font styling and weight */
+@mixin fontStyles($size, $weight) {
+	font-family: $fontFamilyRegular;
+	font-weight: #{$weight} !important;
+	font-size: #{$size}px !important;
+}
+
+#shipment-dropdown-booking-wrapper {
+	width: auto;
+	display: flex;
+	min-width: 360px;
+	justify-content: flex-end;
+	position: relative;
+	.shipment-dropdown-button-menu {
+		// top: 46px !important;
+	    // left: 27% !important;
+	    // max-width: 73%;
+	    // width: auto;
+	    // opacity: 1 !important;
+        // padding-top: 10px !important;
+        // padding-bottom: 10px !important;
+	    // box-shadow: 0px 0px 1px rgba(41, 41, 41, 0.16), 0px 4px 12px rgba(41, 41, 41, 0.2);
+	    // background-color: $white !important;
+
+		// p
+		min-width: 265px !important;
+		padding-top: 10px !important;
+		padding-bottom: 10px !important;
+		box-shadow: 0px 0px 1px rgba(41, 41, 41, 0.16), 0px 4px 12px rgba(41, 41, 41, 0.2);
+		opacity: 1 !important;
+		background-color: $white !important;
+
+		.v-list {
+			padding-top: 0px;
+			.v-list-item {
+				flex-direction: column;
+				//padding: 0px;
+				padding: 10px 16px;
+                background-color: $white !important;
+				//margin-bottom: 21px !important;
+				&:hover {
+					&::before {
+					    /* opacity: 0.04; */
+					}
+                    background-color: $table-header-background !important;
+				}
+
+				.v-list-item__title {
+					width: 100%;
+					@include fontStyles(12,600);
+					color: $dark-blue;
+					height: auto !important;
+					justify-content: space-between;
+					margin-bottom: 4px !important;
+				}
+				.v-list-item__content {
+					width: 100%;
+					color: $dark-grey;
+					@include fontStyles(12, 400);
+					flex-direction: column;	
+					padding-top: 0px;
+					padding-bottom: 0px;
+					align-items: flex-start;
+				}
+				.v-ripple__container {
+					display: none !important;
+				}
+
+				&::before {
+					display: none !important;
+				}
+
+				&::after {
+					display: none !important;
+				}
+
+			}
+		}
+
+		&:hover {
+			//background-color: $table-header-background !important;
+		}
+	}
+
+	.booking-shipment-btn {        
+		// display: flex;
+		// flex-direction: row;
+		// width: auto;
+		// padding-top: 10px;
+		// padding-bottom: 10px;
+		// padding-left: 16px;
+		// border: 1px solid $light-grey;
+		// border-radius: 4px;
+		// height: 40px !important;
+
+		background-color: #ffffff !important;
+		color: #0171A1 !important;
+		border: 1px solid #B4CFE0 !important;
+		padding: 8px 0 8px 14px !important;
+		font-size: 14px;
+		height: 40px !important;
+		text-transform: capitalize;
+		letter-spacing: 0;
+		box-shadow: none !important;
+		border-radius: 4px;
+		font-family: "Inter-Regular", sans-serif;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		line-height: 0;
+        transition: all 1.5s;
+		
+		div {
+			&:first-child {
+				@include fontStyles(14, 500);
+				color: $dark-blue;
+				margin-right: 7px;
+			}
+		}
+		.icon-wrapper {
+			padding-top: 2px;
+			transition: all 1.5s;
+		}
+
+        &.up {
+            background: $table-header-background;
+        }
+	}
+}

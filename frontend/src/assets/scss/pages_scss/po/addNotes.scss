@@ -1,0 +1,87 @@
+@import "../../colors.scss";
+.add-notes-dialog{
+    .notes-dialog-card {
+        .notes-title {
+            font-size: 10px;
+            color: $grey;
+            text-transform: uppercase;
+            font-family: "Inter-SemiBold", sans-serif;
+            margin-bottom: 0 !important;
+        }
+        .deliver-address {
+            .v-input__control {
+                .v-input__slot {
+                    height: auto;
+
+                    .v-text-field__slot {
+                        textarea {
+                            height: 80px;
+                            font-size: 14px;
+                            line-height: 20px;
+                            padding: 8px 8px 8px 0;
+                            margin: 0 !important;
+                        }
+                    }
+                }
+            }
+        }
+        .document_preview{
+            width: 100%;
+            display: flex;
+        }
+        #documents-files-select-box-id {
+            cursor: pointer;
+            border: 2px solid #B4CFE0;
+            border-style: dashed;
+            width: 148px;
+            height: 148px;
+            border-radius: 4px;
+            padding: 20px 24px;
+            text-align: center;
+            font-size: 14px;
+            color: #B4CFE0;
+            background-color: #ffffff;
+            transition: 0.3s background-color;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        #documents_files {
+            display: none;
+        }
+        .btn-upload {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 8px;
+
+            img {
+                margin-right: 5px;
+            }
+        }
+        .documents_list_view_All{
+            display: flex;
+            align-items: center;
+        }
+        .documents_list_view_single{
+            position: relative;
+            width: 148px;
+            height: 148px;
+            margin: 0 5px;
+            border: 1px solid #B4CFE0;
+            .remove-document-btn{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                height: 30px;
+                background-color: rgba(74, 74, 74, 0.5);
+                width: 100%;
+                opacity: 0.5;
+                color: #ffffff;
+                border: none;
+                border-radius: 0;
+            }
+        }
+    }
+}

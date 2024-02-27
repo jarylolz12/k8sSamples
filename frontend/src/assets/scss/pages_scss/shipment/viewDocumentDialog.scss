@@ -1,0 +1,74 @@
+/** @format */
+@import "../../colors.scss";
+.view-document-dialog {
+	max-height: 100% !important;
+	height: 100%;
+	right: 0px !important;
+	margin: 0px !important;
+	position: absolute !important;
+	border-radius: 0px !important;
+	box-shadow: none !important;
+	.v-card {
+		&.view-document-card {
+			.view-document-title {
+				border-bottom: 2px solid $light-border;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 16px 24px;
+
+				.headline {
+					font-family: "Inter" !important;
+					font-size: 20px;
+					flex-direction: column;
+					align-items: flex-start;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					max-width: 400px;
+					.file-name {
+						font-weight: 600;
+						font-size: 24px;
+						line-height: 34px;
+						img {
+							cursor: pointer;
+						}
+					}
+					.file-details {
+						font-weight: 400;
+						font-size: 12px;
+						line-height: 18px;
+					}
+				}
+
+				.header-actions {
+					display: flex;
+					align-items: center;
+
+					button {
+						min-width: 60px;
+						display: flex;
+						justify-content: center;
+						align-items: center;
+
+						&.btn-close {
+							margin-left: 16px;
+							min-width: unset;
+
+							i {
+								color: $default-text-color !important;
+							}
+						}
+					}
+				}
+			}
+			.view-document-content {
+				span {
+					display: inline-block;
+					width: 100%;
+				}
+				padding: 24px 16px;
+				background: rgba(74, 74, 74, 0.7);
+			}
+		}
+	}
+}

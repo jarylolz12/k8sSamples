@@ -1,0 +1,259 @@
+@import '../../../../../assets/scss/colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$dropdowns: 1;
+@mixin fontStyles($weight, $size) {
+
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+
+@mixin genericCss() {
+    max-height: none !important;
+	min-height: 0px !important;
+}
+.add-manual-po-modal {
+    .v-card__title {
+        h2 {
+            @include fontStyles(600, 20);
+            color: $default-text-color;
+        }
+        padding: 10px 16px !important;
+    }
+    
+	.v-card__text {
+
+        
+        .add-manual-po-text-wrapper {
+            & > div {
+                width: 50%;
+                padding-top: 24px;
+                .form-label {
+                    line-height: 12px;
+                    margin-bottom: 6px;
+                    span {
+                        @include fontStyles(600, 10);
+                        color: $grey;
+                    }
+                }
+            }
+            margin-bottom: 24px;
+        }
+        
+        .po-document-wrapper {
+
+            .po-document-title-wrapper {
+                span {
+                    &.po-document-title {
+                        @include fontStyles(400, 16);
+                        color: $default-text-color;
+                    }
+                }
+                margin-bottom: 16px;
+            }
+            
+            .dashed {
+                border: 2px solid $light-grey;
+                border-style: dashed;
+                min-height: 150px;
+                padding: 10px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .browse-drop-text {
+                    @include fontStyles(400,14);
+                    color: $light-grey;
+                    margin-bottom: 8px !important;
+                }
+                .btn-upload {
+                    padding: 6px 8px !important;
+                    border-radius: 4px !important;
+                }
+            }
+        }
+        .text-field-wrapper {
+            margin-bottom: 12px;
+            .v-input {
+                .v-input__slot{
+                    @include genericCss();
+                    fieldset {
+                        @include genericCss();
+                        height: 45px;
+                        top: -5px;
+                        border: 1px solid $light-grey;
+                    }
+                }
+            }
+        }
+        .dates-wrapper {
+            .mdi-calendar {
+                &::before {
+                    content: '';
+                    display: inline-flex;
+                    background-image: url('/assets/icons/calendar.svg');
+                    background-size: 18px 18px;
+                    height: 18px;
+                    width: 18px;
+                }
+            }
+        }
+        @mixin dropdown {
+            @for $i from 1 through $dropdowns {
+                #supplier-dropdown-wrapper-#{$i} {
+                    position: relative !important;
+                    margin-bottom: 12px !important;
+                    //height: 40px !important;
+                    .v-input {
+                        .v-input__control {
+                            .v-input__slot {
+                                @include genericCss();
+                                fieldset {
+                                    @include genericCss();
+                                    height: 45px;
+                                    top: -5px !important;
+                                }
+                                .v-select__slot {
+                                    @include genericCss();
+                                    .v-select__selections {
+                                        padding-top: 0px !important;
+                                        padding-bottom: 0px !important;
+                                        //margin-top: 5px;
+                                        //height: 35px !important;
+                                        div {
+                                            height: 34px;
+                                            display: flex;
+                                            align-items: center;
+                                        }    
+                                    }
+                                    .v-input__append-inner {
+                                        height: 35px !important;
+                                        margin-top: 0px !important;
+                                        .v-input__icon--append {
+    
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+    
+                    .v-menu__content {
+                        overflow-y: scroll !important;
+                        overflow-x: hidden !important;
+                        max-width: 100% !important;
+                        width: 100% !important;
+                        min-width: 0px !important;
+                        &::-webkit-scrollbar {
+                            width: 10px;
+                        }
+                            
+                        &::-webkit-scrollbar-track {
+                            background: #f1f1f1; 
+                        }
+                            
+                        &::-webkit-scrollbar-thumb {
+                            background: #d3d3d3; 
+                        }
+                            
+                        &::-webkit-scrollbar-thumb:hover {
+                            background: #d3d3d3; 
+                        }
+    
+                        .v-list {
+                            .v-list-item {
+                                .v-list-item__content {
+                                    .v-list-item__title {
+                                        color: $default-text-color !important;
+                                    }	
+                                }
+    
+                                &.v-list-item--active {
+                                    .v-list-item__content {
+                                        .v-list-item__title {
+                                            color: #1976d2 !important;
+                                        }	
+                                    }
+                                }
+                            }
+                            
+                            
+                        }
+                    }
+    
+                    .v-icon {
+                        &.mdi-menu-down {
+                            &::before {
+                                content: '' !important;
+                            }
+                            &::after {
+                                content: '' !important;
+                                display: inline-flex !important;
+                                background-image: url('/assets/icons/chevron-down-dark.svg') !important;
+                                background-size: 14px 14px !important;
+                                background-repeat: no-repeat;
+                                height: 14px !important;
+                                width: 14px !important;
+                                top: 0px;
+                                left: -7px;
+                                opacity: 1;
+                                background-color: transparent !important;
+                                cursor: pointer !important;
+                            }	
+                        }
+                    }
+    
+                    .v-select__selection--comma {
+                        margin-bottom: 0px !important;
+                    }
+                }
+    
+                #dropdown-wrapper-1,
+                #dropdown-wrapper-6,
+                #dropdown-wrapper-2,
+                #dropdown-wrapper-5,
+                #dropdown-wrapper-4 {
+                    .v-input__control {
+                        height: 40px !important;
+                        .v-input__slot {
+                            min-height: 40px !important;
+                        }
+                    }
+                }
+    
+                #dropdown-wrapper-1 {
+                    height: auto !important;
+                    .v-input__control {
+                        height: auto !important;
+                    }
+                    
+                    .v-input__slot {
+                        min-height: 40px !important;
+                        height: auto !important;
+                        margin-bottom: 0px !important;
+                    }
+                    .v-text-field__details {
+                        display: block !important;
+                    }
+                    .v-messages__wrapper {
+                        padding-top: 8px !important;
+                    }
+                    
+                }
+            }
+        }
+
+        @include dropdown();
+
+	}
+	.v-card__actions {
+		.footer {
+			button {
+				margin-right: 8px;
+			}
+		}
+	}
+}

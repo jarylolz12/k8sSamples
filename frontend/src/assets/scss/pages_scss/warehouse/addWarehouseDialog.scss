@@ -1,0 +1,250 @@
+@import '../../colors.scss';
+
+.v-dialog {
+    &.warehouse-dialog {
+        font-family: 'Inter-Regular', sans-serif;
+
+        .v-card__text {
+            padding: 0 !important;
+
+            .add-wrapper {
+                display: flex;
+                min-height: 430px;
+
+                .warehouse-info {
+                    width: 40%;
+                    background-color: $table-hover-background;
+                    padding: 18px 24px;   
+                    
+                    .v-input {
+                        .v-input__control {
+                            background-color: transparent !important;
+                        }
+                    }
+
+                    /* Vue telephone */
+                    .warehouse-contact-number {
+                        .vue-tel-input {
+                            &:focus-within {
+                                box-shadow: none;
+                                border: 1px solid #0171A1 !important;
+                            }
+
+                            &.disabled {
+                                .vti__input {
+                                    color: #B4CFE0 !important;
+                                }
+
+                                .vti__country-code,
+                                i.v-icon {
+                                    color: #B4CFE0 !important;
+                                }
+                            }
+
+                            .vti__dropdown {
+                                .vti__flag {
+                                    margin-right: 7px;
+                                }
+                            }
+                            
+                            .vti__input {
+                                padding-left: 1px;
+                                color: #4a4a4a !important;
+
+                                &.vti__search_box {                                    
+                                    border: 1px solid #B4CFE0 !important;
+                                    width: 94%;
+                                    padding: 8px 12px !important;
+                                    margin: 6px 8px;
+                                }
+                            }
+                            
+                            .vti__dropdown-list {
+                                &.below {
+                                    max-width: 320px;
+                                    width: 320px;
+                                    border: 1px solid #B4CFE0 !important;
+
+                                    /* Scrollbar */
+                                    &::-webkit-scrollbar {
+                                        width: 10px;
+                                    }
+                                    
+                                    /* Track */
+                                    &::-webkit-scrollbar-track {
+                                        background-color: #f1f1f1; 
+                                    }
+                                    
+                                    /* Handle */
+                                    &::-webkit-scrollbar-thumb {
+                                        background-color: #e2e2e2;
+                                    }
+                                    
+                                    /* Handle on hover */
+                                    &::-webkit-scrollbar-thumb:hover {
+                                        background-color: #e2e2e2;
+                                    }
+                                }
+                            }
+
+                            .vti__country-code {
+                                color: #4a4a4a !important;
+                                font-size: 14px;
+                            }
+
+                            &.is-error {
+                                border: 1px solid #fc8686 !important;
+                            }
+                        }
+                    }
+                }
+
+                .warehouse-description {
+                    padding: 18px 24px;
+                    width: 60%;
+                    margin-bottom: 15px;
+
+                    .v-input {
+                        .v-input__control {
+                            background-color: #ffffff !important;
+                        }
+                    }
+                }
+
+                .warehouse-title {
+                    font-size: 10px;
+                    color: $grey;
+                    text-transform: capitalize;
+                    font-family: 'Inter-SemiBold', sans-serif;
+                    margin-bottom: 0 !important;
+                }
+
+                .warehouse-img {
+                    .container {
+                        border-radius: 4px;
+                        border: 1px solid #b6d0e1;
+                        background-color: $white;
+                        padding: 0;
+                        margin: 0;
+                        width: auto;
+                        max-width: 162px;
+                        height: 162px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        .beforeUpload {
+                            svg {
+                                width: 50px;
+                            }
+                        }
+
+                        p {
+                            width: 80%;
+                            margin: 0 auto;
+                            color: $light-grey;
+                        }
+
+                        .plus {
+                            display: none;
+                        }                        
+                    }
+                }
+
+                .v-input {
+                    margin-top: 0 !important;
+
+                    .v-input__control {
+                        .v-input__slot {
+                            // margin-bottom: 0;
+
+                            .v-radio {
+                                margin-bottom: 4px;
+                                
+                                label {
+                                    font-size: 14px !important;
+                                    color: $default-text-color !important;
+                                    font-family: 'Inter-Regular', sans-serif !important;
+                                }
+                            }
+                        }
+                    }
+
+                    &.text-fields {
+                        &.select-items {
+                            .v-input__control {
+                                .v-input__slot {
+                                    height: 45px;
+                                    margin-bottom: 6px;
+                                    
+                                    fieldset {
+                                        border: 1px solid $light-grey;
+                                        background-color: $white !important;
+                                    }
+                                }
+                            }                            
+
+                            &.v-input--is-disabled {
+                                .v-input__control {
+                                    .v-input__slot {
+                                        fieldset {
+                                            background-color: $divider-bg !important;
+                                            border-color: $divider-bg !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .v-text-field__details {
+                            display: block !important;
+                        }                       
+                    }
+                }
+            }
+        }
+
+        .v-card__actions button {
+            margin-right: 8px;
+        }
+
+        .v-input {
+            &.v-input--is-disabled {
+                .v-input__control {
+                    .v-input__slot {
+                        input,
+                        .v-select__selection,
+                        textarea {
+                            color: #B4CFE0 !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+	.v-dialog {
+        &.warehouse-dialog {
+            margin: 0;
+            height: 100%;
+            max-height: 100% !important;
+            background-color: $white;
+
+            .v-card__text {
+                .add-wrapper {
+                    flex-direction: column;
+                    margin-bottom: 30px;
+
+                    .warehouse-info,
+                    .warehouse-description {
+                        width: 100%;
+                        padding: 16px;
+                    }
+                }
+            }
+        
+        }
+    }
+}

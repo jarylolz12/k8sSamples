@@ -1,0 +1,49 @@
+/** @format */
+
+@import "../colors.scss";
+
+.payment-review-dialog {
+	.v-card {
+		&.review-payment-card {
+			.v-card__text {
+				padding: 24px 100px;
+				background: #4a4a4a;
+			}
+			.v-card__actions {
+				&.review-payment-button-actions {
+					gap: 8px;
+					.download {
+						position: absolute;
+						right: 24px;
+					}
+				}
+			}
+		}
+	}
+}
+
+.v-dialog {
+	&.confirmation-wrapper-dialog {
+		.v-card {
+			&.confirmation-dialog {
+				.v-card__text {
+					.reason-notes {
+						margin-top: 24px;
+						.reason-title {
+							font-weight: 600;
+							font-size: 10px;
+							line-height: 14px;
+							color: #819fb2;
+							text-transform: uppercase;
+							font-family: "Inter";
+
+							span {
+								font-weight: 400;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

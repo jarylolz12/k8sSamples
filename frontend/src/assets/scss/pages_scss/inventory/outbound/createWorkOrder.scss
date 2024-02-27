@@ -1,0 +1,159 @@
+@import '../../../colors.scss';
+
+.create-order-dialog {
+    .v-card__title {
+        border-bottom: 2px solid #EBF2F5;
+    }
+
+    .v-card__text {
+        padding: 0;
+
+        &.create-order-info-wrapper {
+            .create-order-info {
+                min-height: 300px;
+                padding: 24px;
+
+                .row {
+                    .order-title {
+                        font-size: 10px;
+                        color: #819FB2;
+                        font-family: 'Inter-SemiBold', sans-serif;
+                        text-transform: uppercase;
+                        margin-bottom: 0;
+    
+                        span {
+                            text-transform: capitalize !important;
+                        }
+    
+                        &.big {
+                            font-size: 14px;
+                            text-transform: capitalize !important;
+                            margin-bottom: 3px;
+                            color: #4A4A4A;
+                        }
+                    }
+
+                    .order-description {
+                        font-size: 12px;
+                        color: #6D858F;
+                    }
+
+                    .dynamic-content {
+                        margin-bottom: 0;
+                        color: #4A4A4A;
+                        font-size: 14px;
+                    }
+
+                    .col-sm-4 {
+                        padding-bottom: 0;
+                    }
+
+                    .v-input {
+                        .v-input__control {
+                            background-color: transparent !important;
+    
+                            .v-input__slot {
+                                min-height: 0;
+                                height: 45px;
+                                font-size: 14px;
+                                background-color: #fff;
+        
+                                fieldset {                            
+                                    border: 1px solid #B4CFE0;
+                                }
+        
+                                input {
+                                    font-size: 14px;
+        
+                                    &::placeholder {
+                                        color: #B4CFE0;
+                                    }
+                                }
+    
+                                .v-input__append-inner {
+                                    i {
+                                        color: #B4CFE0;
+                                    }
+                                }
+                            }
+    
+                            .v-text-field__details {
+                                display: block !important;
+                                margin-bottom: 0;
+                            }
+                        }
+    
+                        &.table-text-fields,
+                        &.text-right {
+                            .v-input__control {
+                                .v-input__slot {
+                                    input {
+                                        text-align: right;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .add-products-bundle-table {
+                        box-shadow: none !important;
+
+                        .v-data-table__wrapper {
+                            table {
+                                thead {
+                                    background-color: #F7F7F7;
+
+                                    tr {
+                                        th {
+                                            color: #6D858F;
+                                            font-size: 12px;
+                                            border-bottom: none;
+                                            text-transform: uppercase;
+                                        }
+                                    }
+                                }
+
+                                tbody {
+                                    tr {
+                                        td {
+                                            padding: 8px 8px 8px 0;
+
+                                            .remove-btn {
+                                                color: $red;
+                                            }
+                                        }
+
+                                        &:hover {
+                                            background-color: transparent !important;
+                                        }
+
+                                        &:last-child {
+                                            td {
+                                                border-bottom: 1px solid #EBF2F5;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .add-row-wrapper {
+                        padding-top: 8px;
+                    }
+                }
+            }
+        }
+    }
+
+    .v-card__actions {
+        &.order-button-actions {
+            button {
+                margin-right: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}

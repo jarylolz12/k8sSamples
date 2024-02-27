@@ -1,0 +1,542 @@
+@import '../../../../../assets/scss/colors.scss';
+
+.inbound-view-wrapper {
+    .inbound-body-wrapper {
+        .inbound-pallet-section {
+            .v-data-table {
+                &.inbound-view-pallets {
+                    .v-data-table__wrapper {
+                        // min-height: calc(100vh - 455px);
+                        min-height: 100%;
+
+                        .mdi-checkbox-blank-outline::before {
+                            content: "\F14FC";
+                            color: #B4CFE0;
+                        }
+                        
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        box-shadow: none !important;
+                                        border-bottom: 2px solid $divider-bg !important;
+                                    }
+                                }
+                            }
+                            
+                            tbody {
+                                tr {
+                                    td {
+                                        .label-info {
+                                            p {
+                                                font-size: 12px;
+                                                color: $dark-blue;
+                                                font-family: 'Inter-Medium', sans-serif;
+                                            }
+                                        }
+                                        
+                                        .type-info {
+                                            text-transform: capitalize;
+                                        }
+
+                                        .sku-info {
+                                            p {
+                                                text-align: right;
+                                                margin-bottom: 0;
+                                            }
+                                        }
+
+                                        .spec-info {
+                                            p {
+                                                margin-bottom: 0;
+
+                                                &.unit-weight {
+                                                    color: #6D858F;
+                                                    text-transform: lowercase;
+                                                }
+                                            }
+                                        }
+                                        
+                                        .mobile-content {
+                                            flex-direction: column !important;
+                                            align-items: flex-start !important;
+
+                                            .location-info-mobile {
+                                                span {
+                                                    font-family: 'Inter-Medium', sans-serif !important;
+                                                }
+                                            }                                        
+    
+                                            .unit-weight-mobile {
+                                                color: #6D858F;
+                                            }
+                                        }
+
+                                        .cartons-separator {
+                                            display: flex;
+                                            justify-content: flex-start;
+                                            align-items: center;
+                                            margin-bottom: 3px;
+
+                                            p {
+                                                text-align: left !important;
+                                                font-size: 12px !important;
+                                                color: #6D858F;
+                                                margin-bottom: 0;
+                                            }
+
+                                            .separator {
+                                                width: 6px;
+                                                height: 6px;
+                                                background-color: #ebf2f5;
+                                                border-radius: 50%;
+                                                margin: 0 6px;
+                                            }
+                                        }
+        
+                                        .actions-wrapper {
+                                            button {
+                                                margin-left: 8px;
+                                                padding: 8px 10px !important;
+                                                font-size: 12px;
+                                                margin-left: 8px;
+                                                padding: 8px 10px !important;
+                                                font-size: 12px;
+                                                height: 34px !important;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                min-width: 35px;
+        
+                                                .btn-content {
+                                                    span {
+                                                        font-family: 'Inter-Medium', sans-serif;
+                                                    }
+                                                }
+        
+                                                &.placed {
+                                                    background-color: #EBFAEF !important;
+                                                    color: #16B442 !important;
+                                                    border: none !important;
+                                                    cursor: auto !important;
+                                                }
+
+                                                &.btn-status {
+                                                    min-width: 80px;
+                                                }
+                                            }
+                                        }                                        
+
+                                        .v-data-table__expand-icon {
+                                            border: none!important;
+                                            padding: 0;
+                                            background-color: transparent!important;
+                                            color: #0171a1!important;
+                                        }
+                                    }
+        
+                                    &:hover {
+                                        background-color: $table-hover-background !important;
+                                    }
+        
+                                    &.v-data-table__selected {
+                                        background-color: #F0FBFF !important;
+
+                                        td {
+                                            .actions-wrapper {
+                                                button {
+                                                    &.not-placed,
+                                                    &.pallet-menu {
+                                                        visibility: hidden;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    &.v-data-table__expanded.v-data-table__expanded__row {
+                                        background-color: #F0FBFF !important;
+        
+                                        td {                                    
+                                            border-bottom: none !important;
+                                        }
+                                    }
+        
+                                    &.v-data-table__expanded__content {
+                                        box-shadow: none !important;
+                                        background-color: #F0FBFF;
+                                        width: 100%;
+        
+                                        &:hover {
+                                            background-color: #F0FBFF !important;
+                                        }
+        
+                                        td {
+                                            padding-top: 0 !important;
+        
+                                            .expanded-item-info {
+                                                background-color: $white;
+                                                width: 90%;
+            
+                                                .expanded-header-wrapper {
+                                                    border-bottom: 1px solid #EBF2F5;
+                                                    padding: 8px 20px;
+            
+                                                    .expanded-header-content {                                            
+                                                        display: flex;
+                                                        justify-content: flex-start;
+                                                        align-items: center;
+                                                        width: 100%;
+            
+                                                        .w-80 {
+                                                            width: 80%;
+                                                        }
+            
+                                                        .w-10 {
+                                                            width: 10%;
+                                                            text-align: right;
+                                                        }
+            
+                                                        .header-title {
+                                                            font-size: 12px;
+                                                            color: $dark-grey;
+                                                            font-family: 'Inter-Medium', sans-serif;
+                                                        }
+                                                    }
+                                                }
+            
+                                                .expanded-body-wrapper {
+                                                    border-bottom: 1px solid #EBF2F5;
+                                                    padding: 8px 20px;
+            
+                                                    .expanded-body-content {                                            
+                                                        display: flex;
+                                                        justify-content: flex-start;
+                                                        align-items: center;
+                                                        width: 100%;
+                                                        padding: 5px 0px;
+            
+                                                        .w-80 {
+                                                            width: 80%;
+                                                        }
+            
+                                                        .w-10 {
+                                                            width: 10%;
+                                                            text-align: right;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        /* Scrollbar */
+                        &::-webkit-scrollbar {
+                            width: 10px;
+                        }
+                        
+                        /* Track */
+                        &::-webkit-scrollbar-track {
+                            background-color: #f1f1f1; 
+                        }
+                        
+                        /* Handle */
+                        &::-webkit-scrollbar-thumb {
+                            background-color: #e2e2e2;
+                        }
+                        
+                        /* Handle on hover */
+                        &::-webkit-scrollbar-thumb:hover {
+                            background-color: #e2e2e2;
+                        }
+                    }
+                }
+        
+                &.no-data-table {
+                    .v-data-table__wrapper {
+                        table {
+                            thead {
+                                display: none;
+                            }
+        
+                            tbody {
+                                tr.v-data-table__empty-wrapper {
+                                    &:hover {
+                                        background-color: $white !important;
+                                    }
+                                    
+                                    td {
+                                        border-bottom: none !important;
+        
+                                        .no-data-wrapper {
+                                            min-height: 200px;
+                                            padding-top: 25px;
+        
+                                            h3 {
+                                                font-size: 20px;
+                                                color: $default-text-color !important;
+                                                margin-bottom: 8px;
+                                            }
+        
+                                            p {
+                                                width: 40%;
+                                                margin: 0 auto;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.no-checkbox {
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    &:first-child {
+                                        padding-left: 18px !important;
+                                    }
+                                }
+                            }
+                        }
+    
+                        tbody {
+                            tr {
+                                td {
+                                    &:first-child {
+                                        padding-left: 18px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.documents-tab {
+                .document-mobile-upload {
+                    padding: 14px;
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;        
+                    border-bottom: 1px solid #EBF2F5 !important;
+            
+                    p {
+                        font-family: 'Inter-Medium', sans-serif;
+                    }
+                }
+            
+                .v-data-table {
+                    .v-data-table__wrapper {
+                        table {
+                            tbody {
+                                tr {
+                                    td {
+                                        &.v-data-table__mobile-row {
+                                            border-bottom: 1px solid #EBF2F5 !important;
+                                            padding: 12px;
+            
+                                            .documents-mobile-data {
+                                                display: flex;
+                                                justify-content: space-between;
+                                                align-items: center;
+                                            }
+            
+                                            &:last-child {
+                                                display: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            &.task-tab {
+                .v-data-table {
+                    .v-data-table__wrapper {
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        &:first-child {
+                                            padding-left: 20px;
+                                            display: table-cell !important;
+                                        }
+                                    }
+                                }
+                            }
+
+                            tbody {
+                                tr {
+                                    td {
+                                        padding: 8px !important;
+
+                                        &:first-child {
+                                            padding-left: 20px !important;
+                                            display: table-cell !important;
+                                        }
+
+                                        &:last-child {
+                                            padding-right: 20px !important;
+                                        }
+
+                                        .task-status-wrapper {
+                                            .task-chip {
+                                                height: 30px;
+                                                padding: 6px 10px;
+
+                                                .v-chip__content {
+                                                    font-size: 12px;
+                                                    font-family: 'Inter-Medium', sans-serif;
+                                                    text-transform: capitalize;
+                                                }
+
+                                                &.pending {
+                                                    background-color: #EBF2F5;
+                                                    color: #4a4a4a;
+                                                }
+
+                                                &.in.progress {
+                                                    background-color: #FFF9F0;
+                                                    color: #D68A1A;
+                                                }
+
+                                                &.completed {
+                                                    background-color: #EBFAEF;
+                                                    color: #16B442;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    .inbound-view-wrapper {
+        .inbound-body-wrapper {
+            .inbound-pallet-section {
+                .v-data-table {
+                    &.inbound-view-pallets {
+                        .v-data-table__wrapper {
+                            min-height: calc(100vh - 470px);
+                            
+                            table {
+                                thead {
+                                    display: table-header-group !important;
+        
+                                    tr {
+                                        th {
+                                            box-shadow: none !important;
+                                            border-bottom: 2px solid $divider-bg !important;
+                                        }
+                                    }
+                                }
+            
+                                tbody {
+                                    tr {
+                                        td {
+                                            &:nth-child(1n+5) {
+                                                display: table-cell !important;
+                                            }
+                                        }
+            
+                                        &:hover {
+                                            background-color: $table-hover-background !important;
+                                        }
+            
+                                        &.v-data-table__selected {
+                                            background-color: #F0FBFF !important;
+            
+                                            td {
+                                                .actions-wrapper {
+                                                    button {
+                                                        &.receive-buttons {
+                                                            visibility: hidden;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }   
+    
+                            /* Scrollbar */
+                            &::-webkit-scrollbar {
+                                width: 10px;
+                            }
+                            
+                            /* Track */
+                            &::-webkit-scrollbar-track {
+                                background-color: #f1f1f1; 
+                            }
+                            
+                            /* Handle */
+                            &::-webkit-scrollbar-thumb {
+                                background-color: #e2e2e2;
+                            }
+                            
+                            /* Handle on hover */
+                            &::-webkit-scrollbar-thumb:hover {
+                                background-color: #e2e2e2;
+                            }
+                        }
+                    }
+            
+                    &.no-data-table {
+                        .v-data-table__wrapper {
+                            table {
+                                thead {
+                                    display: none;
+                                }
+            
+                                tbody {
+                                    tr.v-data-table__empty-wrapper {
+                                        &:hover {
+                                            background-color: $white !important;
+                                        }
+                                        
+                                        td {
+                                            border-bottom: none !important;
+            
+                                            .no-data-wrapper {
+                                                min-height: 200px;
+                                                padding-top: 25px;
+            
+                                                h3 {
+                                                    font-size: 20px;
+                                                    color: $default-text-color !important;
+                                                    margin-bottom: 8px;
+                                                }
+            
+                                                p {
+                                                    width: 40%;
+                                                    margin: 0 auto;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

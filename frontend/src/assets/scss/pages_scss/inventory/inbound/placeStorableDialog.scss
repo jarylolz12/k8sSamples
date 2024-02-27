@@ -1,0 +1,236 @@
+.place-storable-dialog {
+    .place-storable-dialog-card {
+        .v-card__text {
+            padding: 0;
+            // display: flex;
+            // justify-content: flex-start;
+            // align-items: flex-start;
+            background-color: #F7F7F7 !important;
+            display: table;
+
+            .place-storable-unit-info {
+                display: flex;
+            }
+
+            .place-storable-title {
+                text-transform: uppercase;
+                color: #819FB2;
+                font-size: 10px;
+                font-family: 'Inter-SemiBold', sans-serif;
+                margin-bottom: 3px;
+            }
+
+            .place-storable-data {
+                color: #4a4a4a;
+            }
+
+            .left-column-wrapper {
+                width: 35%;            
+                min-height: 300px;
+                padding: 15px 24px 24px;
+                background-color: #F7F7F7 !important;
+                display: table-cell;
+            }
+
+            .right-column-wrapper {
+                width: 65%;
+                min-height: 300px;
+                padding: 15px 24px 24px;
+                background-color: #FFFFFF !important;
+                display: table-cell;
+
+                .place-unit-table-wrapper {
+                    .v-data-table {
+                        &.products-storable-table {
+                            box-shadow: none !important;
+
+                            .v-data-table__wrapper {
+                                table {
+                                    thead {
+                                        background-color: #F7F7F7;
+
+                                        tr {
+                                            th {
+                                                border: none;
+                                                color: #6D858F;
+                                                font-size: 12px;
+                                                padding: 10px 8px 10px 16px;
+                                            }
+                                        }
+                                    }
+
+                                    tbody {
+                                        tr {
+                                            td {
+                                                padding: 8px 0px 8px 16px;
+                                                // border-bottom: 1px solid #EBF2F5;
+                                                border-bottom: none;
+
+                                                &:nth-child(1n+3) {
+                                                    padding: 8px;
+                                                }
+                                            }
+
+                                            &:hover {
+                                                background-color: transparent;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .v-input {
+                .v-input__control {
+                    background-color: #f7f7f7 !important;
+
+                    .v-input__slot {
+                        fieldset {
+                            background-color: #fff !important;
+                        }
+                    }
+
+                    .v-text-field__details {
+                        display: block !important;
+                    }
+                }
+            }
+        }
+
+        .v-card__actions {
+            button {
+                margin-right: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
+
+.place-storable-dialog-items {
+    .v-list {
+        .v-list-item {
+            min-height: 40px;
+
+            .option-items {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+                font-size: 14px;
+
+                .name-item {
+                    color: #4a4a4a;
+                    width: 78%;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+
+                .count-item {
+                    color: #819FB2;
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) { 
+    .v-dialog {
+        &.place-storable-dialog {
+            margin: 0;
+            height: 100%;
+            max-height: 100% !important;
+            background-color: $white;
+
+            .place-storable-dialog-card {
+                box-shadow: none !important;
+
+                .v-card__text {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                    flex-direction: column;
+        
+                    .left-column-wrapper {
+                        width: 100%;
+                        padding: 16px;
+                        min-height: 100px;
+                    }
+        
+                    .right-column-wrapper {
+                        width: 100%;
+                        padding: 16px;
+        
+                        .place-unit-table-wrapper {
+                            .v-data-table {
+                                &.products-storable-table {
+                                    box-shadow: none !important;
+        
+                                    .v-data-table__wrapper {
+                                        table {
+                                            thead {
+                                                display: none;
+                                            }
+        
+                                            tbody {
+                                                tr {
+                                                    td {
+                                                        &.v-data-table__mobile-row {
+                                                            padding-left: 0;
+    
+                                                            .v-data-table__mobile-row__header {
+                                                                color: #6D858F;
+                                                                text-transform: uppercase;
+                                                                font-size: 12px;
+                                                                font-family: "Inter-SemiBold", sans-serif;
+                                                                font-weight: unset;
+                                                                width: 35%;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+        
+                    .v-input {
+                        .v-input__control {
+                            background-color: #f7f7f7 !important;
+        
+                            .v-input__slot {
+                                fieldset {
+                                    background-color: #fff !important;
+                                }
+                            }
+        
+                            .v-text-field__details {
+                                display: block !important;
+                            }
+                        }
+                    }
+                }
+        
+                .v-card__actions {
+                    padding: 8px 16px !important;
+                    
+                    button {
+                        margin-right: 8px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+            }
+        }
+    }
+}

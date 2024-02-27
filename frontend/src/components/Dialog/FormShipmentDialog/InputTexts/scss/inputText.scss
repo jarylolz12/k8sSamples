@@ -1,0 +1,101 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+$divider-bg: #EBF2F5;
+$sizes: 100;
+$weights: 800;
+
+//font style mixin
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+@mixin inputSlotStyles() {
+    min-height: 36px !important;
+    max-height: none;
+    margin-bottom: 0px;
+    height: 36px !important;
+}
+
+@mixin fontSizes() {
+
+    @for $s from 1 through $sizes {
+        $pixel: $s * 1px;
+        &.custom-font-#{$s} {
+            input {
+                font-size: $pixel !important;
+            }
+             
+        }
+    }
+}
+
+@mixin fontWeights() {
+    @for $w from 100 through $weights {
+        &.custom-font-weight-#{$w} {
+            input {
+                font-weight: $w !important;
+            }
+        }
+    }
+}
+
+
+@mixin textFieldStyles() {
+    max-height: none !important;
+    min-height: 0px !important;
+}
+
+.input-text-main-wrapper {
+    display: flex;
+    flex-direction: column;
+    div {
+        &:first-child {
+            @include fontStyles(400,14);
+            span {
+                text-transform: uppercase;
+            }
+        }
+
+        &:last-child {
+            .v-text-field {
+                .v-input__control {
+                    .v-input__slot {
+                        @include inputSlotStyles();
+
+                        fieldset {
+                            top: -5px !important;
+                            width: 100% !important;
+                            min-height: 0px !important;
+                            max-height: none !important;
+                            border: 1px solid $borderColor;
+                            border-radius: 4px;
+                        }
+                        .v-text-field__slot {
+                            @include textFieldStyles();
+                            input {
+                                @include fontStyles(400,14);
+                                &::placeholder {
+                                    @include fontStyles(400,14);
+                                }
+                            }
+                        }
+                    }
+                }
+
+                //mixin for custom classes
+                @include fontSizes();
+                @include fontWeights();
+                
+                
+            }
+        }
+    }
+}
+
+.forwarder-label {
+    span {
+        @include fontStyles(600, 10);
+    }
+}

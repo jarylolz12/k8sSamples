@@ -1,0 +1,306 @@
+.storable-unit-wrapper-desktop {
+    position: relative;
+
+    .overlay {
+        &.show {
+            position: absolute;
+            top: 61px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff !important;
+            z-index: 200;
+            cursor: auto;
+
+            .preloader {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 3%;
+            }
+        }
+    }
+
+    .v-data-table {        
+        .search-wrapper-global-component {
+            margin-left: 8px;
+        }
+
+        .search-wrapper {
+            position: relative;
+
+            img {
+                position: absolute;
+                width: 18px;
+                top: 12px;
+                left: 12px;
+                z-index: 1;
+            }
+
+            input {
+                border: 1px solid #B3CFE0;
+                height: 40px;
+                width: 100%;
+                padding: 8px 12px 8px 38px;
+                border-radius: 4px;
+                font-size: 14px;
+                background-color: #fff;
+
+                &:focus {
+                    outline: 0;
+                }
+
+                &::placeholder {
+                    color: #B4CFE0 !important;
+                }
+            }
+
+            button {
+                img {               
+                    &.img-clear-searched {
+                        right: 12px;
+                        left: unset;
+                    }
+                }
+            }
+        }
+
+        &.inventory-table {
+            &.storable-table {  
+                .v-data-table__wrapper {
+                    // height: calc(100vh - 338px);
+                    overflow-y: auto;
+                    overflow-x: hidden;
+                    
+                    table {
+                        thead {
+                            tr {
+                                th {
+                                    &:nth-child(2) {
+                                        padding-left: 0;
+                                    }
+                                }
+                            }
+                        }
+
+                        tbody {
+                            tr {
+                                td {
+                                    cursor: pointer;
+
+                                    &.location-edit {
+                                        .inventory-wrapper {
+                                            .btn-edit-show-on-hover {
+                                                width: 40px;
+                                                margin-left: 4px;
+                                                height: 35px;
+                                                display: flex;
+                                                justify-content: center;
+                                                align-items: center;
+                                                
+                                                button {
+                                                    display: none;
+                                                }
+                                            }
+                                        }
+    
+                                        &:hover {
+                                            .btn-edit-show-on-hover {
+                                                button {
+                                                    display: flex;
+                                                    padding: 0 !important;
+                                                    border: none !important;
+                                                    background-color: transparent !important;
+
+                                                    &::before {
+                                                        display: none;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                    
+                                    &:nth-child(2) {
+                                        padding-left: 0;
+                                        padding-right: 0 !important;
+                                    }
+        
+                                    &:nth-child(3) {
+                                        padding-left: 0 !important;
+        
+                                        button {
+                                            justify-content: flex-start !important;
+                                            min-width: unset !important;
+        
+                                            &:focus {
+                                                &::after {
+                                                    opacity: 0;
+                                                }
+                                            }
+                                        }
+                                    }
+
+                                    .actions {
+                                        .btn-white {
+                                            &.history-view-button {
+                                                height: 34px !important;
+                                                min-width: 34px !important;
+                                                padding: 6px 10px !important;
+                                                font-size: 12px !important;
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &:hover {
+                                    td {
+                                        &.location-edit {        
+                                            .inventory-wrapper {
+                                                .btn-edit-show-on-hover {
+                                                    button {
+                                                        display: flex !important;
+                                                        padding: 0 !important;
+                                                        border: none !important;
+                                                        background-color: #f7f7f7 !important;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+        
+                // &.no-current-pagination {
+                //     .v-data-table__wrapper {
+                //         // height: calc(100vh - 300px) !important;
+                //         height: calc(100vh - 283px) !important;
+                //     }
+                // }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    .storable-unit-wrapper-desktop {
+        .v-data-table {            
+            .v-data-table__wrapper {
+                table {
+                    thead {
+                        tr {
+                            th {
+                                &:nth-child(2) {
+                                    width: 50px !important;
+                                    min-width: 50px !important;
+                                }
+
+                                &:nth-child(3) {
+                                    width: 35px !important;
+                                    min-width: 35px !important;
+                                }
+
+                                &:nth-child(4) {
+                                    width: 45px !important;
+                                    min-width: 45px !important;
+                                }
+
+                                &:nth-child(5) {
+                                    width: 95px !important;
+                                    min-width: 95px !important;
+                                }
+
+                                &:nth-child(6) {
+                                    width: 125px !important;
+                                    min-width: 125px !important;
+                                }
+
+                                &:nth-child(8) {
+                                    width: 70px !important;
+                                    min-width: 70px !important;
+                                }
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            td {
+                                .inventory-wrapper {
+                                    .storable-label-unit {
+                                        width: 50px !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // &.no-current-pagination {
+            //     .v-data-table__wrapper {
+            //         height: calc(100vh - 300px) !important;
+            //     }
+            // }
+        }
+    }
+}
+
+.v-menu__content {
+    &.storable-location-menu {
+        background-color: #fff;
+        width: 320px !important;
+
+        .v-card {
+            .change-location-sub-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid #EBF2F5;
+                padding: 8px 16px;
+
+                h3 {
+                    font-size: 16px;
+                    color: #000;
+                }
+
+                button {
+                    &.close {
+                        padding: 0 !important;
+                        border: none !important;
+
+                        i {
+                            color: #0171A1 !important;
+                        }
+                    }
+                }
+            }
+
+            .v-list-item {
+                padding: 8px 16px;
+
+                &::before,
+                .v-ripple__container {
+                    display: none;
+                }
+
+                .v-radio {
+                    margin: 6px 0 10px !important;
+                    
+                    label {
+                        font-size: 14px !important;
+                        color: #4a4a4a !important;
+                        font-family: 'Inter-Regular', sans-serif !important;
+                    }
+                }
+            }
+
+            .v-card__actions {
+                border-top: 1px solid #EBF2F5;
+                padding: 12px 16px;
+            }
+        }
+    }
+}

@@ -1,0 +1,65 @@
+version: "3.7"
+services:
+  app:
+    build:
+      args:
+        user_name: www
+        user_id: 1000
+      context: ./
+      dockerfile: compose.Dockerfile
+    image: shifl
+    container_name: shifl-app
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - shifl
+  
+  mysql:
+    image: mysql:5.7.40
+    container_name: shifl-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+    networks:
+      - shifl
+
+  nginx:
+    image: nginx:alpine
+    container_name: shifl-nginx
+    restart: unless-stopped
+    ports:
+      - 8001:80
+    volumes:  
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d
+    networks:
+      - shifl
+  
+  maildev:
+    image: maildev/maildev
+    container_name: shifl-maildev
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - MAILDEV_WEB_PORT=1080
+      - MAILDEV_SMTP_PORT=1025
+    ports:
+      - "8088:1080"
+      - "8025:1025"
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+    networks:
+      - shifl
+
+networks: 
+  shifl:
+    driver: bridge

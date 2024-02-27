@@ -1,0 +1,175 @@
+@import '../../../colors.scss';
+
+.warehouse-table-wrapper {
+    .outbound-mobile {
+        .overlay {
+            &.show {
+                position: absolute;
+                top: 165px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #ffffff !important;
+                z-index: 200;
+                cursor: auto;
+    
+                .preloader {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 15px;
+                }
+            }
+        }
+        .search-wrapper {
+            position: relative;
+    
+            img {
+                position: absolute;
+                width: 18px;
+                top: 12px;
+                left: 12px;
+                z-index: 1;
+            }
+    
+            input {
+                border: 1px solid #B3CFE0;
+                height: 40px;
+                width: 100%;
+                padding: 8px 12px 8px 38px;
+                border-radius: 4px;
+                font-size: 14px;
+                background-color: #fff;
+    
+                &:focus {
+                    outline: 0;
+                }
+    
+                &::placeholder {
+                    color: #B4CFE0 !important;
+                }
+            }
+        }
+        .v-data-table.outbound-table {
+            .inventory-search-wrapper {
+                .v-tabs {
+                    width: 100%;
+                    .v-tab {
+                        padding: 6px 8px;
+                        min-width: 55px;
+                        width: 100%;
+
+                        &:last-child {
+                            margin-right: 0;
+                        }
+                    }
+                }
+            }
+            .v-data-table__wrapper {
+                table {
+                    tbody {
+                        tr {
+                            td {
+                                border-bottom: none !important;
+                                padding: 8px 14px 0;
+                                min-height: 35px;
+
+                                .v-data-table__mobile-row__header {
+                                    display: none;
+                                }
+
+                                .v-data-table__mobile-row__cell {
+                                    width: 100%;
+
+                                    .inventory-outbound-wrapper {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: center;
+
+                                        .inventory-outbound-items {
+                                            display: flex;
+                                            justify-content: flex-start;
+                                            align-items: flex-start;
+
+                                            p {
+                                                margin-bottom: 0;
+                                                width: 95px;
+                                                text-align: start;
+                                                font-family: 'Inter-Medium', sans-serif;
+                                                color: #6D858F;
+                                            }
+
+                                            span {
+                                                &.order-id {
+                                                    font-family: 'Inter-SemiBold', sans-serif;
+                                                    padding-right: 10px;
+                                                }                                                
+                                            }
+                                        }
+                                    }
+                                }
+
+                                &:nth-child(1n+6) {
+                                    border-bottom: 1px solid #E1ECF0 !important;
+                                    padding-bottom: 20px;
+                                }
+    
+                                &:nth-child(1n+7) {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.no-current-pagination {
+            .v-data-table__wrapper {
+                height: calc(100vh - 370px) !important;
+            }
+        }
+        &.type-3pl {
+            .outbound-search {
+                .v-tabs {
+                    .v-slide-group__wrapper {
+                        .v-tab {
+                            &.Floor {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .type-6pl {
+            .customer-product {
+                padding: 0;
+                background-color: blue;
+            }
+            .v-input .v-input__control 
+            .v-input__slot .v-select__slot {
+                .v-select__selections input::placeholder {
+                    color: #B4CFE0;
+                    font-size: 14px;
+                }
+    
+            }
+            .v-input__control .v-input__slot fieldset {
+                height: 45px;
+                border: 1px solid #B4CFE0;
+                background-color: white;
+            }
+            .customer-filter {
+                background-color: #F7F7F7 !important;
+                border: 1px solid #EBF2F5;
+                border-radius: 4px;
+                padding:2px !important
+            }
+            .company-name {
+                font-size: 20px !important;
+                padding: 20px !important;
+                color: white !important;
+            }
+        }
+    }
+}

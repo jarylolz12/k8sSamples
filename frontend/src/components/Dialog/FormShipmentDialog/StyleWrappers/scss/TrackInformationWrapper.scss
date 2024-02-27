@@ -1,0 +1,49 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+$sizes: 100;
+$weights: 800;
+$default-text-color: #4A4A4A;
+$sub-text-color: #6D858F;
+$divider-bg: #EBF2F5;
+$caret-light: #F0FBFF;
+$white: #ffffff;
+$special-not-bg: #F5F9FC;
+$label-color: #819FB2;
+$label-special-color: #0171A1;
+//font style mixin
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+#tracked-information-wrapper {
+
+    .tracked-information-label-wrapper {
+        margin-bottom: 12px;
+        div {
+            &:first-child {
+                width: 30%;
+                color: $label-color;
+                @include fontStyles(500, 14);
+            }
+
+            &:last-child {
+                width: 70%;
+                & > span {
+                    &:first-child {
+                        @include fontStyles(400, 14);
+                        color: $default-text-color;
+                    }
+                    &:last-child {
+                        @include fontStyles(400, 14);
+                        color: $label-special-color;
+                    }
+                }
+            }
+        }
+        .special-span {
+            color: $default-text-color !important;
+            padding-left: 9px;
+        }
+    }
+}

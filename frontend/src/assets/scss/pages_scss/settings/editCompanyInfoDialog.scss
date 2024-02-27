@@ -1,0 +1,282 @@
+@import '../../colors.scss';
+
+.edit-profile-dialog {
+    .edit-profile-card {
+        .v-card__text {
+            padding: 24px;
+            min-height: 430px;
+
+            .v-input {
+                .v-input__control {
+                    .v-text-field__details {
+                        display: block !important;
+                    }
+                }
+
+                &.company-key {
+                    &.v-input--is-disabled {
+                        .v-input__control {
+                            .v-input__slot {
+                                fieldset {
+                                    background-color: #EBF2F5 !important;
+                                    border: 1px solid #EBF2F5 !important;
+                                }
+
+                                input,
+                                .v-select__selection {
+                                    color: #4a4a4a;
+                                }
+                            }
+
+                            .v-input__append-inner {
+                                i {
+                                    color: #B4CFE0 !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .vue-tel-input {
+                &:focus-within {
+                    box-shadow: none;
+                    border: 1px solid #0171A1 !important;
+                }
+
+                .vti__input {
+                    padding-left: 1px;
+                    color: #4a4a4a !important;
+
+                    &.vti__search_box {                                    
+                        border: 1px solid #B4CFE0 !important;
+                        width: 94%;
+                        padding: 8px 12px !important;
+                        margin: 6px 8px;
+                    }
+                }
+
+                .vti__dropdown {
+                    .vti__flag {
+                        margin-right: 7px;
+                    }
+
+                    .vti__country-code {
+                        font-size: 14px;
+                        color: #4a4a4a !important;
+                    }
+                }
+                
+                .vti__dropdown-list {
+                    &.below {
+                        max-width: 350px;
+                        width: 350px;
+                        border: 1px solid #B4CFE0 !important;
+
+                        /* Scrollbar */
+                        &::-webkit-scrollbar {
+                            width: 10px;
+                        }
+                        
+                        /* Track */
+                        &::-webkit-scrollbar-track {
+                            background-color: #f1f1f1; 
+                        }
+                        
+                        /* Handle */
+                        &::-webkit-scrollbar-thumb {
+                            background-color: #e2e2e2;
+                        }
+                        
+                        /* Handle on hover */
+                        &::-webkit-scrollbar-thumb:hover {
+                            background-color: #e2e2e2;
+                        }
+                    }
+                }
+
+                &.is-error {
+                    border: 1px solid $red !important;
+                }
+            }
+
+            .vue-tel-input-vuetify {
+                position: relative;
+                margin-bottom: 8px;
+
+                .country-code {
+                    width: 50px;
+
+                    .v-input {
+                        .v-input__control {
+                            .v-input__slot {
+                                margin-bottom: 0;
+
+                                fieldset {
+                                    border-right: none;
+                                    border-top-right-radius: 0;
+                                    border-bottom-right-radius: 0;
+                                    border-top-left-radius: 4px !important;
+                                    border-bottom-left-radius: 4px;
+                                }
+                            }
+
+                            .v-text-field__details {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+
+                .v-input {
+                    .v-input__control {
+                        .v-input__slot {
+                            height: 44px;
+                            margin-bottom: 0;
+
+                            .v-label {
+                                top: 12px;
+                                font-size: 14px;
+                                color: $light-grey;
+                            }
+
+                            fieldset {
+                                border: 1px solid $light-grey;
+                                background-color: $white !important;
+                                border-top-left-radius: 0 !important;
+                                border-bottom-left-radius: 0;
+                                font-size: 14px;
+                            }
+
+                            .v-text-field__slot {
+                                input {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+
+                        .v-text-field__details {
+                            position: absolute;
+                            bottom: -26px;
+                        }
+                    }
+                }
+            }
+
+            .tags-email-wrapper {                
+                .vue-tags-input {
+                    max-width: 100% !important;
+                    width: 100%;
+
+                    .ti-input {
+                        border: 1px solid $light-grey !important;
+                        border-radius: 4px;
+                        min-height: 45px;
+                        font-size: 14px;
+
+                        &:focus,
+                        &:focus-within {
+                            border: 1px solid #0171A1 !important;
+                        }
+
+                        &::placeholder {
+                            color: $light-grey !important;
+                        }
+
+                        .ti-tags {
+                            .ti-tag {
+                                border-radius: 4px !important;
+                                font-family: 'Inter-Medium', sans-serif;
+                                padding: 3px 10px !important;
+                                line-height: 1;
+                                height: 30px;
+                                background-color: $table-hover-background !important;
+                                border: 1px solid $light-border;
+                                color: $dark-grey !important;
+                                // margin: 6px 2px 2px 2px;
+                                min-width: 75px;
+                                justify-content: space-between;
+                                align-items: center;
+                                font-size: 12px;
+
+                                .ti-content {
+                                    .ti-tag-center {
+                                        span {
+                                            color: #4a4a4a !important;
+                                        }
+                                    }
+                                }
+                            }
+                        
+                            .ti-new-tag-input-wrapper {
+                                margin: 0;
+                                padding: 0 5px;
+
+                                input {
+                                    font-size: 14px !important;
+
+                                    &.ti-new-tag-input {
+                                        flex: 1 1 auto;
+                                        line-height: 20px;
+                                        padding: 8px 0 8px;
+                                        max-width: 100%;
+                                        min-width: 0px;
+                                        width: 100%;
+
+                                        &::placeholder {
+                                            color: $light-grey !important;
+                                        }
+                                    }
+                                }
+                            }
+                        }                        
+                
+                        &.ti-new-tag-input-error {
+                            border: 1px solid $red !important;
+                        }
+
+                        .t-new-tag-input-text-error {
+                            color: $red !important;
+                        }
+                    }
+                }
+            }
+            .edit-profile-title {
+                font-size: 10px;
+                color: $grey;
+                text-transform: capitalize;
+                font-family: 'Inter-SemiBold', sans-serif;
+                margin-bottom: 0 !important;
+            }
+        }
+        .v-card__actions button {
+            margin-right: 8px;
+        }
+    }
+}
+@media screen and (max-width: 767px) {
+	.v-dialog {
+        &.edit-profile-dialog {
+            margin: 0;
+            height: 100%;
+            max-height: 100% !important;
+            background-color: $white;
+
+            .v-card__text {
+                padding: 16px !important;
+
+                .add-wrapper {
+                    flex-direction: column;
+                    margin-bottom: 30px;
+
+                    .warehouse-info,
+                    .warehouse-description {
+                        width: 100%;
+                        padding: 16px;
+                    }
+                }
+            }
+        
+        }
+    }
+}

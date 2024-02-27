@@ -1,0 +1,193 @@
+@import "../../colors.scss";
+
+.invite-confirm {
+    background: #f1f6fa;
+    background-color: #f1f6fa;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > img {
+        margin-bottom: 24px;
+    }
+
+    form {
+        width: 424px;
+        margin: 0 auto;
+        text-align: center;
+        background: #ffffff;
+        border-radius: 4px;
+        padding: 0 12px 15px;
+    }
+
+    .headLogIn {
+        font-family: "Inter-Medium", sans-serif;
+        font-size: 20px;
+        line-height: 30px;
+        font-weight: 600;
+        color: #4a4a4a;
+        padding: 24px 0 12px 0;
+    }
+
+    form p {
+        /* font-weight: bold; */
+        font-size: 14px;
+        line-height: 20px;
+        color: #4a4a4a;
+        padding: 0 20px;
+    }
+
+    form > img {
+        padding-top: 24px;
+        width: 55px;
+        margin-bottom: 0 !important;
+    }
+
+    img.logo {
+        margin-bottom: 16px;
+        width: 149px;
+        height: 48px;
+    }
+
+    form .name-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0;
+    }
+
+    form .v-input__slot {
+        border: 1px solid #b4cfe0;
+        background-color: #fff !important;
+        border-radius: 4px;
+        min-height: 40px !important;
+    }
+
+    form .error--text .v-input__slot {
+        border: 1px solid red;
+    }
+
+    form .v-input .v-input__control .v-input__slot .v-input__append-inner {
+        margin-top: 10px !important;
+    }
+
+    form small {
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 14px;
+        text-transform: uppercase;
+        color: $grey;
+        font-family: "Inter-Medium", sans-serif;
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-bottom: 6px;
+    }
+
+    form .v-text-field__details {
+        padding-left: 0 !important;
+    }
+
+    .theme--light.v-text-field > .v-input__control > .v-input__slot:before {
+        /* border-color: #b4cfe0; */
+        border-color: transparent;
+    }
+    .theme--light.v-text-field > .v-input__control > .v-input__slot input {
+        font-size: 14px;
+    }
+    .theme--light.v-text-field > .v-input__control > .v-input__slot .v-input__append-inner {
+        margin-top: 8px !important;
+    }
+    .theme--light.v-label {
+        color: #b4cfe0;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .theme--light.v-text-field:not(.v-input--has-state):hover
+        > .v-input__control
+        > .v-input__slot:before {
+        border: 1px solid #b4cfe0;
+    }
+
+    .theme--light.v-input:not(.v-input--is-disabled) input,
+    .theme--light.v-input:not(.v-input--is-disabled) textarea {
+        color: #4a4a4a;
+        font-size: 15px;
+        /* font-weight: 700; */
+    }
+
+    .checkboxStyle .v-input__slot {
+        border: 0px solid #b4cfe0;
+        margin-bottom: 0;
+    }
+
+    .checkboxStyle .theme--light.v-label {
+        color: #4a4a4a;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 21px;
+    }
+
+    .submitFormBtn {
+        width: 100%;
+        height: 40px !important;
+        margin-bottom: 12px;
+        letter-spacing: 0;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        text-transform: unset;
+    }
+
+    input::placeholder {
+        color: #b4cfe0 !important;
+        opacity: 1;
+    }
+
+    .ask-account-text {
+        color: $black;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .sign-in-text {
+        /* Sign Up */
+        text-decoration: none;
+        position: static;
+        width: 53px;
+        height: 20px;
+        left: 165px;
+        top: 0px;
+
+        /* H5 - 14M */
+        /* font-family: Inter;
+            font-style: normal; */
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 18px;
+        /* identical to box height, or 143% */
+        text-align: right;
+
+        /* Dark Blue */
+        color: $dark-blue;
+
+        /* Inside Auto Layout */
+        flex: none;
+        order: 1;
+        flex-grow: 0;
+        margin: 0px 8px;
+    }
+}
+
+@media (max-width: 767px) {
+    .invite-confirm form {
+        width: 90%;
+    }
+}

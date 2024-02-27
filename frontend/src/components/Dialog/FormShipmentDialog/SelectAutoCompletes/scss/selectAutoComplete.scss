@@ -1,0 +1,194 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+$sizes: 100;
+$weights: 800;
+$default-text-color: #4A4A4A;
+$sub-text-color: #6D858F;
+$divider-bg: #EBF2F5;
+$caret-light: #F0FBFF;
+$white: #ffffff;
+@mixin fontSizes() {
+    @for $s from 1 through $sizes {
+        $pixel: $s * 1px;
+        &.custom-font-#{$s} {
+            textarea {
+                font-size: $pixel !important;
+            }
+        }
+    }
+}
+@mixin fontWeights() {
+    @for $w from 100 through $weights {
+        &.custom-font-weight-#{$w} {
+            textarea {
+                font-weight: $w !important;
+            }
+        }
+    }
+}
+
+//font style mixin
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+.select-auto-complete-main-wrapper {
+    position: relative;
+    .v-input {
+        width: 100% !important;
+    }
+    .v-menu__content {
+        top: 61px !important;
+    }
+
+    .v-input__append-inner {
+        height: 100% !important;
+    }
+    .v-icon {
+        &.mdi-menu-down {
+            &::before {
+                content: '' !important;
+            }
+            &::after {
+                content: '' !important;
+                display: inline-flex !important;
+                background-image: url('/assets/icons/chevron-down.svg') !important;
+                background-size: 18px 18px !important;
+                background-repeat: no-repeat;
+                height: 18px !important;
+                width: 18px !important;
+                top: -10px;
+                left: -10px;
+                opacity: 1;
+                background-color: transparent !important;
+                cursor: pointer !important;
+            }	
+        }
+    }
+
+    .v-list-item {
+        &:hover {
+            background-color:$caret-light !important;
+        }
+    }
+
+    .row-wrapper {
+        padding-top: 16px;
+        padding-bottom: 16px;
+        & > div {
+            &:first-child {
+                span {
+                    @include fontStyles(600, 14);
+                    color: $default-text-color;
+                }
+            }
+
+            &:last-child {
+                span {
+                    @include fontStyles(400, 14);
+                    color: $sub-text-color;
+                }
+                
+            }
+        }
+        
+    }
+
+    &.selected {
+
+        fieldset {
+            background-color: $divider-bg !important;
+            border: 0px solid transparent !important;
+        }
+
+        .v-icon {
+            &.mdi-menu-down {
+                &::after {
+                    background-image: url('/assets/icons/chevron-down.svg') !important;
+                }	
+            }
+        }
+        
+        
+
+    }
+
+    &.not-selected {
+        fieldset {
+            background-color: $white !important;
+        }
+
+        .v-icon {
+            &.mdi-menu-down {
+                &::after {
+                    background-image: url('/assets/icons/chevron-down-dark.svg') !important;
+                }	
+            }
+        }
+    }
+
+    .select-items-wrapper {
+        .v-input {
+            .v-input__control {
+                .v-input__slot {
+                    .v-select__slot {
+                        input {
+                            @include fontStyles(400, 14);
+
+                            ::-webkit-input-placeholder { /* Edge */
+                            color: red;
+                            }
+                            
+                            :-ms-input-placeholder { /* Internet Explorer 10-11 */
+                            color: red;
+                            }
+                            
+                            ::placeholder {
+                            color: red;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .v-text-field__details {
+            .v-messages {
+                &.error--text {
+                    padding-top: 4px !important
+                }
+            }
+        }
+
+
+        &.select-items-wrapper-mobile {
+            .v-input {
+                .v-input__control {
+                    .v-input__slot {
+                        min-height: 0px !important;
+                        // height: 40px;
+                        .v-select__slot {
+                            min-height: 0px !important;
+                            // height: 40px;
+                            input {
+                                @include fontStyles(400, 14);
+
+                                &::placeholder {
+                                    color: #B4CFE0;
+                                }
+                            }
+                        }
+                        fieldset {
+                            // height: 40px !important;
+                            border: 1px solid $borderColor;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+
+}

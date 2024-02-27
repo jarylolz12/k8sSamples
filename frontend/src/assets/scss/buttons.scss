@@ -1,0 +1,140 @@
+@import './colors.scss';
+
+body {
+    .v-application {
+        .v-btn.h44i{ height: 44px !important }
+
+        button {
+            &.btn-black {
+                background-color: transparent !important;
+                color: $black !important;
+                padding: 8px 14px !important;
+                font-size: 14px;
+                height: 40px !important;
+                text-transform: capitalize;
+                letter-spacing: 0;
+                box-shadow: none !important;
+                border-radius: 4px;
+                font-family: 'Inter-Regular', sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                line-height: 0;
+    
+                &:hover {
+                    background-color: transparent !important;
+                }
+    
+                .v-btn__content {
+                    line-height: 0 !important;
+                }
+            }
+    
+            &.btn-blue {
+                background-color: $dark-blue !important;
+                color: $white !important;
+                padding: 8px 14px !important;
+                font-size: 14px;
+                height: 40px !important;
+                text-transform: capitalize;
+                letter-spacing: 0;
+                box-shadow: none !important;
+                border-radius: 4px;
+                font-family: 'Inter-Regular', sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                line-height: 0;
+    
+                &.v-btn--disabled,
+                &.v-btn--disabled.v-btn--has-bg {
+                    background-color: $dark-blue !important;
+                    color: $white !important;
+                }
+    
+                &:disabled {
+                    background-color: $dark-blue !important;
+                    color: $white !important;
+                }
+    
+                .v-btn__content {
+                    line-height: 0 !important;
+                }
+            }
+            
+            &.btn-white {
+                background-color: $white !important;
+                color: $dark-blue !important;
+                border: 1px solid $light-grey !important;
+                padding: 8px 14px !important;
+                font-size: 14px;
+                height: 40px !important;
+                text-transform: capitalize;
+                letter-spacing: 0;
+                box-shadow: none !important;
+                border-radius: 4px;
+                font-family: 'Inter-Regular', sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                line-height: 0;
+    
+                &.v-btn--disabled,
+                &.v-btn--disabled.v-btn--has-bg {
+                    background-color: $white !important;
+                    color: $dark-blue !important;
+                }
+    
+                &:disabled {
+                    background-color: $white !important;
+                    color: $dark-blue !important;
+                }
+    
+                &.delete {
+                    color: $red !important;
+                }
+    
+                .v-btn__content {
+                    line-height: 0 !important;
+                }
+            }
+    
+            &.btn-red {
+                background-color: $dark-red !important;
+                color: $white !important;
+                border: 1px solid $dark-red !important;
+                padding: 8px 14px !important;
+                font-size: 14px;
+                height: 40px !important;
+                text-transform: capitalize;
+                letter-spacing: 0;
+                box-shadow: none !important;
+                border-radius: 4px;
+                font-family: 'Inter-Regular', sans-serif;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                line-height: 0;
+    
+                &.v-btn--disabled,
+                &.v-btn--disabled.v-btn--has-bg {
+                    background-color: $dark-red !important;
+                    color: $white !important;
+                }
+    
+                &:disabled {
+                    background-color: $dark-red !important;
+                    color: $white !important;
+                }
+    
+                .v-btn__content {
+                    line-height: 0 !important;
+                }
+            }
+
+            &.black--text {
+                color: #4a4a4a !important;
+            }
+        }
+    }       
+}

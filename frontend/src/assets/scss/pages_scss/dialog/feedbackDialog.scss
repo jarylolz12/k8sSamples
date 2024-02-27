@@ -1,0 +1,128 @@
+/** @format */
+
+.share-feedback-dialog {
+	.share-feedback-card {
+		.v-card__title {
+			caret-color: transparent;
+		}
+		.v-card__text {
+			padding: 24px;
+			.report-type {
+				.radio-input {
+					display: flex;
+					.v-input {
+						.v-input__slot {
+							.v-input--radio-group__input {
+								.v-label {
+									font-style: normal;
+									font-weight: 400;
+									font-size: 14px;
+									line-height: 20px;
+									color: #4a4a4a;
+								}
+							}
+						}
+					}
+				}
+			}
+			.report-subject {
+				.v-input {
+					.v-input__slot {
+						min-height: 40px !important;
+						margin-bottom: 0;
+					}
+				}
+			}
+			.report-reason {
+				display: flex;
+				flex-direction: column;
+				.textarea-field {
+					flex-direction: column;
+					align-items: flex-start;
+					height: 76px;
+					background: #ffffff;
+					border: 1px solid #b4cfe0;
+					border-radius: 4px;
+					font-size: 14px;
+					padding: 10px 17px;
+					color: #4a4a4a;
+					caret-color: #0171a1 !important;
+				}
+				.textarea-field:focus {
+					outline: 1px solid #b4cfe0;
+				}
+			}
+			.report-page {
+				.v-input {
+					.v-input__slot {
+						min-height: 40px !important;
+						fieldset {
+							background: #ebf2f5;
+						}
+					}
+				}
+			}
+			.report-screenshot {
+				.screenshot {
+					display: flex;
+					flex-wrap: wrap;
+					flex-direction: row;
+					gap: 8px;
+					.default-image {
+						border: 1px solid #ebf2f5;
+						border-radius: 2px;
+					}
+				}
+				.upload-btn {
+					border: 1px solid #b4cfe0;
+					border-radius: 5px;
+					text-align: center;
+					padding: 5px;
+					font-weight: 500;
+					font-size: 12px;
+					line-height: 18px;
+					color: #0171a1;
+				}
+				.browser-btn {
+					width: 100%;
+					text-align: right;
+					font-size: 12px;
+				}
+				.browser-text {
+					color: #b4cfe0 !important;
+					font-size: 14px;
+					width: fit-content;
+				}
+				.drop-field {
+					width: 151px;
+					align-items: center;
+					border: 1px solid #b4cfe0;
+					padding: 20px 20px;
+					border-style: dashed;
+				}
+				.img-ratio {
+					width: 151px;
+					height: 122px;
+					object-fit: cover;
+				}
+				button.remove-ss-btn {
+					position: absolute;
+					margin: 89px -151px;
+					background-color: rgba(74, 74, 74, 0.5) !important;
+					color: white;
+					font-size: 14px;
+					padding: 6px 49.5px;
+					border: none;
+					cursor: pointer;
+					text-align: center;
+					z-index: 40;
+					opacity: 0.8 !important;
+				}
+
+				button.remove-ss-btn:hover {
+					background-color: #555 !important;
+				}
+			}
+		}
+	}
+}

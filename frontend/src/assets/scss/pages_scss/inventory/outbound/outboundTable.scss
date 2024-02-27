@@ -1,0 +1,493 @@
+@import '../../../colors.scss';
+.Outbounds-desktop-wrapper {
+    position: relative;
+
+    .overlay {
+        &.show {
+            position: absolute;
+            top: 61px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff !important;
+            z-index: 200;
+            cursor: auto;
+
+            .preloader {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-top: 3%;
+            }
+        }
+    }
+
+    // .search-and-filter {
+    //     width: unset !important;
+
+    //     .search-wrapper {
+    //         position: relative;
+
+    //         img {
+    //             position: absolute;
+    //             width: 18px;
+    //             top: 12px;
+    //             left: 12px;
+    //             z-index: 1;
+    //         }
+
+    //         input {
+    //             border: 1px solid #B3CFE0;
+    //             height: 40px;
+    //             width: 100%;
+    //             padding: 8px 12px 8px 38px;
+    //             border-radius: 4px;
+    //             font-size: 14px;
+    //             background-color: #fff;
+
+    //             &:focus {
+    //                 outline: 0;
+    //             }
+
+    //             &::placeholder {
+    //                 color: #B4CFE0 !important;
+    //             }
+    //         }
+
+    //         button {
+    //             img {               
+    //                 &.img-clear-searched {
+    //                     right: 12px;
+    //                     left: unset;
+    //                 }
+    //             }
+    //         }
+    //     }
+    //     .filter-tags-input {
+    //         margin-right: 8px;
+    //         width: 300px;
+
+    //         button {
+    //             &.filters {
+    //                 width: 100%;
+    //                 text-align: left;
+    //                 display: flex;
+    //                 justify-content: flex-start;
+    //                 align-items: center;
+    //                 font-size: 14px;
+    //                 padding: 8px 10px !important;
+        
+    //                 .v-btn__content {
+    //                     width: 90% !important;
+    //                 }
+        
+    //                 &::before {
+    //                     display: none;
+    //                 }
+    //             }
+    //         }
+            
+    //         .caption {
+    //             font-family: 'Inter-Medium', sans-serif !important;
+    //             font-size: 10px !important;
+    //             letter-spacing: 0 !important;
+    //         }
+        
+    //         .v-chip {
+    //             background-color: #f7f7f7;
+    //             height: 24px;
+    //             border-radius: 4px;
+    //             border: 1px solid #EBF2F5;
+    //             padding: 0 8px;
+    //             margin: 4px;
+        
+    //             .v-chip__content {
+    //                 display: flex;
+    //                 justify-content: center;
+    //                 align-items: center;
+        
+    //                 span {
+    //                     font-size: 12px;
+    //                     color: #4a4a4a;
+    //                     overflow: hidden;
+    //                     white-space: nowrap;
+    //                     text-overflow: ellipsis;
+    //                     max-width: 100%;
+    //                 }
+    //             }
+        
+    //             &.single-item {
+    //                 max-width: 75%;
+    //             }
+        
+    //             &.multiple-item {
+    //                 max-width: 65%;
+    //             }
+    //         }
+        
+    //         .other-count {
+    //             font-size: 12px;
+        
+    //             .v-chip {
+    //                 border-radius: 12px;
+        
+    //                 &.count {
+    //                     background-color: #6D858F;
+    //                     color: #fff;
+    //                     margin: 0;
+    //                     padding: 0 6px;
+    //                 }
+        
+    //                 .v-chip__content {
+    //                     display: flex;
+    //                     justify-content: center;
+    //                     align-items: center;
+    //                 }
+    //             }
+    //         }
+        
+    //         .btn-icon-wrapper {
+    //             height: auto;
+    //             width: auto;
+    //             min-width: unset;
+    //             box-shadow: none;
+    //             padding: 0;
+    //             padding-left: 6px;
+    //             background-color: transparent !important;
+    //             position: absolute;
+    //             top: 7px;
+    //             right: 0;
+        
+    //             i {
+    //                 font-size: 18px;
+    //                 color: #819FB2;
+    //             }
+        
+    //             &:focus,
+    //             &:active,
+    //             &:hover {
+    //                 background-color: transparent !important;
+    //                 color: #f7f7f7;
+    //             }
+    //         }
+        
+    //         .v-input {
+    //             &.select-items {
+    //                 .v-input__control {
+    //                     .v-input__slot {
+    //                         height: 40px;
+    //                         min-height: 40px !important;
+    //                         margin-bottom: 0;
+    //                         padding: 0 4px 0 10px;
+                        
+    //                         fieldset {
+    //                             border: 1px solid #B4CFE0;
+    //                             background-color: #fff !important;
+    //                         }
+                        
+    //                         input {
+    //                             &::placeholder {
+    //                                 color: #B4CFE0;
+    //                             }
+    //                         }
+                        
+    //                         .v-select__slot {
+    //                             .v-select__selections {
+    //                                 padding: 0px 25px 0 4px;
+                                
+    //                                 .caption {
+    //                                     font-family: 'Inter-Medium', sans-serif !important;
+    //                                     font-size: 10px !important;
+    //                                     letter-spacing: 0 !important;
+    //                                 }
+                                
+    //                                 .v-chip {
+    //                                     background-color: #f7f7f7;
+    //                                     height: 24px;
+    //                                     border-radius: 4px;
+    //                                     border: 1px solid #EBF2F5;
+    //                                     padding: 0 8px;
+                                    
+    //                                     .v-chip__content {
+    //                                         display: flex;
+    //                                         justify-content: center;
+    //                                         align-items: center;
+                                        
+    //                                         span {
+    //                                             font-size: 12px;
+    //                                             color: #4a4a4a;
+    //                                             overflow: hidden;
+    //                                             white-space: nowrap;
+    //                                             text-overflow: ellipsis;
+    //                                             max-width: 100%;
+    //                                         }
+    //                                     }
+                                    
+    //                                     &.single-item {
+    //                                         max-width: 75%;
+    //                                     }
+                                    
+    //                                     &.multiple-item {
+    //                                         max-width: 65%;
+    //                                     }
+    //                                 }
+                                
+    //                                 .other-count {
+    //                                     font-size: 12px;
+                                    
+    //                                     .v-chip {
+    //                                         border-radius: 12px;
+                                        
+    //                                         &.count {
+    //                                             background-color: #6D858F;
+    //                                             color: #fff;
+    //                                             margin: 0;
+    //                                             padding: 0 6px;
+    //                                         }
+                                        
+    //                                         .v-chip__content {
+    //                                             display: flex;
+    //                                             justify-content: center;
+    //                                             align-items: center;
+    //                                         }
+    //                                     }
+    //                                 }
+                                
+    //                                 .btn-icon-wrapper {
+    //                                     height: auto;
+    //                                     width: auto;
+    //                                     min-width: unset;
+    //                                     box-shadow: none;
+    //                                     padding: 0;
+    //                                     padding-left: 6px;
+    //                                     background-color: transparent !important;
+    //                                     position: absolute;
+    //                                     top: 10px;
+    //                                     right: 5px;
+                                    
+    //                                     i {
+    //                                         font-size: 18px;
+    //                                         color: #819FB2;
+    //                                     }
+                                    
+    //                                     &:focus,
+    //                                     &:active,
+    //                                     &:hover {
+    //                                         background-color: transparent !important;
+    //                                         color: #f7f7f7;
+    //                                     }
+    //                                 }
+    //                             }
+                            
+    //                             .v-input__append-inner {
+    //                                 display: none;
+    //                             }
+    //                         }
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
+
+.outbound-table {
+    .inventory-search-wrapper {
+        &.outbound-search {
+            .inventory-inner-tab {
+                .v-item-group {
+                    height: 40px;
+
+                    .v-tab {
+                        font-size: 12px;
+                        letter-spacing: 0;
+                        font-family: 'Inter-Regular', sans-serif !important;
+                        padding: 6px 10px;
+
+                        small {
+                            min-width: 22px;
+                            height: 22px;
+                            display: flex;
+                            justify-content: center;
+                            align-content: center;
+                            padding: 3px 6px;
+                            font-family: 'Inter-Regular', sans-serif !important;
+                        }
+
+                        &:nth-child(5) {
+                            margin-right: 8px;
+                        }
+
+                        .v-input {
+                            caret-color: none !important;
+
+                            .v-input__control {
+                                .v-input__slot {
+                                    &:focus-visible,
+                                    &:focus,
+                                    &:active {
+                                        outline: 0;
+                                        border: none;
+                                    }
+
+                                    fieldset {
+                                        &:focus-visible,
+                                        &:focus,
+                                        &:active {
+                                            outline: 0;
+                                            border: none;
+                                        }
+                                    }
+                                }
+                            }
+
+                            &:focus-visible,
+                            &:focus,
+                            &:active {
+                                outline: 0;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    .v-data-table__wrapper {
+        .mdi-checkbox-blank-outline::before {
+            content: "\F14FC";
+            color: #B4CFE0;
+        }
+        thead {
+            tr {
+                th {
+                    color: #6D858F;
+
+                    &:nth-child(2) {
+                        padding-left: 0 !important;
+                    }
+                }
+            }
+        }
+        tbody {
+            tr {
+                &.v-data-table__selected, &:hover {
+                    background: #F0FBFF !important;
+                    cursor: pointer;
+                }
+                td {
+                    &:nth-child(2) {
+                        padding-left: 0 !important;
+                    }
+                    
+                    .actions {
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.no-data-table {
+        .v-data-table__wrapper {
+            table {
+                tbody {
+                    tr {
+                        td {                                        
+                            &:hover {
+                                cursor: auto;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.no-searched-data {
+        .v-data-table__wrapper {
+            table {
+                thead {
+                    display: none;
+                }
+
+                tbody {
+                    tr {
+                        td {
+                            .no-data-wrapper {
+                                padding-top: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // &.no-current-pagination {
+    //     .v-data-table__wrapper {
+    //         height: calc(100vh - 283px) !important;
+    //     }
+    // }
+
+    &.type-3pl {
+        .outbound-search {
+            .v-tabs {
+                .v-slide-group__wrapper {
+                    .v-tab {
+                        &.Floor {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.type-3pl-service-provider-connected {
+        .outbound-search {
+            .v-slide-group__wrapper {
+                .v-tab {
+                    &:nth-child(5) {
+                        margin-right: 0 !important;
+                    }
+                }
+            }
+        }
+    }
+}
+}
+
+// .outbound-lists-menu {
+//     .v-list-item--link {
+//         .v-list-item__title {
+//             font-size: 12px !important;
+//             color: #4A4A4A;
+//             &.arrange-trucking {
+//                 color: #0171A1;
+//             }
+//             &.cancel {
+//                 color: #F93131;
+//             }
+//         }
+//     }
+// }
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+    .Outbounds-desktop-wrapper {
+        .v-data-table {
+            .v-data-table__wrapper {
+                table {
+                    thead {
+                        tr {
+                            th {
+                                &:nth-child(2) {
+                                    width: 10% !important;
+                                    min-width: 10% !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

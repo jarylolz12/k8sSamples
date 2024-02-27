@@ -1,0 +1,419 @@
+@import '../../colors.scss';
+
+.warehouse-name-wrapper {
+    .p-name {
+        color: #4A4A4A;
+        font-weight: 600;
+    }
+}
+
+.inventory-body-container-wrapper {
+	padding: 24px;
+	font-family: 'Inter-Regular', sans-serif;
+	height: 100%;
+
+    .inventory-content-wrapper {
+        height: 100%;
+        background-color: #ffffff;
+
+        .inventory-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #F1F6FA !important;
+            padding-bottom: 24px;
+            // margin-bottom: 20px;
+
+            .inventory-header-left, .inventory-header-right {
+                grid-gap: 10px; 
+                display: flex;
+                align-items: center;
+            }
+
+            .inventory-header-left {
+                .warehouse-menu-icon {
+                    padding: 6px !important;
+                    min-width: 30px;
+                    height: 32px !important;
+                }
+
+                .warehouse-wrapper-name {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    margin-right: 15px;                 
+
+                    h2 {
+                        color: $default-text-color;
+                        font-size: 24px;
+                        font-family: 'Inter-Regular', sans-serif;
+
+                        &.warehouse-header-name {                 
+                            max-width: 40vw;
+                            text-overflow: ellipsis;
+                            overflow: hidden;
+                            white-space: nowrap;
+
+                            &.Own {
+                                max-width: 45vw;
+                            }
+                        }
+                    }
+
+                    .warehouse-type {
+                        font-size: 12px;
+                        font-family: "Inter-Medium", sans-serif;
+                        background-color: $white;
+                        min-width: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        text-transform: capitalize;
+                        border: 1px solid #B4CFE0;
+                        border-radius: 20px;
+                        height: 26px;
+                        padding: 6px 12px;
+                        color: #4A4A4A;
+                        margin-left: 10px;
+                        text-transform: capitalize;
+                    }
+                }
+            }
+        }
+
+        .inventory-header-btn {
+            min-width: 0;
+            width: 36px !important;
+            height: 36px !important;
+            padding: 6px !important;
+            
+            &.view {
+                margin-right: 8px;
+            }
+        }
+
+        .btn-main-warehouse {
+            min-width: auto !important;
+            padding: 8px !important;
+        }
+
+        .btn-warehouse-info i {
+            margin-right: 4px;
+            
+            &:before {
+                font-size: 19px;
+            }
+        }
+
+        .btn-inventory-report {
+            .v-btn__content {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        button {
+            &:disabled {
+                background-color: $dark-blue !important;
+            }
+        }
+
+        .inventory-body-wrapper {
+            background-color: $white;
+            border-radius: 4px;
+            // border: 1px solid $light-border;
+            /* min-height: 300px; */
+            // height: calc(100vh - 175px);
+
+            .inventory-body {
+                display: flex;
+                justify-content: flex-start;
+                align-items: flex-start;
+                width: 100%;
+                height: 100%;
+
+                .rightSideBtn {
+                    display: none;
+
+                    .rightSideBtn-wrapper {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        grid-gap: 10px;
+                        
+                        .btn-white {
+                            padding: 8px !important;
+                            min-width: auto;
+                        }
+                        .p-name {
+                            color: #4A4A4A;
+                            font-size: 1.25rem;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+
+            .inventory-body-load,
+            .inventory-body.no-data {
+                // height: calc(100vh - 172px);
+                height: calc(100vh - 230px);
+                display: flex;
+                justify-content: center;
+                padding-top: 55px;
+
+                .no-data-heading {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-direction: column;
+
+                    h3 {
+                        margin: 10px 0;
+                        font-size: 20px;
+                        color: $default-text-color;
+                    }
+
+                    p {
+                        text-align: center;
+                        font-size: 14px;
+                        color: $default-text-color;
+                        margin-bottom: 0;
+                    }
+                }
+            }
+
+            .leftSideBtn {
+                position: absolute; left: 12%; top: 12px;
+                .btn-white {
+                    min-width: auto;
+                    padding: 10px !important;
+                }
+                .leftSideBtn-add {
+                    min-width: auto;
+                    padding: 10px !important;
+                    margin-right: 5px;
+                    i {
+                        font-size: 15px;
+                    }
+                }
+            }
+        }
+        .inventoryHideSidebar {
+            .rightSideBtn {
+                display: block !important;
+                position: absolute;
+                left: 1%;
+                z-index: 99;
+                top: 10px;
+            }
+            .warehouse-table-wrapper {
+                .p-name {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+.v-list {
+    &.warehouse-lists-items {
+        width: 140px !important;
+
+        .v-list-item {
+            min-height: 40px !important;
+
+            .v-list-item__title {
+                display: flex !important;
+                justify-content: flex-start !important;
+                align-items: center !important;
+                font-family: 'Inter-Regular', sans-serif;
+            }
+
+            &:hover {
+                background-color: $table-hover-background !important;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.warehouse-table-wrapper {
+    .v-data-table {
+        .inventory-search-wrapper {
+            .search-and-filter {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                width: 50%;
+            }
+
+            .btn-white {
+                margin-right: 9px;
+                
+                .v-btn__content {
+                        color: #4A4A4A;
+                        font-weight: 500;
+                        font-size: 15px;
+                    img {
+                        width: 19px;
+                        margin-right: 5px;
+                    }
+                }
+            }
+    
+            .btn-filters {
+                .v-btn__content {
+                    font-size: 14px;
+                    font-weight: 500;
+                    color: $default-text-color !important;
+                }
+            }
+        }
+
+        .inventory-inner-tab {
+            border: none;
+            width: auto;
+
+            .v-tabs-bar {
+                height: 40px;
+            }
+
+            .v-tabs-slider-wrapper {
+                display: none;
+            }
+            
+            .inventory-tab-search .v-input__slot {
+                min-height: 47px;
+
+                i {
+                    font-size: 27px;
+                    margin-top: 10px;
+                }
+            }
+
+            .v-tab {
+                border-top: 1px solid #B4CFE0;
+                border-bottom: 1px solid #B4CFE0;
+                border-left: 1px solid #B4CFE0;
+                min-width: auto;
+                padding: 6px 12px;
+                font-family: 'Inter-Regular', sans-serif !important;
+                letter-spacing: 0px;
+                font-size: 12px;
+                font-weight: 600;
+
+                small {
+                    background-color: #EBF2F5;
+                    min-width: 22px;
+                    height: 22px;
+                    display: flex;
+                    justify-content: center;
+                    align-content: center;
+                    padding: 3px 6px;
+                    border-radius: 50px;
+                    letter-spacing: 0px;
+                    margin-left: 5px;
+                    font-family: "Inter-Regular", sans-serif !important;
+                    font-size: 12px;
+                }
+
+                &:nth-child(2) {
+                    border-radius: 4px 0 0 4px;
+                }
+
+                // &:nth-child(4) {
+                //     border-right: 1px solid #B4CFE0;
+                //     border-radius: 0 4px 4px 0;
+                //     margin-right: 15px;
+                // }
+                &:last-child {
+                    border-right: 1px solid #B4CFE0;
+                    border-radius: 0 4px 4px 0;
+                    margin-right: 15px;
+                }
+            }
+
+            .v-tab--active {
+                background-color: #EBF2F5;
+                font-weight: bold;
+                
+                small {
+                    background-color: #0171A1;
+                    color: #fff;
+                }
+            }
+
+            &.second {
+                width: auto !important;
+
+                .v-tab {    
+                    &:nth-child(2) {
+                        border-radius: 4px 0 0 4px;
+                    }
+    
+                    &:nth-child(3) {
+                        border-right: 1px solid #B4CFE0;
+                        border-radius: 0 4px 4px 0;
+                    }
+                }
+            }
+        }
+        
+        .v-data-table__wrapper {
+            .inventory-blue-text {
+                color: $dark-blue;
+            }
+            
+            .inventory-btn-edit, .inventory-btn-print {
+                width: auto !important;
+                grid-gap: 5px;
+                color: $dark-blue;
+                font-size: 12px;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+	.inventory-body-container-wrapper {
+		padding: 0;
+
+        .inventory-content-wrapper {
+            .inventory-header {
+                padding: 16px 12px;
+                margin-bottom: 0;
+                flex-direction: column;
+                align-items: flex-start;
+
+                .inventory-header-left {
+                    margin-bottom: 15px;
+
+                    .warehouse-wrapper-name {
+                        h2 {    
+                            &.warehouse-header-name {                    
+                                max-width: 65vw !important;
+
+                                &.Own {
+                                    max-width: 80vw !important;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .inventory-header-right {
+                    display: inline-grid;
+                    grid-template-columns: auto auto;
+                    width: 100%;
+                }
+            }
+
+            .inventory-body {
+                min-height: unset;
+		        width: 100%;
+            }
+        }
+	}
+}

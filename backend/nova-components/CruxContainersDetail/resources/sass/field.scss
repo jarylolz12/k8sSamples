@@ -1,0 +1,19 @@
+// Nova Tool CSS
+.shipment-container-group {
+
+	padding-top: 15px;
+	margin-bottom: 15px;
+	border-bottom:1px solid black;
+
+	& > div {
+		display: flex;
+		padding-bottom: 15px;
+
+		& > label {
+		    width: 50%;
+    		padding-top: 5px;
+		}
+
+	}
+
+}

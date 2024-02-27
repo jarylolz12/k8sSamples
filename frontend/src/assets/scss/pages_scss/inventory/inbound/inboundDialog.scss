@@ -1,0 +1,729 @@
+@import '../../../colors.scss';
+
+.create-inbound-dialog {
+    z-index: 1000;
+    
+    .v-card__text {
+        padding: 0;
+
+        &.create-inbound-info-wrapper {
+            .create-inbound-info {
+                display: flex;
+
+                .create-inbound-first-column {
+                    width: 30%;
+                    background-color: #F7F7F7;
+                    min-height: 376px;
+                    padding: 12px 24px 10px;
+
+                    .inbound-order {
+                        .custom-wrapper {
+                            position: relative;
+                            margin-left: 30px;
+
+                            img {
+                                position: absolute;
+                                top: 15px;
+                                left: 12px;
+                                z-index: 10;
+                            }
+
+                            .v-input {
+                                .v-input__control {
+                                    .v-input__slot {
+                                        margin-bottom: 8px;
+                                    }
+
+                                    .v-text-field__details {
+                                        margin-bottom: 0;
+                                    }
+                                }
+                            }
+                        }
+
+                        .v-input {
+                            margin-top: 0 !important;
+
+                            .v-input__control {
+                                background-color: transparent !important;
+
+                                .v-input__slot {
+                                    input {
+                                        padding-left: 25px;
+                                    }
+                                    
+                                    .v-radio {
+                                        label {
+                                            font-size: 14px;
+                                            color: #4A4A4A;
+                                            font-family: "Inter-Regular", sans-serif;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .inbound-date-and-time-wrapper {
+                        display: flex;
+                        width: 100%;
+    
+                        .datetime-picker-new {
+                            width: 100%;
+                        }
+
+                        .inbound-eta,
+                        .inbound-time {
+                            flex: 1;
+                        }
+
+                        .inbound-eta {
+                            margin-right: 8px;
+
+                            .v-input {
+                                .v-input__control {
+                                    .v-input__append-inner {
+                                        i {
+                                            color: #002F44;
+                                            font-size: 20px;
+                                            margin-top: 2px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+    
+                .create-inbound-second-column {
+                    width: 70%;
+                    padding: 14px 24px 24px;                    
+
+                    h4 {
+                        color: $default-text-color;
+                        margin-bottom: 0;
+                        font-size: 16px;
+                        margin-top: 10px;
+                    }
+
+                    .inbound-inner-tab {
+                        border: none;
+
+                        .v-item-group {
+                            height: 40px;
+
+                            .v-tab {
+                                font-size: 12px;
+                                letter-spacing: 0;
+                                font-family: "Inter-Medium", sans-serif !important;
+                                padding: 6px 20px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border-top: 1px solid #B3CFE0;
+                                border-bottom: 1px solid #B3CFE0;
+                                border-left: 1px solid #B3CFE0;
+                                color: #4a4a4a;
+                                text-transform: capitalize;
+
+                                &.v-tab--active {
+                                    color: $dark-blue;
+                                }
+
+                                &:nth-child(2) {
+                                    border-radius: 4px 0 0 4px;
+                                }
+
+                                &.inbound-inner-tab-last {
+                                    border-right: 1px solid #B4CFE0;
+                                    border-radius: 0 4px 4px 0;
+                                    margin-right: 24px;
+                                }
+                            }
+                        }
+                    }
+
+                    .inbound-tables {
+                        padding-top: 10px;
+
+                        .add-products-inbound-table {
+                            box-shadow: none !important;
+                            border-radius: 0;
+
+                            .v-data-table__wrapper {
+                                table {
+                                    thead {
+                                        background-color: #F7F7F7;
+
+                                        tr {
+                                            th {
+                                                border: none;
+                                                color: #6D858F;
+                                                font-size: 12px;
+                                                padding: 10px 8px 10px 16px;
+                                            }
+                                        }
+                                    }
+
+                                    tbody {
+                                        tr {
+                                            &:hover {
+                                                background-color: transparent;
+                                            }
+
+                                            td {
+                                                padding: 8px 8px 8px 0;
+                                                // border-bottom: 1px solid #EBF2F5;
+                                                border-bottom: none !important;
+
+                                                .v-input {
+                                                    .v-input__control {
+                                                        background-color: transparent !important;
+                                
+                                                        .v-input__slot {
+                                                            min-height: 0;
+                                                            height: 45px;
+                                                            font-size: 14px;
+                                                            margin-bottom: 0;
+                                    
+                                                            fieldset {                            
+                                                                border: 1px solid #B4CFE0;
+                                                                background-color: #fff !important;
+                                                            }
+                                    
+                                                            input {
+                                                                font-size: 14px;
+                                    
+                                                                &::placeholder {
+                                                                    color: #B4CFE0;
+                                                                }
+                                                            }
+                                
+                                                            .v-input__append-inner {
+                                                                i {
+                                                                    color: #B4CFE0;
+                                                                }
+                                                            }
+                                                        }
+                                
+                                                        .v-text-field__details {
+                                                            display: none !important;
+                                                        }
+                                                    }
+
+                                                    &.v-input--is-disabled {
+                                                        .v-input__control {
+                                                            .v-input__slot {
+                                                                fieldset {
+                                                                    background-color: #EBF2F5 !important;
+                                                                    border: 1px solid #EBF2F5 !important;
+                                                                }
+                                
+                                                                input,
+                                                                .v-select__selection {
+                                                                    color: #4a4a4a;
+                                                                }
+                                                            }
+                                
+                                                            .v-input__append-inner {
+                                                                i {
+                                                                    color: #B4CFE0 !important;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+
+                                                    &.error-count {
+                                                        .v-input__control {                                    
+                                                            .v-input__slot {                                        
+                                                                fieldset {                            
+                                                                    border: 1px solid #fc8686;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                &.error-skus-duplication {
+                                                    font-size: 12px;
+                                                    color: #6D858F;
+                                                    height: auto;
+                                                    min-width: 10px;
+                                                    padding: 0 0 10px 0 !important;
+                                                }
+
+                                                .remove-btn {
+                                                    color: $red;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .add-row-wrapper {
+                        padding-top: 10px;
+
+                        button {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                        }
+                    }
+
+                    .documents-upload-wrapper {
+                        margin-top: 30px;
+
+                        #documents_files {
+                            display: none;
+                        }
+
+                        #documents-files-select-box-id {
+                            cursor: pointer;
+                            border: 2px solid #B4CFE0;
+                            border-style: dashed;
+                            width: 60%;
+                            height: 100px;
+                            border-radius: 4px;
+                            padding: 20px 24px;
+                            text-align: center;
+                            font-size: 14px;
+                            color: #B4CFE0;
+                            background-color: #ffffff;
+                            transition: 0.3s background-color;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            flex-direction: column;
+                        }
+
+                        .document-lists {
+                            width: 60%;
+                            margin-top: 10px;
+
+                            .lists-items {
+                                border-bottom: 1px solid #F5F9FC;                                
+                                padding: 10px 16px;
+
+                                .items {
+                                    display: flex;
+                                    justify-content: space-between;
+                                    align-items: center;
+                                }
+
+                                .close {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                            }
+                        }
+
+                        .btn-upload {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            margin-top: 8px;
+
+                            img {
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+    
+                .inbound-title {
+                    font-size: 10px;
+                    color: #819FB2;
+                    font-family: 'Inter-SemiBold', sans-serif;
+                    text-transform: uppercase;
+                    margin-bottom: 0;
+
+                    span {
+                        text-transform: capitalize !important;
+                    }
+                }
+    
+                .v-input {
+                    .v-input__control {
+                        background-color: transparent !important;
+
+                        .v-input__slot {
+                            // min-height: 40px;
+                            min-height: 0;
+                            height: 45px;
+                            font-size: 14px;
+    
+                            fieldset {                            
+                                border: 1px solid #B4CFE0;
+                                background-color: #fff !important;
+                            }
+    
+                            input,
+                            textarea {
+                                font-size: 14px;
+    
+                                &::placeholder {
+                                    color: #B4CFE0;
+                                }
+                            }
+
+                            textarea {
+                                margin: 0 !important;
+                                padding-top: 10px;
+                                line-height: 20px;
+                            }
+
+                            .v-input__append-inner {
+                                i {
+                                    color: #B4CFE0;
+                                }
+                            }
+                        }
+
+                        .v-text-field__details {
+                            display: block !important;
+                            margin-bottom: 0;
+                        }
+
+                        .v-input__append-inner {
+                            .v-input__icon {
+                                button {
+                                    font-size: 18px;
+                                    color: $red !important;
+                                }
+                            }
+                        }
+                    }
+
+                    &.input-time {
+                        .v-text-field__details {
+                            .v-messages__message {
+                                font-size: 10px !important;
+                                color: #819FB2 !important;
+                                font-family: "Inter-Medium", sans-serif !important;
+                            }
+                        }
+                    }                
+
+                    // &.has-duplicate {
+                    //     .v-input__control {        
+                    //         .v-input__slot {        
+                    //             fieldset {
+                    //                 border: 1px solid #ff0000 !important;
+                    //             }
+                    //         }
+                    //     }
+                    // }         
+
+                    &.note {
+                        .v-input__control {
+                            .v-input__slot {
+                                height: 80px;
+
+                                fieldset {
+                                    height: 86px;
+                                    border: 1px solid $light-grey;
+                                    background-color: $white !important;
+                                }
+
+                                .v-text-field__slot {
+                                    textarea {
+                                        height: 80px;
+                                        font-size: 14px;
+                                        line-height: 20px;
+                                        padding: 8px 8px 8px 0;
+                                        margin: 0 !important;
+
+                                        &::placeholder {
+                                            color: $light-grey;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.table-text-fields {
+                        .v-input__control {
+                            .v-input__slot {
+                                margin-bottom: 0;
+                                
+                                input {
+                                    text-align: right;
+                                }
+                            }
+
+                            .v-text-field__details {
+                                display: none !important;
+                            }
+                        }
+                    }
+    
+                    &.deliver-address {
+                        .v-input__control {
+                            height: 80px;
+
+                            .v-input__slot {                                
+                                height: auto;
+                            }
+                        }
+                    }
+    
+                    &.inbound-date {
+                        .v-input__control {
+                            background-color: transparent !important;
+    
+                            .v-input__slot {
+                                background-color: $white;
+    
+                                .v-input__icon {
+                                    i {
+                                        color: $dark-blue;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    &.v-input--is-disabled {
+                        .v-input__control {
+                            .v-input__slot {
+                                fieldset {
+                                    background-color: #EBF2F5 !important;
+                                    border: 1px solid #EBF2F5 !important;
+                                }
+
+                                input {
+                                    color: #4a4a4a;
+                                }
+                            }
+
+                            .v-input__append-inner {
+                                i {
+                                    color: #B4CFE0 !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .v-card__actions {
+        &.inbound-button-actions {
+            button {
+                margin-right: 8px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .v-dialog {
+        &.create-inbound-dialog {
+            margin: 0;
+            height: 100%;
+            max-height: 100% !important;
+            background-color: $white;
+
+            .v-card {
+                box-shadow: none !important;
+
+                .v-card__text {
+                    &.create-inbound-info-wrapper {
+                        .create-inbound-info {
+                            flex-direction: column;
+
+                            .create-inbound-first-column,
+                            .create-inbound-second-column {
+                                width: 100%;
+                                padding: 16px;
+                            }
+
+                            .create-inbound-first-column {
+                                padding-bottom: 0 !important;
+                            }
+
+                            .create-inbound-second-column {
+                                margin-bottom: 20px;
+
+                                h4 {
+                                    margin-top: 0;
+                                }
+                                
+                                .v-tabs {
+                                    .v-slide-group__prev {
+                                        display: none !important;
+                                    }
+                                }
+
+                                .v-data-table {
+                                    .v-data-table__wrapper {
+                                        table {
+                                            thead {
+                                                display: none;
+                                            }
+
+                                            tbody {
+                                                tr {
+                                                    display: grid;
+
+                                                    td {
+                                                        padding-right: 0;
+                                                        border-bottom: none !important;
+                                                        height: auto !important;
+
+                                                        &.shipping-unit-mobile {
+                                                            margin-right: 8px !important;
+                                                        }
+
+                                                        &.unit-qty-col-wrapper {
+                                                            .unit-qty-wrapper {
+                                                                display: flex;
+                                                                flex: 1;
+                                                            }
+                                                        }
+
+                                                        .product-mobile-wrapper {
+                                                            .product-mobile-header-product {
+                                                                display: flex;
+                                                                justify-content: space-between;
+                                                                align-items: center;
+                                                            }
+
+                                                            p {
+                                                                font-size: 10px;
+                                                                color: #819FB2;
+                                                                font-family: "Inter-SemiBold", sans-serif;
+                                                                text-transform: uppercase;
+                                                                margin-bottom: 3px;
+                                                            }
+
+                                                            .v-input {
+                                                                .v-input__control {
+                                                                    .v-select__selection--comma {
+                                                                        width: 100% !important;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+
+                                                        .remove-btn {
+                                                            height: 28px;
+                                                            width: 28px;
+
+                                                            i {
+                                                                font-size: 20px;
+                                                                width: 20px;
+                                                                height: 20px;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+
+                                            // tbody {
+                                            //     tr {
+                                            //         td {
+                                            //             padding-right: 0;
+                                            //             border-bottom: none;
+
+                                            //             .v-data-table__mobile-row__header {
+                                            //                 color: #6D858F;
+                                            //                 font-size: 12px;
+                                            //                 font-family: 'Inter-SemiBold', sans-serif;
+                                            //                 font-weight: unset;
+                                            //             }
+
+                                            //             &:first-child,
+                                            //             &:nth-child(2) {
+                                            //                 display: flex;
+                                            //                 flex-direction: column;
+                                            //                 align-items: flex-start;
+                                            //                 width: 100%;
+
+                                            //                 .v-data-table__mobile-row__header {
+                                            //                     margin-bottom: 5px;
+                                            //                     display: none;
+                                            //                 }
+
+                                            //                 .v-data-table__mobile-row__cell {
+                                            //                     width: 100%;
+
+                                            //                     .product-mobile-wrapper {
+                                            //                         .product-mobile-header {
+                                            //                             display: flex;
+                                            //                             justify-content: space-between;
+                                            //                             align-items: center;
+                                            //                             margin: 0 0 3px;
+
+                                            //                             p {
+                                            //                                 margin-bottom: 0;
+                                            //                                 color: #6D858F;
+                                            //                                 text-transform: uppercase;
+                                            //                                 font-size: 12px;
+                                            //                                 font-family: 'Inter-SemiBold', sans-serif;
+                                            //                             }
+                                            //                         }
+                                            //                     }
+                                            //                 }
+                                            //             }
+
+                                            //             &:last-child {
+                                            //                 border-bottom: 1px solid #EBF2F5 !important;
+                                            //             }
+
+                                            //             &:nth-child(1n+3) {
+                                            //                 border-bottom: 1px solid #E1ECF0 !important;
+                                            //                 padding-bottom: 10px;
+                                            //                 margin-bottom: 10px;
+                                            //             }
+                            
+                                            //             &:nth-child(1n+4) {
+                                            //                 display: none;
+                                            //             }
+
+                                            //             .remove-btn {
+                                            //                 height: 30px;
+
+                                            //                 i {
+                                            //                     font-size: 20px;
+                                            //                 }
+                                            //             }
+                                            //         }
+                                            //     }
+                                            // }
+                                        }
+                                    }
+                                }
+
+                                .add-row-wrapper {
+                                    button {
+                                        width: 100%;
+                                    }
+                                }
+                            }
+
+                            .documents-upload-wrapper {
+                                #documents-files-select-box-id {
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .v-card__actions {
+                    padding: 8px 16px !important;
+                }
+            }
+        }
+    }
+}

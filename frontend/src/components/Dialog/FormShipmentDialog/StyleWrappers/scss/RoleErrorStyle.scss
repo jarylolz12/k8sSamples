@@ -1,0 +1,38 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+$sizes: 100;
+$weights: 800;
+$default-text-color: #4A4A4A;
+$sub-text-color: #6D858F;
+$divider-bg: #EBF2F5;
+$caret-light: #F0FBFF;
+$white: #ffffff;
+
+//font style mixin
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+#role-error-wrapper-id,
+#incoterm-error-wrapper-id {
+    .v-input__slot {
+        display: none !important;
+    }
+
+    .error--text,
+    .v-text-field {
+        padding: 0px !important;
+    }
+    .v-messages__message {
+        margin-bottom: 16px;
+    }
+    ///margin-bottom: 16px;
+}
+
+#incoterm-error-wrapper-id {
+    .v-messages__message {
+        margin-top: 4px;
+    }
+}

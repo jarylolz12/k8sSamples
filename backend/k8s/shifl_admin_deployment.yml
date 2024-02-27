@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: shifl-admin
+  labels:
+    tier: backend
+spec:
+  selector:
+    app: shifl-admin
+    tier: backend
+  ports:
+  - protocol: TCP
+    port: 9000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shifl-admin
+  labels:
+    tier: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shifl-admin
+      tier: backend
+  template:
+    metadata:
+      labels:
+        app: shifl-admin
+        tier: backend
+    spec:
+      volumes:
+      - name: code
+        hostPath:
+          path: /code
+      containers:
+      - name: shifl-admin
+        image: registry.digitalocean.com/shifl/admin:latest
+        imagePullPolicy: Never
+        volumeMounts:
+        - name: code
+          mountPath: /code
+        resources:
+          limits:
+            memory: 512Mi
+            cpu: "256m"
+          requests:
+            memory: 256Mi
+            cpu: "128m"
+      imagePullSecrets:
+        - name: registry-shifl

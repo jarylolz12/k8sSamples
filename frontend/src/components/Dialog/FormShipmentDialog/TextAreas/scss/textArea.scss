@@ -1,0 +1,212 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+$sizes: 100;
+$weights: 800;
+$divider-bg: #EBF2F5;
+
+@mixin fontSizes() {
+    @for $s from 1 through $sizes {
+        $pixel: $s * 1px;
+        &.custom-font-#{$s} {
+            textarea {
+                font-size: $pixel !important;
+            }
+        }
+
+        span.custom-font-#{$s} {
+            font-size: $pixel !important;
+        }
+    }
+}
+
+
+@mixin fontWeights() {
+    @for $w from 100 through $weights {
+        &.custom-font-weight-#{$w} {
+            textarea {
+                font-weight: $w !important;
+            }
+        }
+
+        span.custom-font-#{$w} {
+            font-weight: $w !important;
+        }
+    }
+}
+
+//font style mixin
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+@mixin inputSlotStyles() {
+    min-height: 40px !important;
+    max-height: none;
+    margin-bottom: 0px;
+}
+
+@mixin textFieldStyles() {
+    max-height: none !important;
+    min-height: 0px !important;
+}
+
+#text-area-wrapper-custom,
+#text-area-wrapper-custom-2,
+#text-area-wrapper-custom-3,
+#consignee-textarea-wrapper-id {
+    & > div {
+        &:last-child {
+            .v-textarea {
+                width: 100% !important;
+                .v-input__control {
+                    .v-input__slot {
+                        min-height: 100px !important;
+                        padding: 0px !important;
+                        fieldset {
+                            width: 100% !important;
+                            min-height: 100px !important;
+                        }
+                        .v-text-field__slot {
+                            padding: 10px 12px !important;
+                            textarea {
+                                
+                                @media (min-width: 100px ) {
+                                    min-height: 0px;
+                                    overflow-y: hidden !important;
+                                }
+
+
+                                @media (min-width: 770px ) {
+                                    min-height: 100px;
+                                    overflow-y:auto !important;
+                                }
+
+                                padding-top: 0px !important;
+                                padding-bottom: 0px !important;
+                                width: 100% !important;
+                            }
+                        }
+                    }
+                }
+
+                @include fontSizes();
+                @include fontWeights();
+            }
+        }
+    }
+    .form-label {
+        span {
+            &:first-child {
+                @include fontStyles(600,10);
+            }
+        }
+    }
+}
+
+#text-area-wrapper-custom-3 {
+    textarea {
+        min-height: 0px !important;
+    }
+}
+
+
+#edit-shipment-dialog-id {
+    #text-area-wrapper-custom-3 {
+
+        & > div {
+            &:nth-child(2) {
+                .notify-not-selected {
+                    .v-input__control {
+                        .v-input__slot {
+                            fieldset {
+                                background-color: $divider-bg !important;
+                                border: 0px solid transparent !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+    }
+}
+
+
+@media (min-width: 100px) {
+    .optional-mobile {
+        font-weight: 400 !important;
+        font-size: 10px !important;
+        font-family: $fontFamilyRegular;
+    }
+}
+
+
+@media (min-width: 770px) {
+    
+    #text-area-wrapper-custom,
+    #marks-id,
+    #text-area-wrapper-custom-2,
+    #consignee-textarea-wrapper-id {
+        & > div {
+            &:last-child {
+                .v-textarea {
+                    .v-input__control {
+                        .v-input__slot {
+                            fieldset {
+                                min-height: 127px !important;
+                            }
+                            .v-text-field__slot {
+                                textarea {
+                                    min-height: 127px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #consignee-textarea-wrapper-id,
+    #text-area-wrapper-custom-3,
+    #marks-id {
+        & > div {
+            &:last-child {
+                .v-textarea {
+                    .v-input__control {
+                        .v-input__slot {
+                           
+                            .v-text-field__slot {
+                                textarea {
+                                    min-height: 100px !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #text-area-wrapper-custom-3 {
+        & > div {
+            &:last-child {
+                .v-textarea {
+                    .v-input__control {
+                        .v-input__slot {
+                           
+                            .v-text-field__slot {
+                                textarea {
+                                    min-height: 55px !important;
+                                    overflow-y: hidden !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+

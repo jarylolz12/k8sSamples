@@ -1,0 +1,64 @@
+@import './colors.scss';
+
+body {
+    .v-application {
+        .v-input {
+            .v-input__control {
+                background-color: transparent !important;
+
+                .v-input__slot {
+                    font-size: 14px;
+
+                    fieldset {                            
+                        border: 1px solid #B4CFE0;
+                    }
+
+                    input,
+                    textarea {
+                        font-size: 14px;
+                        color: #4a4a4a;
+
+                        &::placeholder {
+                            color: #B4CFE0;
+                        }
+                    }
+
+                    .v-input__append-inner {
+                        i.mdi-menu-down {
+                            color: #B4CFE0;
+                        }
+                    }
+                }
+            }
+
+            &.v-input--is-disabled {
+                .v-input__control {
+                    .v-input__slot {
+                        fieldset {
+                            background-color: #EBF2F5 !important;
+                            border: 1px solid #EBF2F5 !important;
+                        }
+
+                        input,
+                        .v-select__selection {
+                            color: #4a4a4a;
+                        }
+                    }
+
+                    .v-input__append-inner {
+                        i {
+                            color: #B4CFE0 !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .vue-tel-input {
+            &.disabled {
+                background-color: #EBF2F5 !important;
+                border: 1px solid #EBF2F5 !important;
+            }
+        }
+    }       
+}

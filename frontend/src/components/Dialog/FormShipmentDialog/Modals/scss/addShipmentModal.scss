@@ -1,0 +1,65 @@
+@import '../../../../../assets/scss/colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+$fontFamilyRegular: 'Inter', sans-serif !important;
+.add-shipment-dialog-success {
+	
+	.v-card__text {
+		border-bottom: 0px solid $white;
+		h2 {
+			font-family: $fontFamilyRegular;
+			font-weight: 600;
+			font-size: 20px;
+			padding-top: 8px;
+			padding-bottom: 8px;
+			color: $default-text-color;
+		}
+
+		p {
+			font-family: $fontFamilyRegular;
+			font-weight: 400;
+			font-size: 14px;
+			padding-bottom: 8px;
+			color: $default-text-color;
+		}	
+	}
+	.v-card__actions {
+		.footer {
+			button {
+				margin-right: 8px;
+			}
+		}
+	}
+	.shipments-ref-listing {
+		background: #F7F7F7;
+		padding: 10px 0px 10px 10px;
+		margin-bottom: 20px;
+		border-radius: 5px;
+
+		.shipment-refs {
+			padding: 10px 0px 0px 10px;
+
+			.shifl-ref-link {
+				background: #FFFFFF;
+				padding: 3px 10px 3px 10px;
+				text-decoration: none;
+				color: #000000;
+				border: 1px solid #EBF2F5;
+				border-radius: 3px;
+
+				.v-icon {
+					font-size: 17px;
+				}
+			}
+
+			.shifl-ref-link:hover {
+				color: #3C8BD9;
+				.v-icon {
+					color: #3C8BD9;
+				}
+			}
+		}
+	}
+
+	
+}

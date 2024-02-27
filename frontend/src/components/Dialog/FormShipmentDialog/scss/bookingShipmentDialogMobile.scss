@@ -1,0 +1,165 @@
+@import '../../../../assets/scss/colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+
+@mixin fontStyles($weight, $size) {
+
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight} !important;
+    font-size: #{$size}px !important;
+}
+
+#booking-shipment-dialog-mobile-wrapper {
+
+    .header-title-wrapper {
+        h2 {
+            @include fontStyles(600, 20);
+        }
+    }
+
+    .label-common-style {
+        span {
+            @include fontStyles(500, 12);
+        }
+    }
+
+    .label-common-little-style {
+        span {
+            @include fontStyles(600, 10);
+            text-transform: uppercase;
+        }
+    }
+    .checkbox-wrapper-notify-party-mobile {
+        .notify-party-span {
+            @include fontStyles(400, 12);
+        }
+        margin-bottom: 16px !important;
+    }
+
+    .incoterms-mobile-wrapper {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-columns: minmax(77px, 77px);
+        min-height: 87px !important;
+        .radio-item {
+            width: auto !important;
+        }
+    }
+
+    .purchase-order-table-wrapper-mobile {
+        
+        margin-bottom: 40px !important;
+        &.last-child {
+            margin-bottom: 12px !important;
+        }
+
+        position: relative;
+        border: 1px solid $borderColor;
+        border-radius: 4px !important;
+        margin-top: 16px;
+        
+    }
+
+    .checkbox-wrapper-mobile-label {
+        @include fontStyles(400, 14);
+        color: $default-text-color;
+    }
+
+    .po-product-item-mobile {
+
+        .product-number {    
+            @include fontStyles(500, 14);
+            color: $default-text-color;
+        }
+
+        .po-product-title-mobile {
+            @include fontStyles(500, 12);
+            color: $dark-grey;
+        }
+
+    }
+
+    .item-label-common-style {
+        @include fontStyles(500, 12);
+        color: $dark-grey;
+    }
+
+    .add-item-mobile-link {
+        color: $dark-blue;
+        cursor: pointer;
+        @include fontStyles(500, 14);
+    }
+    .product-item-totals-mobile {
+        div {
+            @include fontStyles(500, 12);
+        }
+    }
+
+    .po-lists-items-mobile {
+        top: 36px !important;
+    }
+
+    .cargo-details-title-mobile {
+        @include fontStyles(600, 16);
+        color: $default-text-color;
+        margin-bottom: 12px;
+    }
+
+    .pom-upload-document {
+        span {
+            @include fontStyles(500, 14);
+            color: $dark-blue !important;
+        }
+    }
+    .document-items-mobile-wrapper {
+        .document-label {
+            @include fontStyles(500, 14);
+            color: $default-text-color;
+            padding-left: 12px;
+        }
+        justify-content: space-between;
+    }
+    
+    .notify-not-selected {
+        .v-input__control {
+            .v-input__slot {
+                fieldset {
+                    background-color: $divider-bg !important;
+                    border: 0px solid transparent !important;
+                }
+            }
+        }
+    }
+}
+.header-title-wrapper-main {
+    @include fontStyles(600, 20);
+    align-items: center;
+    min-height: 64px;
+    position: fixed;
+    padding: 12px;
+    z-index:100000;
+    width: 100%;
+    background-color: $white;
+
+    h2 {
+        @include fontStyles(600, 20);
+    }    
+}
+
+
+@media screen and (min-width: 100px) {
+    .header-title-wrapper-main {
+        display: none !important;
+        // display: flex !important;
+        // padding: 12px 16px;
+        // border-bottom: 1px solid #D8E7F0;
+    }    
+}
+
+@media screen and (min-width: 769px) {
+    .header-title-wrapper-main {
+        display: none !important;
+    }
+}

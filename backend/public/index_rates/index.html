@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	 <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130631084-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-130631084-1');
+
+    </script>
+    <!-- End Google Analytics -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="shifl: Supply Chain. Reimagined. | One software coordinating your global operations." name="title">
+    <meta
+        content="shifl is a digital freight forwarding platform. Our advanced software enables you to seamlessly navigate your shipments. Including PO Management, QC Inspections, Shipment consolidations, Contract management, Routing, Booking Approvals, Customs Clarence and Live status updates and visibility through final delivery."
+        name="description">
+    <title>shifl: Supply Chain. Reimagined. | One software coordinating your global operations.</title>
+    <link rel="shortcut icon" type="image/x-icon" href="img/shifl_Fav-01.png">
+    
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400,500,600,700" rel="stylesheet">
+    <link rel="canonical" href="https://shifl.com" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<link rel="stylesheet" href="css/app.css">
+	<!-- <link rel="stylesheet" href="plugins/themify-icons/themify-icons.css"> -->
+
+	<script>
+		// var api_url = 'https://beta.shifl.com/api/';
+		var api_url = 'https://staging.shifl.com/api/';
+		// var api_url = 'http://localhost:8000/api/';
+		var debug = false;
+		var graph_labels = [];
+	</script>
+
+	<style>
+		#myChart2{
+		    position: absolute;
+		    bottom: -70px;
+		    left: 0px;
+		    width: 100%;
+		    z-index: 9999;
+		}
+	</style>
+</head>
+<body>
+	<div class="main-container" id="app">
+		<header role="header" id="main-header" class="header main-header">
+			<nav role="navigation" id="main-nav" class="nav main-nav pt16 pb16">
+				<div class="container">	
+					<div class="row align-items-center">
+						<div class="col">
+							<a href="https://shifl.com" class="logo-wrapper">
+								<img src="img/shifl-logo.png" alt="" class="logo" height="45">
+							</a>
+						</div>
+						<div class="col d-flex justify-content-end">
+							<a href="https://shifl.com" class="btn back-btn d-flex align-items-center">
+								<i class="material-icons mr8">arrow_back</i> <span class="d-none d-md-inline-flex">Back to Home Page</span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</header>
+		<section class="pt44 pb44">
+			<div class="container">
+				<div class="row">
+					<div class="col-12 col-md-4 col-lg-3 mb16">
+						<Indexes ref="indexes" @activate_index="activateIndex"></Indexes>
+					</div>
+					<div class="col-12 col-md-8 col-lg-9 mb16">
+						<div class="pl40 p-xs-0">
+							<div class="row">
+								<div class="col-12">
+									<div class="with-dropdown" v-click-outside="t">
+										<div class="box transation active mb16 pt5 pb5 pl12 pr12 d-table" @click="container_size_active=(container_size_active?false:true)" style="cursor:initial">
+											<h3 class="h3 mb00"><b>Price/{{ selected_container }}</b></h3>
+										</div>
+										<!-- <div :class="'box-dropdown'+(container_size_active?' active' : '')" style="width:150px">
+											<div class="wrapper">
+												<ul>
+													<li v-for="(item,index) in containers" :key="index">
+														<a href="#" @click.prevent="containerFilter(item)">{{ item.name }}</a>
+													</li>
+												</ul>
+											</div>
+										</div> -->
+									</div>
+								</div>
+							</div>
+							<!-- <div class="row">
+								<div class="col-12">
+									<div class="mb24">
+										<h3 class="h2 mb16 font700">Base Ports China to {{ selected}}</h3>
+										<p class="mb00 c-light" style="font-weight:normal">This represents the spot rate for shipping a 40-foot container from China to Los Angeles. Data from Shifl Inc.</p>
+									</div>
+								</div>
+							</div> -->
+							<div class="row align-items-start justify-content-between">
+								<div class="col-12 col-md-6 mb16 mb-xs-16">
+									<ul class="data-filter d-flex m00 p00">
+										<li v-for="(item,index) in data_filter" :key="index" :class="item.active?'active':''">
+											<a href="#" @click.prevent="dataFilter(index)">{{ item.text }}</a>
+										</li>
+									</ul>
+								</div>
+								<div class="col-12 col-md-6 mb16 mb-xs-16 align-items-center d-flex justify-content-start justify-content-md-end">
+									<div>
+										<h4 class="mb00">
+											<b>{{ active_data_filter.text == 'All' ? 'All Time' : active_data_filter.text }} Avg <span class="c-blue">{{ moneyFormat(all_time_avg) }}</span></b>
+										</h4>
+										<h4 class="mb00">
+											<b>Current <span class="c-blue" v-if="current_rate!=''">{{ moneyFormat(current_rate) }}</span></b>
+										</h4>
+									</div>
+								</div>
+							</div>
+							<div class="position-relative overflow-auto;" id="chart-wrapper" style="height:430px;">
+								<div style="position: absolute; z-index: 11; background: rgba(255,255,255,.7); padding: 5px 12px; color: #242424; height: 100%; width: 100%; display: flex; align-items: center; justify-content: center;" v-show="chartisloading">Loading data...</div>
+								<canvas id="myChart"></canvas>
+								<canvas id="myChart2"></canvas>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<footer class="footer main-footer mt44" style="font-size: 10px;">
+			<div class="container">
+				<p>SHIFEX is a ocean spot freight rate index generated by the Digital forwarding and supply chain platform Shifl for container shipments.</p>
+
+				<b>Methodology</b>
+
+				<p>SHIFEX is based on actual freight quotations and shipments handled by Shifl with various carriers between Chinese base ports and the US West Coast and US East Coast ports.</p>
+
+				<p>The ports covered by SHIFEX are</p>
+				<ul>
+					<li>Shanghai/Ningbo/Yantian – Los Angeles/Long Beach</li>
+					<li>Shanghai/Ningbo/Yantian – New York/Newark</li>
+				</ul>
+
+				SHIFEX covers
+				<ul>
+					<li>Dry general purpose container shipments and does not include reefer, OOG or any other special container types</li>
+					<li>
+						Freight All Kinds (FAK) and includes ocean freight rates and surcharges including but not limited to commonly charged by the carriers, namely
+						<ul>
+							<li>BAF (Bunker and/or Emergency Bunker Adjustment Factor)</li>
+							<li>CAF (Currency Adjustment Factor)</li>
+							<li>ISPS (International Security Port Surcharge)</li>
+							<li>Carrier Security Surcharge</li>
+							<li>AMF (Automated Manifest Fee)</li>
+							<li>PCS (Port congestion surcharge)</li>
+							<li>PSS (Peak Season Surcharge)</li>
+						</ul>
+					</li>
+					<li>Port to Port movement and does not include any intermodal movement</li>
+				</ul>		
+
+				<b>Terms of use</b>
+
+				<p>SHIFEX is provided by Shifl on an “as is basis” as a free service for information and purposes of benchmarking of freight rates. The rates tracked and indexed are correct and true to the best of our knowledge and Shifl does not accept any liability or does not make any warranty, expressed or implied, regarding the accuracy, reliability, or correctness of the index. 
+
+				While the rates are accurate and reliable, Shifl is not responsible for any errors and/or omissions due to any human, mechanical or technological errors in the creation of this index including calculation errors, data overlaps, incorrect surcharges or other criteria which may render the rates incorrect. 
+
+				Shifl does not make any warranties, expressed, or implied in terms of the accuracy, usability, comprehensiveness, authenticity of SHIFEX and users should verify the index before using it.</p>
+			</div>
+		</footer>
+	</div>
+	<script>
+		let loaderw = document.createElement('div');
+
+		document.querySelector('body').style.overflowY = 'hidden';
+		loaderw.innerHTML = '<div id="loader" style="z-index:999999;background:#27b2e6;display:flex;align-items:center;justify-content:center;position:fixed;top:0px;left:0px;height:100vh;width:100%"><img src="img/shifl-logo.png"></div>';
+
+		document.querySelector('body').appendChild(loaderw);
+	</script>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.3/moment.min.js" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> -->
+	<!-- production vuejs -->
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+	<script src="js/app-src.js"></script>
+	<!-- <script src="js/app.js?v=1.3.5"></script> -->
+</body>
+</html>

@@ -1,0 +1,190 @@
+@import '../../../colors.scss';
+
+.warehouse-table-wrapper {
+    .location-mobile {
+        .overlay {
+            &.show {
+                position: absolute;
+                top: 165px;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-color: #ffffffb0 !important;
+                z-index: 200;
+                cursor: auto;
+    
+                .preloader {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 3%;
+                }
+            }
+        }
+    
+        .search-wrapper {
+            position: relative;
+    
+            img {
+                position: absolute;
+                width: 18px;
+                top: 12px;
+                left: 12px;
+                z-index: 1;
+            }
+    
+            input {
+                border: 1px solid #B3CFE0;
+                height: 40px;
+                width: 100%;
+                padding: 8px 12px 8px 38px;
+                border-radius: 4px;
+                font-size: 14px;
+                background-color: #fff;
+    
+                &:focus {
+                    outline: 0;
+                }
+    
+                &::placeholder {
+                    color: #B4CFE0 !important;
+                }
+            }
+        }
+
+        .v-data-table.inventory-table {
+            .inventory-search-wrapper {
+                .locations-mobile-tabs {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    
+                    .v-tabs {
+                        &.second {
+                            margin-bottom: 0;
+
+                            .v-tab {
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
+                        }
+
+                        .v-tab {
+                            padding: 6px 10px;
+
+                            &:last-child {
+                                margin-right: 5px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .v-data-table__wrapper {
+                height: calc(100vh - 402px);
+
+                table {
+                    tbody {
+                        tr {
+                            td {
+                                border-bottom: none !important;
+                                padding: 12px 14px 0;
+    
+                                .v-data-table__mobile-row__header {
+                                    display: none;
+                                }
+    
+                                .v-data-table__mobile-row__cell {
+                                    width: 100%;
+    
+                                    .location-items-wrapper {
+                                        display: flex;
+                                        justify-content: space-between;
+                                        align-items: flex-start;
+                                        width: 100%;
+                                        
+                                        .location-items {
+                                            display: flex;
+                                            justify-content: flex-start;
+                                            align-items: flex-start;
+
+                                            span {
+                                                color: #6D858F;
+                                                
+                                                &.location-type {
+                                                    text-transform: capitalize;
+                                                    display: flex;
+                                                    justify-content: flex-start;
+                                                    align-items: flex-start;
+
+                                                    .type-content {
+                                                        color: #4a4a4a;
+                                                        margin-left: 3px;
+                                                    }
+
+                                                    span {
+                                                        margin-left: 3px;
+                                                    }
+                                                }
+
+                                                &.date {
+                                                    color: #4a4a4a !important;
+                                                }
+                                            }
+
+                                            .has-label {
+                                                font-family: 'Inter-SemiBold', sans-serif;
+                                                color: #4a4a4a;
+                                                margin-bottom: 3px;
+                                            }
+                                        }
+    
+                                        .location-items-column {
+                                            display: flex;
+                                            justify-content: flex-start;
+                                            align-items: flex-start;
+                                            flex-direction: column;
+    
+                                            p {
+                                                width: 95px;
+                                                text-align: start;
+                                                font-family: 'Inter-Medium', sans-serif;
+                                                margin-bottom: 0;
+                                                color: #6D858F;
+                                            }
+                                        }
+                                    }
+
+                                    .actions {
+                                        .btn-delete {
+                                            width: 34px;
+                                        }
+                                    }
+                                }
+    
+                                &:nth-child(1n+3) {
+                                    border-bottom: 1px solid #E1ECF0 !important;
+                                    padding-bottom: 12px;
+                                    padding-top: 5px;
+                                }
+    
+                                &:nth-child(1n+4) {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &.no-data-table,
+            &.no-current-pagination {
+                .v-data-table__wrapper {
+                    height: calc(100vh - 370px) !important;
+                }
+            }
+        }        
+    }
+}

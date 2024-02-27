@@ -1,0 +1,38 @@
+@import '@/assets/scss/colors.scss';
+
+
+.outbound-view-work {
+    .v-data-table__wrapper {
+        .mdi-checkbox-blank-outline::before {
+            content: "\F14FC";
+            color: #B4CFE0;
+        }
+        thead {
+        }
+        tbody {
+            .status {
+                span {
+                    text-align: center;
+                    padding: 6px 8px;
+                    font-size: 12px !important;
+                    border-radius: 100px;
+                    &.Completed {
+                        background-color: #EBFAEF;
+                        color: #16B442 !important;
+                    }
+                }
+            }
+            .btn-action {
+                background-color: #EBFAEF;
+                border-radius: 4px;
+                .completed {
+                    display: flex;
+                    justify-content: center;
+                    grid-gap: 4px;
+                    color: #16B442 !important;
+                    width: 56px;
+                }
+            }
+        }
+    }
+}

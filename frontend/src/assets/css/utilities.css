@@ -1,0 +1,22 @@
+.k-justify-center {
+    justify-content: flex-start !important;
+}
+.k-items-center {
+    align-items: center;
+}
+.k-pr-5 {
+    padding-right: 5px;
+}
+.k-relative {
+    position: relative;
+}
+.k-hidden {
+    display: none;
+}
+
+.k-flex-row {
+    flex-direction: row;
+}
+.k-flex {
+    display: flex;
+}

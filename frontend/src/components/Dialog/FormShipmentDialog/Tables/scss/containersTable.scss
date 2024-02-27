@@ -1,0 +1,106 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+$darkBlue: #0171A1;
+
+//font style mixin
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+@mixin noMinMaxRule() {
+    min-height: 0px !important;
+    max-height: none !important;
+}
+.containers-table-wrapper {
+    width: 92% !important;
+    .v-data-table__empty-wrapper {
+        display: table-row !important;
+    }
+    th {
+        @include fontStyles(600, 12);
+        padding-left: 12px !important;
+
+        &:first-child {
+            padding-left: 40px !important;
+        }
+        &:nth-child(2) {
+            padding-left: 12px !important;
+        }
+    }
+    td {
+        height: 40px !important;
+        @include noMinMaxRule();
+        &:first-child {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+        }
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        padding-left: 12px !important;
+        padding-right: 0px !important;
+        box-shadow: none !important;
+        border-bottom: 1px solid #EBF2F5 !important;
+        border-right: 1px solid #EBF2F5 !important;
+
+        &:nth-child(2),
+        &:last-child {
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+
+        div {
+            &:first-child {
+                &.checkbox-wrapper-desktop {
+                    display: flex;
+                    padding-top: 12px !important;
+                    padding-bottom: 12px !important;
+                    @include noMinMaxRule();
+                    label {
+                        
+                        & > div {
+                            cursor: pointer;
+                        }
+                    }
+                }
+                &.how-many-wrapper {
+                    fieldset {
+                        border: 0px solid transparent !important;
+                    }
+                    .v-input {
+                        .v-input__control {
+                            .v-input__slot {
+                                .v-text-field__slot {
+                                    input {
+                                        &::placeholder {
+                                            color: rgba(0, 0, 0, 0.25) !important;
+                                            @include fontStyles(400,14);
+                                        }
+                                        text-align: center !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                }
+            }
+        }
+
+        a {
+            &.operator {
+                cursor: pointer;
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                height: 100% !important;
+            }
+        }
+
+    }
+
+    tr:hover {
+        background-color: transparent !important;
+    }
+}

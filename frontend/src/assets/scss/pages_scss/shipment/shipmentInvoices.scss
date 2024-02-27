@@ -1,0 +1,157 @@
+@import '../../colors.scss';
+
+#shipment-invoice {
+    // padding-bottom: 20px;
+    min-height: calc(100vh - 290px);
+
+    .v-data-table {
+        box-shadow: none !important;
+        border-left: none;
+        border-right: none;
+
+        .v-icon {
+            color: $light-grey !important;
+
+            &.mdi-checkbox-marked {
+                color: $dark-blue !important;
+            }
+        }
+
+        .v-data-table__wrapper {
+            .mdi-checkbox-blank-outline::before {
+                content: "\F14FC";
+                color: #B4CFE0;
+            }
+            
+            table {
+                thead {
+                    tr {
+                        th {
+                            border-bottom: 1px solid $light-border;
+                            padding: 10px 12px !important;
+                            color: #6D858F !important;
+                            font-size: 12px !important;
+                            text-transform: uppercase;
+                            font-family: 'Inter-Medium', sans-serif !important;
+                        }
+                    }
+                }
+
+                tbody {
+                    tr {
+                        &.v-data-table__selected {
+                            background-color: #F0FBFF !important;
+
+                            td {                                
+                                border-bottom: none !important;
+                            }
+                        }
+
+                        &:hover {
+                            background-color: $table-hover-background !important;
+                        }
+
+                        td {
+                            border-bottom: 1px solid $divider-bg;
+                            padding: 14px 12px !important;
+
+                            .document-type-info {
+                                p {
+                                    margin-bottom: 0;
+
+                                    &.supplier-name {
+                                        color: $dark-grey;
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                        max-width: 235px;
+                                    }
+                                }
+                            }
+
+                            .actions {
+                                display: flex;
+                                justify-content: flex-end;
+                                align-items: center;
+
+                                button {
+                                    padding: 10px !important;
+                                    height: 36px !important;
+                                    width: 36px !important;
+
+                                    &:first-child {
+                                        margin-right: 6px;
+                                    }
+
+                                    i {                                        
+                                        color: #0171A1 !important;
+                                        font-size: 18px;
+                                    }
+                                }
+                            }
+
+                            .document-name-info {
+                                p {
+                                    margin-bottom: 0;
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    max-width: 500px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.no-data-table {
+            .v-data-table__wrapper {
+                table {
+                    thead {
+                        display: none;
+                    }
+
+                    tbody {
+                        tr {
+                            &:hover {
+                                background-color: transparent !important;
+                            }
+
+                            td {
+                                border-bottom: none !important;
+
+                                .no-data-wrapper,
+                                .no-data-preloader {
+                                        min-height: 300px;
+                                        padding-top: 25px;
+
+                                    h3 {
+                                        color: $default-text-color;
+                                        font-size: 18px;
+                                        margin-bottom: 10px;
+                                    }
+
+                                    &.no-data-preloader-mobile {
+                                        div.loading-text {
+                                            color: $default-text-color !important;
+                                            font-family: "Inter-Medium", sans-serif !important;
+                                            font-size: 14px !important; 
+                                        }
+                                           
+                                    }
+                                    p {
+                                        color: $default-text-color;
+                                        width: 400px;
+                                        margin: 0 auto;
+                                        margin-bottom: 15px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,80 @@
+@import '../../../../../assets/scss/colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+.t-shipment-status-wrapper {
+	display: flex !important;
+	flex-direction: row !important;
+	& > div {
+		font-family: 'Inter', sans-serif;
+		font-weight: 400;
+		font-size: 12px;
+		padding: 6px 8px;
+		border-radius: 99px;
+		margin-right: 8px !important;
+		&:first-child {
+			display: flex;
+			align-items: center;
+			&.manual-tracking {
+				color: $dark-blue;
+				background-color: $caret-light;	
+			}
+
+			&.auto-tracking {
+				color: $green;
+				background-color: $custom-white-2;	
+			}
+
+			&.not-tracking-past {
+				color: $dark-red !important;	
+				background-color: $white;
+			}
+
+			&.not-tracking {
+				color: $dark-red !important;
+				background-color: $light-red;
+			}
+
+		}
+		&:last-child {
+			display: flex;
+			align-items: center;
+			background-color: $table-header-background;
+			
+			&.past-last-free-day {
+				background-color: $white !important;
+				color: $dark-red;
+			}
+			&.in-transit-hold {
+			}
+			&.discharged-released {
+				background-color: #EBFAEF !important; 
+				color: #16B442;
+			}
+
+			&.discharged-hold {
+				background-color: $light-red;
+				color: $dark-red;
+			}
+		}
+	}
+}
+
+.shipment-three-dots-container {
+	width: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 36px;
+    border: 1px solid #b4cfe0;
+    background-color: #fff;
+    border-radius: 4px;
+    position: relative;
+    margin-left: 8px;
+}
+
+.cancel-reason-label {
+	font-size: 10px;
+	color: #819FB2;
+	font-weight: 600;
+	font-family: 'Inter';
+	line-height: 14px;
+}

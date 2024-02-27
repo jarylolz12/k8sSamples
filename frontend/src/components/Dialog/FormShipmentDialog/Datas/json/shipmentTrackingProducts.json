@@ -1,0 +1,122 @@
+[
+	{
+		"text": "Product",
+		"align": "start",
+		"sortable": false,
+		"value": "product_id",
+		"fixed": true,
+		"width": "500px",
+		"textAlign": "left",
+		"sort_order": 1
+	},
+	{
+		"text": "Description",
+		"align": "start",
+		"sortable": false,
+		"value": "product_description",
+		"fixed": false,
+		"width": "500px",
+		"textAlign": "left",
+		"sort_order": 2
+	},
+	{
+		"text": "Add All",
+		"align": "start",
+		"sortable": false,
+		"value": "addAll",
+		"fixed": false,
+		"width": "150px",
+		"textAlign": "center",
+		"sort_order": 3
+	},
+	{
+		"text": "Carton",
+		"align": "start",
+		"sortable": false,
+		"value": "carton",
+		"width": "160px",
+		"fixed": false,
+		"textAlign": "right",
+		"sort_order": 4
+	},
+	{
+		"text": "Unit",
+		"align": "start",
+		"sortable": false,
+		"value": "unit",
+		"fixed": false,
+		"width": "150px",
+		"textAlign": "right",
+		"sort_order": 5
+	},
+	{
+		"text": "Volume",
+		"align": "start",
+		"sortable": false,
+		"value": "volume",
+		"fixed": false,
+		"width": "150px",
+		"textAlign": "right",
+		"sort_order": 6
+	},
+	{
+		"text": "Weight",
+		"align": "start",
+		"sortable": false,
+		"value": "weight",
+		"fixed": false,
+		"width": "150px",
+		"textAlign": "right",
+		"sort_order": 7
+	},
+	{
+		"text": "Unit Price",
+		"align": "start",
+		"sortable": false,
+		"value": "unit_price",
+		"fixed": false,
+		"width": "200px",
+		"textAlign": "right",
+		"sort_order": 8
+	},
+	{
+		"text": "Amount",
+		"align": "start",
+		"sortable": false,
+		"value": "amount",
+		"fixed": false,
+		"width": "200px",
+		"textAlign": "right",
+		"sort_order": 9
+	},
+	{
+		"text": "HS Code",
+		"align": "start",
+		"sortable": false,
+		"value": "hs_code",
+		"fixed": false,
+		"width": "220px",
+		"textAlign": "left",
+		"sort_order": 10
+	},
+	{
+		"text": "Commodity Description",
+		"align": "start",
+		"sortable": false,
+		"value": "commodity_description",
+		"fixed": false,
+		"width": "400px",
+		"textAlign": "right",
+		"sort_order": 11
+	},
+	{
+		"text": "",
+		"width": "32px",
+		"align": "start",
+		"sortable": false,
+		"value": "action",
+		"textAlign": "right",
+		"fixed": false,
+		"sort_order": 12
+	}
+]

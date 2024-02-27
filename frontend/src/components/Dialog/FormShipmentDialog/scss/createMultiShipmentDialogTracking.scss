@@ -1,0 +1,49 @@
+.multi-shipment-table-row {
+	flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+}
+
+.multi-shipment-table tbody tr td {
+	padding: 0px !important;
+	border: 2px solid #EBF2F5;
+	height: 36px !important;
+	/*padding: 8px, 12px, 8px, 12px !important;*/
+}
+
+.multi-shipment-table tbody tr fieldset {
+	border: none !important;
+}
+
+.multi-shipment-table thead tr th {
+	border: 2px solid #EBF2F5;
+	height: 38px !important;
+	padding: 9px, 12px, 9px, 12px !important;
+	background: #F7F7F7;
+}
+
+.multi-shipment-table tbody tr:hover {
+	background-color: transparent !important;
+}
+
+.multi-shipment-table-wrapper {
+	padding: 24px;
+}
+
+.shipment-remove-row {
+	justify-content: center !important;
+}
+
+.required-has-error {
+	border: 1px solid red;
+}
+
+.readonly-text div {
+	background: #EBF2F5 !important;
+}
+
+.field-error .v-input__control {
+	border-radius: 0px !important;
+	border: 2px solid #f27f77;
+}

@@ -1,0 +1,212 @@
+@import '../../colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+$fontFamilyRegular: 'Inter', sans-serif;
+
+.shipment-info {
+    &.top-info {
+        min-height: calc(100vh - 306px);
+    }
+
+    // &.shipment-info-mobile {}
+
+    .no-resource-wrapper {
+        .missing-title {
+            font-family: $fontFamilyRegular;
+            font-weight: 600;
+            font-size: 16px;
+            color: $default-text-color;
+            & > div {
+                &:first-child {
+                    display: flex;
+                    align-items: center;
+                }
+            }
+        }
+        .add-container-info-btn {
+            display: flex;
+            cursor: pointer;
+            padding: 6px 8px;
+            border: 1px solid $light-grey;
+            border-radius: 4px;
+            font-family: $fontFamilyRegular;
+            font-weight: 500;
+            color: $dark-blue;
+            font-size: 12px;
+            text-align: center;
+            transition: background-color 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+            &:hover {
+                background-color: rgb(235,244,248)
+            }
+        }
+    }
+    .no-details-row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding-top: 45px;
+
+        .no-details-row-header {
+            margin-top: 4px;
+            color: $default-text-color;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        .no-details-row-body {
+            margin-top: 4px;
+            width: 70%;
+            text-align: center;
+            color: $dark-grey;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+    }
+    
+    .cont-fluid-wrapper {
+        padding: 20px !important;
+
+        .shipment-info-wrapper {
+            padding: 10px;
+            width: 100%;
+
+            .preloader {
+                min-height: 100px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                margin-bottom: 20px;
+                width: 100%;
+    
+                p {
+                    font-family: 'Inter-Medium', sans-serif;
+                    font-size: 14px;
+                    margin-top: 15px;
+                }
+            }
+
+            .building-name {
+                color: $default-text-color;
+                font-size: 16px;
+                text-transform: uppercase;
+                padding-bottom: 10px;
+            }
+
+            .shipment-info-content {
+                padding: 0 12px 10px 0;
+
+                &.heading {
+                    width: 95px;
+                    color: $grey;
+                    text-transform: uppercase;
+                    font-family: 'Inter-SemiBold', sans-serif !important;
+                    font-size: 12px;
+                    padding-right: 0 !important;
+                }
+            }
+
+            p {
+                &.shipment-info-content {
+                    font-size: 14px;
+                    margin-bottom: 0;
+
+                    .heading-date {
+                        margin: 0 !important;
+                        color: $dark-blue !important;
+                        font-family: 'Inter-Regular', sans-serif;
+                        white-space: nowrap;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+        }
+
+        .heading-place,
+        .heading-content {
+            margin: 0 !important;
+            color: $default-text-color;
+            font-family: 'Inter-Regular', sans-serif;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+
+    .shipment-info-divider {
+        border-color: $divider-bg !important;
+        // margin: 12px 0 4px;
+    }
+                            
+    // FOR TRACKING CONTAINERS
+    .tracking-containers {
+        .preloader {
+            min-height: 100px;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+
+            p {
+                font-family: 'Inter-Medium', sans-serif;
+                font-size: 14px;
+                margin-top: 15px;
+            }
+        }
+
+        .container-title {
+            padding: 14px 20px 0;
+        }
+
+        .has-tracking-containers {
+            min-height: 200px;            
+    
+            .cont-fluid-wrapper {
+                padding-top: 0 !important;
+            }
+        }
+
+        
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .shipment-info {
+        &.top-info {
+            min-height: calc(100vh - 378px);
+        }
+
+        .building-name {
+            font-size: 14px;
+        }
+
+        .shipment-info-content {
+            &.heading {
+                width: 90px !important;
+            }
+        }    
+
+        .no-details-row {
+    
+            .no-details-row-body {
+                width: 90%;
+            }    
+        }
+    }
+}
+
+@media screen and (max-width: 959px) {
+    .shipment-info {
+        .cont-fluid-wrapper {
+            padding: 20px 16px !important;
+
+            .shipment-info-wrapper {
+                padding: 10px 8px 0;
+            }
+        }
+    }
+}

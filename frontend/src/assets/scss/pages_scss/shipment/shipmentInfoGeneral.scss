@@ -1,0 +1,151 @@
+@import '../../colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+$fontFamilyRegular: 'Inter', sans-serif;
+.shipment-info-general-wrapper {
+	// margin-bottom: 24px;
+	padding-bottom: 24px;
+	.shipment-info-general-header-wrapper {
+		padding-bottom: 10px;
+		.info-title {
+			font-family: $fontFamilyRegular;
+			font-weight: 600;
+			font-size: 16px;
+			color: #4A4A4A;
+		}
+
+		.edit-info-btn {
+			display: flex;
+			cursor: pointer;
+			padding: 6px 8px;
+			border: 1px solid $light-grey;
+			border-radius: 4px;
+			font-family: $fontFamilyRegular;
+			font-weight: 500;
+			color: $dark-blue;
+			font-size: 12px;
+			text-align: center;
+			transition: background-color 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+			&:hover {
+				background-color: rgb(235,244,248)
+			}
+		}
+	}
+	.shipment-info-general-content-wrapper {
+		.shipment-info-general-label {
+			display: flex;
+			padding-bottom: 8px;
+			div {
+				font-family: 'Inter', sans-serif;
+				font-weight: 500;
+				font-size: 14px;
+				color: $default-text-color;	
+				&:first-child {
+					width: 30%;
+					color: $grey;
+
+					&.original-width {
+						width: 31%;
+					}
+
+					&.longer-width {
+						width: 38%;
+					}
+				}
+				&:last-child {
+					width: 70%;
+					word-break: break-all;
+
+					&.original-width {
+						width: 69%;
+					}
+
+					&.longer-width {
+						width: 62%;					
+						overflow: hidden;
+						white-space: nowrap;
+						text-overflow: ellipsis;
+					}
+				}
+			}
+			.edited-fields:hover {
+				background: #EBF2F5;
+				padding: 3px;
+			}
+			.edit-mbl-field {
+				height: 0px;
+			}
+			.mbl-input-field {
+				padding: 0px !important;
+				width: 250% !important;
+				margin: 0px !important;
+				.v-input__control {
+					width: 20% !important;
+				}
+				.v-input__slot {
+					width: 100% !important;
+					fieldset {
+						height: 33px !important;
+					}
+					.v-text-field__slot {
+						width: 20% !important;
+						padding: 0px !important;
+						height: 30px !important;
+					}
+				}
+			}
+		}
+		.col {
+			padding-top: 0px;
+			padding-bottom: 8px;
+		}
+	}	
+}
+
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 320px) and (max-width: 767px) { 
+	.shipment-info-general-wrapper {
+		.shipment-info-general-content-wrapper {
+			.shipment-details-section{
+				padding-bottom: 0;
+			}
+			.shipment-info-general-label {
+				div {
+					&:first-child {
+						width: 36% !important;
+					}
+					&:last-child {
+						width: 64% !important;
+						word-break: break-all;
+					}
+
+					.mode-icon-wrapper {
+						width: 20px !important;
+					}
+				}				
+			}
+		}	
+	}
+}
+
+@media (min-width: 576px) { 
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+	.shipment-info-general-header-wrapper {
+
+	}
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+
+}

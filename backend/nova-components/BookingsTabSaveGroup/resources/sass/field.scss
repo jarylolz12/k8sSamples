@@ -1,0 +1,30 @@
+// Nova Tool CSS
+
+.schedule-legs-detail {
+	display: flex !important;
+	flex-direction: column !important;
+	width: 100% !important;
+
+	& > div  {
+		display: flex;
+		width: 100% !important;
+		padding-bottom: 15px;
+		& > label {
+			width: 40% !important;
+		}
+	}
+}
+
+
+.schedule-confirm-container {
+	& > label {
+		margin-left: 8px;
+	}
+	& > input {
+		margin-top: 8px;
+	}
+}
+.schedule-leg-wrapper {
+    padding-bottom: 4px;
+    margin-bottom: 12px;
+}

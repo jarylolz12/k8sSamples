@@ -1,0 +1,47 @@
+@import '../../colors.scss';
+
+.submit-document {
+    padding-top: 20px;
+
+    h3 {
+        color: #4A4A4A;
+        font-size: 20px;
+        padding: 20px 0 10px;
+    }
+
+    p {
+        font-size: 14px;
+        color: #4A4A4A;
+    }
+
+    .action_btn {
+        display: flex;
+        grid-gap: 10px;
+
+        .btn-cancel {
+            span {
+                font-size: 14px !important;
+                color: #4A4A4A !important;
+                font-weight: bold;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .v-dialog {
+        &.upload-documents {
+            &.delete-document {
+                // height: unset;
+                // max-height: 90%;
+                // margin: 24px;
+                // background-color: transparent;
+                box-shadow: none;
+
+                .submit-document {
+                    padding-top: 10px !important;
+                }
+            }            
+        }
+    }
+}

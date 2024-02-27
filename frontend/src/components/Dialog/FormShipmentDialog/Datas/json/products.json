@@ -1,0 +1,73 @@
+[{
+    "text": "Product",
+    "align": "start",
+    "sortable": false,
+    "value": "product_id",
+    "fixed": true,
+    "width": "28.77%",
+    "textAlign": "left"
+},
+{
+    "text": "Add All",
+    "align": "start",
+    "sortable": false,
+    "value": "addAll",
+    "fixed": true,
+    "width": "7.54%",
+    "textAlign": "center"
+},
+{
+    "text": "Carton",
+    "align": "start",
+    "sortable": false,
+    "value": "carton",
+    "width": "11.32%",
+    "fixed": true,
+    "textAlign": "right"
+},
+{
+    "text": "Unit",
+    "align": "start",
+    "sortable": false,
+    "value": "unit",
+    "fixed": true,
+    "width": "11.32%",
+    "textAlign": "right"
+},
+{
+    "text": "Volume",
+    "align": "start",
+    "sortable": false,
+    "value": "volume",
+    "fixed": true,
+    "width": "11.32%",
+    "textAlign": "right"
+},
+{
+    "text": "Weight",
+    "align": "start",
+    "sortable": false,
+    "value": "weight",
+    "fixed": true,
+    "width": "11.32%",
+    "textAlign": "right"
+},
+{
+    "text": "Cargo Ready",
+    "align": "start",
+    "sortable": false,
+    "value": "cargo_ready_date",
+    "fixed": true,
+    "width": "14.15%",
+    "textAlign": "right"
+},
+{
+    "text": "",
+    "width": "4.24%",
+    "align": "start",
+    "sortable": false,
+    "value": "action",
+    "textAlign": "right",
+    "fixed": true
+}
+]

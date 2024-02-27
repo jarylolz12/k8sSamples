@@ -1,0 +1,158 @@
+/* Kenetic Utilities SCSS */
+@import './colors.scss';
+
+$sizes: 20;
+$fontSizes: 24;
+$heights: 30;
+$widths: 100;
+
+.k-justify-center {
+    justify-content: flex-start !important;
+}
+.k-uppercase {
+    text-transform: uppercase;
+}
+.k-justify-between {
+    justify-content: space-between;
+}
+
+/* font family group */
+.k-font-inter-regular {
+    font-family: 'Inter', sans-serif;
+}
+
+/* colors helpers */
+.k-orange {
+    color: $orange;
+}
+.k-default-color {
+    color: $default-text-color;
+}
+.k-red {
+    color: $dark-red !important;
+}
+.k-dark-blue {
+    color: $dark-blue !important;
+}
+.k-grey {
+    color: $grey;
+}
+.k-items-center {
+    align-items: center;
+}
+.k-relative {
+    position: relative;
+}
+.k-hidden {
+    display: none;
+}
+
+.k-border-white-blue {
+    border-style: solid !important;
+    border-color: $divider-bg !important;
+}
+
+
+/* directions and display */
+.k-flex-col {
+    flex-direction: column;
+}
+.k-items-start {
+    align-items: flex-start !important;
+}
+.k-flex-col-reverse {
+    flex-direction: column-reverse !important;
+}
+
+.k-flex-row-reverse {
+    flex-direction: row-reverse !important;
+}
+
+.k-flex-row {
+    flex-direction: row;
+}
+.k-flex {
+    display: flex;
+}
+
+
+/* letter spacing */
+.k-tracking-normal {
+    letter-spacing: normal !important;
+}
+
+/* font weight css */
+.k-fw-sm {
+    font-weight: 400;
+}
+.k-fw-md {
+    font-weight: 600;
+}
+
+.k-fw-lg {
+    font-weight: 700;
+}
+/* dynamic mixin starts here */
+@mixin margin-padding-classes {
+  @for $i from 0 through $sizes {
+    $pixel: $i * 1px;
+    .k-ml-#{$i} { margin-left: $pixel !important; }
+    .k-mr-#{$i} { margin-right: $pixel !important; }
+    .k-mt-#{$i} { margin-top: $pixel !important; }
+    .k-mb-#{$i} { margin-bottom: $pixel !important; }
+    .k-pl-#{$i} { padding-left: $pixel !important; }
+    .k-pr-#{$i} { padding-right: $pixel !important; }
+    .k-p-#{$i} { padding: $pixel !important; }
+  }
+
+  @for $i from 0 through $widths {
+    $pixel: $i * 1px;
+    .k-w-#{$i} { width: $i * 1% !important; }
+    .k-pt-#{$i} { padding-top: $pixel !important; }
+    .k-pb-#{$i} { padding-bottom: $pixel !important; }
+    .k-m-#{$i} { margin: $pixel !important; }
+    .k-border-b-#{$i} { border-bottom-width: $pixel !important; }
+    .k-border-l-#{$i} { border-left-width: $pixel !important; }
+    .k-border-r-#{$i} { border-right-width: $pixel !important; }
+    .k-border-t-#{$i} { border-top-width: $pixel !important; }
+  }
+
+  @for $i from 0 through $fontSizes {
+    $fontSize: $i * 1px;
+    .k-f-#{$i} { font-size: $fontSize !important; }
+  }
+  @for $i from 0 through $heights {
+    $height: $i * 1px;
+    .k-h-#{$i} { height: $height !important; }
+  }
+
+
+  @media screen and (min-width: 100px) {
+    @for $i from 0 through $widths {
+        $width: $i * 1%;
+        .k-col-mobile-#{$i} { width: $width !important; }
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    @for $i from 0 through $widths {
+        $width: $i * 1%;
+        .k-col-tablet-#{$i} { width: $width !important; }
+    }
+
+  }
+
+  @media screen and (min-width: 1024px) {
+    @for $i from 0 through $widths {
+        $width: $i * 1%;
+        .k-col-desktop-#{$i} { width: $width !important; }
+    }
+  }
+
+  
+
+  
+
+}
+@include margin-padding-classes;
+

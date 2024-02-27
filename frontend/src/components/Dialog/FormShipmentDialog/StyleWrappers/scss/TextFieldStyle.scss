@@ -1,0 +1,105 @@
+/** @format */
+
+$fontFamilyRegular: "Inter", sans-serif !important;
+$borderColor: #b4cfe0;
+$sizes: 100;
+$weights: 800;
+$default-text-color: #4a4a4a;
+$sub-text-color: #6d858f;
+$background-color: #0171a1;
+$divider-bg: #ebf2f5;
+$caret-light: #f0fbff;
+$white: #ffffff;
+$tracking-color: #16b442;
+
+//font style mixin
+@mixin fontStyles($weight, $size) {
+	font-family: $fontFamilyRegular;
+	font-weight: #{$weight};
+	font-size: #{$size}px;
+}
+
+#customer-reference-number,
+#booking-reference-number {
+	.form-label {
+		span {
+			text-transform: uppercase !important;
+		}
+	}
+}
+
+#mbl-wrapper,
+#mbl-wrapper-external,
+#final-address-wrapper,
+#vessel-wrapper {
+	.input-text-wrapper {
+		fieldset {
+			border-radius: 4px 0px 0px 0px !important;
+		}
+	}
+	.track-shipment-info-side {
+		display: flex;
+		@include fontStyles(500, 12);
+		color: $background-color;
+		width: auto;
+		align-items: center;
+		padding-left: 8px;
+		padding-right: 8px;
+		max-height: 40px;
+		border: 1px solid $borderColor;
+		border-radius: 0px 4px 4px 0px !important;
+		margin-bottom: 6px;
+		flex-direction: row;
+		align-items: center;
+		&.track-shipment-info-has {
+			background-color: $background-color;
+			border-radius: 0px 4px 4px 0px;
+			color: white;
+			max-height: 40px !important;
+			margin-bottom: 6px;
+		}
+
+		&.tracking {
+			width: auto;
+			opacity: 0.5;
+		}
+
+		&.tracked {
+			width: auto;
+			padding-right: 8px;
+			color: $tracking-color;
+			background-color: transparent;
+			border-color: $borderColor;
+		}
+	}
+	.mbl-fail {
+		.v-input__control {
+			.v-input__slot {
+				fieldset {
+					border: 1px solid red !important;
+				}
+			}
+		}
+	}
+}
+
+#mbl-wrapper-external,
+#vessel-wrapper,
+#voyage-wrapper,
+#custom-reference-wrapper,
+#final-address-wrapper {
+	.input-text-wrapper {
+		fieldset {
+			border-radius: 4px !important;
+		}
+	}
+}
+
+#mbl-wrapper,
+#final-address-wrapper {
+	width: 93% !important;
+}
+
+#custom-reference-wrapper {
+	width: 93% !important;
+}

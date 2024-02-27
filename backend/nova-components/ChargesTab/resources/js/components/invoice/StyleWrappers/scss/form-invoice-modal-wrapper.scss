@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+
+$fontFamilyRegular: 'Inter', sans-serif !important;
+
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+
+#form-invoice-modal-wrapper {
+	.invoice-date-group {
+		margin-top: 10px;
+	}
+	input[type="date"],
+	input[type="text"],
+	input[type="email"]
+	 {
+		height: 32px !important;
+	}
+	.invoice-number-wrapper {
+		margin-top: 3px;
+	}
+	.due-date-wrapper {
+		margin-top: 6px;
+	}
+
+	.services-section-wrapper {
+		@include fontStyles(500, 16);
+	}
+
+	.customer-memo-textarea {
+		overflow-x: hidden;
+	    overflow-y: scroll;
+
+	    &::-webkit-scrollbar {
+	        width: 10px;
+	    }
+	        
+	    /* Track */
+	    &::-webkit-scrollbar-track {
+	        background: #f1f1f1; 
+	    }
+	        
+	    /* Handle */
+	    &::-webkit-scrollbar-thumb {
+	        background: #d3d3d3; 
+	    }
+	        
+	    /* Handle on hover */
+	    &::-webkit-scrollbar-thumb:hover {
+	        background: #d3d3d3; 
+	    }
+	}
+}

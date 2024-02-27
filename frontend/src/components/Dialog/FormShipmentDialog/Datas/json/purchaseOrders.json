@@ -1,0 +1,50 @@
+[{
+    "text": "Product",
+    "align": "start",
+    "sortable": false,
+    "value": "product",
+    "fixed": true
+},
+{
+    "text": "Add All",
+    "align": "start",
+    "sortable": false,
+    "value": "addAll",
+    "fixed": true
+},
+{
+    "text": "Carton",
+    "align": "start",
+    "sortable": false,
+    "value": "carton",
+    "fixed": true
+},
+{
+    "text": "Unit",
+    "align": "start",
+    "sortable": false,
+    "value": "unit",
+    "fixed": true
+},
+{
+    "text": "Unit Price",
+    "align": "start",
+    "sortable": false,
+    "value": "unit_price",
+    "fixed": true
+},
+{
+    "text": "Amount",
+    "align": "start",
+    "sortable": false,
+    "value": "amount",
+    "fixed": true
+},
+{
+    "text": "",
+    "align": "start",
+    "sortable": false,
+    "value": "action",
+    "fixed": true
+}
+]

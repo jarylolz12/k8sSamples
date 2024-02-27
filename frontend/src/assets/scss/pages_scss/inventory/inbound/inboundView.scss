@@ -1,0 +1,836 @@
+@import '../../../colors.scss';
+
+.inbound-view-wrapper {
+    padding: 20px 24px 24px;
+    height: 100%;
+
+    .loading-wrapper {
+        width: 100%;
+        min-height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .inbound-view-contents-wrapper {
+        height: 100%;
+        background-color: #fff;
+        border-radius: 4px;
+
+        .inbound-header-wrapper-content {
+            background-color: #F1F6FA !important;
+
+            .details-breadcrumbs {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-bottom: 12px;
+        
+                .warehouse-name {
+                    color: #4a4a4a;
+                    font-size: 12px;
+                    text-decoration: none;
+                    font-family: 'Inter-Medium', sans-serif;
+                }
+        
+                .right-chevron {
+                    padding: 3px 10px 0;
+                }
+        
+                p {
+                    margin-bottom: 0;
+                    color: #4A4A4A;
+                    font-size: 12px;
+                    font-family: 'Inter-Medium', sans-serif;
+        
+                    &.order-id {
+                        color: #6D858F !important;
+                    }
+                }
+            }
+        
+            .inbound-header-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+        
+                .inbound-info {
+                    .order-status {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin-bottom: 4px;
+                        text-transform: capitalize; 
+        
+                        h2 {
+                            margin-right: 8px;
+                            color: $default-text-color;
+                            font-size: 24px;
+                            font-family: 'Inter-Medium', sans-serif;
+                        }
+        
+                        .status-wrapper {
+                            display: flex;
+                            justify-content: flex-start;
+                            align-items: center;
+                            width: auto;
+        
+                            .status {
+                                height: 26px;
+                                min-width: 50px;
+                                font-size: 12px;
+                                padding: 8px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                background-color: #fff;
+                                border-radius: 99px;
+                                border: 1px solid #EBF2F5;
+                                font-family: 'Inter-Medium', sans-serif;
+            
+                                &.partial,
+                                &.floor,
+                                &.receive-pending {
+                                    color: #EB9B26;
+                                    background-color: #ffffff;
+                                    // background-color: #FFF9F0;
+                                }
+            
+                                &.complete,
+                                &.completed,
+                                &.recieved {
+                                    color: #16B442;
+                                    background-color: #EBFAEF;
+                                    // background-color: #ffffff;
+                                    border: 1px solid #16B442;
+                                }
+            
+                                &.ready,
+                                &.open {
+                                    color: $dark-blue;
+                                    background-color: #F0FBFF;
+                                }
+            
+                                &.cancelled,
+                                &.rejected {
+                                    // background-color: #FFF2F2;
+                                    background-color: #ffffff;
+                                    color: #F93131;
+                                    border: 1px solid #F93131;
+                                    margin-left: 5px;
+                                }
+                            }
+                        }
+                    }
+        
+                    p {
+                        color: #6D858F;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        font-family: 'Inter-Medium', sans-serif;
+        
+                        span {
+                            color: $default-text-color;
+                        }
+                    }
+                }
+        
+                .info-buttons {
+                    display: flex;
+        
+                    button {
+                        margin-left: 8px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+
+                        &.btn-accept {
+                            color: #16B442 !important;
+                            border-color: #16B442 !important;
+                        }
+
+                        &.btn-reject {
+                            padding: 8px 12px !important;
+                        }
+                    }
+                }
+            }
+        }
+
+        .inbound-body-wrapper {
+            // min-height: 100px;
+            // height: calc(100vh - 215px);
+            background-color: $white;
+            border-radius: 4px;
+    
+            .inbound-informations {
+                padding: 20px;
+                min-height: 150px;
+    
+                .inbound-info {
+                    .inbound-title {
+                        font-size: 12px;
+                        color: #819FB2;
+                        font-family: 'Inter-SemiBold', sans-serif;
+                        text-transform: uppercase;
+                        margin-bottom: 2px;
+                    }
+    
+                    .inbound-data {
+                        font-size: 14px;
+                        margin-bottom: 0;
+    
+                        &.deliver-to {
+                            width: 55%;
+                        }
+    
+                        .received-data {
+                            color: $green;
+    
+                            &.Undershipped,
+                            &.Overshipped {
+                                color: $red;
+                            }
+                        }
+                    }
+    
+                    &.dflex {
+                        display: flex;
+                        justify-content: flex-start;
+                        align-items: center;
+                        margin-bottom: 3px;
+    
+                        .inbound-title {
+                            width: 35%;
+                            margin-bottom: 0;
+                            padding-right: 8px;
+                        }
+    
+                        .inbound-data {
+                            width: 65%;
+                            padding-right: 8px;
+                        }
+    
+                        &.warehouse {
+                            align-items: flex-start;
+    
+                            .inbound-title {                            
+                                margin-top: 2px;
+                            }
+                        }
+                    }
+                }
+            }
+    
+            .inbound-tabs {
+                .inbound-tabs-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+    
+                    .inbound-inner-tab {
+                        .v-item-group {
+                            border: 1px solid #EBF2F5;
+                            border-left: none;
+                            border-right: none;
+                            height: 56px;
+        
+                            .v-tab {
+                                letter-spacing: 0;
+                                text-transform: capitalize;
+                                font-family: 'Inter-SemiBold', sans-serif;
+                                color: $default-text-color;
+                                font-size: 14px;
+                                min-width: 60px;
+        
+                                &.v-tab--active {
+                                    color: $dark-blue;
+                                }
+                            }
+                        }
+                    }
+    
+                    .inbound-multiple-selection {
+                        border: 1px solid #EBF2F5;
+                        border-left: none;
+                        border-right: none;
+                        height: 56px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+    
+                        button {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            height: 38px !important;
+                            font-family: 'Inter-Medium', sans-serif;
+    
+                            &.selection {
+                                margin-right: 8px;
+                                min-width: 140px;
+                                border: none !important;
+                                color: #4a4a4a !important;
+                            }
+    
+                            &.receive {
+                                margin-right: 15px;
+                                height: 36px !important;
+                            }
+                        }
+                    }                
+                }
+            }
+    
+            .inbound-table-wrapper {
+                .v-data-table {
+                    box-shadow: none !important;
+    
+                    .v-data-table__wrapper {
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        padding: 10px 12px;
+                                        color: #6D858F;
+                                        text-transform: uppercase;
+                                        font-size: 12px;
+                                        border-top: 1px solid #EBF2F5;
+                                        border-bottom: 2px solid #EBF2F5;
+                                    }
+                                }
+                            }
+    
+                            tbody {
+                                tr {
+                                    td {
+                                        padding: 12px;
+                                        color: $default-text-color;
+                                        border-bottom: 1px solid #EBF2F5 !important;
+    
+                                        .actions-wrapper {
+                                            display: flex;
+                                            justify-content: flex-end;
+                                            align-items: center;
+    
+                                            .btn-print {
+                                                font-size: 12px;
+                                                padding: 6px 10px !important;
+                                                height: 34px !important;
+                                                margin-left: 6px;
+    
+                                                .btn-content {
+                                                    display: flex;
+                                                    justify-content: center;
+                                                    align-items: center;
+                                                }
+                                            }
+                                        }                                    
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    // classes for warehouse type 3PL - should be hidden
+    &.inbound-view-warehouse-is-3pl {
+        .inbound-view-contents-wrapper {
+            .inbound-header-wrapper-content {
+                .inbound-header-wrapper {
+                    .info-buttons {
+                        .btn-truck-arrived {
+                            display: none;
+                        }
+                    }
+                }
+            }            
+    
+            .inbound-body-wrapper {
+                .warehouse-3pl-hidden {
+                    display: none !important;
+                }
+    
+                .inbound-tabs {
+                    .inbound-tabs-header {
+                        .v-tabs {
+                            .v-tab {
+                                &.Storable,
+                                &.Unit {
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+    
+                    &.is_from_inventory {
+                        .inbound-tabs-header {
+                            .v-tabs {
+                                .v-tab {
+                                    &.Documents {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }            
+    }
+
+    // for connected warehouse details
+    &.inbound-warehouse-connected {
+        .inbound-pallet-section {
+            .v-data-table {
+                &.inbound-view-pallets {
+                    .v-data-table__wrapper {
+                        table {
+                            thead {
+                                tr {
+                                    th {
+                                        &:first-child {
+                                            display: none;
+                                        }
+    
+                                        &:nth-child(2) {
+                                            padding-left: 20px;
+                                        }
+                                    }
+                                }
+                            }
+    
+                            tbody {
+                                tr {
+                                    td {
+                                        &:first-child {
+                                            display: none;
+                                        }
+    
+                                        &:nth-child(2) {
+                                            padding-left: 20px;
+                                        }
+                                    }
+
+                                    &.v-data-table__empty-wrapper {
+                                        td {
+                                            &:first-child {
+                                                display: table-cell;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 767px) {
+    .inbound-view-wrapper {
+        padding: 0;
+
+        .inbound-view-contents-wrapper {
+            .inbound-header-wrapper-content {
+                .details-breadcrumbs {
+                    padding: 12px 14px 0;
+                }
+        
+                .inbound-header-wrapper {
+                    flex-direction: column;
+                    align-items: flex-start;
+                    padding: 0 14px;
+        
+                    .inbound-info {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+        
+                        .info-wrapper {
+                            width: 100%;
+        
+                            .order-status {
+                                align-items: center;
+        
+                                h2 {
+                                    font-size: 20px;
+                                }
+                            }
+                        }
+                    }
+        
+                    .info-buttons {
+                        display: grid;
+                        grid-template-columns: auto auto auto;
+                        grid-gap: 5px;
+                        margin-bottom: 20px;
+        
+                        button {
+                            margin: 0 !important;
+                            padding: 8px 12px !important;
+                            font-size: 14px;
+        
+                            &.btn-white.more-menu {
+                                width: 40px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .inbound-body-wrapper {
+                .inbound-informations {
+                    padding: 12px 14px;
+    
+                    .inbound-info {
+                        &.dflex {
+                            justify-content: space-between;
+                        }
+                    }
+                }
+    
+                .inbound-tabs {
+                    margin-top: 15px;
+    
+                    .inbound-tabs-header {
+                        .v-tabs {
+                            .v-slide-group__prev.v-slide-group__prev--disabled {
+                                display: none !important;
+                            }
+                        }
+                    }
+                }
+    
+                .v-data-table {
+                    .v-data-table__wrapper {
+                        height: unset !important;
+                        min-height: 250px;
+    
+                        table {
+                            thead {
+                                display: none;
+                            }
+    
+                            tbody {
+                                tr {
+                                    td {
+                                        &.v-data-table__mobile-row {
+                                            border-bottom: none !important;
+                                            min-height: 32px;
+                                            // padding-bottom: 0;
+    
+                                            &:first-child {
+                                                display: none;
+                                            }
+        
+                                            .v-data-table__mobile-row__header {
+                                                display: none;
+                                            }
+        
+                                            .v-data-table__mobile-row__cell {
+                                                width: 100%;
+        
+                                                .mobile-content-wrapper {
+                                                    display: flex;
+                                                    justify-content: space-between;
+                                                    align-items: center;
+        
+                                                    .mobile-content {
+                                                        display: flex;
+                                                        justify-content: flex-start;
+                                                        align-items: center;
+                                                        
+                                                        p {
+                                                            width: 35px;
+                                                            text-align: start;
+                                                            margin-bottom: 0;
+                                                            color: #6D858F;
+                                                            font-family: 'Inter-Medium', sans-serif;
+                                                        }
+    
+                                                        span {
+                                                            font-family: 'Inter-SemiBold', sans-serif;
+                                                        }
+                                                    }
+    
+                                                    &.dgrid {
+                                                        // display: grid;
+                                                        // grid-template-columns: auto auto auto;
+                                                        // grid-gap: 8px;
+                                                        flex-direction: column;
+                                                        align-items: flex-start;
+    
+                                                        .item-carton-mobile {
+                                                            display: flex;
+                                                            justify-content: flex-start;
+                                                            align-items: center;
+                                                            width: 100%;
+    
+                                                            p {
+                                                                width: 20%;
+                                                            }
+                                                        }
+    
+                                                        .mobile-content {
+                                                            flex-direction: column;
+                                                            align-items: flex-start;
+    
+                                                            p {
+                                                                width: auto;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }   
+    
+                                        &:nth-child(3) {
+                                            padding-top: 0;
+                                        }
+                                        
+                                        &:nth-child(1n+3) {
+                                            border-bottom: 1px solid #E1ECF0 !important;
+                                            padding-bottom: 20px;
+                                        }
+            
+                                        &:nth-child(1n+4) {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+    
+                    &.no-data-table {
+                        .v-data-table__wrapper {
+                            table {
+                                tbody {
+                                    tr {
+                                        td {
+                                            &:first-child {
+                                                display: block !important;
+                                                min-height: 200px;
+                                            }
+    
+                                            .no-data-wrapper {
+                                                p {
+                                                    width: 90% !important;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }       
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    .inbound-view-wrapper {
+        padding: 16px;
+
+        .inbound-view-contents-wrapper {
+            .inbound-header-wrapper-content {
+                .inbound-header-wrapper {
+                    .inbound-info {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: flex-start;
+        
+                        .info-wrapper {
+                            width: 100%;
+        
+                            .order-status {
+                                align-items: center;
+        
+                                h2 {
+                                    font-size: 20px;
+                                }
+                            }
+                        }
+                    }
+        
+                    .info-buttons {
+                        display: grid;
+                        grid-template-columns: auto auto auto;
+                        grid-gap: 5px;
+                        margin-bottom: 20px;
+        
+                        button {
+                            margin: 0 !important;
+                            padding: 8px 12px !important;
+                            font-size: 14px;
+        
+                            &.btn-white.more-menu {
+                                width: 40px;
+                            }
+        
+                            &.btn-blue {
+                                min-width: 150px !important;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .inbound-body-wrapper {
+                .inbound-informations {
+                    padding: 12px;
+    
+                    .inbound-info {
+                        &.dflex {
+                            justify-content: space-between;
+    
+                            .inbound-title {
+                                width: 35%;
+                                padding-right: 8px;
+                            }
+    
+                            .inbound-data {
+                                width: 65%;
+                                padding-right: 8px;
+                            }
+                        }
+                    }
+                }
+    
+                .inbound-tabs {
+                    margin-top: 15px;
+    
+                    .inbound-tabs-header {
+                        .v-tabs {
+                            .v-slide-group__prev.v-slide-group__prev--disabled {
+                                display: none !important;
+                            }
+                        }
+                    }
+                }
+    
+                .v-data-table {
+                    .v-data-table__wrapper {
+                        height: unset !important;
+                        min-height: 250px;
+    
+                        table {
+                            thead {
+                                display: none;
+                            }
+    
+                            tbody {
+                                tr {
+                                    td {
+                                        &.v-data-table__mobile-row {
+                                            border-bottom: none !important;
+                                            min-height: 32px;
+                                            padding-bottom: 0;
+    
+                                            &:first-child {
+                                                display: none;
+                                            }
+        
+                                            .v-data-table__mobile-row__header {
+                                                display: none;
+                                            }
+        
+                                            .v-data-table__mobile-row__cell {
+                                                width: 100%;
+        
+                                                .mobile-content-wrapper {
+                                                    display: flex;
+                                                    justify-content: space-between;
+                                                    align-items: center;
+        
+                                                    .mobile-content {
+                                                        display: flex;
+                                                        justify-content: flex-start;
+                                                        align-items: center;
+                                                        
+                                                        p {
+                                                            width: 35px;
+                                                            text-align: start;
+                                                            margin-bottom: 0;
+                                                            color: #6D858F;
+                                                            font-family: 'Inter-Medium', sans-serif;
+                                                        }
+    
+                                                        span {
+                                                            font-family: 'Inter-SemiBold', sans-serif;
+                                                        }
+                                                    }
+    
+                                                    &.dgrid {
+                                                        display: grid;
+                                                        grid-template-columns: auto auto auto;
+                                                        grid-gap: 8px;
+    
+                                                        .mobile-content {
+                                                            flex-direction: column;
+                                                            align-items: flex-start;
+    
+                                                            p {
+                                                                width: auto;
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }   
+    
+                                        &:nth-child(3) {
+                                            padding-top: 0;
+                                        }
+                                        
+                                        &:nth-child(1n+4) {
+                                            border-bottom: 1px solid #E1ECF0 !important;
+                                            padding-bottom: 20px;
+                                        }
+            
+                                        &:nth-child(1n+5) {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+    
+                    &.no-data-table {
+                        .v-data-table__wrapper {
+                            table {
+                                tbody {
+                                    tr {
+                                        td {
+                                            &:first-child {
+                                                display: block !important;
+                                                min-height: 200px;
+                                            }
+    
+                                            .no-data-wrapper {
+                                                p {
+                                                    width: 90% !important;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }       
+    }
+}

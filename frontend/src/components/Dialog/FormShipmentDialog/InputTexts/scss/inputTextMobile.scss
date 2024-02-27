@@ -1,0 +1,73 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+$divider-bg: #EBF2F5;
+$sizes: 100;
+$white: #ffffff;
+$weights: 800;
+
+//font style mixin
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+@mixin inputSlotStyles() {
+    min-height: 40px !important;
+    max-height: none;
+    margin-bottom: 0px;
+    height: 40px !important;
+}
+
+@mixin textFieldStyles() {
+    max-height: none !important;
+    min-height: 0px !important;
+}
+
+.input-text-mobile-main-wrapper {
+
+    & > .v-text-field {
+        .v-input__control {
+            & > .v-input__slot {
+                @include inputSlotStyles();
+                fieldset {
+                    top: -5px !important;
+                    width: 100% !important;
+                    min-height: 0px !important;
+                    max-height: none !important;
+                    border: 1px solid $borderColor;
+                    border-radius: 4px;
+                }
+                .v-text-field__slot {
+                    @include textFieldStyles();
+                    input {
+                        @include fontStyles(400,14);
+                        &::placeholder {
+                            @include fontStyles(400,14);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.input-disabled {
+        & > .v-text-field {
+            .v-input__control {
+                & > .v-input__slot {
+                    
+                    fieldset {
+                        background-color: $divider-bg;
+                        border: 0px solid transparent;
+                    }
+                }
+            }
+        }
+    }
+
+    &.white {
+        fieldset {
+            background-color: $white !important;
+        }
+    }
+}

@@ -1,0 +1,309 @@
+@import '../../colors.scss';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+$fontFamilyRegular: 'Inter', sans-serif !important;
+
+/* mobile */
+.edit-shipment-mobile-wrapper {
+
+	.w-full {
+		width: 100%;
+	}
+	width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: $white;
+
+    .v-tab {
+		font-family: 'Inter', sans-serif;
+		font-weight: 600;
+		font-size: 14px;
+		padding: 14px 16px;
+		justify-content: unset;
+		color: $default-text-color !important;
+		&.edit-shipment-tab-active {
+    		color: $dark-blue !important;
+    	}	
+	}
+
+    & > div:last-child {
+    	padding: 16px;
+	    
+	    
+	    .content-title {
+	    	color: $default-text-color;
+	    	font-family: 'Inter', sans-serif;
+			font-weight: 600;
+			font-size: 16px;
+	    }	
+    }
+	
+}
+
+/* desktop */
+.edit-shipment-dialog {
+	padding-left: 0px;
+	.v-card__text {
+		padding-left: 0px !important;
+	}
+	.sidebar-label {
+		width: 189px;
+	}
+
+	.v-card__actions {
+		button {
+			background-color: $dark-blue;
+			border-radius: 4px;
+			color: $white;
+			font-family: $fontFamilyRegular;
+			font-weight: 500;
+			text-transform: none;
+			font-size: 14px;
+			&:first-child {
+				margin-right: 4px;
+			}
+			.v-btn__content {
+				span {
+					font-family: $fontFamilyRegular;
+					font-weight: 500;
+					font-size: 14px;
+				}
+			}
+
+			&:last-child {
+				span {
+					color: $default-text-color;
+				}
+			}
+		}
+	}
+	.first-column {
+		width: 30%;
+		padding-top: 16px;
+		padding-left: 24px;
+		background-color: $table-hover-background;
+
+	}
+	.second-column {
+		width: 70%;
+		padding-top: 16px;
+		padding-bottom: 16px;
+	}
+	.v-card__title {
+		span.headline-custom {
+			font-family: $fontFamilyRegular;
+			font-weight: 600 !important;
+			font-size: 20px !important;
+			color: #4A4A4A;
+		}
+	}
+	.sidebar-items-wrapper {
+		.sidebar-item {
+			padding-right: 34px;
+			padding-bottom: 16px !important;
+			
+			& > div:last-child {
+				font-family: $fontFamilyRegular;
+				font-weight: 500;
+				font-size: 14px;
+				color: $default-text-color;
+			}
+
+			&.selected {
+				& > div:last-child {
+					font-size: 16px;
+					font-weight: 600;
+					color: $dark-blue;
+				}
+			}
+		}	
+	}
+	.edit-shipment-dialog-main-content {
+		padding-left: 24px;
+		.content-title {
+			font-family: $fontFamilyRegular;
+			font-weight: 600;
+			font-size: 20px;
+			color: $default-text-color;
+		}
+		form {
+			margin-top: 16px;
+			.form-wrapper {
+				width: 45%;
+				.v-input {
+					width: 80%;
+
+				}
+
+				.radio-group-wrapper {
+					margin-bottom: 16px;
+					max-height: 40px;
+    				padding-bottom: 0px;
+					.radio-item {
+						padding: 8px 12px;
+						border: 1px solid $light-grey;
+						border-radius: 4px;
+						input {
+							margin-right: 8px
+						}
+						label::before {
+							display: none;
+							content: '';
+							background-color: $white;
+							height: 14px;
+							width: 14px;
+							border: 1px solid $dark-blue;
+							border-radius: 14px;
+						}
+						label {
+							font-family: $fontFamilyRegular;
+							font-weight: 400;
+							font-size: 14px;
+							color: $default-text-color;
+						}
+						input[type="radio"]:checked+label::before {
+							width: 30px;
+							height: 30px;
+						}
+
+						.v-input--radio-group {
+							.v-input__control {
+								margin-top: 0px;
+								background-color: transparent;
+							}
+							margin-top: 12px !important;
+						}
+
+						& > div {
+							&:nth-child(3) {
+								margin-right: 8px !important;
+								font-family: $fontFamilyRegular;
+								font-weight: 400;
+								font-size: 14px;
+								color: $default-text-color;
+							}
+						}
+
+						&.selected {
+							border: 1px solid $dark-blue;
+						}
+						margin-right: 8px;
+					}
+				}
+				.text-field-wrapper {
+					display: flex;
+					width: 93%;
+					.v-select__selection {
+						margin-top: 0px !important;
+					}
+					min-height: 35px !important;
+
+					.v-select--is-menu-active {
+						background-color: transparent !important;
+					}
+				}
+
+				.dates-wrapper {
+					.mdi-calendar {
+						&::before {
+							content: '';
+							display: inline-flex;
+							background-image: url('/assets/icons/calendar.svg');
+				            background-size: 18px 18px;
+				            height: 18px;
+				            width: 18px;
+						}
+					}
+				}
+
+
+				.v-input__control {
+					height: auto;
+					background-color: transparent !important;
+					flex-direction: row;
+					.v-input__slot {
+						height: 38px;
+						margin-bottom: 0px;
+						fieldset {
+							width: 448px;
+							height: 38px !important;
+							border: 1px solid $light-grey;
+							border-radius: 4px;
+
+							&.mobile {
+								
+							}
+						}
+						.v-text-field__slot {
+							height: 33px;
+							input {
+								padding: 0px;
+								line-height: 18px;
+								font-size: 12px;
+								font-weight: 400;
+								font-family: $fontFamilyRegular;
+								color: $default-text-color;
+							}
+						}
+						.v-input__append-inner {
+							height: 75%;
+						}
+						
+					}
+					.v-messages__wrapper {
+					}
+					.v-text-field__details {
+						/*display: block !important; */
+					}
+				}
+				
+				.form-label {
+					& > span {
+						font-family: $fontFamilyRegular;
+						font-weight: 400;
+						font-size: 10px;
+						color: $table-header-text-color;
+						&:first-child {
+							font-weight: 600;
+						}
+					}
+
+				}
+			}	
+		}
+		
+	}
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) { 
+
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+	.edit-shipment-dialog {
+		.first-column {
+			width: 240px;
+		}
+
+		.second-column {
+			width: 1136px;
+		}
+
+	}
+}

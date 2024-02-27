@@ -1,0 +1,149 @@
+/** @format */
+.shipment-notes-wrapper {
+	min-height: calc(100vh - 305px);
+	font-family: "Inter-Regular", sans-serif;
+
+	.notes-header-wrapper {
+		padding: 16px 20px 4px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		// border-bottom: 1px solid #EBF2F5;
+
+		.notes-title-wrapper {
+			font-weight: 600;
+			font-size: 16px;
+			line-height: 24px;
+			color: #4a4a4a;
+		}
+	}
+	.notes-info-wrapper {
+		// padding: 0 16px 16px 16px;
+		.v-item-group {
+			padding-bottom: 8px !important;
+		}
+		.v-expansion-panel::before {
+			box-shadow: none;
+			border: 1px solid #d8e7f0 !important;
+			z-index: 0;
+		}
+		.note-panel-header {
+			// padding: 16px 12px;
+			padding: 0 12px;
+			min-height: 54px;
+			.v-expansion-panel-header__icon {
+				border: 1px solid #d8e7f0;
+				border-radius: 4px;
+				padding: 2px;
+				margin-left: 4px;
+				height: 30px;
+			}
+			.note-title {
+				font-family: "Inter";
+				font-weight: 500;
+				font-size: 14px;
+				line-height: 20px;
+				color: #4a4a4a;
+
+				.private-label {
+					display: inline-block;
+					flex: none !important;
+					font-size: 13px;
+					line-height: 18px;
+					background-color: #ebf2f5;
+					padding: 2px 5px;
+					border-radius: 5px;
+					margin-right: 5px;
+				}
+				.private-lock-img {
+					position: relative;
+					top: 2px;
+				}
+			}
+			.action-icons {
+				text-align: right;
+				float: right;
+			}
+			.action-icons li {
+				display: inline-block;
+
+				button {
+					padding: 10px 12px !important;
+					border: 1px solid #d8e7f0 !important;
+					height: 30px !important;
+					width: 30px !important;
+				}
+			}
+		}
+		.note-panel-content {
+			.v-expansion-panel-content__wrap {
+				padding: 0 12px 12px;
+			}
+
+			.note-text {
+				font-family: "Inter";
+				font-weight: 400;
+				font-size: 14px;
+				line-height: 20px;
+				margin-bottom: 0;
+			}
+			.note-info {
+				.note-writer {
+					font-weight: 500;
+					font-size: 12px;
+					line-height: 18px;
+					color: #0171a1;
+					text-decoration: none;
+				}
+				.note-time-date {
+					font-family: "Inter";
+					font-weight: 500;
+					font-size: 12px;
+					line-height: 18px;
+					color: #6d858f;
+				}
+			}
+		}
+	}
+	.no-notes-wrapper {
+		padding: 16px 16px 16px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+
+		h3 {
+			font-size: 18px;
+			margin-bottom: 10px;
+		}
+
+		p {
+			font-size: 14px;
+		}
+	}
+}
+@media screen and (min-width: 320px) and (max-width: 768px) {
+	.shipment-notes-wrapper {
+		min-height: calc(100vh - 378px) !important;
+		
+		.notes-header-wrapper {
+			padding: 16px 16px 12px;
+		}
+
+		.notes-info-wrapper {
+			padding: 0 16px 12px !important;
+
+			.v-item-group {
+				.note-panel-header {
+					.note-title {
+					}
+					.action-icons li {
+						button {
+							height: 30px !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,43 @@
+[{
+ "id": "1",
+ "name": "Hot Chocolate",
+ "type": "2",
+ "calories": "370",
+ "totalfat": "16g",
+ "protein": "14g"
+ }, {
+ "id": 2,
+ "name": "Peppermint Hot Chocolate",
+ "type": "1",
+ "calories": "440",
+ "totalfat": "16g",
+ "protein": "13g"
+}, {
+ "id": "3",
+ "name": "Salted Caramel Hot Chocolate",
+ "type": "3",
+ "calories": "450",
+ "totalfat": "16g",
+ "protein": "13g"
+}, {
+ "id": "4",
+ "name": "White Hot Chocolate",
+ "type": "2",
+ "calories": "420",
+ "totalfat": "16g",
+ "protein": "12g"
+}, {
+ "id": "5",
+ "name": "Caffe Americano",
+ "type": "2",
+ "calories": "15",
+ "totalfat": "0g",
+ "protein": "1g"
+}, {
+ "id": "29",
+ "name": "Tazo Green Tea Creme Frappuccino",
+ "type": "1",
+ "calories": "430",
+ "totalfat": "16g",
+ "protein": "6g"
+}]

@@ -1,0 +1,1 @@
+<div>testing here {{ $content['message'] }}</div>

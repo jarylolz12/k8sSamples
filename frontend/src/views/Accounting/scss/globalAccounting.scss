@@ -1,0 +1,406 @@
+.accounting-module {
+    .filter-items-wrapper  {
+        padding: 16px !important;
+        font-size: 14px;
+    
+        .v-card__text {
+            padding: 0;
+    
+            .form-label {
+                font-size: 10px !important;
+                color: #819fb2 !important;
+                font-family: "Inter-SemiBold", sans-serif !important;
+                text-transform: uppercase;
+                margin-bottom: 5px;
+                letter-spacing: 0 !important;
+                line-height: 18px;
+            }
+    
+            .v-input {
+                font-size: 14px;
+                margin-top: 5px;
+    
+                .v-input__control {
+                    .v-input__slot {
+                        fieldset {
+                            border: 1px solid #B4CFE0 !important;
+                        }
+    
+                        .v-select__slot {
+                            .v-select__selections {
+                                .v-select__selection {
+                                    color: #4a4a4a;
+                                    margin: 3px 4px 3px 0;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        .v-card__actions {
+            padding: 16px 0 0;
+        }
+    }
+    
+    .v-data-table {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        .v-data-table__wrapper {
+            overflow-y: auto;
+            overflow-x: hidden;
+    
+            .mdi-checkbox-blank-outline::before {
+                content: "\F14FC";
+                color: #b4cfe0;
+            }
+    
+            thead {
+                tr {
+                    th {
+                        box-shadow: none;
+                        border-bottom: 2px solid #EBF2F5 !important;
+                        padding: 8px 12px;
+    
+                        &:nth-child(2) {
+                            padding-left: 0;
+                        }
+                    }
+                }
+            }
+    
+            tbody {
+                tr {
+                    &:hover {
+                        background-color: #f7f7f7 !important;
+                    }
+                    
+                    td {
+                        padding: 12px;
+                        border-bottom: 1px solid #EBF2F5 !important;
+    
+                        &:nth-child(2) {
+                            padding-left: 0;
+                        }                        
+
+                        .item-enabled-wrapper {
+                            .item-active-text {
+                                color: #16B442 !important;
+                                padding: 7px 10px;
+                                font-size: 12px;
+                                border-radius: 99px;
+                                font-family: 'Inter-Medium', sans-serif;
+                                text-transform: capitalize;
+                                margin-bottom: 3px;
+                                background-color: #ebfaef !important;
+                            }
+
+                            .item-inactive-text {
+                                padding: 7px 10px;
+                                font-size: 12px;
+                                border-radius: 99px;
+                                font-family: 'Inter-Medium', sans-serif;
+                                text-transform: capitalize;
+                                margin-bottom: 3px;
+                                background-color: #fff2f2 !important;
+                                color: #f93131 !important;
+                            }
+                        }
+    
+                        .btn-more-items {
+                            min-width: 36px;
+                            padding: 6px !important;
+                            height: 35px !important;
+                            margin: 0 10px 0 auto;
+
+                            i {
+                                font-size: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    
+        &.no-data__table {
+            thead {
+                display: none;
+            }
+    
+            tbody {
+                tr {
+                    td {
+                        border-bottom: none !important;
+    
+                        .no-data-title {
+                            font-family: 'Inter-SemiBold', sans-serif !important;
+                            font-size: 20px !important;
+                            margin-bottom: 8px;
+                            color: #4a4a4a;
+                        }
+    
+                        .subtitle-p-data {
+                            font-family: 'Inter-Regular', sans-serif !important;
+                            font-size: 14px;
+                            color: #6d858f;
+                        }
+    
+                        button {
+                            margin: 20px auto 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.chart-of-accounts-table {
+            .v-data-table__wrapper {
+                table {
+                    thead {
+                        tr {
+                            th {
+                                padding: 8px 16px !important;
+                            }
+                        }
+                    }
+
+                    tbody {
+                        tr {
+                            td {
+                                padding: 8px 16px !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .v-data-footer {
+            border-top: 1px solid #ebf2f5;
+        }
+    }
+
+    .v-divider {
+        border-color: #EBF2F5 !important;
+    }
+}
+
+.v-dialog {
+    &.accounting-module-dialog {
+        .v-input__control {
+            background: transparent !important;
+            margin-bottom: 12px !important;
+    
+            .v-input__slot {
+                min-height: 45px !important;
+    
+                label {
+                    line-height: 18px;
+                    font-size: 14px;
+                    color: #B4CFE0;
+                    font-family: 'Inter-Regular', sans-serif;
+                }
+    
+                input,
+                textarea {
+                    font-size: 14px;
+                    font-family: 'Inter-Regular', sans-serif;
+    
+                    &::placeholder {
+                        color: #B4CFE0;
+                    }
+                }
+    
+                .v-select__slot {                
+                    .v-select__selections {
+                        .v-select__selection {
+                            font-size: 14px;
+                            margin: 0 !important;
+                        }
+                    }
+                }
+    
+                .v-input__append-inner {
+                    button {
+                        font-size: 18px;
+                        color: #ff5252!important;
+                    }
+                }
+            }
+    
+            .v-text-field__details {
+                margin-bottom: 0;
+                padding-top: 5px !important;
+            }
+        }
+
+        .v-input.v-input--is-focused {
+            fieldset {
+                border: 1px solid #0171A1 !important;
+            }
+        }
+
+        .v-input--is-disabled {
+            .v-input__control {
+                .v-input__slot {
+                    fieldset {
+                        background-color: #EBF2F5 !important;
+                        border: 1px solid #EBF2F5 !important;
+                    }
+
+                    input,
+                    .v-select__selection {
+                        color: #4a4a4a;
+                    }
+                }
+
+                .v-input__append-inner {
+                    i {
+                        color: #B4CFE0 !important;
+                    }
+                }
+            }
+        }
+
+        // .v-text-field--enclosed .v-input__prepend-inner {
+        //     margin-top: 0 !important;
+        // }
+
+        .accounting-exempted-rate {
+            .v-input__control {
+                margin-bottom: 0 !important;
+            }
+        }
+
+        .v-data-table {
+            padding-bottom: 24px;
+
+            .v-data-table__wrapper {
+                height: unset;
+                min-height: 300px;
+            }
+        }
+    }
+
+    .item-form-column {
+        padding: 20px 24px !important;
+
+        .form-label {
+            font-size: 10px;
+            color: #819fb2;
+            font-family: "Inter-SemiBold",sans-serif;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+    }
+
+    .item-legend-rounded-wrapper {
+        border: 1px solid #D8E7F0;
+
+        .item-legend-rounded {
+            border: 1px solid #D8E7F0;
+            padding: 6px 16px !important;
+            text-transform: uppercase;
+            color: #6D858F;
+            font-size: 12px;
+            font-family: 'Inter-Medium', sans-serif;
+        }
+    }
+
+    .v-divider {
+        border-color: #EBF2F5 !important;
+    }
+
+    table {
+        border-collapse: collapse;
+
+        thead {
+            tr {            
+                th {
+                    &.th--text {
+                        background-color: #F7F7F7 !important;
+                        border: none;
+                        color: #6d858f !important;
+                        font-size: 12px !important;
+                        padding: 10px 0;
+                        font-family: 'Inter-SemiBold', sans-serif !important;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                td {
+                    color: #4a4a4a;
+                }
+            }
+        }
+    }
+
+    .v-card__text {
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        /* Track */
+        &::-webkit-scrollbar-track {
+            background-color: #f1f1f1; 
+        }
+        
+        /* Handle */
+        &::-webkit-scrollbar-thumb {
+            background-color: #e2e2e2;
+        }
+        
+        /* Handle on hover */
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #e2e2e2;
+        }
+    }
+}
+
+.accounting-invoice-menu {
+    .v-subheader {        
+        padding: 0 16px;
+        font-family: 'Inter-Medium', sans-serif;
+        font-size: 12px;
+        color: #819fb2;
+    }
+
+    .form-label {
+        font-size: 10px;
+        color: #819fb2;
+        font-family: "Inter-SemiBold",sans-serif;
+        text-transform: uppercase;
+        margin-bottom: 0;
+    }
+
+    .v-input {
+        .v-select__slot {
+            input {
+                font-size: 14px;
+    
+                &::placeholder {
+                    color: #B4CFE0;
+                }
+            }
+    
+            .v-input__append-inner {
+                button {
+                    font-size: 18px;
+                    color: #ff5252!important;
+                }
+            }
+        }
+
+        &.v-input--is-focused {
+            fieldset {
+                border: 1px solid #0171A1 !important;
+            }
+        }
+    }
+}
+

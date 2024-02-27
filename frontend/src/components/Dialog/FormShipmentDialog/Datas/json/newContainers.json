@@ -1,0 +1,37 @@
+[{
+    "text": "Size",
+    "align": "start",
+    "sortable": false,
+    "value": "size",
+    "fixed": true,
+    "width": "67.66%",
+    "textAlign": "left"
+},
+{
+    "text": "",
+    "align": "start",
+    "sortable": false,
+    "value": "minus",
+    "fixed": true,
+    "width": "6.01%",
+    "textAlign": "left"
+},
+{
+    "text": "How Many",
+    "align": "start",
+    "sortable": false,
+    "value": "how_many",
+    "fixed": true,
+    "width": "20.30%",
+    "textAlign": "left"
+},
+{
+    "text": "",
+    "align": "start",
+    "sortable": false,
+    "value": "plus",
+    "fixed": true,
+    "width": "6.01%",
+    "textAlign": "left"
+}
+]

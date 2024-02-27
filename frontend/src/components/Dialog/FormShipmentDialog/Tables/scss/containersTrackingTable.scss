@@ -1,0 +1,39 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+$darkBlue: #0171A1;
+
+#container-tracking-wrapper {
+    .v-data-table {
+        table {
+            tbody {
+                tr {
+                    td {
+                        .v-icon {
+                            background-color: black !important;
+                            &.mdi-menu-down {
+                                &::before {
+                                    content: '' !important;
+                                }
+                                &::after {
+                                    content: '' !important;
+                                    display: inline-flex !important;
+                                    background-image: url('/assets/icons/chevron-down-dark.svg') !important;
+                                    background-size: 18px 18px !important;
+                                    background-repeat: no-repeat;
+                                    height: 18px !important;
+                                    width: 18px !important;
+                                    top: -10px;
+                                    left: -10px;
+                                    opacity: 1;
+                                    background-color: transparent !important;
+                                    cursor: pointer !important;
+                                }	
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}

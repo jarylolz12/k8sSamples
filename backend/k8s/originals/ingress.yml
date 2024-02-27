@@ -1,0 +1,62 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: shifl-ingress
+  namespace: default
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: testdevops.shifl.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: nginx
+            port: 
+              number: 80
+      - pathType: Prefix
+        path: /maildev/
+        backend:
+          service:
+            name: maildev
+            port: 
+              number: 1080
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: shifl-ingress
+#   namespace: default
+#   annotations:
+#     nginx.ingress.kubernetes.io/rewrite-target: /$2
+# spec:
+#   ingressClassName: nginx
+#   rules:
+#   - host: testdevops.shifl.com
+#     http:
+#       paths:
+#       - pathType: Prefix
+#         path: /admin(/|$)(.*)
+#         backend:
+#           service:
+#             name: nginx
+#             port: 
+#               number: 80
+#       - pathType: Prefix
+#         path: /admin/api/(/|$)(.*)
+#         backend:
+#           service:
+#             name: nginx
+#             port: 
+#               number: 80
+#       - pathType: Prefix
+#         path: /maildev(/|$)(.*)
+#         backend:
+#           service:
+#             name: maildev
+#             port: 
+#               number: 1080

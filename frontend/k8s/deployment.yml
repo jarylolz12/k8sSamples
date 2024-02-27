@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shifl
+  labels:
+    name: shifl
+spec:
+  selector:
+    matchLabels:
+      app: shifl
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: shifl
+    spec:
+      containers:
+      - name: shifl
+        image: registry.digitalocean.com/shifl-frontend/shifl-app-frontend:latest
+        imagePullPolicy: Never
+        resources:
+          limits:
+            memory: 500Mi
+            cpu: 500m
+          requests:
+            memory: 128Mi
+            cpu: 128m    
+        ports:
+        - containerPort: 80
+      restartPolicy: Always

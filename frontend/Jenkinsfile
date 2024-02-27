@@ -1,0 +1,18 @@
+pipeline {
+  agent any 
+  tools {nodejs "NodeJs"}
+  stages {
+    stage('install') {
+      steps {
+        sh 'rm -rf /home/.cache && yarn install'
+      }
+    }
+    stage('build') {
+      steps {
+        sh 'yarn build'
+      }
+    }
+  }
+}
+
+docker run -d --rm --name=agent1 --network jenkins -p 4444:22 -e "JENKINS_AGENT_SSH_PUBKEY=ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC2hBKvYXZ0T0F7sxCei/NVEIIlNZ7f1FoZ6mjGzLkQ7KQ0LdD8T7awol0f1UjfeRonTLhsX+epwB15XUJlXwOlFMh/yYOAi7D8zedHgfBa+fmtXeYgcviWJx1ZsffcsjYhq4muxcesCK+yY2Ga2lgB6tXFfGNaikGph4tpVGGT0ZGjIj7fHOEXkJr9G+Gf/SOPnooMN0g7pm8PT2BTaaCeNwXcRgFkWcafobVY0ff/QndTkOaHUo1uWl8cVZreKvDSEQQSUonxAx1oQyxCLLRu/65FPQN/MLor6cKRSbvi0rgjTC2IxNTiJr/3Fk3O4sj+F0vkth/KW3IzuztgoM5ngnfhDXmpiFuvXAGSktA+fNvqtjFP7cRCfw80dR9ZOzjMX2RK7pPFN4LPE4jme/vpINe3SznlLbRUemONNA4RHLath/dsJ88/UoGqYHau3z6ZOjweSUnmAEToeUymsk+hEJ0j6APZ9/qaLNtmT+psCO5ry9NM03M2j9cCQXPxzVk= jaryl@ubuntu-s-1vcpu-2gb-amd-nyc1-01" jenkins/ssh-agent:jdk11

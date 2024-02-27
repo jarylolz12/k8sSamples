@@ -1,0 +1,1802 @@
+<template>
+    <div class="inbound-mobile">
+        <div class="overlay" :class="getCurrentLoadingToDisplay ? 'show' : ''">  
+            <div class="preloader" v-if="(getCurrentLoadingToDisplay)">
+                <v-progress-circular
+                    :size="40"
+                    color="#0171a1"
+                    indeterminate>
+                </v-progress-circular>
+            </div>       
+        </div>
+
+        <v-data-table
+            :headers="headersComputed"
+            :items="currentWarehouseInbounds.data"
+            :page.sync="getCurrentPage"
+            :items-per-page="itemsPerPage"
+            item-key="order_id"
+            @page-count="pageCount = $event"
+            mobile-breakpoint="769"
+            class="inventory-table inbound-table elevation-1"
+            v-bind:class="{
+                'no-data-table': (typeof currentWarehouseInbounds.data !== 'undefined' && currentWarehouseInbounds.data.length === 0),
+                'no-current-pagination' : (getTotalPage <= 1),
+                'no-searched-data' : getSearchedDataClass,
+                'type-3pl' : currentWarehouseSelected.warehouse_type_id === 3
+            }"
+            hide-default-footer
+            fixed-header
+            show-select
+            ref="my-table"
+            @click:row="viewInbound">
+
+            <template v-slot:top>
+                <div class="inventory-search-wrapper inbound-search">    
+                    <v-tabs class="inventory-inner-tab" @change="onTabChange" v-model="currentTab">
+                        <v-tab v-for="(tab, index) in tabs" 
+                            :key="index" 
+                            :class="index == 3 ? `inventory-inner-tab-last ${tab}` : `${tab}`"
+                            @click="onClickTab(index)">
+                            {{ tab }}
+
+                            <small v-if="(index == 0 || index == 1) && getTabCount(index) !== '0'">
+                                {{ getTabCount(index) }}
+                            </small>
+                        </v-tab>
+                    </v-tabs>
+
+                    <v-spacer></v-spacer>
+                    
+                    <div class="search-and-filter">
+                        <SearchComponent
+                            placeholder="Search Inbound"
+                            :searchValue.sync="search"
+                            :handleSearchComponent="handleSearchComponent"
+                            @handleSearch="handleSearch" />
+
+                        <v-btn color="primary" dark class="btn-blue ml-2" @click.stop="addNewInbound">
+                            Create Inbound
+                        </v-btn>
+                    </div>
+                </div>
+            </template>
+
+            <template v-slot:[`item.order_id`]="{ item }">
+                <div class="inventory-inbound-wrapper mt-1">
+                    <div class="inventory-inbound-items">
+                        <span class="order-id">
+                            ORDER ID#
+                            {{ typeof item.order_id !== 'undefined' && item.order_id !== null ? item.order_id : '--' }}
+                        </span>
+                    
+                        <div v-if="item.inbound_status !== 'cancelled'">
+                            <div v-if="currentWarehouseSelected.warehouse_type_id !== 3">
+                                <div class="status inbound">
+                                    <span :class="item.inbound_status">
+                                        {{ item.inbound_status }}
+                                    </span>
+                                </div>
+
+                                <p class="undershipped" v-if="item.is_undershipped !== 0">
+                                    {{ getOvershippedInbound(item) }}
+                                </p>
+                            </div>
+
+                            <div v-else>
+                                <div>
+                                    <!-- if not under/overshipped -->
+                                    <div v-if="item.is_undershipped === 0"> 
+                                        <!-- show status if it's not pending, else hide -->
+                                        <div v-if="item.inbound_status !== 'pending'">
+                                            <div class="status inbound">
+                                                <span :class="item.inbound_status">
+                                                    {{ item.inbound_status }}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div v-else>
+                                        <span class="undershipped-status">
+                                            {{ getOvershippedInbound(item) }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <v-menu bottom left offset-y content-class="outbound-lists-menu">
+                            <template v-slot:activator="{ on, attrs }">
+                                <v-btn icon v-bind="attrs" v-on="on">
+                                    <v-icon>mdi-dots-horizontal</v-icon>
+                                </v-btn>
+                            </template>
+
+                            <v-list class="outbound-lists">
+                                <v-list-item class="arrived-item" :class="isWarehouse3PL ? 'warehouse-3pl-hidden': ''" 
+                                    @click="arrived(item)" 
+                                    v-if="currentTab == 0 && item.inbound_status !== 'arrived'">
+                                    <v-list-item-title class="arrived">
+                                        <img src="@/assets/icons/checkMark.png" height="16px" width="16px" class="mr-2">
+                                        Arrived
+                                    </v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item class="all-receive-item" 
+                                    @click="receiveAllProductsInbound(item)" 
+                                    v-if="isWarehouse3PL && currentTab == 0 && item.inbound_status === 'pending'">
+                                    <v-list-item-title class="arrived">
+                                        <img src="@/assets/icons/checkMark.png" height="16px" width="16px" class="mr-2">
+                                        All Received
+                                    </v-list-item-title>
+                                </v-list-item>
+
+                                <div class="lists-separator" 
+                                    v-if="(!isWarehouse3PL && currentTab == 0 && item.inbound_status !== 'arrived')">
+                                </div>
+
+                                <div class="lists-separator" 
+                                    v-if="(isWarehouse3PL && currentTab == 0 && item.inbound_status === 'pending')">
+                                </div>
+
+                                <v-list-item @click="viewInbound(item)">
+                                    <v-list-item-title>
+                                        View
+                                    </v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item @click="checkEditInbound(item, 'edit')" v-if="canStillEditInbound()">
+                                    <v-list-item-title>
+                                        Edit
+                                    </v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item @click="openNewStorableUnit(item)" v-if="currentTab == 1">
+                                    <v-list-item-title>
+                                        New Storable Unit
+                                    </v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item @click="checkEditInbound(item, 'copy')" v-if="item.is_from_inventory !== 1">
+                                    <v-list-item-title>
+                                        Duplicate
+                                    </v-list-item-title>
+                                </v-list-item>
+
+                                <v-list-item @click="printOrder(item)" v-if="item.is_from_inventory !== 1">
+                                    <v-list-item-title>
+                                        Print Order
+                                    </v-list-item-title>
+                                </v-list-item>
+
+                                <!-- <v-list-item @click="cancelOrder(item)" v-if="currentTab == 0 || currentTab == 1">
+                                    <v-list-item-title class="cancel">
+                                        Cancel Order
+                                    </v-list-item-title>
+                                </v-list-item> -->
+
+                                <v-list-item @click="cancelOrder(item)" v-if="isShowCancelButton(item)">
+                                    <v-list-item-title class="cancel">
+                                        Cancel Order
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </v-list>
+                        </v-menu>
+                    </div>
+                </div>
+            </template>
+
+            <!-- <template v-slot:[`item.name`]="{ item }">
+                <div class="inventory-inbound-wrapper">
+                    <div class="inventory-inbound-items"> 
+                        <span>
+                            {{ typeof item.customer !== 'undefined' && item.customer !== null ? item.customer : '--' }}
+                        </span>
+                    </div>
+                </div>
+            </template> -->
+
+            <template v-slot:[`item.name`]="{ item }">
+                <div class="inventory-inbound-wrapper">
+                    <div class="inventory-inbound-items">
+                        <span class="inbound-item-info">
+                            <!-- <p class="name">Truck: </p> -->
+                            {{ 
+                                typeof item.name !== 'undefined' && 
+                                item.name !== null && 
+                                item.name !== "null" ? item.name : '--' 
+                            }}
+                        </span>
+                    </div>
+                </div>
+            </template>
+
+            <template v-slot:[`item.ref_no`]="{ item }">
+                <div class="inventory-inbound-wrapper">
+                    <div class="inventory-inbound-items"> 
+                        <p class="name">Reference: </p>
+                        <span class="inbound-item-info">
+                            {{ 
+                                typeof item.ref_no !== 'undefined' && 
+                                item.ref_no !== null && 
+                                item.ref_no !== "null" ? item.ref_no : '--' 
+                            }}
+                        </span>
+                    </div>
+                </div>
+            </template>
+
+            <template v-slot:[`item.estimated_time`]="{ item }"> 
+                <div class="inventory-inbound-wrapper mt-1">
+                    <div class="inventory-inbound-items">
+                        <p class="name">ETA: </p>
+                        <span class="inbound-item-info">
+                            {{ formatDate(item.estimated_date, item.estimated_time) }}
+                        </span>
+                    </div>
+                </div>
+            </template>
+
+            <template v-slot:no-data>
+                <div class="loading-wrapper" v-if="currentWarehouseLoading">
+                    <v-progress-circular
+                        :size="40"
+                        color="#0171a1"
+                        indeterminate>
+                    </v-progress-circular>
+                </div>
+                
+                <div class="no-data-wrapper" 
+                    v-if="!currentWarehouseLoading && currentWarehouseInbounds.data.length == 0">
+                    <div class="no-data-heading" v-if="search === ''">
+                        <img src="@/assets/icons/empty-inventory-icon.svg" width="40px" height="42px" alt="">
+
+                        <div v-if="currentTab === 0">
+                            <h3> Create Inbound </h3>
+                            <p> Let's add inbound to this warehouse. </p>
+
+                            <div class="d-flex justify-center align-center mt-4">
+                                <v-btn color="primary" dark class="btn-blue" @click.stop="addNewInbound">
+                                    Create Inbound
+                                </v-btn>
+                            </div>
+                        </div>                 
+
+                        <div v-if="currentTab === 1">
+                            <h3> No Floor Inbounds </h3>
+                            <p> There are no floor inbounds listed. </p>
+                        </div>
+
+                        <div v-if="currentTab === 2">
+                            <h3> No Completed Inbounds </h3>
+                            <p> There are no completed inbounds listed. </p>
+                        </div>
+
+                        <div v-if="currentTab === 3">
+                            <h3> No Cancelled Inbounds </h3>
+                            <p> There are no cancelled inbounds listed. </p>
+                        </div>
+                    </div>
+
+                    <div class="no-data-heading" v-if="search !== ''">
+                        <img src="@/assets/icons/empty-inventory-icon.svg" width="40px" height="42px" alt="">
+
+                        <div>
+                            <h3> No Inbounds found. </h3>
+                            <p> There are no inbounds listed. Try searching another keyword.</p>
+                        </div>
+                    </div>
+                </div>
+            </template>
+
+            <!-- FOR 3PL -->
+            <template v-slot:[`item.created_at`]="{ item }">
+                <div class="inventory-inbound-wrapper mt-1">
+                    <div class="inventory-inbound-items">
+                        <p class="name">Created at: </p>
+                        <span>{{ formatDateDefault(item.created_at) }}</span>
+                    </div>
+                </div>
+            </template>
+
+            <template v-slot:[`item.updated_at`]="{ item }">
+                <div class="inventory-inbound-wrapper mt-1">
+                    <div class="inventory-inbound-items">
+                        <p class="name">Updated at: </p>
+                        <span>{{ formatDateDefault(item.updated_at) }}</span>
+                    </div>
+                </div>
+            </template>
+        </v-data-table>
+
+        <CreateInboundDialog 
+            :dialogCreate.sync="dialogCreate"
+            :editedInboundIndex.sync="editedInboundIndex"
+            :editedInboundItems.sync="editedInboundItems"
+            :defaultInboundItems.sync="defaultInboundItems"
+            :currentWarehouseSelected="currentWarehouseSelected"
+            @close="closeCreate"
+            :isMobile="isMobile"
+            :parentTab.sync="currentTab"
+            :productListsDropdownData="productsListsData"
+            :fetchProductLoading="fetchProductLoading"
+            @callInboundProductsFor3PL="callInboundProductsFor3PL" />
+
+        <ConfirmDialog :dialogData.sync="dialogCancel">
+            <template v-slot:dialog_icon>
+				<div class="header-wrapper-close">
+                    <img src="@/assets/icons/icon-delete.svg" alt="alert">
+                </div>
+			</template>
+
+			<template v-slot:dialog_title>
+				<h2> Cancel Order </h2>
+			</template>
+
+			<template v-slot:dialog_content>
+				<p> 
+					Are you sure you want to cancel inbound order
+					<span class="name">"{{ cancelOrderData !== null ? cancelOrderData.order_id : '' }}"</span>?
+				</p>
+			</template>
+
+			<template v-slot:dialog_actions>
+				<v-btn class="btn-blue" @click="cancelConfirm" text :disabled="getCancelInboundLoading">
+					<span v-if="!getCancelInboundLoading">Confirm</span>
+                    <span v-if="getCancelInboundLoading">Confirming...</span>
+				</v-btn>
+
+				<v-btn class="btn-white" text @click="closeCancel" :disabled="getCancelInboundLoading">
+					Discard
+				</v-btn>
+			</template>
+		</ConfirmDialog>      
+
+        <TruckArrivedDialog 
+            :dialogData.sync="dialogTruckArrived"
+            :editedItemData.sync="truckArrivedData"
+            @close="closeTruckArrivedDialog"
+            :loading="getTruckArrivedLoading"
+            :linkData="linkData"
+            :isFetchSingleInbound="false" />
+
+        <NewStorableUnitDialog 
+            :dialog.sync="dialogNewStorableUnit" 
+            :editedItem.sync="storableItemsData"
+            :productsData="newStorableData"
+            :linkData="linkData"
+            @close="closeStorableUnit"
+            :index="-1" />  
+
+        <PaginationComponent 
+            :totalPage.sync="getTotalPage"
+            :currentPage.sync="getCurrentPage"
+            @handlePageChange="handlePageChange"
+            :isMobile="isMobile" />
+
+        <!-- SHOW edit once 3PL and Completed -->
+        <ConfirmDialog :dialogData.sync="showWarningEditInboundDialog">
+            <template v-slot:dialog_icon>
+				<div class="header-wrapper-close">
+                    <img src="@/assets/icons/icon-delete.svg" alt="alert">
+                </div>
+			</template>
+
+			<template v-slot:dialog_title>
+				<h2> Edit Completed Order? </h2>
+			</template>
+
+			<template v-slot:dialog_content>
+				<p> 
+					This order has already been completed. Do you still want to edit this inbound order?
+				</p>
+			</template>
+
+			<template v-slot:dialog_actions>
+				<v-btn class="btn-blue" @click="confirmEditOrder" text>
+                    Edit Order
+				</v-btn>
+
+				<v-btn class="btn-white" text @click="closeWarning">
+					Close
+				</v-btn>
+			</template>
+		</ConfirmDialog>
+
+        <ReceiveProductDialog 
+            :dialogData.sync="dialogReceiveProduct"
+            :editedItemData.sync="productSelectedToReceive"
+            @close="closeProductReceive"
+            :loading="false"
+            :productLists="productsListsData"
+            :linkData="linkData"
+            :multiple="true"
+            @clearSelection="clearSelection"
+            :title="title"
+            :inboundStatus="selectedInboundStatus"
+            :isWarehouse3PL="isWarehouse3PL"
+            :undershipped="isSelectedUndershipped" />
+    </div>
+</template>
+
+<script>
+import { mapActions, mapGetters } from "vuex"
+import SearchComponent from '../../../SearchComponent/SearchComponent.vue'
+import CreateInboundDialog from '../../../InventoryComponents/InboundComponents/Dialogs/CreateInboundDialog.vue'
+import ConfirmDialog from '../../../Dialog/GlobalDialog/ConfirmDialog.vue'
+import TruckArrivedDialog from '../../../InventoryComponents/InboundComponents/Dialogs/TruckArrivedDialog.vue'
+import NewStorableUnitDialog from '../../../InventoryComponents/InboundComponents/Dialogs/NewStorableUnitDialog.vue'
+import PaginationComponent from '../../../PaginationComponent/PaginationComponent.vue'
+import ReceiveProductDialog from '../../../InventoryComponents/InboundComponents/Dialogs/ReceiveProductDialog.vue'
+import globalMethods from '../../../../utils/globalMethods'
+import moment from 'moment'
+import _ from 'lodash'
+
+import axios from 'axios'
+var cancel;
+var CancelToken = axios.CancelToken;
+
+export default {
+    name: 'InventoryInboundDesktopTable',
+    props: ['currentWarehouseSelected', 'isMobile'],
+    components: {
+        SearchComponent,
+        CreateInboundDialog,
+        ConfirmDialog,
+        TruckArrivedDialog,
+        NewStorableUnitDialog,
+        PaginationComponent,
+        ReceiveProductDialog
+    },
+    data: () => ({
+        page: 1,
+        pageCount: 0,
+        itemsPerPage: 35,
+        search: '',
+        selected: [],
+        headers: [
+			{
+				text: 'Order ID',
+				align: 'start',
+				sortable: false,
+				value: 'order_id',
+				fixed: true,
+				width: "10%"
+			},
+			{ 
+				text: 'Truck',
+				align: 'start',
+				sortable: false,
+				value: 'name',
+				fixed: true,
+				width: "20%"
+			},
+			{ 
+				text: 'Reference',
+				align: 'start',
+				sortable: false,
+				value: 'ref_no',
+				fixed: true,
+				width: "25%"
+			},
+            // { 
+			// 	text: 'Supplier',
+			// 	align: 'start',
+			// 	sortable: false,
+			// 	value: 'supplier',
+			// 	fixed: true,
+			// 	width: "20%"
+			// },
+			{ 
+				text: 'ETA/Arrival Time',
+				align: 'start',
+				sortable: false,
+				value: 'estimated_time',
+				fixed: true,
+				width: "20%"
+			},
+			{ 
+				text: 'Status',
+				align: 'center',
+				sortable: false,
+				value: 'inbound_status',
+				fixed: true,
+				width: "15%"
+			},
+			{ 
+				text: '', 
+				align: 'end',
+				value: 'actions', 
+				sortable: false,
+				fixed: true,
+				width: "10%"
+			},
+		],
+        headers3PL: {
+            pending: [
+                {
+                    text: 'Order ID',
+                    align: 'start',
+                    sortable: false,
+                    value: 'order_id',
+                    fixed: true,
+                    width: "10%"
+                },
+                { 
+                    text: 'CREATED AT',
+                    align: 'start',
+                    sortable: false,
+                    value: 'created_at',
+                    fixed: true,
+                    width: "20%"
+                },
+                { 
+                    text: 'Reference',
+                    align: 'start',
+                    sortable: false,
+                    value: 'ref_no',
+                    fixed: true,
+                    width: "25%"
+                },
+                { 
+                    text: 'ETA/Arrival Time',
+                    align: 'start',
+                    sortable: false,
+                    value: 'estimated_time',
+                    fixed: true,
+                    width: "20%"
+                },
+                { 
+                    text: 'ALERT',
+                    align: 'center',
+                    sortable: false,
+                    value: 'inbound_status',
+                    fixed: true,
+                    width: "15%"
+                },
+                { 
+                    text: '', 
+                    align: 'end',
+                    value: 'actions', 
+                    sortable: false,
+                    fixed: true,
+                    width: "10%"
+                },
+            ],
+            completed: [
+                {
+                    text: 'Order ID',
+                    align: 'start',
+                    sortable: false,
+                    value: 'order_id',
+                    fixed: true,
+                    width: "10%"
+                },
+                { 
+                    text: 'CREATED AT',
+                    align: 'start',
+                    sortable: false,
+                    value: 'created_at',
+                    fixed: true,
+                    width: "20%"
+                },
+                { 
+                    text: 'Reference',
+                    align: 'start',
+                    sortable: false,
+                    value: 'ref_no',
+                    fixed: true,
+                    width: "25%"
+                },
+                { 
+                    text: 'UPDATED AT',
+                    align: 'start',
+                    sortable: false,
+                    value: 'updated_at',
+                    fixed: true,
+                    width: "20%"
+                },
+                { 
+                    text: 'STATUS',
+                    align: 'center',
+                    sortable: false,
+                    value: 'inbound_status',
+                    fixed: true,
+                    width: "15%"
+                },
+                { 
+                    text: '', 
+                    align: 'end',
+                    value: 'actions', 
+                    sortable: false,
+                    fixed: true,
+                    width: "10%"
+                },
+            ],
+            cancelled: [
+                {
+                    text: 'Order ID',
+                    align: 'start',
+                    sortable: false,
+                    value: 'order_id',
+                    fixed: true,
+                    width: "10%"
+                },
+                { 
+                    text: 'CREATED AT',
+                    align: 'start',
+                    sortable: false,
+                    value: 'created_at',
+                    fixed: true,
+                    width: "20%"
+                },
+                { 
+                    text: 'Reference',
+                    align: 'start',
+                    sortable: false,
+                    value: 'ref_no',
+                    fixed: true,
+                    width: "25%"
+                },
+                { 
+                    text: 'UPDATED AT',
+                    align: 'start',
+                    sortable: false,
+                    value: 'updated_at',
+                    fixed: true,
+                    width: "20%"
+                },
+                { 
+                    text: '',
+                    align: 'center',
+                    sortable: false,
+                    value: '',
+                    fixed: true,
+                    width: "15%"
+                },
+                { 
+                    text: '', 
+                    align: 'end',
+                    value: 'actions', 
+                    sortable: false,
+                    fixed: true,
+                    width: "10%"
+                },
+            ],
+        },
+		dialogCreate: false,
+		editedInboundIndex: -1,
+        editedInboundItems: {
+			order_id: '',
+            supplier: '',
+            shipping_from: '',
+            notes: '',
+            ref_no: '',
+            name: '',
+            estimated_date: null,
+            estimated_time: null,
+            inbound_products: [
+                {
+                    product: {
+                        product_id: '',
+                    },
+                    product_id: '',
+                    quantity: '',
+                    shipping_unit: ''
+                    // total_unit: ''
+                }
+            ],
+            documents: []
+		},
+		defaultInboundItems: {
+			order_id: '',
+            supplier: '',
+            shipping_from: '',
+            notes: '',
+            ref_no: '',
+            name: '',
+            estimated_date: null,
+            estimated_time: null,
+            inbound_products: [
+                {
+                    product: {
+                        product_id: '',
+                    },
+                    product_id: '',
+                    quantity: '',
+                    shipping_unit: ''
+                }
+            ],
+            documents: []
+		},
+        tabs: ["Pending", "Floor", "Completed", "Cancelled"],
+        currentTab: 0,
+        dialogCancel: false,
+        cancelOrderData: null,
+        dialogTruckArrived: false,
+        truckArrivedData: {
+            name: '',
+            ref_no: ''
+        },
+        linkData: {
+            inbound_id: '',
+            warehouse_id: ''
+        },
+        dialogNewStorableUnit: false,
+        newStorableData: null,
+        pendingInboundLoadingPage: false,
+        floorInboundLoadingPage: false,
+        completedInboundLoadingPage: false,
+        cancelledInboundLoadingPage: false,
+        noDataOnSearched: false,
+        storableItemsData: {
+            action: "",
+            type: "",
+            customer_id: null,
+            dimension: {
+                l: '',
+                w: '',
+                h: '',
+                uom: 'cm'
+            },
+            weight: {
+                value: '',
+                unit: 'KG'
+            },
+            products: [],
+            copies: 1
+        },
+        productsListsData: [],
+        lastDataCheck: [],
+        current_page_is: 1,
+        fetchProductLoading: false,
+        fetchPendingInboundsLoading: true,
+        showWarningEditInboundDialog: false,
+        currentEditInboundData: null,
+        dialogReceiveProduct: false,
+        title: 'receive',
+        productSelectedToReceive: [],
+        selectedInboundStatus: 'pending',
+        isSelectedUndershipped: 0
+    }),
+    computed: {
+        ...mapGetters({
+            getCancelInboundLoading: 'inbound/getCancelInboundLoading',
+            getTruckArrivedLoading: 'inbound/getTruckArrivedLoading',
+            // inbound tabs
+            getPendingInbounds: 'inbound/getPendingInbounds',
+            getFloorInbounds: 'inbound/getFloorInbounds',
+            getCompletedInbounds: 'inbound/getCompletedInbounds',
+            getCancelledInbounds: 'inbound/getCancelledInbounds',
+            getPendingInboundsLoading: 'inbound/getPendingInboundsLoading',
+            getFloorInboundsLoading: 'inbound/getFloorInboundsLoading',
+            getCompletedInboundsLoading: 'inbound/getCompletedInboundsLoading',
+            getCancelledInboundsLoading: 'inbound/getCancelledInboundsLoading',
+            // inbound paginations
+            getPendingInboundPagination: 'inbound/getPendingInboundPagination',
+            getFloorInboundPagination: 'inbound/getFloorInboundPagination',
+            getCompletedInboundPagination: 'inbound/getCompletedInboundPagination',
+            getCancelledInboundPagination: 'inbound/getCancelledInboundPagination',
+            getCurrentInboundTab: 'inbound/getCurrentInboundTab',
+            poBaseUrlState: 'products/poBaseUrlState',
+            getSearchedInbounds: 'inbound/getSearchedInbounds',
+            getSearchedInboundsLoading: 'inbound/getSearchedInboundsLoading',
+            getProducts: 'products/getProducts',
+            getAllInboundProductsLists: 'inbound/getAllInboundProductsLists',
+            getAllInboundProductsListsDropdownData: 'inbound/getAllInboundProductsListsDropdownData',
+            getIsShowCreateInboundDialog: 'inbound/getIsShowCreateInboundDialog'
+        }),
+        isWarehouse3PL() {
+            if (this.currentWarehouseSelected !== null) {
+                if (typeof this.currentWarehouseSelected.warehouse_type_id !== 'undefined' && 
+                    this.currentWarehouseSelected.warehouse_type_id === 3) {
+                    return true
+                } else {
+                    return false
+                }
+            } else {
+                return false
+            }
+        },
+        pendingInboundsDataLists() {
+            let inboundLists = []
+
+            if (typeof this.getSearchedInbounds !== 'undefined' && this.getSearchedInbounds !== null) {
+                if (this.search !== '' && this.currentTab === 0 && this.getSearchedInbounds.tab === 'pending') {
+                    inboundLists = this.getSearchedInbounds
+                } else {
+                    if (typeof this.getPendingInboundPagination !== 'undefined' && 
+                        this.getPendingInboundPagination !== null) {
+                        inboundLists = this.getPendingInboundPagination
+                    }
+                }
+            }
+
+            return inboundLists
+        },
+        floorInboundsDataLists() {
+            let inboundLists = []
+
+            if (typeof this.getSearchedInbounds !== 'undefined' && this.getSearchedInbounds !== null) {
+                if (this.search !== '' && this.currentTab === 1 && this.getSearchedInbounds.tab === 'floor') {
+                    inboundLists = this.getSearchedInbounds
+                } else {
+                    if (typeof this.getFloorInboundPagination !== 'undefined' && 
+                        this.getFloorInboundPagination !== null) {
+                        inboundLists = this.getFloorInboundPagination
+                    }
+                }
+            }
+
+            return inboundLists
+        },
+        completedInboundsDataLists() {
+            let inboundLists = []
+
+            if (typeof this.getSearchedInbounds !== 'undefined' && this.getSearchedInbounds !== null) {
+                if (this.search !== '' && this.currentTab === 2 && this.getSearchedInbounds.tab === 'completed') {
+                    inboundLists = this.getSearchedInbounds
+                } else {
+                    if (typeof this.getCompletedInboundPagination !== 'undefined' && 
+                        this.getCompletedInboundPagination !== null) {
+                        inboundLists = this.getCompletedInboundPagination
+                    }
+                }
+            }
+
+            return inboundLists
+        },
+        cancelledInboundsDataLists() {
+            let inboundLists = []
+
+            if (typeof this.getSearchedInbounds !== 'undefined' && this.getSearchedInbounds !== null) {
+                if (this.search !== '' && this.currentTab === 3 && this.getSearchedInbounds.tab === 'cancelled') {
+                    inboundLists = this.getSearchedInbounds
+                } else {
+                    if (typeof this.getCancelledInboundPagination !== 'undefined' && 
+                        this.getCancelledInboundPagination !== null) {
+                        inboundLists = this.getCancelledInboundPagination
+                    }
+                }
+            }
+
+            return inboundLists
+        },
+		currentWarehouseInbounds() {
+            let inboundsData = {}
+
+            if (this.currentTab === 0) {
+                inboundsData = this.pendingInboundsDataLists
+            } else if (this.currentTab === 1) {
+                inboundsData = this.floorInboundsDataLists
+            } else if (this.currentTab === 2) {
+                inboundsData = this.completedInboundsDataLists
+            } else {
+                inboundsData = this.cancelledInboundsDataLists
+            }
+            
+            return inboundsData
+        },
+        getTotalPage: {
+            get() {
+                let total = 1
+                let inboundsData = this.currentWarehouseInbounds
+
+                if (typeof inboundsData.last_page !== 'undefined' && inboundsData.last_page !== null) {
+                    total = inboundsData.last_page
+                }
+
+                return total
+            }
+        },
+        getCurrentPage: {
+            get() {
+                let current_page = 1
+                let inboundsData = this.currentWarehouseInbounds
+
+                if (typeof inboundsData.current_page !== 'undefined' && inboundsData.current_page !== null) {
+                    current_page = inboundsData.current_page
+                }
+
+                return current_page
+            },
+            set() {
+                return {}
+            }
+        },
+        currentWarehouseLoading() {
+            if (this.currentTab === 0) {
+                return this.getPendingInboundsLoading
+            } else if (this.currentTab === 1) {
+                return this.getFloorInboundsLoading
+            } else if (this.currentTab === 2) {
+                return this.getCompletedInboundsLoading
+            } else {
+                return this.getCancelledInboundsLoading
+            }
+        },
+        getCurrentLoadingToDisplay() {
+            if (this.search === '') {
+                return this.getHandlePageLoading
+            } else {
+                return this.getSearchedInboundsLoading
+            }
+        },
+        getHandlePageLoading() {
+            if (this.currentTab === 0) {
+                // return this.pendingInboundLoadingPage
+                return this.fetchPendingInboundsLoading
+            } else if (this.currentTab === 1) {
+                return this.floorInboundLoadingPage
+            } else if (this.currentTab === 2) {
+                return this.completedInboundLoadingPage
+            } else {
+                return this.cancelledInboundLoadingPage
+            }
+        },
+        getSearchedDataClass() {
+            if (this.currentWarehouseInbounds.data.length == 0 && this.search !== '') {
+                return true
+            } else {
+                return false
+            }
+        },
+        handleSearchComponent() {
+            let isShow = true
+
+            if (this.search == '' && this.currentWarehouseInbounds.data.length === 0) {
+                isShow = false
+            } else if (this.search !== '' && this.currentWarehouseInbounds.data.length === 0) {
+                isShow = true
+            }
+
+            return isShow
+        },
+        headersComputed() {
+            let defaultHeaders = this.headers
+
+            if (this.currentWarehouseSelected !== null && this.currentWarehouseSelected.warehouse_type_id !== null) {
+                if (this.currentWarehouseSelected.warehouse_type_id !== 3) {
+                    defaultHeaders = this.headers
+                } else {
+                    if (this.currentTab === 0) {
+                        defaultHeaders = this.headers3PL.pending
+                    } else if (this.currentTab === 2) {
+                        defaultHeaders = this.headers3PL.completed
+                    } else if (this.currentTab === 3) {
+                        defaultHeaders = this.headers3PL.cancelled
+                    }
+                }
+            } else {
+                defaultHeaders = this.headers
+            }
+
+            return defaultHeaders
+        }
+    },
+    methods: {
+        ...mapActions({
+            cancelInbound: 'inbound/cancelInbound',            
+            fetchPendingInbounds: 'inbound/fetchPendingInbounds',
+            fetchFloorInbounds: 'inbound/fetchFloorInbounds',
+            fetchCompletedInbounds: 'inbound/fetchCompletedInbounds',
+            fetchCancelledInbounds: 'inbound/fetchCancelledInbounds',
+            setCurrentInboundTab: 'inbound/setCurrentInboundTab',
+            printInboundOrder: 'inbound/printInboundOrder',
+            setInboundSearchedVal: 'inbound/setInboundSearchedVal',
+            setSearchedInboundLoading: 'inbound/setSearchedInboundLoading',
+            fetchSearchedInbounds: 'inbound/fetchSearchedInbounds',
+            setSingleInboundData: 'inbound/setSingleInboundData',
+            fetchInboundProducts: 'inbound/fetchInboundProducts',
+            setAllInboundProductsLists: 'inbound/setAllInboundProductsLists',
+            fetchSuppliers: "suppliers/fetchSuppliers",
+            setIsCreateInboundShow: 'inbound/setIsCreateInboundShow'
+        }),
+        ...globalMethods,
+        onTabChange(i) {
+            this.currentTab = i
+            this.setInboundSearchedVal([])
+            this.search = ''
+        },
+        formatDate(date, time) {
+            let newTime = null
+            let newDate = null
+
+            let final_estimated_time_and_date = null
+            
+            if (date !== '' && date !== null) {
+                newDate = moment(date).format('MMM DD, YYYY')
+
+                if (time !== '' && time !== null) {
+                    newTime = moment(time, ["HH:mm"]).format("hh:mmA, ");
+                }   
+            }
+
+            if (newDate !== null) {
+                if (newTime !== null) {
+                    final_estimated_time_and_date = newTime + newDate
+                } else {
+                    final_estimated_time_and_date = 'N/A, ' + newDate
+                }
+            } else {
+                if (newTime !== null) {
+                    final_estimated_time_and_date = newTime + ', N/A'
+                } else {
+                    final_estimated_time_and_date = '--'
+                }
+            }
+
+            return final_estimated_time_and_date
+        },
+        formatDateDefault(data) {
+            if (typeof data !== 'undefined' && data !== null) {
+                let date = data
+                return moment(date).format('DD MMM YYYY h:mm A')
+            } else {
+                return 'N/A'
+            }
+        },
+        getTabCount(index) {
+            let data = '0'
+
+            if (index === 0) {
+                data = this.pendingInboundsDataLists.total
+            } else if (index === 1) {
+                data = this.floorInboundsDataLists.total
+            }
+          
+            let finalData = data !== 0 ? data : '0'
+
+            return finalData
+        },
+        async onClickTab(i) {
+            this.setInboundSearchedVal([])
+            this.search = ''
+
+            try {
+                let storeInboundTab = this.$store.state.inbound
+
+                let dataWithPage = {
+                    id: this.currentWarehouseSelected.id,
+                    page: 1
+                }
+                
+                if (i === 0 && this.currentTab !== i) {
+                    dataWithPage.page = storeInboundTab.pendingInboundPagination.current_page
+                    await this.fetchPendingInbounds(dataWithPage)
+                    storeInboundTab.pendingInboundPagination.old_page = storeInboundTab.pendingInboundPagination.current_page
+                    this.setCurrentInboundTab(i)
+                } else if (i === 1 && this.currentTab !== i) {
+                    dataWithPage.page = storeInboundTab.floorInboundPagination.current_page
+                    await this.fetchFloorInbounds(dataWithPage)
+                    storeInboundTab.floorInboundPagination.old_page = storeInboundTab.floorInboundPagination.current_page
+                    this.setCurrentInboundTab(i)
+                } else if (i === 2 && this.currentTab !== i) {
+                    dataWithPage.page = storeInboundTab.completedInboundPagination.current_page
+                    await this.fetchCompletedInbounds(dataWithPage)
+                    storeInboundTab.completedInboundPagination.old_page = storeInboundTab.completedInboundPagination.current_page
+                    this.setCurrentInboundTab(i)
+                } else if (i === 3 && this.currentTab !== i){
+                    dataWithPage.page = storeInboundTab.cancelledInboundPagination.current_page
+                    await this.fetchCancelledInbounds(dataWithPage)
+                    storeInboundTab.cancelledInboundPagination.old_page = storeInboundTab.cancelledInboundPagination.current_page
+                    this.setCurrentInboundTab(i)
+                }
+            } catch(e) {
+                this.notificationError(e)
+            }
+        },
+        getOvershippedInbound(inbound) {
+            if (inbound !== 'undefined' && inbound !== null) {
+                if (inbound.is_undershipped !== 'undefined') {
+                    if (inbound.is_undershipped === 0) {
+                        return ''
+                    } else if (inbound.is_undershipped === 1) {
+                        return 'Overshipped'
+                    } else {
+                        return 'Undershipped'
+                    }
+                }
+            }
+        },
+        // inbounds
+        addNewInbound() {
+            this.dialogCreate = true
+            this.$nextTick(() => {
+                this.editedInboundItems = Object.assign({}, this.defaultInboundItems)
+                this.editedInboundIndex = -1;
+            })
+            this.setIsCreateInboundShow(false)
+        },
+        closeCreate() {
+            this.dialogCreate = false
+            this.$nextTick(() => {
+                this.editedInboundItems = Object.assign({}, this.defaultInboundItems)
+                this.editedInboundIndex = -1;
+            })
+
+            if (this.currentEditInboundData !== null) {
+                this.closeWarning()
+            }
+
+            this.setIsCreateInboundShow(false)
+        },
+        viewInbound(e) {
+            this.$router.push(`inventory/inbound-view?inboundid=${e.id}&warehouseid=${this.currentWarehouseSelected.id}`)
+        },
+        checkEditInbound(item, toDo) {
+            if (!this.isWarehouse3PL) {
+                this.editOrder(item, toDo)
+            } else {
+                if (this.currentTab === 2) {
+                    this.showWarningEditInboundDialog = true
+                    let data = { item, toDo }
+                    this.currentEditInboundData = data
+                } else {
+                    this.editOrder(item, toDo)
+                }
+            }
+        },
+        editOrder(item, toDo) {
+            this.editedInboundIndex = this.currentWarehouseInbounds.data.indexOf(item)
+
+            let inboundItem = { ...item }
+
+            if (!inboundItem.inbound_products || inboundItem.inbound_products.length === 0) {
+                let buildProduct = [
+                    {
+                        product_id: '',
+                        quantity: '',
+                        shipping_unit: '',
+                        status: ''
+                    }
+                ]
+
+                inboundItem = { ...inboundItem, inbound_products: buildProduct }
+
+            } else {
+                if (inboundItem.inbound_products.length !== 0) {
+                    let buildProduct = inboundItem.inbound_products.map(v => {
+                        let { id, product_id, expected_carton_count, shipping_unit, expected_total_unit, actual_carton_count, actual_total_unit } = v
+
+                        if (shipping_unit === 'carton') {
+                            return { 
+                                inbound_product_id: id,
+                                product_id,
+                                quantity: expected_carton_count !== null ? parseInt(expected_carton_count) : '',
+                                shipping_unit,
+                                status: v.status,
+                                expected_carton_count: expected_carton_count !== null ? parseInt(expected_carton_count) : '',
+                                actual_carton_count: actual_carton_count !== null ? parseInt(actual_carton_count) : ''
+                            }
+                        } else {
+                            return { 
+                                inbound_product_id: id,
+                                product_id,
+                                quantity: expected_total_unit !== null ? parseInt(expected_total_unit) : '',
+                                shipping_unit,
+                                status: v.status,
+                                expected_total_unit: expected_total_unit !== null ? parseInt(expected_total_unit) : '',
+                                actual_total_unit: actual_total_unit !== null ? parseInt(actual_total_unit) : ''
+                            }
+                        }
+                    })
+
+                    inboundItem = { ...inboundItem, inbound_products: buildProduct }
+                }
+            }
+
+            if (!inboundItem.documents || inboundItem.documents == null) {
+                inboundItem = { ...inboundItem, documents: [] }
+            } else {
+                let convertDocuments = inboundItem.documents.map(v => {
+                    if (v.original_name !== 'undefined') {
+                        return new File([v.original_name], `${v.original_name}`, {
+                            type: v.type
+                        });
+                    }
+                })
+
+                inboundItem = { ...inboundItem, documents: convertDocuments }
+            }
+
+            if (!inboundItem.estimated_time || inboundItem.estimated_time == 'null') {
+                inboundItem = { ...inboundItem, estimated_time: null }
+            }
+
+            if (!inboundItem.estimated_date || inboundItem.estimated_date == 'null') {
+                inboundItem = { ...inboundItem, estimated_date: null }
+            }
+
+            if (!inboundItem.ref_no || inboundItem.ref_no == 'null') {
+                inboundItem = { ...inboundItem, ref_no: null }
+            }
+
+            if (!inboundItem.shipping_from || inboundItem.shipping_from == 'null') {
+                inboundItem = { ...inboundItem, shipping_from: null }
+            }
+
+            if (!inboundItem.name || inboundItem.name == 'null') {
+                inboundItem = { ...inboundItem, name: null }
+            }
+
+            if (!inboundItem.notes || inboundItem.notes == 'null') {
+                inboundItem = { ...inboundItem, notes: null }
+            }
+
+            inboundItem.isDuplicate = toDo == 'edit' ? false : true
+            this.editedInboundIndex = inboundItem.isDuplicate ? -1 : this.editedInboundIndex
+            // if is duplicate, set order id to empty
+            inboundItem.order_id = inboundItem.isDuplicate ? '' : inboundItem.order_id 
+
+            this.editedInboundItems = Object.assign({}, inboundItem)
+            this.dialogCreate = true
+        },     
+        arrived(item) {
+            this.dialogTruckArrived = true
+            this.linkData = {
+                inbound_id: item.id,
+                warehouse_id: item.warehouse_id
+            }
+        },
+        closeTruckArrivedDialog() {
+            this.dialogTruckArrived = false
+            this.truckArrivedData = {
+                name: '',
+                ref_no: ''
+            }
+            this.linkData = {
+                inbound_id: '',
+                warehouse_id: ''
+            }
+        },
+        async printOrder(item) {
+            if (item !== null) {
+                let payload = {
+                    warehouse_id: item.warehouse_id,
+                    inbound_id: item.id,
+                    order_id: item.order_id
+                }
+
+                try {
+                    this.notificationCustom('Generating print order...')
+                    await this.printInboundOrder(payload)
+                } catch(e) {
+                    this.notificationError(e)
+                }
+            }
+        },
+        createWordOrder() {},        
+        openNewStorableUnit(item) {
+            if (item !== 'undefined' && item.inbound_products !== 'undefined') {
+                if (item.inbound_status === 'floor') {
+                    let findIndex = _.findIndex(item.inbound_products, (e) => e.status !== 'recieved')
+
+                    if (findIndex === -1) {
+                        this.newStorableData = item
+                        this.dialogNewStorableUnit = true
+                        this.linkData = {
+                            inbound_id: item.id,
+                            warehouse_id: item.warehouse_id
+                        }
+                    } else {
+                        this.notificationError('You can add New Storable Unit only if all Inbound Products have been received.')
+                    }
+                } else {
+                    this.notificationError("Something's wrong. Please reload the page and try again.")
+                }
+            }
+        },
+        closeStorableUnit() {
+            this.newStorableData = null
+            this.dialogNewStorableUnit = false
+        },
+        reportToVendor(item) {
+            console.log(item);
+        },
+        cancelOrder(inbound) {
+            if (inbound !== null) {
+                this.cancelOrderData = inbound
+                this.dialogCancel = true
+            }
+        },
+        async cancelConfirm() {
+            if (this.cancelOrderData !== null) {
+                try {
+                    let payload = {
+                        wid: this.cancelOrderData.warehouse_id,
+                        oid: this.cancelOrderData.id,
+                        page: 1
+                    }
+
+                    let storePagination = this.currentTab === 0 ? 
+                        this.$store.state.inbound.pendingInboundPagination : 
+                        (this.currentTab === 1 ? this.$store.state.inbound.floorInboundPagination : 1)
+
+                    let page = typeof storePagination.current_page !== 'undefined' ? storePagination.current_page : 1
+                    
+                    if (storePagination.data.length === 1 && storePagination.current_page !== 1) {
+                        page = page - 1
+                    } 
+
+                    payload.page = page
+
+                    await this.cancelInbound(payload)
+                    this.dialogCancel = false
+                    this.notificationCustom('Inbound has been cancelled.')
+
+                    let dataWithPage = { id: this.cancelOrderData.warehouse_id, page }
+
+                    if (this.currentTab === 0) {
+                        await this.fetchPendingInbounds(dataWithPage)
+                    } else if (this.currentTab === 1) {
+                        await this.fetchFloorInbounds(dataWithPage)
+                    }
+
+                    let cancelledData = { id: this.cancelOrderData.warehouse_id, page: 1 }
+                    await this.fetchCancelledInbounds(cancelledData)
+
+                    this.cancelOrderData = null
+                    this.closeCancel()
+                } catch(e) {
+                    this.notificationError(e)
+                }
+            }
+        },
+        closeCancel() {
+            this.dialogCancel = false
+        },
+        // paginations
+        async handlePageChange(page) {
+            if (page !== null) {
+                let storeInboundTab = this.$store.state.inbound
+
+                let dataWithPage = {
+                    id: this.currentWarehouseSelected.id,
+                    page
+                }
+
+                if (this.search == '') {
+                    try {
+                        if (storeInboundTab.setCurrentTab === 0) {
+                            if (storeInboundTab.pendingInboundPagination.old_page !== page) {
+                                this.pendingInboundLoadingPage = true
+                                await this.fetchPendingInbounds(dataWithPage)
+                                storeInboundTab.pendingInboundPagination.old_page = page
+                                this.pendingInboundLoadingPage = false
+                            }
+                        } else if (storeInboundTab.setCurrentTab === 1) {
+                            if (storeInboundTab.floorInboundPagination.old_page !== page) {
+                                this.floorInboundLoadingPage = true
+                                await this.fetchFloorInbounds(dataWithPage)
+                                storeInboundTab.floorInboundPagination.old_page = page
+                                this.floorInboundLoadingPage = false
+                            }
+                        } else if (storeInboundTab.setCurrentTab === 2) {
+                            if (storeInboundTab.completedInboundPagination.old_page !== page) {
+                                this.completedInboundLoadingPage = true
+                                await this.fetchCompletedInbounds(dataWithPage)
+                                storeInboundTab.completedInboundPagination.old_page = page
+                                this.completedInboundLoadingPage = false
+                            }
+                        } else {
+                            if (storeInboundTab.cancelledInboundPagination.old_page !== page) {
+                                this.cancelledInboundLoadingPage = true
+                                await this.fetchCancelledInbounds(dataWithPage)
+                                storeInboundTab.cancelledInboundPagination.old_page = page
+                                this.cancelledInboundLoadingPage = false
+                            }
+                        }                       
+                    } catch (e) {
+                        this.notificationError(e)
+                    }
+                } else {
+                    let data = {
+                        search: this.search,
+                        page
+                    }
+
+                    this.handlePageSearched(data)
+                }
+
+                this.handleScrollToTop()
+            }
+        },
+        async handlePageSearched(data) {
+            let searchedPagination = this.$store.state.inbound.searchedInbounds
+
+            if (data !== null && this.search !== '') {
+                if (searchedPagination.old_page !== data.page) {
+                    let passedData = {
+                        method: "get",
+                        url: '',
+                        cancelToken: new CancelToken(function executor(c) {
+                            cancel = c
+                        }),
+                        params: {
+                            search: this.search,
+                            page: data.page
+                        }
+                    }
+
+                    let warehouse_id = this.currentWarehouseSelected.id
+
+                    if (this.currentTab == 0) {
+                        passedData.url = `${this.poBaseUrlState}/warehouse/${warehouse_id}/inbound/pending`
+                        passedData.tab = 'pending'
+                    } else if (this.currentTab == 1) {
+                        passedData.url = `${this.poBaseUrlState}/warehouse/${warehouse_id}/inbound/floor`
+                        passedData.tab = 'floor'
+                    } else if (this.currentTab == 2) {
+                        passedData.url = `${this.poBaseUrlState}/warehouse/${warehouse_id}/inbound/completed`
+                        passedData.tab = 'completed'
+                    } else {
+                        passedData.url = `${this.poBaseUrlState}/warehouse/${warehouse_id}/inbound/cancelled`
+                        passedData.tab = 'cancelled'
+                    }
+
+                    if (passedData.url !== '') {
+                        try {
+                            this.fetchSearchedInbounds(passedData)
+                        } catch(e) {
+                            this.notificationError(e)
+                            this.setSearchedInboundLoading(false)
+                            console.log(e, 'Search error')
+                        }
+                    }
+                }                
+            } else {
+                this.setInboundSearchedVal([])
+            }
+
+            this.handleScrollToTop()
+        },
+        // for searching call api
+        handleSearch() {
+            if (cancel !== undefined) {
+                cancel()
+            }
+            this.setSearchedInboundLoading(false)
+            clearTimeout(this.typingTimeout)
+            this.typingTimeout = setTimeout(() => {
+                let data = { 
+                    search: this.search
+                }  
+
+                this.setSearchedInboundLoading(true)
+                this.apiCall(data)
+            }, 300)
+        },
+        apiCall(data) {
+            let storePagination = this.$store.state.inbound.setCurrentTab
+
+            if (data !== null && this.search !== '') {
+                let passedData = {
+                    method: "get",
+                    url: '',
+                    cancelToken: new CancelToken(function executor(c) {
+                        cancel = c
+                    }),
+                    params: {
+                        search: this.search,
+                        page: 1
+                    }
+                }
+
+                let warehouse_id = this.currentWarehouseSelected.id
+
+                if (storePagination == 0) {
+                    passedData.url = `${this.poBaseUrlState}/warehouse/${warehouse_id}/inbound/pending`
+                    passedData.tab = 'pending'
+                } else if (storePagination == 1) {
+                    passedData.url = `${this.poBaseUrlState}/warehouse/${warehouse_id}/inbound/floor`
+                    passedData.tab = 'floor'
+                } else if (storePagination == 2) {
+                    passedData.url = `${this.poBaseUrlState}/warehouse/${warehouse_id}/inbound/completed`
+                    passedData.tab = 'completed'
+                } else {
+                    passedData.url = `${this.poBaseUrlState}/warehouse/${warehouse_id}/inbound/cancelled`
+                    passedData.tab = 'cancelled'
+                }
+
+                if (passedData.url !== '') {
+                    try {
+                        this.fetchSearchedInbounds(passedData)
+                    } catch(e) {
+                        this.notificationError(e)
+                        this.setSearchedInboundLoading(false)
+                        console.log(e, 'Search error')
+                    }
+                }
+            } else {
+                this.setInboundSearchedVal([])
+            }
+        },
+        async callInboundProductsFor3PL(from) {
+            try {
+                if (this.getAllInboundProductsListsDropdownData.length === 0) {
+                    this.current_page_is = 1
+                    await this.fetchInboundProducts(1)
+                    
+                    if (typeof this.getAllInboundProductsLists !== 'undefined' && 
+                        this.getAllInboundProductsLists !== null && 
+                        typeof this.getAllInboundProductsLists.products !== 'undefined' && 
+                        Array.isArray(this.getAllInboundProductsLists.products) &&
+                        this.getAllInboundProductsLists.products.length > 0) {
+                            
+                        this.productsListsData = this.getAllInboundProductsLists.products.map(value => {
+                            return {
+                                product_id: value.id,
+                                id: value.id,
+                                name: value.name,
+                                sku: value.sku,
+                                image: value.image,
+                                description: value.description,
+                                category_id: value.category_id,
+                                units_per_carton: value.units_per_carton,
+                                category_sku: value.category_sku
+                            }
+                        })
+
+                        this.lastDataCheck = this.productsListsData
+
+                        if (this.current_page_is < this.getAllInboundProductsLists.last_page) {
+                            this.loadMoreProducts()
+                        }
+                        
+                        this.setAllInboundProductsLists(this.productsListsData)
+                        this.fetchProductLoading = false
+                    } else {
+                        this.fetchProductLoading = false
+                        this.productsListsData = []
+                        this.lastDataCheck = []
+                    }
+                } else {
+                    if (from === 'Inbound') {
+                        this.productsListsData = this.getAllInboundProductsListsDropdownData
+                        this.fetchProductLoading = false
+                    } else {
+                        let last_page = this.getAllInboundProductsLists.last_page
+
+                        if (typeof last_page !== 'undefined') {
+                            this.current_page_is = last_page
+                            await this.fetchInboundProducts(last_page)
+
+                            if (typeof this.getAllInboundProductsLists !== 'undefined' && 
+                                this.getAllInboundProductsLists !== null && 
+                                typeof this.getAllInboundProductsLists.products !== 'undefined' && 
+                                Array.isArray(this.getAllInboundProductsLists.products) &&
+                                this.getAllInboundProductsLists.products.length > 0) {
+                                    
+                                let newloaddata = this.getAllInboundProductsLists.products.map(value => {
+                                    return {
+                                        product_id: value.id,
+                                        id: value.id,
+                                        name: value.name,
+                                        sku: value.sku,
+                                        image: value.image,
+                                        description: value.description,
+                                        category_id: value.category_id,
+                                        units_per_carton: value.units_per_carton
+                                    }
+                                })
+
+                                this.productsListsData = [...this.productsListsData, ...newloaddata]
+
+                                if (this.current_page_is < this.getAllInboundProductsLists.last_page) {
+                                    this.loadMoreProducts()
+                                }
+                                
+                                this.setAllInboundProductsLists(this.productsListsData)
+                                this.fetchProductLoading = false
+                            } else {
+                                this.fetchProductLoading = false
+                                this.productsListsData = []
+                                this.lastDataCheckProducts = []
+                            }
+                        }
+                    }                    
+                }
+            } catch(e) {
+                this.notificationError(e)
+            }
+        },
+        async loadMoreProducts() {
+            if (this.current_page_is < this.getAllInboundProductsLists.last_page) {
+				this.current_page_is++
+
+				try {
+					await this.fetchInboundProducts(this.current_page_is)
+
+                    if (typeof this.getAllInboundProductsLists !== 'undefined' && this.getAllInboundProductsLists !== null && 
+                        typeof this.getAllInboundProductsLists.products !== 'undefined' && Array.isArray(this.getAllInboundProductsLists.products) &&
+                        this.getAllInboundProductsLists.products.length > 0) {
+                            
+                        let newloaddata = this.getAllInboundProductsLists.products.map(value => {
+                            return {
+                                product_id: value.id,
+                                id: value.id,
+                                name: value.name,
+                                sku: value.sku,
+                                image: value.image,
+                                description: value.description,
+                                category_id: value.category_id,
+                                units_per_carton: value.units_per_carton,
+                                category_sku: value.category_sku
+                            }
+                        })
+
+                        this.productsListsData = [...this.productsListsData, ...newloaddata]
+
+                        if (this.current_page_is < this.getAllInboundProductsLists.last_page) {
+                            this.loadMoreProducts()
+                        }
+
+                        this.setAllInboundProductsLists(this.productsListsData)
+                    } else {
+                        this.productsListsData;
+                    }
+				} catch (e) {
+					this.notificationError(e)
+				}
+			}
+        },
+        handleScrollToTop() {
+            var table = this.$refs['my-table'];
+            var wrapper = table.$el.querySelector('div.v-data-table__wrapper');
+            
+            this.$vuetify.goTo(table); // to table
+            this.$vuetify.goTo(table, {container: wrapper}); // to header
+        },
+        canStillEditInbound() {
+            if (!this.isWarehouse3PL) {
+                if (this.currentTab === 0 || this.currentTab === 1) {
+                    return true
+                } else {
+                    return false
+                }      
+            } else {
+                if (this.currentTab === 3) {
+                    return false
+                } else {
+                    return true
+                }
+            }                  
+        },
+        confirmEditOrder() {
+            if (this.currentEditInboundData !== null) {
+                this.editOrder(this.currentEditInboundData.item, this.currentEditInboundData.toDo)
+            }
+        },
+        closeWarning() {
+            this.showWarningEditInboundDialog = false
+            this.currentEditInboundData = null
+        },
+        receiveAllProductsInbound(item) {
+            this.linkData = {
+                inbound_id: item.id,
+                warehouse_id: item.warehouse_id
+            }
+            this.selectedInboundStatus = item.inbound_status
+            this.isSelectedUndershipped = item.is_undershipped
+            
+            if (item.inbound_products.length !== 'undefined' && item.inbound_products.length > 0) {
+                item.inbound_products.map(prod => {
+                    let { id, product_id, product, expected_carton_count, expected_total_unit, in_each_carton, shipping_unit, actual_carton_count, actual_total_unit, storable_units, remaining_carton_count, remaining_total_unit, notes } = prod
+
+                    let findProduct = _.findIndex(item.inbound_products, e => (id === e.id && e.status !== 'recieved'))
+
+                    if (findProduct !== -1) {
+                        this.productSelectedToReceive.push({
+                            id,
+                            product_id,
+                            name: product.name,
+                            carton_count: shipping_unit === 'single_item' ? null : parseInt(expected_carton_count),
+                            total_unit: expected_total_unit,
+                            in_each_carton: in_each_carton,
+                            product_sku: product.sku,
+                            shipping_unit,
+                            expected_carton_count,
+                            expected_total_unit,
+                            actual_carton_count,
+                            actual_total_unit,
+                            storable_units,
+                            remaining_carton_count,
+                            remaining_total_unit,
+                            notes: notes !== null ? notes : '',
+                            noteError: false
+                        })
+                    }                    
+                })
+            }
+            
+            this.dialogReceiveProduct = true
+        },
+        async closeProductReceive() {
+            this.dialogReceiveProduct = false
+            this.productSelectedToReceive = []
+        },
+        clearSelection() {
+            this.productSelectedToReceive = []
+        },
+        isShowCancelButton(item) {
+            let show = false
+
+            if (!this.isWarehouse3PL) {
+                if (item.inbound_status === 'pending') {
+                    show = true
+                } else {
+                    show = false
+                }
+            } else {
+                if (item.inbound_status === 'pending') {                        
+                    let productsLists = item.inbound_products
+                    if (typeof productsLists !== 'undefined' && productsLists.length > 0) {
+                        let findProduct = _.findIndex(productsLists, e => (e.status === 'recieved'))
+
+                        if (findProduct > -1) {
+                            show = false
+                        } else {
+                            show = true
+                        }
+                    }
+                }
+            }
+            
+            return show
+        },
+    },
+    async mounted() {
+        this.setSingleInboundData([])
+        this.fetchProductLoading = true
+
+        //set tab
+        if (this.getCurrentInboundTab !== 'undefined') {
+            if (this.currentTab !== this.getCurrentInboundTab) {
+                this.currentTab = this.getCurrentInboundTab
+            }
+        }
+
+        let checkWarehouseTypeId = this.currentWarehouseSelected !== null ? this.currentWarehouseSelected.warehouse_type_id : null
+        let currentInventoryTabName = this.$router.history.current.query.tab
+
+        if (this.$store.state.page.currentInventoryTab === 3 &&
+            typeof currentInventoryTabName !== 'undefined' && 
+            currentInventoryTabName === 'Inbound') {
+                
+            try {
+                let dataWithPage = {
+                    id: this.currentWarehouseSelected.id,
+                    page: 1
+                }
+
+                if (checkWarehouseTypeId === 3 && this.getIsShowCreateInboundDialog) {
+                    this.addNewInbound()
+                    this.setIsCreateInboundShow(false)
+                }
+
+                await this.callInboundProductsFor3PL('Inbound')
+                await this.fetchPendingInbounds(dataWithPage)
+                this.fetchPendingInboundsLoading = false                
+
+                if (checkWarehouseTypeId !== null && checkWarehouseTypeId === 1) {
+                    await this.fetchFloorInbounds(dataWithPage)
+                } else if (checkWarehouseTypeId !== null && checkWarehouseTypeId === 3) {
+                    await this.fetchCompletedInbounds(dataWithPage)
+                }  
+            } catch(e) {
+                this.notificationError(e)
+            }
+        }
+    },
+    updated() {}
+}
+</script>
+
+<style lang="scss">
+@import '@/assets/scss/buttons.scss';
+@import '@/assets/scss/pages_scss/inventory/inbound/inboundMobileTable.scss';
+</style>

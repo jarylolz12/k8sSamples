@@ -1,0 +1,1091 @@
+/** @format */
+
+@import "../../colors.scss";
+
+.v-dialog {
+	&.sales-order-review-dialog {
+		.v-card {
+			box-shadow: none;
+
+			.v-card__text {
+				padding: 0 !important;
+
+				.create-wrapper {
+					display: flex;
+					flex-direction: column;
+					min-height: 376px;
+
+					.sales-order-info {
+						width: 100%;
+						background-color: $table-hover-background;
+						padding: 24px;
+						display: flex;
+						gap: 24px;
+
+						.review-section-1 {
+							width: 432px;
+							height: 312px !important;
+							.v-input {
+								&.change-log {
+									.v-input__control {
+										fieldset {
+											background-color: $light-red !important;
+										}
+									}
+								}
+							}
+						}
+						.review-section-2 {
+							width: 432px;
+							height: 312px !important;
+							.v-input {
+								&.change-log {
+									.v-input__control {
+										fieldset {
+											background-color: $light-red !important;
+										}
+									}
+								}
+							}
+						}
+						.review-section-3 {
+							width: 432px;
+							height: 312px !important;
+							.v-input {
+								&.change-log {
+									.v-input__control {
+										fieldset {
+											background-color: $light-red !important;
+										}
+									}
+								}
+							}
+						}
+
+						.custom-wrapper {
+							position: relative;
+							margin-left: 30px;
+
+							img {
+								position: absolute;
+								top: 15px;
+								left: 12px;
+								z-index: 10;
+							}
+							.v-input {
+								&.text-fields.custom {
+									.v-input__control {
+										.v-input__slot {
+											background-color: $white;
+
+											input {
+												padding-left: 25px;
+											}
+										}
+
+										.v-text-field__details {
+											display: block !important;
+										}
+									}
+								}
+							}
+						}
+
+						.po-ship-details {
+							display: flex;
+							width: 100%;
+
+							.ship-details-wrapper {
+								flex: 1;
+
+								&:first-child {
+									margin-right: 10px;
+								}
+
+								.deposite {
+									margin-top: 22px !important;
+								}
+							}
+
+							.ship-via {
+								width: 100%;
+							}
+
+							&.required-deposit {
+								.detail-1-info {
+									margin-right: 0;
+									flex: unset;
+
+									.v-input {
+										width: 155px;
+
+										.v-input__control {
+											.v-input__slot {
+												fieldset {
+													border-right: none !important;
+													border-top-right-radius: 0;
+													border-bottom-right-radius: 0;
+												}
+											}
+										}
+									}
+								}
+
+								.detail-2-amount {
+									.v-input {
+										.v-input__control {
+											.v-input__slot {
+												fieldset {
+													border-left: none !important;
+													border-top-left-radius: 0;
+													border-bottom-left-radius: 0;
+												}
+
+												input {
+													text-align: right;
+												}
+											}
+										}
+									}
+								}
+
+								.v-input {								
+									&.v-input--is-focused {
+										.v-input__control {
+											.v-input__slot {
+												fieldset {
+													border-color: #B4CFE0 !important;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+
+					.product-info {
+						padding: 16px 24px;
+						width: auto;
+
+						.v-data-table {
+							box-shadow: none !important;
+
+							.v-data-table__wrapper {
+								overflow-x: hidden;
+								table {
+									table-layout: fixed;
+
+									thead {
+										background-color: $table-hover-background;
+
+										tr {
+											th {
+												font-size: 12px;
+												color: $dark-grey !important;
+												text-transform: capitalize;
+												border: none !important;
+												padding: 9px 12px !important;
+												height: 40px;
+
+												span {
+													font-family: "Inter" !important;
+													font-weight: 600;
+													font-size: 14px;
+													line-height: 20px;
+												}
+											}
+										}
+									}
+
+									tbody {
+										tr {
+											&:hover {
+												background-color: $white !important;
+											}
+
+											// :nth-child(9) {
+											// 	border-top-style: none !important;
+											// 	border-right-style: none !important;
+											// 	border-bottom-style: none !important;
+											// 	border-left-style: solid !important;
+											// }
+											td {
+												padding: 0px;
+												border: 1px solid $divider-bg !important;
+
+												.h-100 {
+													height: 100%;
+												}
+
+												.v-input {
+													height: 100%;
+
+													&.change-log {
+														.v-input__slot {
+															background-color: $light-red !important;
+														}
+													}
+													&.amount-change-log {
+														.v-text-field__slot {
+															background-color: $light-red !important;
+														}
+													}
+
+													&.select-product {
+														background-color: $white !important;
+
+														.v-input__control {
+															height: auto;
+
+															.v-input__slot {
+																margin-bottom: 0;
+
+																fieldset {
+																	min-height: 45px;
+																	border: none;
+																}
+
+																.v-select__slot {
+																	height: auto;
+
+																	.v-input__append-inner {
+																		margin-top: 11px;
+
+																		i {
+																			color: $dark-blue;
+																		}
+
+																		.v-input__icon {
+																			&.v-input__icon--clear {
+																				button {
+																					color: $dark-red;
+																					font-size: 20px;
+																				}
+																			}
+																		}
+																	}
+
+																	.v-select__selections {
+																		font-size: 14px;
+																		padding: 4px 0 !important;
+																		line-height: 20px;
+
+																		.v-select__selection {
+																			&.v-select__selection--comma {
+																				margin: 0 4px 0 0;
+																			}
+																		}
+
+																		input {
+																			font-size: 14px;
+																			padding: 8px 0 !important;
+																			line-height: 20px;
+
+																			&::placeholder {
+																				color: $light-grey;
+																			}
+																		}
+																	}
+																}
+															}
+
+															.v-text-field__details {
+																display: none;
+															}
+														}
+													}
+
+													&.not-empty {
+														.v-input__control {
+															.v-input__slot {
+																.v-select__slot {
+																	.v-select__selections {
+																		input {
+																			padding-bottom: 0 !important;
+																			margin-top: 0.8em;
+																			max-width: 0 !important;
+																			min-width: 0 !important;
+																		}
+																	}
+																}
+															}
+														}
+													}
+
+													&.has-duplicate,
+													&.has-error {
+														.v-input__control {
+															.v-input__slot {
+																fieldset {
+																	border: 1px solid $red !important;
+																}
+															}
+														}
+													}
+
+													&.table-text-fields {
+														.v-input__control {
+															// height: auto;
+															height: 100%;
+
+															.v-input__slot {
+																margin-bottom: 0;
+
+																.v-text-field__slot {
+																	height: auto;
+
+																	input {
+																		font-size: 14px;
+																		text-align: right;
+
+																		&::placeholder {
+																			color: $light-grey;
+																		}
+																	}
+																	.v-text-field__suffix {
+																		font-size: 14px;
+																	}
+
+																	textarea {
+																		margin: 0;
+																		padding-top: 8px;
+																		line-height: 20px;
+																		color: #4a4a4a;
+
+																		&::placeholder {
+																			color: $light-grey;
+																		}
+																	}
+																}
+
+																fieldset {
+																	min-height: 45px;
+																	border: none;
+																}
+															}
+
+															.v-text-field__details {
+																display: none;
+															}
+														}
+
+														&.amount {
+															.v-input__control {
+																.v-input__slot {
+																	padding: 0;
+
+																	fieldset {
+																		border: none !important;
+																		color: $default-text-color;
+																		background-color: #f5f9fc;
+																	}
+																	.v-text-field__slot {
+																		padding: 12px 8px;
+																	}
+																}
+															}
+														}
+													}
+
+													.v-text-field__details {
+														display: block;
+													}
+												}
+												// display: flex;
+												.sales-ship-date-and-time-wrapper {
+													width: 100%;
+
+													.sales-eta {
+														width: inherit !important;
+
+														.v-input {
+															.v-input__control {
+																.v-input__slot {
+																	.v-text-field__slot {
+																		width: inherit;
+																	}
+																}
+
+																.v-input__append-inner {
+																	i {
+																		color: #002F44;
+																		font-size: 20px;
+																	}
+																}
+															}
+														}
+
+													}
+												}
+
+												.remove-btn {
+													width: auto !important;
+													height: auto !important;
+
+													span,
+													span i {
+														color: $dark-red !important;
+													}
+												}
+
+												.gray-remove-btn {
+													width: auto !important;
+													height: auto !important;
+
+													span,
+													span i {
+														color: $light-grey !important;
+													}
+												}
+
+												&:last-child {
+													border: none !important;
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+
+						.add-row-wrapper {
+							padding: 0;
+							border-bottom: 2px solid $divider-bg;
+
+							.add-btn {
+								margin-bottom: 0 !important;
+								text-transform: capitalize;
+								letter-spacing: 0;
+								padding: 8px 16px;
+								font-size: 14px;
+								font-weight: 600;
+								line-height: 20px;
+								height: 40px;
+								color: $dark-blue;
+								box-shadow: none;
+								border-radius: 4px;
+								font-family: "Inter";
+							}
+						}
+
+						.signature-wrapper {
+							display: flex;
+							align-items: flex-end;
+
+							.po-signature {
+								width: 30%;
+								
+								.container {
+									.v-input {
+										.v-input__slot {
+											.v-label {
+												font-weight: 400;
+												font-size: 14px;
+												line-height: 20px;
+												color: #4a4a4a;
+											}
+											.v-icon {
+												font-size: 20px;
+											}
+										}
+									}
+								}
+
+								.proforma-invoice-details{
+									gap: 8px;
+									.signature-details-wrapper{
+										width: 50%;
+									}
+									.date-details-wrapper{
+										width: 50%;
+									}
+								}
+							}
+
+							.signed-by{
+								width: 30%;
+								display: flex;
+								justify-content: center;
+								.sign-details{
+									border: 1px solid #EBF2F5;
+									border-radius: 4px;
+									.sign-title{
+										color: #819FB2;
+										font-family: 'Inter';
+										font-weight: 500;
+										line-height: 20px;
+									}
+									.sign-text{
+										color: #4A4A4A;
+									}
+								}
+							}
+
+							.total-wrapper {
+								&.signed_by{
+									width: 40% !important;
+								}
+								width: 70%;
+								display: flex;
+								justify-content: flex-end;
+
+								.view-total {
+									width: 266px;
+									border: 1px solid $divider-bg;
+
+									.container {
+										.row {
+											.v-card {
+												border: 1px solid #EBF2F5 !important;
+												border-bottom: none !important;
+
+												&.sub-total,
+												&.total {
+													background-color: #f5f9fc;
+													line-height: 20px;
+													font-family: "Inter";
+													border: none !important;
+												}
+
+												.v-input {
+													.v-input__control {
+														.v-input__slot {
+															min-height: 38px !important;
+	
+															fieldset {
+																min-height: 38px !important;
+																border: none;
+															}
+	
+															input {
+																text-align: right;
+															}
+														}
+													}
+
+													&.change-log {
+														.v-input__slot {
+															fieldset {
+																background-color: $light-red !important;
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+
+									.view-prices {
+										display: flex;
+										justify-content: space-between;
+										align-items: center;
+										color: $default-text-color;
+										padding: 10px;
+										border-bottom: 1px solid $divider-bg;
+
+										p {
+											margin-bottom: 0;
+
+											&:first-child {
+												text-align: right;
+												width: 40%;
+											}
+										}
+										.v-input {
+											max-width: 55%;
+										}
+
+										&.subtotal {
+											background-color: #f5f9fc;
+											p {
+												font-family: "Inter-Medium", sans-serif;
+												font-weight: 500;
+												font-size: 14px;
+												line-height: 20px;
+											}
+										}
+
+										&.total {
+											border-bottom: 0 !important;
+											background-color: #f5f9fc;
+
+											p {
+												font-family: "Inter-SemiBold", sans-serif;
+											}
+										}
+									}
+								}
+							}
+
+							i {
+								&.mdi-checkbox-blank-outline {
+									width: 26px !important;
+									padding: 3px !important;
+			
+									&::before {
+										content: '' !important;
+										background-image: url('/checkbox-empty-icon-1.svg') !important;
+										background-position: center !important;
+										background-repeat: no-repeat !important;
+										background-size: cover !important;
+										width: 16px !important;
+										height: 16px !important;
+									}
+								}
+			
+								&.mdi-checkbox-marked {
+									width: 26px !important;
+									padding: 3px !important;
+			
+									&::before {
+										content: '' !important;
+										background-image: url('/checkbox-filled-icon-1.svg') !important;
+										background-position: center !important;
+										background-repeat: no-repeat !important;
+										background-size: cover !important;
+										width: 16px !important;
+										height: 16px !important;
+									}
+								}
+							}
+						}
+					}
+
+					.po-title {
+						font-size: 10px;
+						color: $grey;
+						text-transform: uppercase;
+						font-family: "Inter-SemiBold", sans-serif;
+						margin-bottom: 0 !important;
+					}
+
+					.datetime-picker-new {
+						.v-input {
+							.v-input__control {
+								.v-input__slot {
+									.v-input__append-inner {
+										margin-top: 12px !important;
+									}
+								}
+							}
+						}
+					}
+
+					.v-input {
+						margin-top: 0 !important;
+
+						.v-input__control {
+							background-color: transparent !important;
+
+							.v-input__slot {
+								.v-radio {
+									label {
+										font-size: 14px;
+										color: $default-text-color;
+										font-family: "Inter-Regular", sans-serif;
+									}
+								}
+
+								input,
+								textarea {
+									font-size: 14px;
+
+									&::placeholder {
+										color: $light-grey;
+									}
+								}
+							}
+						}
+
+						&.note {
+							.v-input__control {
+								.v-input__slot {
+									fieldset {
+										height: 96px;
+										border: 1px solid $light-grey;
+										background-color: $white !important;
+									}
+
+									.v-text-field__slot {
+										textarea {
+											height: 90px;
+											font-size: 14px;
+											line-height: 20px;
+											padding: 8px 8px 8px 0;
+											margin: 0 !important;
+
+											&::placeholder {
+												color: $light-grey;
+											}
+										}
+									}
+								}
+							}
+						}
+
+						&.select-items {
+							background-color: $table-hover-background !important;
+
+							.v-input__control {
+								.v-input__slot {
+									min-height: 45px !important;
+
+									.v-select__slot {
+										height: auto;
+
+										.v-select__selections {
+											font-size: 14px;
+											padding: 4px 0 !important;
+											line-height: 20px;
+											color: #4a4a4a;
+
+											.v-select__selection {
+												max-width: 95% !important;
+
+												&.v-select__selection--comma {
+													margin: 4px 4px 4px 0 !important;
+													overflow: unset;
+													text-overflow: unset;
+													white-space: unset;
+												}
+											}
+
+											.chip-label {
+												white-space: normal;
+												overflow: unset;
+												text-overflow: unset;
+												max-width: 95%;
+											}
+										}
+
+										input {
+											font-size: 14px;
+											padding: 4px 0 !important;
+											line-height: 20px;
+
+											&::placeholder {
+												color: $light-grey;
+											}
+										}
+									}
+
+									fieldset {
+										min-height: 45px;
+										border: 1px solid $light-grey;
+										background-color: $white !important;
+									}
+
+									.v-input__append-inner {
+										i {
+											color: $dark-blue;
+										}
+									}
+								}
+							}
+						}
+
+						&.v-input--is-disabled {
+							.v-input__control {
+								.v-input__slot {
+									fieldset {
+										background-color: #ebf2f5 !important;
+										border-color: #ebf2f5 !important;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+
+			.v-card__actions {
+				&.po-button-actions {
+					button {
+						margin-right: 8px;
+
+						&.has-empty {
+							opacity: 0.4;
+							cursor: pointer;
+						}
+
+						&.cancel {
+							color: #4a4a4a !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.v-menu__content {
+	.v-list {
+		&.v-select-list {
+			.v-list-item.v-list-item--link {
+				.v-list-item__content {
+					.v-list-item__title {
+						font-size: 14px;
+					}
+				}
+			}
+		}
+	}
+
+	&.product-lists-items {
+		width: 300px !important;
+
+		.v-list {
+			padding: 0;
+
+			.v-list-item {
+				border-bottom: 1px solid $light-white;
+
+				.option-items {
+					display: flex;
+					justify-content: space-between;
+					align-items: flex-start;
+					width: 100%;
+					padding: 14px 0px;
+
+					.sku-item {
+						width: 75%;
+
+						span {
+							color: $default-text-color;
+							font-family: "Inter-SemiBold", sans-serif;
+							font-size: 14px;
+							display: flex;
+							align-items: center;
+						}
+
+						p {
+							font-size: 14px;
+							margin-bottom: 0;
+							margin-top: 6px;
+						}
+
+						.sku-details {
+							display: flex;
+							justify-content: flex-start;
+							align-items: center;
+						}
+					}
+
+					.image-item {
+						width: 25%;
+						display: flex;
+						justify-content: flex-end;
+						align-items: flex-start;
+
+						img {
+							border: 1px solid $light-border;
+							border-radius: 4px;
+						}
+					}
+				}
+
+				&.v-list-item--active {
+					span {
+						color: $dark-blue !important;
+					}
+				}
+
+				&:last-child {
+					border-bottom: none !important;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1022px) {
+	.v-dialog {
+		&.sales-order-review-dialog {
+			margin: 0;
+			height: 100%;
+			max-height: 100% !important;
+			background-color: $white;
+
+			.v-card {
+				.v-card__text {
+					.create-wrapper {
+						flex-direction: column;
+
+						.sales-order-info,
+						.product-info {
+							width: 100%;
+							padding: 16px;
+						}
+
+						.sales-order-info {
+							flex-direction: column;
+							.review-section-1 {
+								width: 100% !important;
+							}
+							.review-section-2 {
+								width: 100% !important;
+							}
+							.review-section-3 {
+								width: 100% !important;
+								height: auto !important;
+							}
+
+							.po-ship-details {
+								display: flex;
+								gap: 8px;
+
+								.ship-details-wrapper {
+									max-width: 49%;
+									&:first-child {
+										margin-right: 0px;
+									}
+								}
+							}
+						}
+
+						.product-info {
+							.v-data-table {
+								.v-data-table__wrapper {
+									table {
+										table-layout: unset !important;
+
+										thead {
+											display: none;
+										}
+
+										tbody {
+											tr {
+												:nth-child(9) {
+													border: none !important;
+												}
+												td {
+													padding: 5px 0 !important;
+													border: none !important;
+
+													&.v-data-table__mobile-row {
+														.v-input {
+															.v-input__control {
+																.v-input__slot {
+																	min-height: 45px;
+																	fieldset {
+																		border: 1px solid $light-grey !important;
+																		color: $default-text-color;
+																	}
+																}
+															}
+														}
+														&:last-child {
+															.v-input {
+																.v-input__control {
+																	.v-input__slot {
+																		min-height: 45px;
+																		fieldset {
+																			border: 1px solid $light-grey !important;
+																			color: $default-text-color;
+																		}
+																	}
+																}
+															}
+														}
+
+														.v-data-table__mobile-row__header {
+															color: $dark-grey;
+															font-family: "Inter-SemiBold", sans-serif;
+															text-transform: uppercase;
+															margin-right: 8px;
+															font-weight: normal;
+															font-size: 12px;
+														}
+
+														.v-data-table__mobile-row__cell {
+															.product-mobile-header {
+																.po-create-product-title {
+																	margin-bottom: 0 !important;
+																	color: $dark-grey;
+																	font-family: "Inter-SemiBold", sans-serif;
+																	text-transform: uppercase;
+																	margin-right: 8px;
+																	font-size: 12px;
+																}
+															}
+
+															.mobile-desc {
+																.mobile-header {
+																	display: flex;
+																	justify-content: space-between;
+																	align-items: center;
+																	margin-bottom: 10px;
+
+																	.header-title {
+																		font-size: 12px;
+																		text-transform: uppercase;
+																		color: $dark-grey;
+																		font-weight: 700;
+																	}
+																}
+															}
+
+															.remove-btn {
+																width: 36px !important;
+															}
+														}
+
+														&:first-child {
+															display: flex;
+															justify-content: flex-start;
+															align-items: flex-start;
+															flex-direction: column;
+															width: 100%;
+
+															.v-data-table__mobile-row__header {
+																display: none;
+															}
+
+															.v-data-table__mobile-row__cell {
+																width: 100%;
+															}
+														}
+
+														&:last-child {
+															display: none;
+														}
+
+														&:nth-child(1n + 8) {
+															border-bottom: 2px solid $divider-bg !important;
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+
+							.add-row-wrapper {
+								padding: 8px 0;
+
+								.add-btn {
+									width: 100%;
+								}
+							}
+							.signature-wrapper {
+								flex-direction: column;
+
+								.po-signature {
+									width: 100%;
+								}
+
+								.total-wrapper {
+									.view-total {
+										width: 75%;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

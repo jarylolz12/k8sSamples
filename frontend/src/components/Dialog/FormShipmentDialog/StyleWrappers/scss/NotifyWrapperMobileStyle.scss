@@ -1,0 +1,31 @@
+$fontFamilyRegular: 'Inter', sans-serif !important;
+$borderColor: #B4CFE0;
+$sizes: 100;
+$weights: 800;
+$default-text-color: #4A4A4A;
+$sub-text-color: #6D858F;
+$background-color: #0171A1;
+$divider-bg: #EBF2F5;
+$caret-light: #F0FBFF;
+$white: #ffffff;
+$tracking-color: #16B442;
+
+//font style mixin
+@mixin fontStyles($weight, $size) {
+    font-family: $fontFamilyRegular;
+    font-weight: #{$weight};
+    font-size: #{$size}px;
+}
+
+#notify-wrapper-mobile-id {
+    & > div.notify-not-selected-mobile {
+        & > div {
+            & > div {
+                & > fieldset {
+                    background-color: $divider-bg !important;
+                    border: 0px solid transparent !important;
+                }
+            }
+        }
+    }
+}
